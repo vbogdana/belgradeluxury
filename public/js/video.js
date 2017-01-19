@@ -23,26 +23,39 @@ jQuery(document).ready(function(){
 //
 // Contains or spreads the video depending on the screen resolution
 //
-$(window).on("load", function() {
+$(document).ready(function() {
     var height = window.innerHeight;
     var width = window.innerWidth;
     
-    if (height < width*0.5625) {
+    if (width < 768) {
         $('.video-section').addClass('widescreen');
     } else {
-        $('.video-section').addClass('contain');
+        $('.video-section #content').html('<iframe frameborder="0" scrolling="no" seamless="seamless" webkitallowfullscreen="webkitAllowFullScreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" id="player" src="https://www.youtube.com/embed/L0UH4iz6o0Y?enablejsapi=1&rel=0&playsinline=1&autoplay=1&showinfo=0&autohide=1&controls=0&loop=1&modestbranding=1&playlist=L0UH4iz6o0Y"></iframe>');
+        if (height < width*0.5625) {
+            $('.video-section').addClass('widescreen');
+        } else {
+            $('.video-section').addClass('contain');
+        }
     }
 });
 $(window).on("resize", function() {
     var height = window.innerHeight;
     var width = window.innerWidth;
     
-    if (height < width*0.5625) {
+    if (width < 768) {
         $('.video-section').removeClass('contain');
         $('.video-section').addClass('widescreen');
     } else {
-        $('.video-section').removeClass('widescreen');
-        $('.video-section').addClass('contain');
+        result = $('.video-section #content').find('iframe');
+        if (result.length > 0) {
+            if (height < width*0.5625) {
+                $('.video-section').removeClass('contain');
+                $('.video-section').addClass('widescreen');
+            } else {
+                $('.video-section').removeClass('widescreen');
+                $('.video-section').addClass('contain');
+            }
+        }
     }
 });
 

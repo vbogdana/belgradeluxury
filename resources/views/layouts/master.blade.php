@@ -57,6 +57,16 @@
         
         <!-- page content -->
         <div class='animsition'>
+            <div class="menu wrapper">
+                @section('toolbar')
+                <div class='toolbar'>
+                    <div class="container">
+                        <div class="col-lg-1 col-md-2 col-sm-3">
+                            Contact us
+                        </div>                
+                    </div>
+                </div>
+                @show
             <!-- menu se definise ovde jer ce biti isti za sve stranice -->
             @section('sidebar')
                 <nav class='navbar navbar-fixed-top'>
@@ -68,7 +78,9 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Project name</a>
+                            <a class="navbar-brand" href="#">
+                                <img src="{{ url("") }}/images/logo/logo-letters.svg" alt="Belgrade Luxury Logo"/>
+                            </a>
                         </div>
 
                         <div id='navbar' class='navbar-collapse collapse'>
@@ -114,6 +126,7 @@
                     </div>
                 </nav>               
             @show
+            </div>
             
             @yield('content')
     

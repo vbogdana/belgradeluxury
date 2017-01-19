@@ -30,6 +30,7 @@ All rights reserved
 @import url('https://fonts.googleapis.com/css?family=Abel');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro:200,300,400&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700&subset=latin-ext');
 
 @font-face {
   font-family: 'aspergit';
@@ -81,8 +82,10 @@ a {
     -webkit-transition: color 0.3s;
     -moz-transition: color 0.3s;
     transition: color 0.3s;
-    color: #E8D181; // yellow gold
+    color: #CEAB4D; // yellow gold
     /*
+    color: #CFA636; // zlatna boja sa logoa
+    color: #CEAB4D; // blaza zlatna od one sa logoa
     color: #D3AB69; // darker gold 
     color: #DAB881; // lighter gold
     color: #DEC091; // lighter gold
@@ -118,10 +121,10 @@ a:focus {
 }
 .widescreen {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 .contain {
-    width: 100vw;
+    width: 100%;
     height: 56.25vw; 
 }
 .space-y-t,
@@ -137,6 +140,18 @@ section {
     height: auto;
     width: 100%;
 }
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+.background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
 .container {
     width: 100%;
 }
@@ -149,10 +164,10 @@ section {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     height: 100%;
-    background: url(../images/subtle-dots.png) repeat;
+    //background: url(../images/subtle-dots.png) repeat;
 }
 .overlay:after {
     content: '\A';
@@ -177,22 +192,17 @@ section {
     position: relative;
     width: 100%;
 }
+.box-left,
 .box-right {
     min-width: 55%;
     max-width: 55%;
     height: 100%;
     background: transparent;
-    position: relative;
-    float: right;
+    position: relative;   
     overflow: hidden;
 }
-.box-left {
-    min-width: 55%;
-    max-width: 55%;
-    height: 100%;
-    background: transparent;
-    position: relative;
-    overflow: hidden;
+.box-right {
+    float: right;
 }
 .box-right:after {
     background: black;
@@ -200,7 +210,7 @@ section {
     position: absolute;
     display: block;
     top: 0;
-    right: -20vw;
+    right: -22vw;
     -moz-transform: skew(-30deg);
     -webkit-transform: skew(-30deg);
     -ms-transform: skew(-30deg);
@@ -208,7 +218,7 @@ section {
     transform: skew(-30deg);
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 2;
 }
 .box-left:after {
     background: black;
@@ -224,7 +234,7 @@ section {
     display: block;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 2;
     overflow: hidden;
 }
 
@@ -233,13 +243,39 @@ section {
  *                 HEADER
  *  
  ******************************************************************************/
+.menu.wrapper {
+    height: auto;
+    position: fixed;
+    z-index: 9999;
+}
+.toolbar {
+    background: #E5E4E2;
+    color: #CEAB4D;
+    //border-bottom: 1px solid rgba(206, 171, 77, 0.45);
+    position: relative;
+    height: 25px;
+    width: 100%;
+    z-index: 9999;
+    font-family: 'Abel';
+}
 .navbar {
+    position: relative;
     background: black;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+.navbar-header a.navbar-brand {
+    padding: 10px 15px;
+}
+.navbar-header a.navbar-brand img {
+    max-height: 30px;
+}
+.navbar-nav > li > a {
+    color: #E5E4E2;
 }
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus,
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background: transparent;
+    color: #CEAB4D;
 }
 .dropdown-menu {
     font-size: 14px;
@@ -251,7 +287,6 @@ section {
 .dropdown-menu > li > a {
     color: #E5E4E2;
     padding: 6px 10px;
-    //color: #d6d6d6;
     font-family: 'Abel', Raleway, sans-serif;
     font-weight: lighter;
     text-transform: lowercase;
@@ -259,6 +294,17 @@ section {
     letter-spacing: 0.1em;
 }
 @media screen and (min-width: 768px) {
+    .wrapper {
+        top: -25px;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+    .wrapper:hover {
+        top:0;
+    }
+    .navbar .container {
+        background: black;
+    }
     .navbar-header {
         float: right;
     }
@@ -276,7 +322,7 @@ section {
         top: 35px;
         margin-left: 2px;
         vertical-align: middle;
-        border-top: 4px dashed #DAB881;
+        border-top: 4px dashed #CEAB4D;
         border-top: 4px solid \9;
         border-right: 4px solid transparent;
         border-left: 4px solid transparent;
@@ -284,8 +330,18 @@ section {
     .dropdown-menu {
         min-width: 100vw;
         position: fixed;
-        top: 51px;        
+        display: block;
+        top: 20px;        
         padding: 0 15px;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        z-index: -1;
+    }
+    .open > .dropdown-menu {
+        top: 51px;
+    }
+    .wrapper:hover .open > .dropdown-menu {
+        top: 76px;
     }
     .dropdown-menu li {
         float: left;
@@ -293,21 +349,24 @@ section {
     .dropdown-menu > li > a:hover,
     .dropdown-menu > li > a:focus {
         background: black;
-        color: #DAB881;
+        color: #CEAB4D;
     }
 }
 @media screen and (max-width: 767px) {
+    .wrapper {
+        top:0;
+    }
     .navbar-header span.icon-bar {
-        background: #DAB881;
+        background: #CEAB4D;
     }
     .navbar-fixed-top .navbar-collapse,
     .navbar-fixed-bottom .navbar-collapse {
-        max-height: calc(100vh - 51px);
+        max-height: calc(100vh - 76px);
     }
     .dropdown-menu > li > a:hover,
     .dropdown-menu > li > a:focus {
         background: #0a0a0a;
-        color: #DAB881;
+        color: #CEAB4D;
     }
 }
 
@@ -322,6 +381,9 @@ section {
     //box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.55);
     //z-index: 4;
 }
+.video-section .background {
+    background-image: url(../images/backgrounds/home1.jpg);
+}
 .video-section iframe::-webkit-media-controls {
   display: none;
 }
@@ -331,12 +393,90 @@ section {
     top: 0;  
     width: 100vw;
     height: 56.25vw;   
-    overflow: hidden;   
+    overflow: hidden;
+    z-index: 2;
 }
 .video-section .box-right:after {
     background: rgba(0,0,0,0.6);
+    overflow-x: visible;
 }
-
+.video-section .hero-holder {
+    width: 70%;
+    float: right;
+}
+.video-section .hero-inner {
+    text-align: center;
+    vertical-align: bottom;
+}
+.video-section .hero-text {
+    margin-bottom: 15%;
+    //padding-right: 15px;
+    word-wrap: break-word; 
+    box-sizing: border-box;
+    line-height: 1em;
+}
+.video-section .quotes {
+    display: none;
+}
+.video-section h1 {
+    font-size: 0.8em;
+    line-height: 1em;
+    font-family: 'Abel', sans-serif;
+    //color: #CEAB4D;
+    margin-bottom: 7px;
+}
+.video-section h2 {
+    font-size: 2.2em;
+    letter-spacing: 0.3em;
+    line-height: 1.2em;
+}
+.video-section h2 span {
+    color: #CEAB4D;
+}
+.video-section p {
+    letter-spacing: 0.4em;
+    font-size: 0.9em;
+    margin-top: 7px;
+    line-height: 1em;
+}
+.video-section .horizontal-line {
+    background: #CEAB4D;
+    opacity: 0.45;
+    height: 1px;
+    margin: 0 10%;
+}
+/* Phone & Small Tablets */
+@media screen and (max-width: 767px) {
+    .video-section .background {
+        //background-position-y: 76px;
+    }
+    .video-section iframe {
+        display: none;
+    }
+    .video-section .box-right {
+        float: none;
+        max-width: 100%;
+    }
+    .video-section .box-right:after {
+        background: transparent;
+    }
+    .video-section .hero-holder {
+        width: 100%;
+    }
+    .video-section .hero-text {
+        padding: 0.1em 1em;
+        background: rgba(0,0,0,0.6);
+    }
+    .video-section .scroll-sign img {
+        max-height: 2.5rem;
+    }
+}
+/* Phones */
+@media screen and (max-width: 450px) {
+    .video-section .scroll-sign img {
+        max-height: 2rem;
+    }    
+}
 
 .video-section .scroll-sign {
     position: absolute;
@@ -363,125 +503,6 @@ section {
 .video-section .scroll-sign img:hover {
    transform:  scale(0.9);
    -webkit-transform:  scale(0.9);
-}
-.video-section .hero-holder {
-    position: absolute;
-    width: 45%;
-}
-.video-section .hero-inner {
-    z-index: 3;
-    text-align: left;
-}
-
-
-.video-section .overlay-text-row {   
-    word-wrap: break-word; 
-    box-sizing: border-box;
-    width: auto;
-}
-.video-section .overlay-text-row.quotes {
-    display: none;
-}
-.video-section h1.overlay-text-row {
-    font-size: 1em;
-    line-height: 1em;
-    font-family: 'Raleway', sans-serif;
-}
-.video-section h2.overlay-text-row {
-    font-size: 3em;
-    line-height: 1em;
-}
-/*
-.video-section .overlay-text {
-    z-index: 3;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    -webkit-transform: translate(-50%, 0%);
-    min-width: 65vw;
-    padding: 0 2.5vw;
-    
-}
-.video-section .overlay-text .horizontal-line {
-    margin-top: 0;
-    margin-bottom: 10px;
-    width: 250px;
-}
-.video-section .overlay-text-row {   
-    word-wrap: break-word; 
-    box-sizing: border-box;
-    width: auto;
-}
-.video-section .overlay-text-row.quotes {
-    display: none;
-}   
-.video-section h1.overlay-text-row {
-    position: relative;
-    top: 0%; 
-    z-index: 3;
-    text-align: center;  
-    color: #f9f9f9;
-    //color: #bb9b69;
-    font-size: 12px;
-    line-height: 14px;
-    font-weight: 200;
-    //border-bottom: 1px solid #bb9b50;
-    padding: 10px 0px 10px 0px;
-    margin: 0px 8% 0px 8%;
-    //font-family: Georgia, serif;
-    //font-style: italic;
-}
-.video-section h2.overlay-text-row {  
-    position: relative;
-    z-index: 3;
-    text-align: center; 
-    color: #f9f9f9;
-    font-size: 70px;
-    line-height: 75px;
-    font-weight: 100;
-    margin: 0px;
-    padding: 0 15px 0 15px;
-}
-.video-section .overlay-text-row span {
-    color: #bb9b69;
-}
-*/
-/* Phone & Small Tablets */
-@media screen and (max-width: 767px) {
-    .video-section .scroll-sign img {
-        max-height: 2.5rem;
-    }   
-    .video-section .overlay-text {
-        top: 30%;
-    }    
-    .video-section h1.overlay-text-row {
-        font-size: 11px;
-        line-height: 13px;
-        padding: 5px 0 5px 0;
-    }  
-    .video-section h2.overlay-text-row { 
-        font-size: 40px;
-        line-height: 45px;
-    }
-}
-/* Phones */
-@media screen and (max-width: 450px) {
-    .video-section .scroll-sign img {
-        max-height: 2rem;
-    }    
-    .video-section .overlay-text {
-        top: 30%;
-    }    
-    .video-section h1.overlay-text-row {
-        font-size: 9px;
-        line-height: 10px;
-        padding: 3px 0 3px 0;
-    }  
-    .video-section h2.overlay-text-row { 
-        font-size: 25px;
-        line-height: 30px;
-    }
 }
 
 
