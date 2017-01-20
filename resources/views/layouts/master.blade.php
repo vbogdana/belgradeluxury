@@ -57,13 +57,39 @@
         
         <!-- page content -->
         <div class='animsition'>
-            <div class="menu wrapper">
+            <div class="menu wrapper" expanded="false">
                 @section('toolbar')
                 <div class='toolbar'>
-                    <div class="container">
-                        <div class="col-lg-1 col-md-2 col-sm-3">
-                            Contact us
-                        </div>                
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-5">
+                            <div class="col-xs-4">
+                                <a href="mailto:inquiry@belgradeluxury.com">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <span>Email</span>
+                                </a>
+                                
+                            </div>
+                            <div class="col-xs-8">
+                                <a href="tel:+381644519017">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>SMS, WhatsApp & Viber</span>
+                                </a>                                
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-sm-offset-3">
+                            <div class="col-xs-4">
+                                Language:
+                            </div>
+                            <div class="col-xs-8">
+                                <ul>
+                                    <li><a href="#">EN</a></li>
+                                    <li><a href="#">SRB</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 toolbar--show">
+                            <i class="fa fa-pulse fa-angle-down" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
                 @show

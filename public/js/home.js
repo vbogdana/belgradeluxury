@@ -3,43 +3,12 @@
  * All rights reserved
  */
 
-// about us link
-/*
-$(window).on("load", function() {
-    
-    $(window).on("scroll", function() {
-        if($(window).scrollTop() > $('#aboutus').offset().top) {
-            $(".ha-header").addClass("ha-non-transparent");
-            $(".ha-header").removeClass("ha-transparent");
-            $('.language-toolbar .tooltip').fadeIn(1000);
-            //$('.ha-header').css('top', '30px');
-        } else {
-            //remove the background property so it comes transparent again (defined in your css)
-           $(".ha-header").removeClass("ha-non-transparent");
-           $(".ha-header").addClass("ha-transparent");
-           $('.language-toolbar .tooltip').fadeOut(500);
-           $('.language-toolbar').css("right", "-50px");
-           //$('.ha-header').css('top', '0px');
-        }
-    });
-    
-   
-    // for all links on the same page
-    $('a[href*=#]:not([href=#])').click(function() {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.substr(1) +']');
-        if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top + 2
-            }, 1000);
-            return false;
-        }
-    });
-    
-});
-*/
-
-  /* changing quotes on video */
+/*******************************************************************************
+ * 
+ *                          CHANGING QUOTES
+ *  
+ ******************************************************************************/
+/* changing quotes on video */
 $(window).on("load", function() {
     var quotes = $(".quotes");
     var quoteIndex = -1;
@@ -55,7 +24,8 @@ $(window).on("load", function() {
     showNextQuote();
 });
 
-  /* changing quotes on quote section */
+/* changing quotes on quote section */
+/*
 $(window).on("load", function() {
     var quotes = $(".blockquotes");
     var quoteIndex = -1;
@@ -70,6 +40,43 @@ $(window).on("load", function() {
 
     showNextQuote();
 });
+*/
+
+/*******************************************************************************
+ * 
+ *                         ADIDAS ZNE SCROLL
+ *  
+ ******************************************************************************/
+$(window).on("load", function() {
+    $('#video').on("scroll", function(ev) {
+        ev.preventDefault();
+        
+        var target = $(this).attr("data-next");
+        target = target.length ? target : $('[name=' + this.hash.substr(1) +']');
+        if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top + 2
+            }, 1000);
+            return false;
+        }
+        
+    });
+});
+/*
+$(window).on("load", function() {  
+    // for all links on the same page
+    $('a[href*=#]:not([href=#])').click(function() {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.substr(1) +']');
+        if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top + 2
+            }, 1000);
+            return false;
+        }
+    });    
+});
+*/
 
 /* packages-section */
 /*
