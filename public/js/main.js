@@ -69,8 +69,7 @@ $(window).on("load", function() {
     
     $('.toolbar .toolbar--show').on({
         click: toggleToolbar,
-        swipedown: toggleToolbar,
-        swipeup: toggleToolbar             
+        swipe: toggleToolbar            
     });
 });
 

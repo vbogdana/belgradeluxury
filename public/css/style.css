@@ -14,8 +14,10 @@ All rights reserved
  * 1. FONTS
  * 2. GENERAL
  * 3. CUSTOM
- * 4. HEADER
- * 5. VIDEO SECTION
+ * 4. BACKGROUNDS
+ * 5. HEADER
+ * 6. VIDEO SECTION
+ * 7. ABOUT US SECTION
  * 
  *
  * 
@@ -128,6 +130,12 @@ body {
     font-size: 30px;
     overflow-x: hidden;
 }
+h1, h2 {
+    letter-spacing: 0.4em;   
+}
+h3, h4, h5, h6 {
+    letter-spacing: 0.2em;   
+}
 a {
     position: relative;
     text-shadow: none;
@@ -175,47 +183,45 @@ a:focus {
     min-height: 100%;
     height: 100vh;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 .contain {
     width: 100%;
-    height: 56.25vw; 
+    height: 56.25vw;
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 .space-y-t,
 .space-y {
-    padding-top: 0;
+    padding-top: 8vh;
 }
 .space-y-b,
 .space-y {
-    padding-top: 0;
+    padding-bottom: 8vh;
+}
+@media screen and (max-width: 450px) {
+    .space-y-t,
+    .space-y {
+        padding-top: 6vh;
+    }
+    .space-y-b,
+    .space-y {
+        padding-bottom: 6vh;
+    }
 }
 section {
     position: relative;
     height: auto;
     width: 100%;
+    z-index: 2;
+    background: black;
 }
 .wrapper {
     height: 100%;
     width: 100%;
-}
-.background {
-    position: fixed;
-    min-height: 100%;
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-}
-.wide-photo {
-    background-attachment: fixed;
-    background-repeat: no-repeat;    
-    background-size: cover;
-    background-position: top center;
-}
-@media screen and (max-width: 767px) {
-    .wide-photo {
-        background-attachment: scroll;
-    }
 }
 .container {
     width: 100%;
@@ -224,6 +230,10 @@ section {
   .container {
     padding: 0 15px;
   }
+}
+.ribbon {
+   height: auto !important;
+   background: black;
 }
 .overlay {
     position: absolute;
@@ -259,8 +269,8 @@ section {
 }
 .box-left,
 .box-right {
-    min-width: 55%;
-    max-width: 55%;
+    min-width: 50%;
+    max-width: 50%;
     height: 100%;
     background: transparent;
     position: relative;
@@ -269,33 +279,61 @@ section {
 .box-right {
     float: right;
 }
+.box-left:before,
+.box-right:before,
 .box-left:after,
 .box-right:after {
     background: black;
     content: "";
     position: absolute;
     display: block;
-    top: 0;
-    width: 100%;
-    height: 100%;
     z-index: 2;
     overflow: hidden;
+    width: 100%;
 }
-.box-right:after {  
-    right: -22vw;
-    -moz-transform: skew(-30deg);
-    -webkit-transform: skew(-30deg);
-    -ms-transform: skew(-30deg);
-    -o-transform: skew(-30deg);
-    transform: skew(-30deg);    
-}
+.box-left:before,
 .box-left:after {
-    left: -30%;   
+    left: -22vw;
+}
+.box-right:before,
+.box-right:after {
+    right: -22vw;
+}
+@media screen and (max-width: 450px) {
+    .box-left:before,
+    .box-left:after {
+        left: -25vw;
+    }
+    .box-right:before,
+    .box-right:after {
+        right: -25vw;
+    }    
+}
+.box-left:before,
+.box-right:before {
+    top: 0%;
+    height: 50.1%;
+}
+.box-left:after,
+.box-right:after {
+    top: 50%;
+    height: 50%;
+}
+.box-left:before,
+.box-right:after {
     -moz-transform: skew(30deg);
     -webkit-transform: skew(30deg);
     -ms-transform: skew(30deg);
     -o-transform: skew(30deg);
-    transform: skew(30deg);  
+    transform: skew(30deg);
+}
+.box-left:after,
+.box-right:before {
+    -moz-transform: skew(-30deg);
+    -webkit-transform: skew(-30deg);
+    -ms-transform: skew(-30deg);
+    -o-transform: skew(-30deg);
+    transform: skew(-30deg);
 }
 a.btn {
     color: #E5E4E2;
@@ -307,6 +345,33 @@ a.btn {
 a.btn:hover {
     color: #E5E4E2;
     //background:
+}
+
+/*******************************************************************************
+ * 
+ *                 BACKGROUNDS
+ *  
+ ******************************************************************************/
+.background-properties {
+    background-attachment: fixed;
+    background-repeat: no-repeat;    
+    background-size: cover;
+    background-position: top center;
+    z-index: 2;
+}
+@media screen and (max-width: 767px) {
+    .background-properties {
+        background-attachment: scroll;
+    }
+}
+.video-section.background-properties {
+    background-image: url(../images/backgrounds/boxleft3.jpg);
+}
+#aboutus-panel-1.background-properties {
+    background-image: url('../images/backgrounds/boxleft1.jpg')
+}
+#aboutus-panel-2.background-properties {
+    background-image: url('../images/backgrounds/boxright2.jpg')
 }
 
 /*******************************************************************************
@@ -360,9 +425,11 @@ a.btn:hover {
 .navbar-header a.navbar-brand img {
     max-height: 30px;
 }
+.navbar-header a.navbar-brand,
 .navbar-nav > li > a {
     color: #E5E4E2;
 }
+.navbar-header a.navbar-brand:hover, .navbar-header a.navbar-brand:focus,
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus,
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background: transparent;
@@ -407,6 +474,12 @@ a.btn:hover {
     }
     .navbar-header {
         float: right;
+    }
+    .navbar-header a.navbar-brand img {
+        display: block;
+    }
+    .navbar-header a.navbar-brand span {
+        display: none;
     }
     .caret {
         display: none;
@@ -462,19 +535,27 @@ a.btn:hover {
     .toolbar .toolbar--show {
         display: block;
         line-height: 20px;
-        text-align: center;
         font-size: 1.5em;
     }    
     .toolbar .col-sm-5 .col-xs-8 {
         text-align: right;
     }
+    .navbar-header a.navbar-brand {
+        padding: 15px 15px;
+    }
+    .navbar-header a.navbar-brand img {
+        display: none;
+    }
+    .navbar-header a.navbar-brand span {
+        display: block;
+    }
     .navbar-toggle {
         border-radius: 0;
         border: 1px solid rgba(206, 171, 77, 0.45);
-    }
+    }    
     .navbar-header span.icon-bar {
         background: #E5E4E2;
-    }
+    }    
     .navbar-fixed-top .navbar-collapse,
     .navbar-fixed-bottom .navbar-collapse {
         max-height: calc(100vh - 121px);
@@ -497,9 +578,6 @@ a.btn:hover {
     //box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.55);
     //z-index: 4;
 }
-.video-section .background {
-    background-image: url(../images/backgrounds/home1.jpg);
-}
 .video-section iframe::-webkit-media-controls {
   display: none;
 }
@@ -513,18 +591,24 @@ a.btn:hover {
     z-index: 2;
 }
 .video-section .box-right {
+    height: 100.1%;
+    min-width: 55%;
+    max-width: 55%;
     overflow: visible;
 }
-.video-section .box-right:after {
+.video-section .box-right:before {
     background: rgba(0,0,0,0.6);
     overflow-x: visible;
+    height: 100.1%;
+}
+.video-section .box-right:after {
+    background: transparent;
 }
 .video-section .hero-holder {
     width: 65%;
     float: right;
 }
 .video-section .hero-inner {
-    text-align: center;
     vertical-align: bottom;
     bottom: 13%;
 }
@@ -542,7 +626,7 @@ a.btn:hover {
     font-size: 0.9em;
     line-height: 1em;
     font-family: Abel, Raleway, sans-serif;
-    //color: #CEAB4D;
+    letter-spacing: 0.1em;
     margin-bottom: 7px;
 }
 .video-section h2 {
@@ -565,9 +649,19 @@ a.btn:hover {
     height: 1px;
     margin: 0 10%;
 }
+/* For portrait tablets */
+@media screen and (min-height: 768px) and (orientation: portrait) {
+    .video-section .box-right {
+        min-width: 65%;
+        max-width: 65%;
+    }
+    .video-section .box-right:before {
+        height: 150.1%;
+    }
+}
 /* Phone & Small Tablets */
 @media screen and (max-width: 767px) {
-    .video-section .background {
+    .video-section.background-properties {
         //background-position-y: 76px;
     }
     .video-section iframe {
@@ -577,7 +671,7 @@ a.btn:hover {
         float: none;
         max-width: 100%;
     }
-    .video-section .box-right:after {
+    .video-section .box-right:before {
         background: transparent;
     }
     .video-section .hero-holder {
@@ -588,6 +682,72 @@ a.btn:hover {
         background: rgba(0,0,0,0.6);
     }
 }
+
+/*******************************************************************************
+ * 
+ *                 ABOUT US SECTION
+ *  
+ ******************************************************************************/
+.aboutus-section.ribbon img {
+    max-width: 10vw;
+    display: inline-block;
+}
+.aboutus-section.ribbon .description:before,
+.aboutus-section.ribbon .description:after {
+    content: "";
+    background: #e5e4e2;
+    height: 1px;
+    position: absolute;
+    display: block;
+    width: 30%;
+    top: calc(8vh + 32px);
+}
+.aboutus-section.ribbon .description:before {
+    left: 0;
+}
+.aboutus-section.ribbon .description:after {
+    right: 0;
+}
+@media screen and (max-width: 767px) {
+    .aboutus-section.ribbon .description:before,
+    .aboutus-section.ribbon .description:after {
+        width: 23%;
+        top: calc(8vh + 28px);        
+    }
+    .aboutus-section.ribbon h3 {
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .aboutus-section.ribbon img {
+        max-width: 20vw;
+    }
+    .aboutus-section.ribbon .description:before,
+    .aboutus-section.ribbon .description:after {
+        width: 15%;
+        top: calc(6vh + 28px);
+    }
+    /*
+    .aboutus-section.ribbon .description:before {
+        left: 15px;
+    }
+    .aboutus-section.ribbon .description:after {
+        right: 15px;
+    }
+    */
+}
+.aboutus-section.ribbon p {
+    font-family: 'Abel';
+    padding: 20px 15%;
+}
+
+
+
+
+.aboutus-section.panel .hero-holder {
+   width: 60%; 
+}
+
 
 
 /*

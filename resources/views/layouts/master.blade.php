@@ -87,7 +87,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-12 toolbar--show">
+                        <div class="col-xs-12 toolbar--show text-center">
                             <i class="fa fa-pulse fa-angle-down" aria-hidden="true"></i>
                         </div>
                     </div>
@@ -106,6 +106,7 @@
                             </button>
                             <a class="navbar-brand" href="#">
                                 <img src="{{ url("") }}/images/logo/logo-letters.svg" alt="Belgrade Luxury Logo"/>
+                                <span>HOME</span>
                             </a>
                         </div>
 
