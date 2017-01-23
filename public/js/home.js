@@ -44,7 +44,7 @@ $(window).on("load", function() {
 
 /*******************************************************************************
  * 
- *                         ADIDAS ZNE SCROLL
+ *                         SCROLLIFY INIT
  *  
  ******************************************************************************/
 $(window).on("load", function() {
@@ -53,14 +53,14 @@ $(window).on("load", function() {
                 section : ".panel",
                 interstitialSection : ".video-section, .aboutus-section.ribbon",
                 easing: "easeOutExpo",
-		scrollSpeed: 1500,
+		scrollSpeed: 2000,
 		offset : 0,
 		scrollbars: true,
 		standardScrollElements: "",
-		//setHeights: true,
+		setHeights: false,
 		overflowScroll: true,
-		updateHash: true,
-		touchScroll:true,
+		updateHash: false,
+		touchScroll:false,
 		before:function() {},
 		after:function() {},
 		afterResize:function() {},
@@ -68,24 +68,30 @@ $(window).on("load", function() {
         });
     });
 });
-/*
-$(window).on("load", function() {  
-    // for all links on the same page
-    $('a[href*=#]:not([href=#])').click(function() {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.substr(1) +']');
-        if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top + 2
-            }, 1000);
-            return false;
-        }
-    });    
-});
-*/
 
-/* packages-section */
-/*
+
+/*******************************************************************************
+ * 
+ *                         CARD REFLECTIONS
+ *  
+ ******************************************************************************/
+$(window).load(function() {    
+    var $cards = $('.card');
+    $.each($cards, function() {
+        var $element = $(this);
+        $element.reflect({
+            height: 0.5,
+            opacity: 0.2
+        });
+    });
+});
+
+/*******************************************************************************
+ * 
+ *                         PACKAGES SECTION
+ *  
+ ******************************************************************************/
+// checking media
 var isLaptop = false;
 var isTablet = false;
 var isMobile = false;
@@ -125,8 +131,7 @@ function checkMedia() {
 function showPackageInfo() {
     $('#package-title').css("opacity", "0");
     var $package = $('figure#0').attr("class");
-        
-    
+            
     $('#package-title').delay(500).queue(function (next) {
         switch ($package) {
             case "luxury": $('#package-title').html("LUXURY PACKAGE"); break;
@@ -182,13 +187,13 @@ $(window).on("load", function() {
             if ($flipper.closest("figure").attr("id") == 0) {
                 if (isTablet || isMobile) {
                     $flipper.css({
-                        "-webkit-transform" : "rotateX(-180deg)",
-                        transform: "rotateX(-180deg)"
+                        "-webkit-transform" : "rotateY(-180deg)",
+                        transform: "rotateY(-180deg)"
                     });
                 } else {
                     $flipper.css({
-                        "-webkit-transform" : "rotateX(-180deg)",
-                        transform: "rotateX(-180deg)"  //+  "scale(1.3) translateX(40px)"
+                        "-webkit-transform" : "rotateY(-180deg)",
+                        transform: "rotateY(-180deg)"  //+  "scale(1.3) translateX(40px)"
                     });
                 }
             }
@@ -202,8 +207,8 @@ $(window).on("load", function() {
             var $flipper = $(this).closest(".flipper");
             if ($flipper.closest("figure").attr("id") == 0) {
                 $flipper.css({
-                    "-webkit-transform" : "rotateX(0deg)",
-                    transform: "rotateX(0deg)"
+                    "-webkit-transform" : "rotateY(0deg)",
+                    transform: "rotateY(0deg)"
                 });
             }
         }
@@ -295,8 +300,8 @@ $(window).on("load", function() {
             // kliknut sredisnji
             var $flipper = $(this).find(".flipper");
             $flipper.css({
-                "-webkit-transform" : "rotateX(180deg)",
-                transform: "rotateX(180deg)"
+                "-webkit-transform" : "rotateY(180deg)",
+                transform: "rotateY(180deg)"
             });
             return;
         }
@@ -309,8 +314,8 @@ $(window).on("load", function() {
                 if ($curr_id == 0) {
                     var $flipper = $element.find(".flipper");
                     $flipper.css({
-                        "-webkit-transform" : "rotateX(0deg)",
-                        transform: "rotateX(0deg)"
+                        "-webkit-transform" : "rotateY(0deg)",
+                        transform: "rotateY(0deg)"
                     })  
                 };
             });
@@ -382,14 +387,3 @@ $(window).on("load", function() {
         }      
     });
 });
-
-$(window).on("load", function() {
-    checkMedia();
-    if (isMobile) {
-        $('.background').removeAttr("data-stellar-background-ratio");
-        $('.background').removeAttr("data-stellar-vertical-offset");
-        $('.background').removeAttr("style");
-    }
-    
-});
-*/

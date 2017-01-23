@@ -61,22 +61,22 @@
                 @section('toolbar')
                 <div class='toolbar'>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-5">
-                            <div class="col-xs-4">
+                        <div class="col-xs-12 col-sm-7 col-md-6">
+                            <div class="col-xs-12 col-sm-7">
                                 <a href="mailto:inquiry@belgradeluxury.com">
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    <span>Email</span>
+                                    <span>inquiry@belgradeluxury.com</span>
                                 </a>
                                 
                             </div>
-                            <div class="col-xs-8">
+                            <div class="col-xs-12 col-sm-5">
                                 <a href="tel:+381644519017">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>SMS, WhatsApp & Viber</span>
+                                    <span>(+381) 064 4519 017</span>
                                 </a>                                
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-4 col-sm-offset-3">
+                        <div class="col-xs-12 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2">
                             <div class="col-xs-4">
                                 Language:
                             </div>
@@ -117,10 +117,14 @@
                                     <ul class='dropdown-menu'>
                                         <li><a href='#'>accommodation</a></li>
                                         <li><a href='#'>vehicles</a></li>
+                                        <li><a href='#'>chauffeur</a></li>
                                         <li><a href='#'>host</a></li>
-                                        <li><a href='#'>nightlife</a></li>
                                         <li><a href='#'>security</a></li>
-                                        <li><a href='#'>exclusive</a></li>
+                                        <li><a href='#'>reservations</a></li>
+                                        <li><a href='#'>events</a></li>
+                                        <li><a href='#'>nightlife</a></li>
+                                        <li><a href='#'>sightseeing</a></li>
+                                        <li><a href='#'>diamond</a></li>
                                     </ul>
                                 </li>
                                 <li class='dropdown'>
