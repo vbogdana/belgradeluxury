@@ -29,10 +29,10 @@ All rights reserved
  *                  FONTS
  *  
  ******************************************************************************/
-@import url('https://fonts.googleapis.com/css?family=Abel');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro:200,300,400&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400&subset=latin-ext');
 
 @font-face {
   font-family: 'aspergit';
@@ -42,6 +42,11 @@ All rights reserved
 		url('../fonts/aspergit-webfont.woff') format('woff'),
 		url('../fonts/aspergit-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
 		url('../fonts/aspergit-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'elegant light';
+  src: url('../fonts/elegantlight.ttf')  format('truetype') /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -127,7 +132,7 @@ body {
     color: #D1D0CE; // Gray Goose
     color: #D6D6D6;
     */
-    font-size: 30px;
+    //font-size: 30px;
     overflow-x: hidden;
 }
 h1, h2 {
@@ -196,7 +201,7 @@ a:focus {
 }
 .space-y-t,
 .space-y {
-    padding-top: 8vh;
+    padding-top: 60px;
 }
 .space-y-b,
 .space-y {
@@ -205,7 +210,7 @@ a:focus {
 @media screen and (max-width: 450px) {
     .space-y-t,
     .space-y {
-        padding-top: 6vh;
+        padding-top: 75px;
     }
     .space-y-b,
     .space-y {
@@ -239,7 +244,7 @@ section {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 3;
+    z-index: 2;
     width: 100%;
     height: 100%;
     //background: url(../images/subtle-dots.png) repeat;
@@ -335,12 +340,28 @@ section {
     -o-transform: skew(-30deg);
     transform: skew(-30deg);
 }
+.gold-decor {
+    max-width: 190vw;
+    width: 100vw;
+}
+@media screen and (max-width: 767px) {
+    .gold-decor {
+        width: 130vw;
+        margin-left: -15vw;
+    }
+}
+@media screen and (max-width: 450px) {
+    .gold-decor {
+        width: 190vw;
+        margin-left: -45vw;
+    }
+}
 a.btn {
     color: #E5E4E2;
     text-transform: uppercase;
     border-color: rgba(229,228,226,0.45);
     border-radius: 0;
-    font-family: Abel, Raleway, sans-serif;
+    font-family: Quicksand, Raleway, sans-serif;
 }
 a.btn:hover {
     color: #E5E4E2;
@@ -371,7 +392,7 @@ a.btn:hover {
     background-image: url('../images/backgrounds/boxleft1.jpg')
 }
 #aboutus-panel-2.background-properties {
-    background-image: url('../images/backgrounds/boxright2.jpg')
+    background-image: url('../images/backgrounds/boxright5.jpg')
 }
 
 /*******************************************************************************
@@ -394,7 +415,8 @@ a.btn:hover {
     min-height: 25px;
     width: 100%;
     z-index: 9999;
-    font-family: Abel, Raleway, sans-serif;
+    font-family: Quicksand, Raleway, sans-serif;
+    font-size: 0.9em;
 }
 .toolbar div {
     line-height: 25px;
@@ -428,6 +450,7 @@ a.btn:hover {
 .navbar-header a.navbar-brand,
 .navbar-nav > li > a {
     color: #E5E4E2;
+    text-transform: uppercase;
 }
 .navbar-header a.navbar-brand:hover, .navbar-header a.navbar-brand:focus,
 .navbar-nav > li > a:hover, .navbar-nav > li > a:focus,
@@ -447,9 +470,8 @@ a.btn:hover {
 .dropdown-menu > li > a {
     color: #E5E4E2;
     padding: 6px 10px;
-    font-family: Abel, Raleway, sans-serif;
+    font-family: Quicksand, Raleway, sans-serif;
     font-weight: lighter;
-    text-transform: lowercase;
     font-size: 0.95em;
     letter-spacing: 0.1em;
 }
@@ -575,6 +597,7 @@ a.btn:hover {
 .video-section {
     position: relative;
     overflow: hidden;
+    
     //box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.55);
     //z-index: 4;
 }
@@ -594,10 +617,10 @@ a.btn:hover {
     height: 100.1%;
     min-width: 55%;
     max-width: 55%;
-    overflow: visible;
+    //overflow-y: hidden;
 }
 .video-section .box-right:before {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.75);
     overflow-x: visible;
     height: 100.1%;
 }
@@ -619,13 +642,17 @@ a.btn:hover {
     box-sizing: border-box;
     line-height: 1em;
 }
+.video-section .hero-text .img-responsive {
+    max-width: 10vw;
+    display: inline-block;
+}
 .video-section .quotes {
     display: none;
 }
 .video-section h1 {
-    font-size: 0.9em;
-    line-height: 1em;
-    font-family: Abel, Raleway, sans-serif;
+    font-size: 1.3em;
+    line-height: 1.1em;
+    font-family: Quicksand, Raleway, sans-serif;
     letter-spacing: 0.1em;
     margin-bottom: 7px;
 }
@@ -639,15 +666,30 @@ a.btn:hover {
 }
 .video-section p {
     letter-spacing: 0.4em;
-    font-size: 0.9em;
+    font-size: 1.1em;
     margin-top: 7px;
     line-height: 1em;
 }
-.video-section .horizontal-line {
-    background: #CEAB4D;
-    opacity: 0.45;
-    height: 1px;
-    margin: 0 10%;
+/* Phone & Tablets */
+@media screen and (max-width: 1024px) {
+    .video-section h1 {
+    font-size: 1em;
+    }
+    .video-section p {
+        font-size: 0.9em;
+    }
+}
+/* Big Tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .video-section .hero-holder {
+        width: 55%;
+    }
+    .video-section .hero-text .img-responsive {
+        max-width: 10vw;
+    }
+    .video-section h2 {
+        font-size: 1.8em;
+    }
 }
 /* For portrait tablets */
 @media screen and (min-height: 768px) and (orientation: portrait) {
@@ -677,9 +719,19 @@ a.btn:hover {
     .video-section .hero-holder {
         width: 100%;
     }
+    .video-section .hero-inner {
+        bottom: 8%;
+    }
     .video-section .hero-text {
         padding: 0.1em 1em;
         background: rgba(0,0,0,0.6);
+    }
+    .video-section h2 {
+        font-size: 1.5em;
+    }
+    .video-section .hero-text .img-responsive {
+        max-width: 15vw;
+        margin-top: 1em;
     }
 }
 
@@ -688,65 +740,61 @@ a.btn:hover {
  *                 ABOUT US SECTION
  *  
  ******************************************************************************/
-.aboutus-section.ribbon img {
-    max-width: 10vw;
-    display: inline-block;
+.aboutus-section p {
+    font-family: 'Quicksand', Raleway; 
+    font-size: 1em;
+    line-height: 1.1em;
 }
-.aboutus-section.ribbon .description:before,
-.aboutus-section.ribbon .description:after {
-    content: "";
-    background: #e5e4e2;
-    height: 1px;
-    position: absolute;
-    display: block;
-    width: 30%;
-    top: calc(8vh + 32px);
+.aboutus-section.ribbon {
+    overflow-x: hidden;
 }
-.aboutus-section.ribbon .description:before {
-    left: 0;
+.aboutus-section.ribbon p {
+    padding: 20px 15%;
+    font-size: 1em
 }
-.aboutus-section.ribbon .description:after {
-    right: 0;
+.aboutus-section.panel .hero-holder {
+   width: 60%;
+}
+#aboutus-panel-1 .hero-holder {
+    padding-left: 30px;
+}
+#aboutus-panel-2 .hero-holder {
+    padding-right: 30px;
+}
+@media screen and (max-width: 1024px) {
+    .aboutus-section.ribbon h3 {
+        font-size: 20px;
+    }
+    .aboutus-section p { 
+        font-size: 0.85em;
+    }
 }
 @media screen and (max-width: 767px) {
-    .aboutus-section.ribbon .description:before,
-    .aboutus-section.ribbon .description:after {
-        width: 23%;
-        top: calc(8vh + 28px);        
-    }
     .aboutus-section.ribbon h3 {
         font-size: 16px;
     }
+    .aboutus-section.panel .hero-holder {
+        width: 70%;
+    }
+    #aboutus-panel-1 .hero-holder {
+        padding-left: 15px;
+    }
+    #aboutus-panel-2 .hero-holder {
+        padding-right: 15px;
+    }
+    .aboutus-section p {
+        font-size: 0.7em;
+    }
 }
 @media screen and (max-width: 450px) {
-    .aboutus-section.ribbon img {
-        max-width: 20vw;
+    .aboutus-section.ribbon h3 {
+        font-size: 16px;
+    } 
+    .aboutus-section.panel .hero-holder {
+        width: 80%;
     }
-    .aboutus-section.ribbon .description:before,
-    .aboutus-section.ribbon .description:after {
-        width: 15%;
-        top: calc(6vh + 28px);
-    }
-    /*
-    .aboutus-section.ribbon .description:before {
-        left: 15px;
-    }
-    .aboutus-section.ribbon .description:after {
-        right: 15px;
-    }
-    */
-}
-.aboutus-section.ribbon p {
-    font-family: 'Abel';
-    padding: 20px 15%;
 }
 
-
-
-
-.aboutus-section.panel .hero-holder {
-   width: 60%; 
-}
 
 
 

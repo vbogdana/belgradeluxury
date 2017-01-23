@@ -48,18 +48,24 @@ $(window).on("load", function() {
  *  
  ******************************************************************************/
 $(window).on("load", function() {
-    $('#video').on("scroll", function(ev) {
-        ev.preventDefault();
-        
-        var target = $(this).attr("data-next");
-        target = target.length ? target : $('[name=' + this.hash.substr(1) +']');
-        if (target.length) {
-            $('html,body').animate({
-              scrollTop: target.offset().top + 2
-            }, 1000);
-            return false;
-        }
-        
+    $(function() {
+        $.scrollify({
+                section : ".panel",
+                interstitialSection : ".video-section, .aboutus-section.ribbon",
+                easing: "easeOutExpo",
+		scrollSpeed: 1500,
+		offset : 0,
+		scrollbars: true,
+		standardScrollElements: "",
+		//setHeights: true,
+		overflowScroll: true,
+		updateHash: true,
+		touchScroll:true,
+		before:function() {},
+		after:function() {},
+		afterResize:function() {},
+		afterRender:function() {}
+        });
     });
 });
 /*

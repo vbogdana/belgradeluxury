@@ -57,7 +57,7 @@
         
         <!-- page content -->
         <div class='animsition'>
-            <div class="menu wrapper" expanded="false">
+            <div class="menu wrapper text-lowercase" expanded="false">
                 @section('toolbar')
                 <div class='toolbar'>
                     <div class="row">
