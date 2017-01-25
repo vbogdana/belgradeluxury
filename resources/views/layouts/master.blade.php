@@ -39,9 +39,9 @@
         -->
         
         <!-- scripts -->
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/animsition.min.css">       
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/animsition.min.css" rel="stylesheet" type="text/css">       
         @yield('stylesheets')        
     </head>
     

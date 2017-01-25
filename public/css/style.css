@@ -411,20 +411,6 @@ section {
 .gold-decor {
     max-width: 190%;
     width: 100%;
-}
-@media screen and (max-width: 767px) {
-    .gold-decor {
-        width: 130%;
-        margin-left: -15%;
-    }
-}
-@media screen and (max-width: 450px) {
-    .gold-decor {
-        width: 190%;
-        margin-left: -45%;
-    }
-}
-.description {
     margin-bottom: 30px;
 }
 .description p {
@@ -434,7 +420,7 @@ section {
     font-family: 'Quicksand', Raleway, sans-serif;
 }
 @media screen and (max-width: 1024px) {
-    .description {
+    .gold-decor {
         margin-bottom: 20px;
     }
     .description p {
@@ -445,6 +431,10 @@ section {
     }
 }
 @media screen and (max-width: 767px) {
+    .gold-decor {
+        width: 130%;
+        margin-left: -15%;
+    }
     .description p {
         font-size: 0.9em;
         padding: 10px 15%;
@@ -454,6 +444,10 @@ section {
     }
 }
 @media screen and (max-width: 450px) {
+    .gold-decor {
+        width: 190%;
+        margin-left: -45%;
+    }
     .description h3 {
         font-size: 16px;
     } 
@@ -1260,6 +1254,18 @@ a.btn:hover {
 .custom-package-container {
     padding-bottom: 30px;
 }
+
+/*******************************************************************************
+ * 
+ *                  EVENTS
+ *  
+ ******************************************************************************/
+.slide {
+    background: red;
+    margin: 0 20px;
+    height: 20vh;
+}
+
 
 /*******************************************************************************
  * 
