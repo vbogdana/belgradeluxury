@@ -33,3 +33,6 @@ Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storag
 Route::get('template', function() {
     return view('template');
 });
+
+//apartmani
+Route::get('/apartmani/apartman1', 'Controller@getApartmanData');

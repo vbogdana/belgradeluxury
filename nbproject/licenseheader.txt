@@ -1,8 +1,0 @@
-<#if licenseFirst??>
-${licenseFirst}
-</#if>
-${licensePrefix}© Belgrade Luxury 2017
-${licensePrefix}All rights reserved
-<#if licenseLast??>
-${licenseLast}
-</#if>
