@@ -35,4 +35,5 @@ Route::get('template', function() {
 });
 
 //apartmani
-Route::get('/apartmani/apartman1', 'Controller@getApartmanData');
+Route::get('/apartments/Belux-Belgrade-apartment', 'Controller@getApartmanData');
+Route::get('/apartments/belgrade-apartments', 'Controller@getSviApartmaniData');

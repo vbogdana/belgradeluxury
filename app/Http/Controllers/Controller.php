@@ -23,13 +23,32 @@ class Controller extends BaseController
 
     		$apartman['apartman']= DB::table('apartmani')->where('idAp', $idApartman)->first();
 
-    		
-			return view('apartmani\apartman1',$apartman);
 
-			//echo $apartman['apartman']->Naziv;-----> pristup elementu niza
+    		  $pom=(string)$apartman['apartman']->Naziv;
+    		  $putanja= "apartments\\".''.$pom.''."-Belgrade-apartment";
+
+    		  //echo $putanja;
+    		
+			return view($putanja,$apartman);
+
     	}
 
     	else echo "greska";
+
+    }
+
+
+     function getSviApartmaniData(){
+
+    		
+
+    		
+    	$sviapartmani['apartman']= DB::table('apartmani')->get();
+
+    	//print_r($sviapartmani);	
+    	// echo $sviapartmani['apartman'][1]->Naziv;
+		return view('apartments\belgrade-apartments')->with(['sviapartmani'=>$sviapartmani]);
+
 
     }
 }
