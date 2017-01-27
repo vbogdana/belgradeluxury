@@ -41,10 +41,11 @@
 <section id="aboutus-ribbon" class="aboutus-section ribbon fullwidth space-y" data-section-name="services">            
     <div class="container">
         <div class="description text-center">
-            <h3 class="text-uppercase">LUXURY VIP SERVICE</h3>
+            <h2 class="text-uppercase">LUXURY VIP SERVICE</h2>
+            <a id="contact" class="btn"> CONTACT US </a>
             <p class="">
                 Belgrade Luxury is a unique concept, established in 2016 in Belgrade, designed exclusively for people with exquisite taste who want the quality of their visit to the capital of Serbia to be to the highest of standards. Our mission is to satisfy the most demanding wishes of our clients and do everything to make their stay in Belgrade according to their preferences.
-            </p>            
+            </p>           
         </div>    
     </div>
     <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
@@ -52,52 +53,52 @@
     <div class="text-center text-uppercase">
         <div class="block">
             <a href="#">
-                <h4>accommodation</h4>
+                <h3>accommodation</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>vehicles</h4>
+                <h3>vehicles</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>chauffeur</h4>
+                <h3>chauffeur</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>host</h4>
+                <h3>host</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>security</h4>
+                <h3>security</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>reservations</h4>
+                <h3>reservations</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>events</h4>
+                <h3>events</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>nightlife</h4>
+                <h3>nightlife</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>sightseeing</h4>
+                <h3>sightseeing</h3>
             </a>
         </div>
         <div class="block">
             <a href="#">
-                <h4>diamond</h4>
+                <h3>diamond</h3>
             </a>
         </div>
     </div>
@@ -111,7 +112,7 @@
         <div class="hero-holder">
             <div class="hero-inner">
                 <div class="description">
-                    <h3 class="text-uppercase">About us</h3>
+                    <h2 class="text-uppercase">About us</h2>
                     <p>
                         We offer the most exclusive villas and suites, VIP treatment in the city's best restaurants, bars and clubs, personal chauffeur service and luxury vehicles, personal security, boat tours of the city, accompanied by a personal guide and trips to the most interesting sites in Serbia. 
                     </p>
@@ -132,7 +133,7 @@
         <div class="hero-holder" style="float:right">
             <div class="hero-inner text-right">
                 <div class="description">
-                    <h3 class="text-uppercase">Packages</h3>
+                    <h2 class="text-uppercase">Packages</h2>
                     <p>
                         To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
                     </p>
@@ -153,7 +154,7 @@
 <section id="packages" class="packages-section widescreen panel space-y" data-section-name="select-package">
     <div class="container">
         <div class="description text-center">
-            <h3 class="text-uppercase"> packages </h3>
+            <h2 class="text-uppercase"> packages </h2>
             <p>
                 These are our special packages that we have prepared for You. 
                 Each one has been carefully selected by 
@@ -261,7 +262,7 @@
     <div class="custom-package-container">
         <div class="container text-center">
             <div class="description">
-                <h3 class="text-uppercase"> custom package </h3>
+                <h2 class="text-uppercase"> custom package </h2>
                 <p>
                     If You would prefer something a little bit different than services included in our packages, You can always create You own custom package. Put together a package tailored to fit your needs, because - <i> The Best Luxury Services Are Customized, Not Standardized. </i>
                 </p>                
@@ -289,7 +290,7 @@
 <section id="events" class="events-section widescreen panel space-y" data-section-name="events-in-belgrade">
     <div class="container">
         <div class="description text-center">
-            <h3 class="text-uppercase"> BELGRADE </h3>
+            <h2 class="text-uppercase"> BELGRADE </h2>
             <p>
 
             </p>
@@ -297,17 +298,180 @@
     </div>
     <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
     
-    <div class="events-carousel">
-        <div class="slide"><div>slide 1</div></div>
-        <div class="slide">slide 2</div>
-        <div class="slide">slide 3</div>
-        <div class="slide">slide 4</div>
-        <div class="slide">slide 5</div>
-        <div class="slide">slide 6</div>
-        <div class="slide">slide 7</div>
-        <div class="slide">slide 8</div>
-        <div class="slide">slide 9</div>
-        <div class="slide">slide 10</div>
+    <div class="container">
+        <div class="carousel-holder text-center">
+            <div class="events-carousel">
+                <div class="slide">
+                    <div class="header">
+                        <h2>MONDAY</h2>
+                        <h3>30.01.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>TUESDAY</h2>
+                        <h3>31.01.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>WEDNESDAY</h2>
+                        <h3>01.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>THURSDAY</h2>
+                        <h3>02.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>FRIDAY</h2>
+                        <h3>03.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>SATURDAY</h2>
+                        <h3>04.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>SUNDAY</h2>
+                        <h3>05.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>MONDAY</h2>
+                        <h3>06.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>TUESDAY</h2>
+                        <h3>07.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="header">
+                        <h2>WEDNESDAY</h2>
+                        <h3>08.02.</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
+                        <h3>naziv zurke<br/> druga linija</h3>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </div>
 
 </section>
@@ -317,37 +481,37 @@
 <section id="places" class="belgrade-section widescreen panel text-uppercase text-center" data-section-name="belgrade">
     <div class="block">
         <a href="#">
-            <h4>
+            <h3>
                culture 
-            </h4>
+            </h3>
         </a>
     </div>
     <div class="block">
         <a href="#">
-            <h4>
+            <h3>
                society
-            </h4>
+            </h3>
         </a>
     </div>
     <div class="block">
         <a href="#">
-            <h4>
+            <h3>
                gastronomy 
-            </h4>
+            </h3>
         </a>
     </div>
     <div class="block">
         <a href="#">
-            <h4>
+            <h3>
                nightlife 
-            </h4>
+            </h3>
         </a>
     </div>
     <div class="center block">
         <a href="#">
-            <h4>
+            <h3>
                sites
-            </h4>
+            </h3>
         </a>
     </div>
 </section>

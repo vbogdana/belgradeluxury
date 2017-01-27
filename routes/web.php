@@ -26,7 +26,7 @@ Route::get('/packages/under-construction', function () {
 Route::get('/packages/{package}', //'PackageController@goToPackage');
         function($package) {
             return view('/packages/'.$package);
-        })->name('packages');
+        })->name('package');
 
 Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');         
 

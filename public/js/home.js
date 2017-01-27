@@ -47,7 +47,7 @@ $(window).on("load", function() {
  *                         SCROLLIFY INIT
  *  
  ******************************************************************************/
-/*$(window).load(function() { 
+$(window).load(function() { 
     $(function() {
         $.scrollify({
                 section : ".panel",
@@ -67,7 +67,7 @@ $(window).on("load", function() {
 		afterRender:function() {}
         });
     });
-});*/
+});
 
 /*******************************************************************************
  * 
@@ -84,35 +84,33 @@ $(document).ready(function(){
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
-      adaptiveHeight: true/*,
+      adaptiveHeight: true,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: 5
+          }
+        },
+        {
+          breakpoint: 768,
           settings: {
             slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
+            slidesToScroll: 3
           }
         },
         {
-          breakpoint: 600,
+          breakpoint: 450,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 2,
+            dots: false
           }
         }
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick"
         // instead of a settings object
-      ]*/
+      ]
   });
 });
 
