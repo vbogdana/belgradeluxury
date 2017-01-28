@@ -37,7 +37,7 @@ class ApartmentsController extends Controller
 
     	//print_r($sviapartmani);	
     	// echo $sviapartmani['apartman'][1]->Naziv;
-		return view('apartments\belgrade-apartments')->with(['sviapartmani'=>$sviapartmani]);
+		return view('apartments/belgrade-apartments')->with(['sviapartmani'=>$sviapartmani]);
 
 
     }
