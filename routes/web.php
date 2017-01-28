@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('template', function() {
+    return view('template');
+});
+
 Route::get('/', function () {
     return view('home');
 })->name('/');
@@ -19,9 +23,11 @@ Route::get('/under-construction', function () {
     return view('under-construction');
 })->name('construction');
 
+/*
 Route::get('/packages/under-construction', function () {
     return view('under-construction');
 })->name('packages.construction');
+ */
 
 Route::get('/packages/{package}', //'PackageController@goToPackage');
         function($package) {
@@ -29,10 +35,6 @@ Route::get('/packages/{package}', //'PackageController@goToPackage');
         })->name('package');
 
 Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');         
-
-Route::get('template', function() {
-    return view('template');
-});
 
 //apartmani
 Route::get('/apartments/Belux-Belgrade-apartment', 'ApartmentsController@getApartmanData');

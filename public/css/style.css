@@ -80,6 +80,9 @@ All rights reserved
 .fa-angle-up:before {
   content: "\f106";
 }
+.fa-globe:before {
+  content: "\f0ac";
+}
 .fa-envelope-o:before {
   content: "\f003";
 }
@@ -119,6 +122,9 @@ h1, h2 {
 h3, h4, h5, h6 {
     letter-spacing: 0.2em;   
 }
+p {
+    font-family: Quicksand, Raleway, sans-serif;
+}
 a {
     position: relative;
     text-shadow: none;
@@ -143,6 +149,9 @@ a:hover,
 a:focus {
     color: #E5E4E2;
     text-decoration: none;
+}
+a span {
+    color: #E5E4E2;
 }
 // color of the selected text
 ::-moz-selection {
@@ -215,6 +224,7 @@ a:focus {
  ******************************************************************************/
 .fullwidth {
     width: 100% !important;
+    margin: 0;
 }
 .widescreen {
     min-height: 100%;
@@ -419,7 +429,6 @@ section {
     padding: 20px 30%;
     font-size: 1.1em;
     line-height: 1.2em;
-    font-family: 'Quicksand', Raleway, sans-serif;
 }
 .description h2 {
     font-size: 24px;
@@ -534,6 +543,9 @@ a.btn:hover {
     z-index: 9999;
     font-family: Quicksand, Raleway, sans-serif;
 }
+.toolbar .container {
+    padding: 0;
+}
 .toolbar div {
     line-height: 25px;
 }
@@ -610,12 +622,6 @@ a.btn:hover {
     }
     .toolbar--show {
         display: none;
-    }
-    .toolbar .col-sm-7 .col-xs-12 {
-        padding-left: 30px;
-    }
-    .toolbar .col-sm-4 .col-xs-12 {
-        padding-right: 30px;
     }
     .navbar .container {
         background: black;
@@ -788,6 +794,7 @@ a.btn:hover {
     color: #CEAB4D;
 }
 .video-section p {
+    font-family: aspergit, Raleway, sans-serif;
     letter-spacing: 0.4em;
     font-size: 1.1em;
     margin-top: 7px;
