@@ -51,7 +51,7 @@ $(window).load(function() {
     $(function() {
         $.scrollify({
                 section : ".panel",
-                interstitialSection : ".video-section, .aboutus-section.ribbon",
+                interstitialSection : ".video-section, .aboutus-section.ribbon, .footer-section",
                 easing: "easeOutExpo",
 		scrollSpeed: 2000,
 		offset : 0,

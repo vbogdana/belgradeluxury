@@ -65,13 +65,13 @@
                             <div class="col-xs-12 col-sm-7">
                                 <a href="mailto:inquiry@belgradeluxury.com">
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    <span>inquiry@belgradeluxury.com</span>
+                                    inquiry@belgradeluxury.com
                                 </a>                               
                             </div>
                             <div class="col-xs-12 col-sm-5">
                                 <a href="tel:+381644519017">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>(+381) 064 4519 017</span>
+                                    (+381) 064 4519 017
                                 </a>                                
                             </div>
                         </div>
@@ -160,48 +160,81 @@
             
             @yield('content')
             
-            <section class="fullwidth panel space-y">
+            <section id="footer" class="footer-section fullwidth space-y" data-section-name="contact-information">
                 <div class="container">
-                    <div class="col-sm-3">
-                        <a href="<?php echo url('/') ?>">
-                            <img class="img-responsive" src="{{ url("") }}/images/logo/logo.svg" alt="Belgrade Luxury" />
-                        </a>
-                        <p>
-                            BELGRADE LUXURY offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure, for one price. 
-                            <br />
-                            Simply Be Lux.
-                        </p>
+                    <div class="col-xs-12">
+                        <h4 class="text-uppercase">Belgrade Luxury</h4>
                     </div>
-                    <div class="col-sm-3">
-                
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-6">                       
+                                <p>
+                                    <a href="#">Services</a>
+                                    <a href="#">Packages</a>
+                                    <a href="#">Upcoming events</a>
+                                    <a href="#">Blog</a>
+                                </p>
+                                <!--
+                                <a href="{{ url("") }}">
+                                    <img class="img-responsive" src="{{ url("") }}/images/logo/logo.svg" alt="Belgrade Luxury" />
+                                </a>
+                                <p class="text-justify">
+                                    BELGRADE LUXURY offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure. 
+                                </p>
+                                -->
+                            </div>
+
+                            <div class="col-md-6">
+                                <p>
+                                    <a href="#">About us</a>
+                                    <a href="#">Contact</a>
+                                    <a href="#">Become our partner</a>                       
+                                    <a href="#">Terms and Conditions</a>
+                                </p>
+                            </div>                    
+                        </div>
                     </div>
-                    <div class="col-sm-3">
-                        <h3>Contact us</h3>
-                                
-                        <h4>BELGRADE LUXURY</h4>
-                        <address>
-                            <p> 
-                                <i class="fa fa-globe" aria-hidden="true"></i>&nbsp;Republic Square<br/>
-                                11000 Belgrade SERBIA <br/>
-                                <a href="tel:+381644519017">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <span>(+381) 064 4519 017</span>
-                                </a>
-                                <br/>
-                                <a href="mailto:office@belgradeluxury.com">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    <span>office@belgradeluxury.com</span>
-                                </a>
-                                <br />
-                                <a href="mailto:inquiry@belgradeluxury.com">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    <span>inquiry@belgradeluxury.com</span>
-                                </a>
-                            </p>
-                        </address>
-                    </div>
-                    <div class="col-sm-3">
-                
+                    
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <p> 
+                                    <a href="#">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>
+                                        Belgrade, Serbia
+                                    </a>
+                                    <a href="tel:+381644519017">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        (+381) 064 4519 017
+                                    </a>
+                                    <a href="mailto:office@belgradeluxury.com">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                        office@belgradeluxury.com
+                                    </a>
+                                    <a href="mailto:inquiry@belgradeluxury.com">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                        inquiry@belgradeluxury.com
+                                    </a>
+                                </p>
+                            </div>
+
+                            <div class="col-md-5 social">
+                                <p>
+                                    <a href="#">
+                                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>  
+                                    <a href="#">
+                                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
                     </div>            
                 </div>        
             </section>

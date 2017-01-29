@@ -312,6 +312,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -326,8 +330,13 @@
                     <div class="content">
                         <div class="img-holder">
                             <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>                        <h2>Klub Brankov<br/>druga linija</h2>
+                        </div>
+                        <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -345,6 +354,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -362,6 +375,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -379,6 +396,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -396,6 +417,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -413,6 +438,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -430,6 +459,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -447,6 +480,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017
@@ -464,6 +501,10 @@
                         </div>
                         <h2>Klub Brankov<br/>druga linija</h2>
                         <h3>naziv zurke<br/> druga linija</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            Pop Rock
+                        </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             (+381) 064 4519 017

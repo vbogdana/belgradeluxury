@@ -23,6 +23,10 @@ All rights reserved
  * 10. BELGRADE
  *      10.1. EVENTS 
  *      10.2. PLACES 
+ *
+ *
+ *  FOOTER
+ *
  ******************************************************************************/
 
 /*******************************************************************************
@@ -95,6 +99,21 @@ All rights reserved
 .fa-angle-double-right:before {
   content: "\f101";
 }
+.fa-music:before {
+  content: "\f001";
+}
+.fa-facebook:before {
+  content: "\f09a";
+}
+.fa-instagram:before {
+  content: "\f16d";
+}
+.fa-youtube-play:before {
+  content: "\f16a";
+}
+.fa-whatsapp:before {
+  content: "\f232";
+}
 
 /*******************************************************************************
  * 
@@ -152,6 +171,9 @@ a:focus {
 }
 a span {
     color: #E5E4E2;
+}
+i {
+    color: #CEAB4D;
 }
 // color of the selected text
 ::-moz-selection {
@@ -549,6 +571,12 @@ a.btn:hover {
 .toolbar div {
     line-height: 25px;
 }
+.toolbar a {
+    color: #E5E4E2;
+}
+.toolbar a:hover {
+    color: #CEAB4D;
+}
 .toolbar ul {
     padding: 0;
     margin-bottom: 0;
@@ -557,9 +585,6 @@ a.btn:hover {
 .toolbar ul li {
     margin-left: 15px;
     float: left;
-}
-.toolbar .col-sm-7 a span {
-    color: #E5E4E2;
 }
 .toolbar .col-sm-4 .col-xs-8 ul {
     float: right;
@@ -1280,6 +1305,9 @@ a.btn:hover {
  *                  BELGRADE EVENTS
  *  
  ******************************************************************************/
+.events-section {
+    overflow: hidden;
+}
 .carousel-holder {
     padding: 0 20px;
 }
@@ -1312,7 +1340,7 @@ a.btn:hover {
 .slide .content {
     padding: 0;
     background: rgba(256,256,256,0.04);
-    height: 15.75em; 
+    height: 16.75em; 
 }
 .slide .content .img-holder {
     max-height: 7em;
@@ -1325,6 +1353,7 @@ a.btn:hover {
     padding: 0 0.5em;
     line-height: 0.9em;
     color: #E5E4E2;
+    margin-bottom: 1em;
 }
 .slide .content a {
    font-family: Quicksand, Raleway, sans-serif;
@@ -1332,8 +1361,12 @@ a.btn:hover {
    line-height: 0.75em;
    position: absolute;
    bottom: 1em;
+   color: #E5E4E2;
    -webkit-transform: translateX(-50%);
            transform: translateX(-50%);
+}
+.slide .content a:hover {
+    color: #CEAB4D;
 }
 .slick-prev,
 .slick-next,
@@ -1353,7 +1386,6 @@ a.btn:hover {
     //color: #E5E4E2 !important;
     color: #CEAB4D !important;
 }
-
 
 /*******************************************************************************
  * 
@@ -1407,6 +1439,59 @@ a.btn:hover {
         left: 25%;
     }
 }
+
+/*******************************************************************************
+ * 
+ *                  FOOTER
+ *  
+ ******************************************************************************/
+.footer-section {
+    font-size: 90%;
+}
+.footer-section.space-y {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.footer-section .img-responsive {
+    max-width: 30%;
+}
+.footer-section a {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #E5E4E2;
+}
+.footer-section a:hover {
+    color: #CEAB4D;
+}
+.footer-section .social {
+    font-size: 18px;
+}
+.footer-section .social a {
+    //text-align: center;
+    display: inline-block;
+    width: 30px;
+}
+.footer-section .social a:hover {
+    //background: #E5E4E2;
+}
+@media screen and (min-width: 992px) {
+    .footer-section .social {
+        text-align: center;
+    }
+}
+@media screen and (min-width: 768px) {
+    .footer-section h4 {
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .footer-section {
+        text-align: center;
+    }
+}
+
+
 /*
 .link-effect a::after {
 	position: absolute;
