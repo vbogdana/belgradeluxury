@@ -53,7 +53,7 @@ $(window).load(function() {
                 section : ".panel",
                 interstitialSection : ".video-section, .aboutus-section.ribbon, .footer-section",
                 easing: "easeOutExpo",
-		scrollSpeed: 2000,
+		scrollSpeed: 1500,
 		offset : 0,
 		scrollbars: true,
 		standardScrollElements: "",

@@ -301,6 +301,32 @@
     <div class="container">
         <div class="carousel-holder text-center">
             <div class="events-carousel">
+                @foreach($events as $event)
+                @for($i = 0; $i < 7; $i++)
+                <div class="slide">
+                    <div class="header">
+                        <h2>{{ $event->day }}</h2>
+                        <h3>{{ $event->date }}</h3>
+                    </div>
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="img-responsive" src="<?php echo url('/')."/images/events/".$event->image ?>">                      
+                        </div>
+                        <h2>{{ $event->place }}</h2>
+                        <h3>{{ $event->title }}</h3>
+                        <p>
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                            {{ $event->category }}
+                        </p>
+                        <a href="tel:+381644519017">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            (+381) 064 4519 017
+                        </a>
+                    </div>
+                </div>
+                @endfor
+                @endforeach
+                <!--
                 <div class="slide">
                     <div class="header">
                         <h2>MONDAY</h2>
@@ -511,6 +537,7 @@
                         </a>
                     </div>
                 </div>
+                -->
             </div>
         </div>        
     </div>

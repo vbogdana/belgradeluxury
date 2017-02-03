@@ -15,9 +15,7 @@ Route::get('template', function() {
     return view('template');
 });
 
-Route::get('/', function () {
-    return view('home');
-})->name('/');
+Route::get('/', 'HomeController@loadHome')->name('/');
 
 Route::get('/under-construction', function () {
     return view('under-construction');
