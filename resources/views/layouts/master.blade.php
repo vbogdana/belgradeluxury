@@ -160,7 +160,7 @@
             
             @yield('content')
             
-            <section id="footer" class="footer-section fullwidth space-y" data-section-name="contact-information">
+            <section id="footer" class="footer-section interstitial fullwidth space-y" data-section-name="contact-information">
                 <div class="container">
                     <div class="col-xs-12">
                         <h4 class="text-uppercase">Belgrade Luxury</h4>
@@ -247,6 +247,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
         <script src="js/bootstrap.js"></script>       
         <script src="js/animsition.min.js"></script>
+        <script src="js/jquery.scrollify.min.js"></script>
         <script src="js/main.js"></script>
         @yield('scripts')
         

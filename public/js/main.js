@@ -48,6 +48,33 @@ $(document).ready(function() {
 
 /*******************************************************************************
  * 
+ *                         SCROLLIFY INIT
+ *  
+ ******************************************************************************/
+$(window).load(function() { 
+    $(function() {
+        $.scrollify({
+                section : ".panel",
+                interstitialSection : ".interstitial",
+                easing: "easeOutExpo",
+		scrollSpeed: 1500,
+		offset : 0,
+		scrollbars: true,
+		standardScrollElements: "",
+		setHeights: false,
+		overflowScroll: true,
+		updateHash: false,
+		touchScroll:false,
+		before:function() {},
+		after:function() {},
+		afterResize:function() {},
+		afterRender:function() {}
+        });
+    });
+});
+
+/*******************************************************************************
+ * 
  *                  MENU MOBILE TOOLBAR EXPANDING
  *  
  ******************************************************************************/

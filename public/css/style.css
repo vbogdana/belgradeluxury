@@ -410,6 +410,42 @@ section {
     -o-transform: skew(-30deg);
     transform: skew(-30deg);
 }
+.box.panel .hero-holder {
+   width: 60%;
+}
+.box.panel .box-left .hero-holder {
+    padding-left: 30px;
+}
+.box.panel .box-right .hero-holder {
+    padding-right: 30px;
+}
+.box.panel p {
+    padding: 0;
+}
+@media screen and (max-width: 1024px) {
+    .box.panel p { 
+        font-size: 0.85em;
+    }
+}
+@media screen and (max-width: 767px) {
+    .box.panel .hero-holder {
+        width: 70%;
+    }
+    .box.panel .box-left .hero-holder {
+        padding-left: 15px;
+    }
+    .box.panel .box-right .hero-holder {
+        padding-right: 15px;
+    }
+    .box.panel p {
+        font-size: 0.7em;
+    }
+}
+@media screen and (max-width: 450px) {
+    .box.panel .hero-holder {
+        width: 80%;
+    }
+}
 .block {
     display: table;
     background: #0a0a0a;
@@ -533,7 +569,7 @@ a.btn:hover {
         background-attachment: scroll;
     }
 }
-.video-section.background-properties {
+#intro-panel.background-properties {
     background-image: url(../images/backgrounds/boxleft3.jpg);
 }
 #aboutus-panel-1.background-properties {
@@ -541,6 +577,12 @@ a.btn:hover {
 }
 #aboutus-panel-2.background-properties {
     background-image: url('../images/backgrounds/boxright5.jpg')
+}
+#package-description-panel.background-properties {
+    background-color: #222222;
+}
+#package-details-panel.background-properties {
+    background-color: #0a0a0a;
 }
 
 /*******************************************************************************
@@ -932,42 +974,6 @@ a.btn:hover {
 }
 .aboutus-section.ribbon .block:nth-child(10) {
     background-image: url('../images/services/boxright3.jpg');
-}
-.aboutus-section.panel .hero-holder {
-   width: 60%;
-}
-#aboutus-panel-1 .hero-holder {
-    padding-left: 30px;
-}
-#aboutus-panel-2 .hero-holder {
-    padding-right: 30px;
-}
-.aboutus-section.panel p {
-    padding: 0;
-}
-@media screen and (max-width: 1024px) {
-    .aboutus-section.panel p { 
-        font-size: 0.85em;
-    }
-}
-@media screen and (max-width: 767px) {
-    .aboutus-section.panel .hero-holder {
-        width: 70%;
-    }
-    #aboutus-panel-1 .hero-holder {
-        padding-left: 15px;
-    }
-    #aboutus-panel-2 .hero-holder {
-        padding-right: 15px;
-    }
-    .aboutus-section.panel p {
-        font-size: 0.7em;
-    }
-}
-@media screen and (max-width: 450px) {
-    .aboutus-section.panel .hero-holder {
-        width: 80%;
-    }
 }
 
 /*******************************************************************************
@@ -1439,6 +1445,30 @@ a.btn:hover {
         left: 25%;
     }
 }
+
+/*******************************************************************************
+ * 
+ *                  PACKAGES
+ *  
+ ******************************************************************************/
+.package-details-section .container-fluid {
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    .package-details {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: table;
+        height: 100vh;
+        padding-right: 30px;
+    }
+    .package-details .row {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
 
 /*******************************************************************************
  * 

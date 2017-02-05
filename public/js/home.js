@@ -44,33 +44,6 @@ $(window).on("load", function() {
 
 /*******************************************************************************
  * 
- *                         SCROLLIFY INIT
- *  
- ******************************************************************************/
-$(window).load(function() { 
-    $(function() {
-        $.scrollify({
-                section : ".panel",
-                interstitialSection : ".video-section, .aboutus-section.ribbon, .footer-section",
-                easing: "easeOutExpo",
-		scrollSpeed: 1500,
-		offset : 0,
-		scrollbars: true,
-		standardScrollElements: "",
-		setHeights: false,
-		overflowScroll: true,
-		updateHash: false,
-		touchScroll:false,
-		before:function() {},
-		after:function() {},
-		afterResize:function() {},
-		afterRender:function() {}
-        });
-    });
-});
-
-/*******************************************************************************
- * 
  *                         SLICK CAROUSEL INIT
  *  
  ******************************************************************************/

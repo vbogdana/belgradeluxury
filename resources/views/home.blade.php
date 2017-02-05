@@ -7,7 +7,7 @@
 
 @section('content')
 <!--    START VIDEO SECTION      -->
-<section id="video" class="video-section background-properties" data-section-name="intro">
+<section id="intro-panel" class="video-section interstitial background-properties" data-section-name="intro">
     <div id="content">
         <!--<iframe frameborder="0" scrolling="no" seamless="seamless" webkitallowfullscreen="webkitAllowFullScreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" id="player" src='https://www.youtube.com/embed/L0UH4iz6o0Y?enablejsapi=1&rel=0&playsinline=1&autoplay=1&showinfo=0&autohide=1&controls=0&loop=1&modestbranding=1&playlist=L0UH4iz6o0Y'></iframe>      
         -->
@@ -38,7 +38,7 @@
 <!--    END VIDEO SECTION      -->
 
 <!--    START ABOUT US SERVICES SECTION      -->
-<section id="aboutus-ribbon" class="aboutus-section ribbon fullwidth space-y" data-section-name="services">            
+<section id="services-panel" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services">            
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase">LUXURY VIP SERVICE</h2>
@@ -106,7 +106,7 @@
 <!--    END ABOUT US SERVICES SECTION      -->
 
 <!--    ABOUT US PANEL 1 SECTION      -->
-<section id="aboutus-panel-1" class="aboutus-section panel widescreen background-properties" data-section-name="about-us">
+<section id="aboutus-panel-1" class="aboutus-section box panel widescreen background-properties" data-section-name="about-us">
     <div class="overlay"></div>
     <div class="box-left">
         <div class="hero-holder">
@@ -127,7 +127,7 @@
 <!--    END ABOUT US PANEL 1 SECTION      -->
 
 <!--    ABOUT US PANEL 2 SECTION      -->
-<section id="aboutus-panel-2" class="aboutus-section panel widescreen background-properties" data-section-name="packets">
+<section id="aboutus-panel-2" class="aboutus-section box panel widescreen background-properties" data-section-name="packets">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
@@ -151,7 +151,7 @@
 <!--    END ABOUT US PANEL 2 SECTION      -->
 
 <!--    START PACKAGES SECTION      -->
-<section id="packages" class="packages-section widescreen panel space-y" data-section-name="select-package">
+<section id="packages-panel" class="packages-section widescreen panel space-y" data-section-name="select-package">
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase"> packages </h2>
@@ -287,7 +287,7 @@
 <!--    END PACKAGES SECTION      -->
 
 <!--    START EVENTS SECTION      -->
-<section id="events" class="events-section widescreen panel space-y" data-section-name="events-in-belgrade">
+<section id="events-panel" class="events-section widescreen panel space-y" data-section-name="events">
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase"> BELGRADE </h2>
@@ -546,7 +546,7 @@
 <!--    END EVENTS SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
-<section id="places" class="belgrade-section widescreen panel text-uppercase text-center" data-section-name="belgrade">
+<section id="belgrade-panel" class="belgrade-section widescreen panel text-uppercase text-center" data-section-name="belgrade">
     <div class="block">
         <a href="#">
             <h3>

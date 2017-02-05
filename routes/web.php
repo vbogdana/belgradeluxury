@@ -27,6 +27,10 @@ Route::get('/packages/under-construction', function () {
 })->name('packages.construction');
  */
 
+Route::get('/packages', function() {
+    return view('/packages/package');
+});
+
 Route::get('/packages/{package}', //'PackageController@goToPackage');
         function($package) {
             return view('/packages/'.$package);
