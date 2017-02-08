@@ -59,12 +59,11 @@
                         @else
                             <li class='dropdown'>
                                 <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    edit<span class="caret"></span>
+                                    edit/remove<span class="caret"></span>
                                 </a>
                                 <ul class='dropdown-menu'>
-                                    <li><a href='#'>apartments</a></li>
-                                    <li><a href='#'>hotels</a></li>
-                                    <li><a href='#'>spas</a></li>
+                                    <li><a href='#'>users</a></li>
+                                    <li><a href='{{ route('cms.apartments') }}'>apartments</a></li>
                                     <li><a href='#'>vehicles</a></li>
                                 </ul>
                             </li>
@@ -73,7 +72,8 @@
                                     create<span class="caret"></span>
                                 </a>
                                 <ul class='dropdown-menu'>
-                                    <li><a href='#'>apartment</a></li>
+                                    <li><a href='{{ route('cms.register') }}'>user</a></li>
+                                    <li><a href='{{ route('cms.create.apartment') }}'>apartment</a></li>
                                     <li><a href='#'>vehicle</a></li>
                                 </ul>
                             </li>

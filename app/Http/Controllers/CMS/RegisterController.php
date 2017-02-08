@@ -88,7 +88,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
         
-        $user->isAdmin = $data['isAdmin'];
+        $user->admin = $data['isAdmin'];
         $user->createdBy = Auth::user()->name;       
         $user->save();
         

@@ -8,7 +8,7 @@
 |
 */
 //Auth::routes();
-Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
+//Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
 
 Route::get('/', 'App\AppController@index')->name('/');
 //Route::get('home', 'App\HomeController@index')->name('home');
@@ -58,5 +58,11 @@ Route::post('logout', ['as' => 'cms.logout', 'uses' => 'Auth\LoginController@log
 Route::get('cms/register', ['as' => 'cms.register', 'uses' => 'CMS\RegisterController@showRegistrationForm']);
 Route::post('cms/register', ['as' => 'cms.register', 'uses' => 'CMS\RegisterController@register']);
 
-Route::get('cms/create/apartment', 'CMS\ApartmentsController@loadCreateApartment');
-Route::post('cms/create/apartment', 'CMS\ApartmentsController@createApartment');
+Route::get('cms/apartments', ['as' => 'cms.apartments', 'uses' => 'CMS\ApartmentsController@loadApartments']);
+Route::get('cms/create/apartment', ['as' => 'cms.create.apartment', 'uses' => 'CMS\ApartmentsController@loadCreateApartment']);
+Route::post('cms/create/apartment', ['as' => 'cms.create.apartment', 'uses' => 'CMS\ApartmentsController@createApartment']);
+
+Route::get('cms/create/accommodation/image', ['as' => 'cms.create.accommodation.image', 'uses' => 'CMS\AccommodationController@loadAccommodationImage']);
+Route::post('cms/create/accommodation/image', ['as' => 'cms.create.accommodation.image', 'uses' => 'CMS\AccommodationController@createImage']);
+
+Route::delete('cms/delete/accommodation/{accID}', ['as' => 'cms.delete.accommodation', 'uses' => 'CMS\AccommodationController@deleteAccommodation']);

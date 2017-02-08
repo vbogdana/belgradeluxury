@@ -15,7 +15,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Create Apartment</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/cms/create/apartment') }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ url('/cms/create/apartment') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title_en') ? ' has-error' : '' }}">
@@ -36,7 +36,7 @@
                             <label for="title_ser" class="col-md-4 control-label">Title (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_ser" type="text" maxlength="150" class="form-control" name="title_ser" value="{{ old('title_ser') }}" required autofocus>
+                                <input id="title_ser" type="text" maxlength="150" class="form-control" name="title_ser" value="{{ old('title_ser') }}" required>
 
                                 @if ($errors->has('title_ser'))
                                     <span class="help-block">
@@ -50,7 +50,7 @@
                             <label for="address" class="col-md-4 control-label">Address*</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" maxlength="200" class="form-control" name="address" value="{{ old('address') }}" required autofocus>
+                                <input id="address" type="text" maxlength="200" class="form-control" name="address" value="{{ old('address') }}" required>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -60,57 +60,87 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('description_en') ? ' has-error' : '' }}">
                             <label for="description_en" class="col-md-4 control-label">Description (eng)</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_en" maxlength="800" rows="5" cols="70" class="form-control" name="description_en" value="{{ old('description_en') }}" autofocus>
-                                </textarea>
+                                <textarea id="description_en" maxlength="800" rows="5" cols="70" class="form-control" name="description_en" value="{{ old('description_en') }}"></textarea>
+                                
+                                @if ($errors->has('description_en'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description_en') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('description_ser') ? ' has-error' : '' }}">
                             <label for="description_ser" class="col-md-4 control-label">Description (ser)</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_ser" maxlength="800" rows="5" cols="70" class="form-control" name="description_ser" value="{{ old('description_ser') }}" autofocus>
-                                </textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('geoWidth') ? ' has-error' : '' }}">
-                            <label for="geoWidth" class="col-md-4 control-label">Geo Width*</label>
-
-                            <div class="col-md-6">
-                                <input id="geoWidth" type="text" maxlength="100" class="form-control" name="geoWidth" value="{{ old('geoWidth') }}" required autofocus>
-
-                                @if ($errors->has('geoWidth'))
+                                <textarea id="description_ser" maxlength="800" rows="5" cols="70" class="form-control" name="description_ser" value="{{ old('description_ser') }}"></textarea>
+                                
+                                @if ($errors->has('description_ser'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('geoWidth') }}</strong>
+                                        <strong>{{ $errors->first('description_ser') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('geoHeight') ? ' has-error' : '' }}">
-                            <label for="geoHeight" class="col-md-4 control-label">Geo Height*</label>
+                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                            <label for="image" class="col-md-4 control-label">Main image</label>
 
                             <div class="col-md-6">
-                                <input id="geoHeight" type="text" maxlength="100" class="form-control" name="geoHeight" value="{{ old('geoHeight') }}" required autofocus>
-
-                                @if ($errors->has('geoHeight'))
+                                <input id="image" type="file" name="image" value="{{ old('image') }}">
+                                
+                                @if ($errors->has('image'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('geoHeight') }}</strong>
+                                        <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('geoLat') ? ' has-error' : '' }}">
+                            <label for="geoLat" class="col-md-4 control-label">Geographic latitude*</label>
+
+                            <div class="col-md-6">
+                                <input id="geoLat" type="text" maxlength="100" class="form-control" name="geoLat" value="{{ old('geoLat') }}" required>
+
+                                @if ($errors->has('geoLat'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('geoLat') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('geoLong') ? ' has-error' : '' }}">
+                            <label for="geoLong" class="col-md-4 control-label">Geographic longitude*</label>
+
+                            <div class="col-md-6">
+                                <input id="geoLong" type="text" maxlength="100" class="form-control" name="geoLong" value="{{ old('geoLong') }}" required>
+
+                                @if ($errors->has('geoLong'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('geoLong') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
                             <label for="link" class="col-md-4 control-label">Website link</label>
 
                             <div class="col-md-6">
-                                <input id="link" type="text" maxlength="400" class="form-control" name="link" value="{{ old('link') }}" autofocus>
+                                <input id="link" type="text" maxlength="400" class="form-control" name="link" value="{{ old('link') }}">
+                                
+                                @if ($errors->has('link'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('link') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         
@@ -118,7 +148,7 @@
                             <label for="people" class="col-md-4 control-label">Number of people*</label>
 
                             <div class="col-md-6">
-                                <input id="people" type="number" min="1" max="20" step="1" class="form-control" name="people" value="{{ old('people') }}" required autofocus>
+                                <input id="people" type="number" min="1" max="20" step="1" class="form-control" name="people" value="{{ old('people') }}" required>
 
                                 @if ($errors->has('people'))
                                     <span class="help-block">
@@ -132,7 +162,8 @@
                             <label for="tv" class="col-md-4 control-label">TV</label>
 
                             <div class="col-md-6">
-                                <input id="tv" type="checkbox" class="form-control" name="tv" value="{{ old('tv') }}" autofocus>
+                                <input type="radio" name="tv" value="1"> Yes
+                                <input type="radio" name="tv" value="0" checked> No                           
                             </div>
                         </div>
                         
@@ -140,7 +171,8 @@
                             <label for="hottub" class="col-md-4 control-label">Hot tub</label>
 
                             <div class="col-md-6">
-                                <input id="hottub" type="checkbox" class="form-control" name="hottub" value="{{ old('hottub') }}" autofocus>
+                                <input type="radio" name="hottub" value="1"> Yes
+                                <input type="radio" name="hottub" value="0" checked> No 
                             </div>
                         </div>
                         
@@ -148,7 +180,8 @@
                             <label for="wifi" class="col-md-4 control-label">WiFi</label>
 
                             <div class="col-md-6">
-                                <input id="wifi" type="checkbox" class="form-control" name="wifi" value="{{ old('wifi') }}" autofocus>
+                                <input type="radio" name="wifi" value="1"> Yes
+                                <input type="radio" name="wifi" value="0" checked> No 
                             </div>
                         </div>
                         
@@ -156,7 +189,8 @@
                             <label for="bar" class="col-md-4 control-label">Bar</label>
 
                             <div class="col-md-6">
-                                <input id="bar" type="checkbox" class="form-control" name="bar" value="{{ old('bar') }}" autofocus>
+                                <input type="radio" name="bar" value="1"> Yes
+                                <input type="radio" name="bar" value="0" checked> No 
                             </div>
                         </div>
                         
@@ -164,7 +198,8 @@
                             <label for="airCondition" class="col-md-4 control-label">Air Condition</label>
 
                             <div class="col-md-6">
-                                <input id="airCondition" type="checkbox" class="form-control" name="airCondition" value="{{ old('airCondition') }}" autofocus>
+                                <input type="radio" name="airCondition" value="1"> Yes
+                                <input type="radio" name="airCondition" value="0" checked> No 
                             </div>
                         </div>
                         
@@ -172,7 +207,8 @@
                             <label for="parking" class="col-md-4 control-label">Parking</label>
 
                             <div class="col-md-6">
-                                <input id="parking" type="checkbox" class="form-control" name="parking" value="{{ old('parking') }}" autofocus>
+                                <input type="radio" name="parking" value="1"> Yes
+                                <input type="radio" name="parking" value="0" checked> No 
                             </div>
                         </div>
                         
@@ -180,7 +216,8 @@
                             <label for="cityCenter" class="col-md-4 control-label">City Center</label>
 
                             <div class="col-md-6">
-                                <input id="cityCenter" type="checkbox" class="form-control" name="cityCenter" value="{{ old('cityCenter') }}" autofocus>
+                                <input type="radio" name="cityCenter" value="1"> Yes
+                                <input type="radio" name="cityCenter" value="0" checked> No 
                             </div>
                         </div>
                         

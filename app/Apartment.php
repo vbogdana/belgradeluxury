@@ -10,10 +10,13 @@ class Apartment extends Model
     public $timestamps = false;
     public $primaryKey = 'accID';
     
-    /*
-    protected $fillable = [
-        'accID', 'people', 'tv', 'hottub', 'wifi', 'bar', 'airCondition', 'parking', 'cityCenter'
-    ];
-     * 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
+    protected $fillable = [
+        'people', 'tv', 'hottub', 'wifi', 'bar', 'airCondition', 'parking', 'cityCenter'
+    ];
+
 }

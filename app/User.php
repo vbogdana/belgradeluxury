@@ -33,7 +33,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = [
-        'isAdmin', 'createdBy',
+        'admin', 'createdBy',
     ];
 
     /**
@@ -46,6 +46,6 @@ class User extends Authenticatable
     ];
     
     public function isAdmin() {
-        return $this->isAdmin; // this looks for an admin column in your users table
+        return $this->admin; // this looks for an admin column in your users table
     }
 }

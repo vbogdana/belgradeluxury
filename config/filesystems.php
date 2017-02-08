@@ -61,7 +61,13 @@ return [
             'region' => 'your-region',
             'bucket' => 'your-bucket',
         ],
-
+        
+        // CUSTOM DISKS
+        'images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/images'),
+            'visibility' => 'public',
+        ],
     ],
 
 ];
