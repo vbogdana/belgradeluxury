@@ -18,15 +18,15 @@
                     <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.create.accommodation.image', ['accID' => $accID]) }}">
                         {{ csrf_field() }}
                         
-                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">Image</label>
+                        <div class="form-group{{ $errors->has('photo') ? ' has-error' : '' }}">
+                            <label for="photo" class="col-md-4 control-label">Image</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" name="image" value="{{ old('image') }}">
+                                <input id="photo" type="file" name="photo" value="{{ old('photo') }}">
                                 
-                                @if ($errors->has('image'))
+                                @if ($errors->has('photo'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('image') }}</strong>
+                                        <strong>{{ $errors->first('photo') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Create
+                                    Upload
                                 </button>
                             </div>
                         </div>

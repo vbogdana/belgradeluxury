@@ -62,9 +62,9 @@
                                     edit/remove<span class="caret"></span>
                                 </a>
                                 <ul class='dropdown-menu'>
-                                    <li><a href='#'>users</a></li>
+                                    <!--<li><a href='#'>users</a></li>-->
                                     <li><a href='{{ route('cms.apartments') }}'>apartments</a></li>
-                                    <li><a href='#'>vehicles</a></li>
+                                    <!--<li><a href='#'>vehicles</a></li>-->
                                 </ul>
                             </li>
                             <li class='dropdown'>
@@ -74,7 +74,7 @@
                                 <ul class='dropdown-menu'>
                                     <li><a href='{{ route('cms.register') }}'>user</a></li>
                                     <li><a href='{{ route('cms.create.apartment') }}'>apartment</a></li>
-                                    <li><a href='#'>vehicle</a></li>
+                                    <!--<li><a href='#'>vehicle</a></li>-->
                                 </ul>
                             </li>
                             <li class="dropdown">

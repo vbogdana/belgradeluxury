@@ -62,7 +62,7 @@ Route::get('cms/apartments', ['as' => 'cms.apartments', 'uses' => 'CMS\Apartment
 Route::get('cms/create/apartment', ['as' => 'cms.create.apartment', 'uses' => 'CMS\ApartmentsController@loadCreateApartment']);
 Route::post('cms/create/apartment', ['as' => 'cms.create.apartment', 'uses' => 'CMS\ApartmentsController@createApartment']);
 
-Route::get('cms/create/accommodation/image', ['as' => 'cms.create.accommodation.image', 'uses' => 'CMS\AccommodationController@loadAccommodationImage']);
-Route::post('cms/create/accommodation/image', ['as' => 'cms.create.accommodation.image', 'uses' => 'CMS\AccommodationController@createImage']);
+Route::get('cms/create/accommodation/{accID}/image', ['as' => 'cms.create.accommodation.image', 'uses' => 'CMS\AccommodationController@loadAccommodationImage']);
+Route::post('cms/create/accommodation/{accID}/image', ['as' => 'cms.create.accommodation.image', 'uses' => 'CMS\AccommodationController@createAccommodationImage']);
 
 Route::delete('cms/delete/accommodation/{accID}', ['as' => 'cms.delete.accommodation', 'uses' => 'CMS\AccommodationController@deleteAccommodation']);

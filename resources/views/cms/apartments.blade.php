@@ -17,21 +17,22 @@
 
                 <div class="panel-body">
                     @foreach($accommodation as $acc)
-                    <div class="row">
-                        <div class="col-xs-3">
+                    <div class="row text-center" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 15px;">
+                        <div class="col-xs-12 col-sm-3">
                             <img class="img-responsive" src="{{ asset('storage/app/public/images/'.$acc->image) }}">
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col-xs-12 col-sm-3">
                             {{ $acc->title_en }}
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col-xs-6 col-sm-3">
                             {{ Form::open(['route' => ['cms.delete.accommodation', $acc->accID], 'method' => 'delete']) }}
-                            {{ Form::submit('Delete') }}
+                            {{ Form::submit('Delete', array('class' => 'btn btn-primary')) }}
                             {{ Form::close() }}
                         </div>
-                        <div class="col-xs-3">
-                            
-                            <a href="{{ route("cms.create.accommodation.image", ["accID" => $acc->accID]) }}">Add photo</a>
+                        <div class="col-xs-6 col-sm-3">
+                            {{ Form::open(['route' => ['cms.create.accommodation.image', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::submit('Add photo', array('class' => 'btn btn-primary')) }}
+                            {{ Form::close() }}
                         </div>
                     </div>
                     @endforeach

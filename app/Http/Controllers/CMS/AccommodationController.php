@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\CMS;
 
+use Validator;
 use App\Accommodation;
+use App\AccommodationImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +23,7 @@ class AccommodationController extends Controller {
     } 
     
     function loadAccommodationImage($accID) {       
-        return view('cms.create.accommodation_image', ['accID' => $accID/*, 'apartments' => $apartments*/]);
+        return view('cms.create.accommodation_image', ['accID' => $accID]);
     }
     
     /**
@@ -30,11 +32,11 @@ class AccommodationController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function createImage(Request $request)
+    public function createAccommodationImage(Request $request, $accID)
     {
         $this->validator($request->all())->validate();
 
-        $this->createAccommodationImage($request->all());
+        $accImg = $this->createImage($request->all(), $accID);
         
         return redirect('/cms');
     }
@@ -48,7 +50,7 @@ class AccommodationController extends Controller {
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'image' => 'mimes:jpeg,jpg,bmp,png',         
+            'photo' => 'required|mimes:jpeg,jpg,bmp,png',         
         ]);
     }
     
@@ -58,21 +60,15 @@ class AccommodationController extends Controller {
      * @param  array  $data
      * @return Accommodation_image
      */
-    protected function createAccommodationImage(array $data)
+    protected function createImage(array $data, $accID)
     {
-        $accommodation = new Accommodation($data); 
-        $accommodation->apartment = true;
-        $accommodation->save();
-        //$path = Storage::putFile('public/images/services/apartments/'.$accommodation->accID.'_'.$accommodation->title_en, $data['image'], 'public');
-        $path = $data['image']->store('services/apartments/'.$accommodation->accID.'_'.$accommodation->title_en, 'images');
-        $accommodation->image = $path;
-        $accommodation->save();
-
-        $apartment = new Apartment($data);
-        $apartment->accID = $accommodation->accID;
-        $apartment->save();
+        $path = $data['photo']->store('services/apartments/'.$accID, 'images');
+        $accImg = new AccommodationImage();
+        $accImg->accID = $accID;
+        $accImg->image = $path;
+        $accImg->save();
         
-        return $apartment;
+        return $accImg;
     }
     
     /**
@@ -83,8 +79,23 @@ class AccommodationController extends Controller {
      */
     public function deleteAccommodation($accID)
     {
+        $accommodation = Accommodation::find($accID);
+        // delete main photo
+        Storage::delete('public/images/services/apartments/'.$accID.'/'.$accommodation->image);
+        
+        // delete other photos and entries in accomodation_images table
+        $accImgs = AccommodationImage::where('accID', $accID);
+        foreach ($accImgs as $accImg) {
+           Storage::delete('public/images/services/apartments/'.$accID.'/'.$accImg->image);
+           AccommodationImage::destroy($accImg->imgID);
+        }
+        
+        // delete directory
+        Storage::deleteDirectory('public/images/services/apartments/'.$accID);
+        
+        // delete entry in accomodation table
         Accommodation::destroy($accID);
-        return redirect('/cms/apartments');
+        return redirect('/cms');
     }
  
 }

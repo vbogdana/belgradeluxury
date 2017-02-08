@@ -89,7 +89,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">Main image</label>
+                            <label for="image" class="col-md-4 control-label">Main image*</label>
 
                             <div class="col-md-6">
                                 <input id="image" type="file" name="image" value="{{ old('image') }}">
