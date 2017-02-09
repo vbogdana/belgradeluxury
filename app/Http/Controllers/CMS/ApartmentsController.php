@@ -63,7 +63,7 @@ class ApartmentsController extends Controller {
             'address' => 'required|max:255',
             'description_en' => 'max:800',
             'description_ser' => 'max:800',
-            'image' => 'required|mimes:jpeg,jpg,bmp,png',
+            'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
             'geoLat' => 'required|numeric|between:0,360',
             'geoLong' => 'required|numeric|between:0,360',
             'link' => 'max:255',
@@ -84,9 +84,11 @@ class ApartmentsController extends Controller {
         $accommodation->apartment = true;
         $accommodation->save();
         //$path = Storage::putFile('public/images/services/apartments/'.$accommodation->accID.'_'.$accommodation->title_en, $data['image'], 'public');
-        $path = $data['image']->store('services/apartments/'.$accommodation->accID, 'images');
-        $accommodation->image = $path;
-        $accommodation->save();
+        if (array_key_exists('image', $data)) {
+            $path = $data['image']->store('services/apartments/'.$accommodation->accID, 'images');
+            $accommodation->image = $path;
+            $accommodation->save();
+        }
 
         $apartment = new Apartment($data);
         $apartment->accID = $accommodation->accID;

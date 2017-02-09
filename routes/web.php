@@ -59,6 +59,7 @@ Route::get('cms/register', ['as' => 'cms.register', 'uses' => 'CMS\RegisterContr
 Route::post('cms/register', ['as' => 'cms.register', 'uses' => 'CMS\RegisterController@register']);
 
 Route::get('cms/apartments', ['as' => 'cms.apartments', 'uses' => 'CMS\ApartmentsController@loadApartments']);
+
 Route::get('cms/create/apartment', ['as' => 'cms.create.apartment', 'uses' => 'CMS\ApartmentsController@loadCreateApartment']);
 Route::post('cms/create/apartment', ['as' => 'cms.create.apartment', 'uses' => 'CMS\ApartmentsController@createApartment']);
 

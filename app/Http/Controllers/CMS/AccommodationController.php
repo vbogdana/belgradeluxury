@@ -50,7 +50,7 @@ class AccommodationController extends Controller {
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'photo' => 'required|mimes:jpeg,jpg,bmp,png',         
+            'photo' => 'required|max:15000|mimes:jpeg,jpg,bmp,png',         
         ]);
     }
     
@@ -81,7 +81,9 @@ class AccommodationController extends Controller {
     {
         $accommodation = Accommodation::find($accID);
         // delete main photo
-        Storage::delete('public/images/services/apartments/'.$accID.'/'.$accommodation->image);
+        if ($accommodation->image != null) {
+            Storage::delete('public/images/services/apartments/'.$accID.'/'.$accommodation->image);
+        }
         
         // delete other photos and entries in accomodation_images table
         $accImgs = AccommodationImage::where('accID', $accID);
