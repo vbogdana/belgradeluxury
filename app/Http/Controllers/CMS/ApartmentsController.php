@@ -33,8 +33,17 @@ class ApartmentsController extends Controller {
         return view('cms.create.apartment');
     }
     
+    function loadEditApartment($accID) {
+        $accommodation = Accommodation::find($accID);
+        $apartment = Apartment::find($accID);
+        if ($accommodation == null || $apartment == null) {
+            return view('cms.error', ['message' => 'Apartment not found!']);
+        }
+        return view('cms.create.apartment', ['accommodation' => $accommodation, 'apartment' => $apartment]);
+    }    
+    
     /**
-     * Handle a registration request for the application.
+     * Handle a request for creating a new apartment for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -45,11 +54,27 @@ class ApartmentsController extends Controller {
 
         $apartment = $this->create($request->all());
         
-        return redirect('/cms');
+        return redirect('/cms/apartments');
     }
     
     /**
-     * Get a validator for an incoming registration request.
+     * Handle a request for editing an existing apartment for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function editApartment(Request $request, $accID)
+    {
+        $this->validator($request->all())->validate();
+
+        $apartment = $this->edit($request->all(), $accID);
+        
+        return redirect('/cms/apartments');
+    }
+    
+    /**
+     * Get a validator for an incoming request for creating a new apartment 
+     * or editing an existing one for the application.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -73,7 +98,7 @@ class ApartmentsController extends Controller {
     }
 
     /**
-     * Create a new apartment instance after a valid registration.
+     * Create a new apartment instance.
      *
      * @param  array  $data
      * @return Apartment
@@ -96,4 +121,43 @@ class ApartmentsController extends Controller {
         
         return $apartment;
     }
+    
+    /**
+     * Edit an existing apartment instance.
+     *
+     * @param  array  $data
+     * @return Apartment
+     */
+    protected function edit(array $data, $accID)
+    {
+        $accommodation = Accommodation::find($accID);
+        $apartment = Apartment::find($accID);
+        if ($accommodation == null || $apartment == null) {
+            return view('cms.error', ['message' => 'Apartment not found!']);
+        }
+        
+        $accommodation->title_en = $data['title_en'];
+        $accommodation->title_ser = $data['title_ser'];
+        $accommodation->address = $data['address'];
+        $accommodation->description_en = $data['description_en'];
+        $accommodation->description_ser = $data['description_ser'];
+        $accommodation->geoLat = $data['geoLat'];
+        $accommodation->geoLong = $data['geoLong'];
+        $accommodation->link = $data['link'];
+        
+        $apartment->people = $data['people'];
+        $apartment->tv = $data['tv'];
+        $apartment->hottub = $data['hottub'];
+        $apartment->wifi = $data['wifi'];
+        $apartment->bar = $data['bar'];
+        $apartment->airCondition = $data['airCondition'];
+        $apartment->parking = $data['parking'];
+        $apartment->cityCenter = $data['cityCenter'];
+        
+        $accommodation->save();
+        $apartment->save();
+        
+        return $apartment;
+    }
+   
 }

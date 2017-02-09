@@ -21,6 +21,13 @@
                 </div>
 
                 <div class="panel-body">
+                    <div class="panel-info" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 20px">
+                        To delete an apartment select 'Delete apartment'.<br/>
+                        To edit info about an apartment select 'Edit data'.<br/>
+                        To edit main photo of an apartment select 'Edit main photo'.<br/>
+                        To add additional photos to an apartment select 'Add photos'.<br/>
+                        To remove photos from an apartment select 'Remove photos'.
+                    </div>
                     @foreach($accommodation as $acc)
                     <div class="row text-center" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 15px;">
                         <div class="col-xs-12 col-sm-3">
@@ -37,19 +44,22 @@
                             <br/><a href="{{ $acc->link }}">{{ $acc->link }}</a>
                             @endif
                         </div>
-                        <div class="col-xs-4 col-sm-2" style="padding-top: 15px">
-                            {{ Form::open(['route' => ['cms.create.accommodation.image', $acc->accID], 'method' => 'get']) }}
-                            {{ Form::submit('Edit data', array('class' => 'btn btn-primary')) }}
+                        <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
+                            {{ Form::open(['route' => ['cms.edit.apartment', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::submit('Edit data', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
-                        </div>
-                        <div class="col-xs-4 col-sm-2" style="padding-top: 15px">
+                            
+                            {{ Form::open(['route' => ['cms.edit.accommodation.main-image', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::submit('Edit main photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
                             {{ Form::open(['route' => ['cms.delete.accommodation', $acc->accID], 'method' => 'delete']) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-primary')) }}
+                            {{ Form::submit('Delete apartment', array('class' => 'btn btn-primary')) }}
                             {{ Form::close() }}
                         </div>
-                        <div class="col-xs-4 col-sm-2" style="padding-top: 15px">
+                        <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.create.accommodation.image', $acc->accID], 'method' => 'get']) }}
-                            {{ Form::submit('Add photo', array('class' => 'btn btn-primary')) }}
+                            {{ Form::submit('Add photos', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                         </div>
                     </div>

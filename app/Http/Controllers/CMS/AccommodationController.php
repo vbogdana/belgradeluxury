@@ -22,12 +22,25 @@ class AccommodationController extends Controller {
         $this->middleware('admin');
     } 
     
-    function loadAccommodationImage($accID) {       
+    function loadAccommodationImage($accID) {
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }           
         return view('cms.create.accommodation_image', ['accID' => $accID]);
     }
     
+    
+    function loadEditAccommodationMainImage($accID) {
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
+        return view('cms.edit.accommodation_main-image', ['accID' => $accID]);
+    }
+    
     /**
-     * Handle a registration request for the application.
+     * Handle an create image request request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -36,13 +49,28 @@ class AccommodationController extends Controller {
     {
         $this->validator($request->all())->validate();
 
-        $accImg = $this->createImage($request->all(), $accID);
+        $this->createImage($request->all(), $accID);
         
         return redirect('/cms');
     }
     
     /**
-     * Get a validator for an incoming registration request.
+     * Handle an edit image request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function editAccommodationMainImage(Request $request, $accID)
+    {
+        $this->validator($request->all())->validate();
+
+        $this->editImage($request->all(), $accID);
+        
+        return redirect('/cms');
+    }
+    
+    /**
+     * Get a validator for an incoming request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -50,29 +78,59 @@ class AccommodationController extends Controller {
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'photo' => 'required|max:15000|mimes:jpeg,jpg,bmp,png',         
+            'photo0' => 'required|max:15000|mimes:jpeg,jpg,bmp,png',
+            'photo1' => 'max:15000|mimes:jpeg,jpg,bmp,png',
+            'photo2' => 'max:15000|mimes:jpeg,jpg,bmp,png',
+            'photo3' => 'max:15000|mimes:jpeg,jpg,bmp,png',
+            'photo4' => 'max:15000|mimes:jpeg,jpg,bmp,png',
         ]);
     }
     
     /**
-     * Create a new accommodation_image instance after a valid registration.
+     * Create a new accommodation_image instance.
      *
      * @param  array  $data
-     * @return Accommodation_image
+     * @param  $accID accommodation primary key
      */
     protected function createImage(array $data, $accID)
     {
-        $path = $data['photo']->store('services/apartments/'.$accID, 'images');
-        $accImg = new AccommodationImage();
-        $accImg->accID = $accID;
-        $accImg->image = $path;
-        $accImg->save();
+        for ($i = 0; $i < 5; $i++) {
+            if (array_key_exists('photo'.$i, $data)) {
+                $path = $data['photo'.$i]->store('services/apartments/'.$accID, 'images');
+                $accImg = new AccommodationImage();
+                $accImg->accID = $accID;
+                $accImg->image = $path;
+                $accImg->save();
+            }
+        }
         
-        return $accImg;
     }
     
     /**
-     * Handle a registration request for the application.
+     * Edits a main accommodation image.
+     *
+     * @param  array  $data
+     * @param  $accID accommodation primary key
+     */
+    protected function editImage(array $data, $accID)
+    {
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
+        
+        // delete existing main photo
+        if ($accommodation->image != null) {
+            Storage::delete('public/images/'.$accommodation->image);
+        }
+        
+        $path = $data['photo0']->store('services/apartments/'.$accommodation->accID, 'images');
+        $accommodation->image = $path;
+        $accommodation->save();  
+    }
+    
+    /**
+     * Handle a delete accommodation request for the application.
      *
      * @param  accID accommodation primary key
      * @return \Illuminate\Http\Response
@@ -80,15 +138,19 @@ class AccommodationController extends Controller {
     public function deleteAccommodation($accID)
     {
         $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
+        
         // delete main photo
         if ($accommodation->image != null) {
-            Storage::delete('public/images/services/apartments/'.$accID.'/'.$accommodation->image);
+            Storage::delete('public/images/'.$accommodation->image);
         }
         
         // delete other photos and entries in accomodation_images table
         $accImgs = AccommodationImage::where('accID', $accID);
         foreach ($accImgs as $accImg) {
-           Storage::delete('public/images/services/apartments/'.$accID.'/'.$accImg->image);
+           Storage::delete('public/images/'.$accImg->image);
            AccommodationImage::destroy($accImg->imgID);
         }
         
