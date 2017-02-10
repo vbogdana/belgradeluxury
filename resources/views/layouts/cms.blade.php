@@ -63,7 +63,7 @@
                                 </a>
                                 <ul class='dropdown-menu'>
                                     <!--<li><a href='#'>users</a></li>-->
-                                    <li><a href='{{ route('cms.apartments') }}'>apartments</a></li>
+                                    <li><a href='{{ route('cms.accommodation.apartments') }}'>apartments</a></li>
                                     <!--<li><a href='#'>vehicles</a></li>-->
                                 </ul>
                             </li>
@@ -73,7 +73,7 @@
                                 </a>
                                 <ul class='dropdown-menu'>
                                     <li><a href='{{ route('cms.register') }}'>user</a></li>
-                                    <li><a href='{{ route('cms.create.apartment') }}'>apartment</a></li>
+                                    <li><a href='{{ route('cms.accommodation.apartment.create') }}'>apartment</a></li>
                                     <!--<li><a href='#'>vehicle</a></li>-->
                                 </ul>
                             </li>

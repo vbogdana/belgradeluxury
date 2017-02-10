@@ -22,34 +22,63 @@ class AccommodationController extends Controller {
         $this->middleware('admin');
     } 
     
-    function loadAccommodationImage($accID) {
+    /**
+     * Loads a view for adding photos to an accommodation.
+     *
+     * @return view
+     */
+    function loadCreateAccommodationImages($accID) {
         $accommodation = Accommodation::find($accID);
         if ($accommodation == null) {
             return view('cms.error', ['message' => 'Accommodation not found!']);
         }           
-        return view('cms.create.accommodation_image', ['accID' => $accID]);
+        return view('cms.accommodation.create.images', ['accID' => $accID]);
     }
     
-    
-    function loadEditAccommodationMainImage($accID) {
+    /**
+     * Loads a view for editing the main image of an accommodation.
+     *
+     * @return view
+     */
+    function loadEditMainImage($accID) {
         $accommodation = Accommodation::find($accID);
         if ($accommodation == null) {
             return view('cms.error', ['message' => 'Accommodation not found!']);
         }
-        return view('cms.edit.accommodation_main-image', ['accID' => $accID]);
+        return view('cms.accommodation.edit.main-image', ['accID' => $accID, 'image' => $accommodation->image]);
     }
     
     /**
-     * Handle an create image request request for the application.
+     * Loads a view for removing photos of an accommodation.
+     *
+     * @return view
+     */
+    function loadDeleteImages($accID) {
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
+        
+        $accImgs = AccommodationImage::where('accID', $accID)->paginate(10);
+        return view('cms.accommodation.delete.images', ['accImgs' => $accImgs]);
+    }
+    
+    /**
+     * Handle an create image request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function createAccommodationImage(Request $request, $accID)
+    public function createAccommodationImages(Request $request, $accID)
     {
         $this->validator($request->all())->validate();
+        
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
 
-        $this->createImage($request->all(), $accID);
+        $this->createImages($request->all(), $accommodation);
         
         return redirect('/cms');
     }
@@ -60,11 +89,16 @@ class AccommodationController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function editAccommodationMainImage(Request $request, $accID)
+    public function editMainImage(Request $request, $accID)
     {
         $this->validator($request->all())->validate();
+        
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
 
-        $this->editImage($request->all(), $accID);
+        $this->editImage($request->all(), $accommodation);
         
         return redirect('/cms');
     }
@@ -90,35 +124,29 @@ class AccommodationController extends Controller {
      * Create a new accommodation_image instance.
      *
      * @param  array  $data
-     * @param  $accID accommodation primary key
+     * @param  $accommodation instance of Accommodation
      */
-    protected function createImage(array $data, $accID)
+    protected function createImages(array $data, $accommodation)
     {
         for ($i = 0; $i < 5; $i++) {
             if (array_key_exists('photo'.$i, $data)) {
-                $path = $data['photo'.$i]->store('services/apartments/'.$accID, 'images');
+                $path = $data['photo'.$i]->store('services/apartments/'.$accommodation->accID, 'images');
                 $accImg = new AccommodationImage();
-                $accImg->accID = $accID;
+                $accImg->accID = $accommodation->accID;
                 $accImg->image = $path;
                 $accImg->save();
             }
-        }
-        
+        }        
     }
     
     /**
-     * Edits a main accommodation image.
+     * Edits main accommodation image.
      *
      * @param  array  $data
-     * @param  $accID accommodation primary key
+     * @param  $accommodation instance of Accommodation
      */
-    protected function editImage(array $data, $accID)
+    protected function editImage(array $data, $accommodation)
     {
-        $accommodation = Accommodation::find($accID);
-        if ($accommodation == null) {
-            return view('cms.error', ['message' => 'Accommodation not found!']);
-        }
-        
         // delete existing main photo
         if ($accommodation->image != null) {
             Storage::delete('public/images/'.$accommodation->image);
@@ -135,7 +163,7 @@ class AccommodationController extends Controller {
      * @param  accID accommodation primary key
      * @return \Illuminate\Http\Response
      */
-    public function deleteAccommodation($accID)
+    public function delete($accID)
     {
         $accommodation = Accommodation::find($accID);
         if ($accommodation == null) {
@@ -160,6 +188,50 @@ class AccommodationController extends Controller {
         // delete entry in accomodation table
         Accommodation::destroy($accID);
         return redirect('/cms');
+    }
+    
+    /**
+     * Deletes the main accommodation image.
+     *
+     * @param  $accID primary key of Accommodation
+     * @return \Illuminate\Http\Response
+     */
+    protected function deleteMainImage($accID)
+    {
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
+            return view('cms.error', ['message' => 'Accommodation not found!']);
+        }
+        
+        // delete existing main photo
+        if ($accommodation->image != null) {
+            Storage::delete('public/images/'.$accommodation->image);
+            $accommodation->image = null;
+            $accommodation->save(); 
+        }
+        return redirect('/cms');        
+    }
+    
+    /**
+     * Deletes the main accommodation image.
+     *
+     * @param  $imgID primary key of AccommodationImage
+     * @return \Illuminate\Http\Response
+     */
+    protected function deleteImage($imgID)
+    {
+        $accImg = AccommodationImage::find($imgID);
+        if ($accImg == null) {
+            return view('cms.error', ['message' => 'Image not found!']);
+        }
+        
+        // delete existing main photo
+        if ($accImg->image != null) {
+            Storage::delete('public/images/'.$accImg->image); 
+        }
+        
+        AccommodationImage::destroy($imgID);
+        return redirect('/cms');        
     }
  
 }

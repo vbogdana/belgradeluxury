@@ -17,7 +17,7 @@
                     All apartments
                 </div>
                 <div class="panel-heading">
-                    <a href="{{ route('cms.create.apartment') }}">New apartment</a>
+                    <a href="{{ route('cms.accommodation.apartment.create') }}">New apartment</a>
                 </div>
 
                 <div class="panel-body">
@@ -34,7 +34,7 @@
                             @if ($acc->image != null)
                             <img class="img-responsive" src="{{ asset('storage/images/'.$acc->image) }}">
                             @else
-                            <img class="img-responsive" src="{{ url("") }}/images/services/accommodation.jpg">
+                            No image
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
@@ -45,21 +45,44 @@
                             @endif
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
-                            {{ Form::open(['route' => ['cms.edit.apartment', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::open(['route' => ['cms.accommodation.apartment.edit', $acc->accID], 'method' => 'get']) }}
                             {{ Form::submit('Edit data', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            {{ Form::open(['route' => ['cms.edit.accommodation.main-image', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::open(['route' => ['cms.accommodation.edit.main-image', $acc->accID], 'method' => 'get']) }}
                             {{ Form::submit('Edit main photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            {{ Form::open(['route' => ['cms.delete.accommodation', $acc->accID], 'method' => 'delete']) }}
-                            {{ Form::submit('Delete apartment', array('class' => 'btn btn-primary')) }}
-                            {{ Form::close() }}
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                Delete apartment
+                            </button>
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Delete an apartment</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            Are you sure?<br/>
+                                            <div style="margin-top: 15px">
+                                                {{ Form::open(['route' => ['cms.accommodation.delete', $acc->accID], 'method' => 'delete']) }}                      
+                                                {{ Form::submit('Delete apartment', array('class' => 'btn btn-primary')) }}
+                                                <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
+                                                {{ Form::close() }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
-                            {{ Form::open(['route' => ['cms.create.accommodation.image', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::open(['route' => ['cms.accommodation.create.images', $acc->accID], 'method' => 'get']) }}
                             {{ Form::submit('Add photos', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
+                            {{ Form::open(['route' => ['cms.accommodation.delete.images', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::submit('Remove photos', array('class' => 'btn btn-primary')) }}
                             {{ Form::close() }}
                         </div>
                     </div>

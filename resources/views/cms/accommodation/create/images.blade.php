@@ -13,13 +13,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Add photo to an accommodation</div>
+                <div class="panel-heading">Add photos to an accommodation</div>
                 <div class="panel-body">
                     <div class="panel-info" style="margin-bottom: 20px">
                         Here you can upload minimum 1 and maximum 5 photos at the same time. <br/>                        
                         For more photos you must repeat the process.
                     </div>
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.create.accommodation.image', ['accID' => $accID]) }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.create.images', ['accID' => $accID]) }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('photo0') ? ' has-error' : '' }}">

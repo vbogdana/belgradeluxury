@@ -7,7 +7,6 @@ use App\Apartment;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ApartmentsController extends Controller {
     
@@ -22,24 +21,38 @@ class ApartmentsController extends Controller {
         $this->middleware('admin');
     } 
     
+    /**
+     * Loads a view with all apartments.
+     *
+     * @return view
+     */
     function loadApartments() {
         $accommodation = Accommodation::where('apartment', '=', '1')->paginate(10);
-        //$apartments = Apartment::paginate(10);
         
-        return view('cms.apartments', ['accommodation' => $accommodation/*, 'apartments' => $apartments*/]);
+        return view('cms.accommodation.apartments', ['accommodation' => $accommodation]);
     }
     
+    /**
+     * Loads a view with a form to create a new apartment.
+     *
+     * @return view
+     */
     function loadCreateApartment() {       
-        return view('cms.create.apartment');
+        return view('cms.accommodation.create.apartment');
     }
     
+    /**
+     * Loads a view with a form to edit the data of an existing apartment.
+     *
+     * @return view
+     */
     function loadEditApartment($accID) {
         $accommodation = Accommodation::find($accID);
         $apartment = Apartment::find($accID);
         if ($accommodation == null || $apartment == null) {
             return view('cms.error', ['message' => 'Apartment not found!']);
         }
-        return view('cms.create.apartment', ['accommodation' => $accommodation, 'apartment' => $apartment]);
+        return view('cms.accommodation.create.apartment', ['accommodation' => $accommodation, 'apartment' => $apartment]);
     }    
     
     /**
@@ -54,7 +67,7 @@ class ApartmentsController extends Controller {
 
         $apartment = $this->create($request->all());
         
-        return redirect('/cms/apartments');
+        return redirect('/cms/accommodation/apartments');
     }
     
     /**
@@ -66,10 +79,16 @@ class ApartmentsController extends Controller {
     public function editApartment(Request $request, $accID)
     {
         $this->validator($request->all())->validate();
-
-        $apartment = $this->edit($request->all(), $accID);
         
-        return redirect('/cms/apartments');
+        $accommodation = Accommodation::find($accID);
+        $apartment = Apartment::find($accID);
+        if ($accommodation == null || $apartment == null) {
+            return view('cms.error', ['message' => 'Apartment not found!']);
+        }
+
+        $apartment = $this->edit($request->all(), $accommodation, $apartment);
+        
+        return redirect('/cms/accommodation/apartments');
     }
     
     /**
@@ -108,7 +127,7 @@ class ApartmentsController extends Controller {
         $accommodation = new Accommodation($data); 
         $accommodation->apartment = true;
         $accommodation->save();
-        //$path = Storage::putFile('public/images/services/apartments/'.$accommodation->accID.'_'.$accommodation->title_en, $data['image'], 'public');
+
         if (array_key_exists('image', $data)) {
             $path = $data['image']->store('services/apartments/'.$accommodation->accID, 'images');
             $accommodation->image = $path;
@@ -126,16 +145,12 @@ class ApartmentsController extends Controller {
      * Edit an existing apartment instance.
      *
      * @param  array  $data
+     * @param $accommodation instance of Accommodation
+     * @param @apartments instance of Apartment
      * @return Apartment
      */
-    protected function edit(array $data, $accID)
-    {
-        $accommodation = Accommodation::find($accID);
-        $apartment = Apartment::find($accID);
-        if ($accommodation == null || $apartment == null) {
-            return view('cms.error', ['message' => 'Apartment not found!']);
-        }
-        
+    protected function edit(array $data, $accommodation, $apartment)
+    {      
         $accommodation->title_en = $data['title_en'];
         $accommodation->title_ser = $data['title_ser'];
         $accommodation->address = $data['address'];

@@ -13,12 +13,19 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Create Apartment</div>
+                <div class="panel-heading">
+                    <a href="{{ route('cms.accommodation.apartments') }}">Apartments ></a>&nbsp;
+                    @if(isset($accommodation))
+                    Edit Apartment
+                    @else
+                    Create Apartment
+                    @endif
+                </div>
                 <div class="panel-body">
                     @if(isset($accommodation))
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.edit.apartment', ['accID' => $accommodation->accID]) }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.apartment.edit', ['accID' => $accommodation->accID]) }}">
                     @else
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.create.apartment') }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.apartment.create') }}">
                     @endif
                         {{ csrf_field() }}
 
