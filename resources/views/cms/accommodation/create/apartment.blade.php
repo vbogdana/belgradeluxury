@@ -282,6 +282,7 @@
                                     Create
                                     @endif
                                 </button>
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.accommodation.apartments') }}">Cancel</a>                                                
                             </div>
                         </div>
                     </form>

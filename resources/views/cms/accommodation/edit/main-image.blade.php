@@ -52,6 +52,9 @@
                                 <button type="submit" class="btn btn-primary" style="margin-right: 15px">
                                     Upload
                                 </button>
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms') }}">
+                                    Cancel
+                                </a>
                             </div>
                         </div>
                     </form>
