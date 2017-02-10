@@ -63,7 +63,7 @@
         </div>
         <div class="block">
             <a href="#">
-                <h3>chauffeur</h3>
+                <h3>wellness & spa</h3>
             </a>
         </div>
         <div class="block">
