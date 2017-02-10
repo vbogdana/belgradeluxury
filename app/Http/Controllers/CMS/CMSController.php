@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
+use App\Service;
 
 class CMSController extends Controller
 {
@@ -24,7 +25,8 @@ class CMSController extends Controller
      */
     public function index()
     {
-        return view('/cms/home');
+        $services = Service::all();
+        return view('/cms/home', ['services' => $services]);
     }
    
 }

@@ -23,8 +23,18 @@ class AccommodationController extends Controller {
     } 
     
     /**
+     * Loads a view.
+     *
+     * @return view
+     */
+    function loadAccommodation() {        
+        return view('cms.accommodation');
+    }
+    
+    /**
      * Loads a view for adding photos to an accommodation.
      *
+     * @param $accID primary key of Accommodation
      * @return view
      */
     function loadCreateAccommodationImages($accID) {
@@ -38,6 +48,7 @@ class AccommodationController extends Controller {
     /**
      * Loads a view for editing the main image of an accommodation.
      *
+     * @param $accID primary key of Accommodation
      * @return view
      */
     function loadEditMainImage($accID) {
@@ -51,6 +62,7 @@ class AccommodationController extends Controller {
     /**
      * Loads a view for removing photos of an accommodation.
      *
+     * @param $accID primary key of Accommodation
      * @return view
      */
     function loadDeleteImages($accID) {
@@ -67,6 +79,7 @@ class AccommodationController extends Controller {
      * Handle an create image request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param $accID primary key of Accommodation
      * @return \Illuminate\Http\Response
      */
     public function createAccommodationImages(Request $request, $accID)
@@ -80,13 +93,14 @@ class AccommodationController extends Controller {
 
         $this->createImages($request->all(), $accommodation);
         
-        return redirect('/cms');
+        return redirect('/cms/accommodation');
     }
     
     /**
      * Handle an edit image request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param $accID primary key of Accommodation
      * @return \Illuminate\Http\Response
      */
     public function editMainImage(Request $request, $accID)
@@ -100,7 +114,7 @@ class AccommodationController extends Controller {
 
         $this->editImage($request->all(), $accommodation);
         
-        return redirect('/cms');
+        return redirect('/cms/accommodation');
     }
     
     /**
@@ -187,7 +201,7 @@ class AccommodationController extends Controller {
         
         // delete entry in accomodation table
         Accommodation::destroy($accID);
-        return redirect('/cms');
+        return redirect('/cms/accommodation');
     }
     
     /**
@@ -209,11 +223,11 @@ class AccommodationController extends Controller {
             $accommodation->image = null;
             $accommodation->save(); 
         }
-        return redirect('/cms');        
+        return redirect('/cms/accommodation');      
     }
     
     /**
-     * Deletes the main accommodation image.
+     * Deletes an accommodation image.
      *
      * @param  $imgID primary key of AccommodationImage
      * @return \Illuminate\Http\Response
@@ -225,13 +239,13 @@ class AccommodationController extends Controller {
             return view('cms.error', ['message' => 'Image not found!']);
         }
         
-        // delete existing main photo
+        // delete existing photo
         if ($accImg->image != null) {
             Storage::delete('public/images/'.$accImg->image); 
         }
         
         AccommodationImage::destroy($imgID);
-        return redirect('/cms');        
+        return redirect('/cms/accommodation');       
     }
  
 }

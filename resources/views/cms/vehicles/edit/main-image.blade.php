@@ -14,14 +14,14 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="{{ route('cms.accommodation') }}">Accommodation ></a>&nbsp;
+                    <a href="{{ route('cms.vehicles') }}">Vehicles ></a>&nbsp;
                     Change main photo
                 </div>
                 <div class="panel-body">
                     <div class="panel-info" style="margin-bottom: 20px">
-                        Here you can change the main photo of an accommodation.
+                        Here you can change the main photo of a vehicle.
                     </div>
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.edit.main-image', ['accID' => $accID]) }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.vehicles.edit.main-image', ['vehID' => $vehID]) }}">
                         {{ csrf_field() }}
                         
                         <div class="form-group">
@@ -55,7 +55,7 @@
                                 <button type="submit" class="btn btn-primary" style="margin-right: 15px">
                                     Upload
                                 </button>
-                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.accommodation') }}">
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.vehicles') }}">
                                     Cancel
                                 </a>
                             </div>
@@ -83,7 +83,7 @@
                                 <div class="modal-body">
                                     Are you sure?<br/>
                                     <div style="margin-top: 15px">
-                                        {{ Form::open(['route' => ['cms.accommodation.delete.main-image', $accID], 'method' => 'delete', 'class' => 'form-horizontal' ]) }}
+                                        {{ Form::open(['route' => ['cms.vehicles.delete.main-image', $vehID], 'method' => 'delete', 'class' => 'form-horizontal' ]) }}
                                         {{ Form::submit('Remove current image', array('class' => 'btn btn-primary')) }}
                                         <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                         {{ Form::close() }}

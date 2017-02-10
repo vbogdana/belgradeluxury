@@ -44,6 +44,7 @@ class ApartmentsController extends Controller {
     /**
      * Loads a view with a form to edit the data of an existing apartment.
      *
+     * @param $accID primary key of Accommodation/Apartment
      * @return view
      */
     function loadEditApartment($accID) {
@@ -105,6 +106,7 @@ class ApartmentsController extends Controller {
             'title_en' => 'required|max:255',
             'title_ser' => 'required|max:255',
             'address' => 'required|max:255',
+            'price' => 'required|numeric',
             'description_en' => 'max:800',
             'description_ser' => 'max:800',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
@@ -154,6 +156,7 @@ class ApartmentsController extends Controller {
         $accommodation->title_en = $data['title_en'];
         $accommodation->title_ser = $data['title_ser'];
         $accommodation->address = $data['address'];
+        $accommodation->price = $data['price'];
         $accommodation->description_en = $data['description_en'];
         $accommodation->description_ser = $data['description_ser'];
         $accommodation->geoLat = $data['geoLat'];

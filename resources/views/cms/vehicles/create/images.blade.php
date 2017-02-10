@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="{{ route('cms.accommodation') }}">Accommodation ></a>&nbsp;
+                    <a href="{{ route('cms.vehicles') }}">Vehicles ></a>&nbsp;
                     Add photos
                 </div>
                 <div class="panel-body">
@@ -22,7 +22,7 @@
                         Here you can upload minimum 1 and maximum 5 photos at the same time. <br/>                        
                         For more photos you must repeat the process.
                     </div>
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.create.images', ['accID' => $accID]) }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.vehicles.create.images', ['vehID' => $vehID]) }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('photo0') ? ' has-error' : '' }}">
@@ -100,7 +100,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Upload
                                 </button>
-                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.accommodation') }}">
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.vehicles') }}">
                                     Cancel
                                 </a>                    
                             </div>

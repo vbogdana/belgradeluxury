@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Belgrade Luxury') }}</title>
 
     <!-- Styles -->
     <link href="{{ url ("") }}/css/app.css" rel="stylesheet">
@@ -35,8 +35,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ route('cms') }}">
+                        {{ config('app.name', 'Belgrade Luxury') }}
                     </a>
                 </div>
 
@@ -50,31 +50,33 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ route('cms.login') }}">Login</a></li>
                             <!-- 
                                 da ne prikazuje register treba drugi login kontroler koji
                                 redefinise showLoginForm metodu
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ route('cms.register') }}">Register</a></li>
                             -->
                         @else
+                            <li>
+                                <a href='{{ route('cms') }}' role="button">
+                                    Dashboard
+                                </a>
+                            </li>
                             <li class='dropdown'>
                                 <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    edit/remove<span class="caret"></span>
+                                    Services<span class="caret"></span>
                                 </a>
                                 <ul class='dropdown-menu'>
-                                    <!--<li><a href='#'>users</a></li>-->
-                                    <li><a href='{{ route('cms.accommodation.apartments') }}'>apartments</a></li>
-                                    <!--<li><a href='#'>vehicles</a></li>-->
+                                    <li><a href='{{ route('cms.accommodation') }}'>accommodation</a></li>
+                                    <li><a href='{{ route('cms.vehicles') }}'>vehicles</a></li>
                                 </ul>
                             </li>
                             <li class='dropdown'>
                                 <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    create<span class="caret"></span>
+                                    Users<span class="caret"></span>
                                 </a>
                                 <ul class='dropdown-menu'>
-                                    <li><a href='{{ route('cms.register') }}'>user</a></li>
-                                    <li><a href='{{ route('cms.accommodation.apartment.create') }}'>apartment</a></li>
-                                    <!--<li><a href='#'>vehicle</a></li>-->
+                                    <li><a href='{{ route('cms.register') }}'>New user</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -84,13 +86,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/logout') }}"
+                                        <a href="{{ route('cms.logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('cms.logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>

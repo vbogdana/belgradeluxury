@@ -14,6 +14,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <a href="{{ route('cms.accommodation') }}">Accommodation ></a>&nbsp;
                     <a href="{{ route('cms.accommodation.apartments') }}">Apartments ></a>&nbsp;
                     @if(isset($accommodation))
                     Edit Apartment
@@ -66,6 +67,20 @@
                                 @if ($errors->has('address'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+                            <label for="price" class="col-md-4 control-label">Price in €*</label>
+
+                            <div class="col-md-6">
+                                <input id="price" type="number" step="1" class="form-control" name="price" value="{{ isset($accommodation) ? $accommodation->price : old('price') }}" required>
+
+                                @if ($errors->has('price'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('price') }}</strong>
                                     </span>
                                 @endif
                             </div>
