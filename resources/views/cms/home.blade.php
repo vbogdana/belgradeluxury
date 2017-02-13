@@ -26,20 +26,22 @@
 
                 <div class="panel-body text-center">
                     <div class='container'>
+                        <?php $i = 0; ?>
                         @foreach($services as $service)
-                            <?php $i = 0; ?>
+                            @if($i % 3 == 0 && $i != 0)
+                            </div>
+                            @endif
                             @if($i % 3 == 0)
                             <div class='row'>
                             @endif
+                            @if($service->name_en == "Accommodation" || $service->name_en == "Vehicles")
                                 <div class="col-sm-4">
                                      <a href="{{ route("cms.".strtolower($service->name_en)) }}">
                                          <h4>{{ $service->name_en }}</h4>
                                          <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg">
                                      </a>
                                  </div>
-                            @if($i % 3 == 0)
-                            <div class='row'>
-                            @endif
+                            @endif                            
                             <?php $i++; ?>
                         @endforeach
                     </div>                                      

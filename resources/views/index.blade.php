@@ -65,9 +65,9 @@
 <!--    ABOUT US PANEL 1 SECTION      -->
 <section id="aboutus-panel-1" class="aboutus-section box panel widescreen background-properties" data-section-name="about-us">
     <div class="overlay"></div>
-    <div class="box-left">
-        <div class="hero-holder">
-            <div class="hero-inner">
+    <div class="box-right">
+        <div class="hero-holder" style="float:right">
+            <div class="hero-inner text-right">
                 <div class="description">
                     <h2 class="text-uppercase">About us</h2>
                     <p>
@@ -83,8 +83,57 @@
 </section>
 <!--    END ABOUT US PANEL 1 SECTION      -->
 
+<!--    START BUSINESS SECTION      -->
+<section id="business-panel" class="business-section interstitial fullwidth space-y" data-section-name="business">
+    <div class="container text-center">
+        <div class="description" style="padding: 0 10%; margin-bottom: 25px">
+            <h2>find out more what belgrade luxury can do for you or your company</h2>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn" href="#">
+                business package
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn" href="#">
+                contact us
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn" href="#">
+                corporate services
+            </a>
+        </div>
+    </div>
+</section>
+<!--    END BUSINESS SECTION        -->
+
 <!--    ABOUT US PANEL 2 SECTION      -->
 <section id="aboutus-panel-2" class="aboutus-section box panel widescreen background-properties" data-section-name="packets">
+    <div class="overlay"></div>
+    <div class="box-left">
+        <div class="hero-holder">
+            <div class="hero-inner">
+                <div class="description">
+                    <h2 class="text-uppercase">Business</h2>
+                    <p>
+                        To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
+                    </p>
+                    <p>
+                        Belgrade Luxury packages have derived from our many years of experience encompassing all the necessary services for an unforgettable VIP experience of Belgrade. 
+                    </p>
+                    <p>
+                        Depending on your affinity and intent You can choose one of the packages, but also put together a package tailored to fit your needs, because - The Best Luxury Services Are Customized, Not Standardized.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--    END ABOUT US PANEL 2 SECTION      -->
+
+<!--    ABOUT US PANEL 3 SECTION      -->
+<section id="aboutus-panel-3" class="aboutus-section box panel widescreen background-properties" data-section-name="packets">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
@@ -105,7 +154,7 @@
         </div>
     </div>
 </section>
-<!--    END ABOUT US PANEL 2 SECTION      -->
+<!--    END ABOUT US PANEL 3 SECTION      -->
 
 <!--    START PACKAGES SECTION      -->
 <section id="packages-panel" class="packages-section widescreen panel space-y" data-section-name="select-package">
@@ -244,58 +293,64 @@
 <!--    END PACKAGES SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
-<section id="belgrade-panel" class="belgrade-section widescreen panel background-properties" data-section-name="belgrade">
+<section id="belgrade-panel" class="belgrade-section panel" data-section-name="belgrade">
+    <div class="widescreen background-properties">
+        <div class="overlay"></div>
+              
+    </div>
     
+    <div class="events-section space-y">
+        <div class="container text-center">
+            <div class="description">
+                <h2 class="text-uppercase"> upcoming events </h2>
+                <p>
+                </p>                
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="carousel-holder text-center">
+                <div class="events-carousel">
+                    @foreach($events as $event)
+                    @for($i = 0; $i < 10; $i++)
+                    <div class="slide">
+                        <div class="header">
+                            <h2>{{ $event->day_en }}</h2>
+                            <h3>{{ $event->date }}</h3>
+                        </div>
+                        <div class="content">
+                            <div class="img-holder">
+                                <img class="img-responsive" src="<?php echo url('/')."/images/events/".$event->image ?>">                      
+                            </div>
+                            <h2>{{ $event->place_en }}</h2>
+                            <h3>{{ $event->title_en }}</h3>
+                            <p>
+                                <i class="fa fa-music" aria-hidden="true"></i>
+                                {{ $event->category_en }}
+                            </p>
+                            <a href="tel:+381644519017">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                (+381) 064 4519 017
+                            </a>
+                        </div>
+                    </div>
+                    @endfor
+                    @endforeach
+                </div>
+            </div>        
+        </div>
+    </div>
 </section>
 <!--    END BELGRADE SECTION      -->
 
-<!--    START EVENTS SECTION      -->
+<!--    START EVENTS SECTION      
 <section id="events-panel" class="events-section fullwidth interstitial space-y" data-section-name="events">
-    <div class="container">
-        <div class="description text-center">
-            <h2 class="text-uppercase"> BELGRADE </h2>
-            <p>
 
-            </p>
-        </div>
-    </div>
-    <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
     
-    <div class="container-fluid">
-        <div class="carousel-holder text-center">
-            <div class="events-carousel">
-                @foreach($events as $event)
-                @for($i = 0; $i < 10; $i++)
-                <div class="slide">
-                    <div class="header">
-                        <h2>{{ $event->day_en }}</h2>
-                        <h3>{{ $event->date }}</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src="<?php echo url('/')."/images/events/".$event->image ?>">                      
-                        </div>
-                        <h2>{{ $event->place_en }}</h2>
-                        <h3>{{ $event->title_en }}</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            {{ $event->category_en }}
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                @endfor
-                @endforeach
-            </div>
-        </div>        
-    </div>
+    
 </section>
 <!--    END EVENTS SECTION      -->
 
-<!--    START BELGRADE SECTION      -->
+<!--    START BELGRADE PERSPECTIVE SECTION      -->
 <section id="belgrade-perspective-panel" class="belgrade-perspective-section widescreen panel text-uppercase text-center" data-section-name="belgrade-perspective">
     <div class="block">
         <a href="#">
@@ -333,7 +388,7 @@
         </a>
     </div>
 </section>
-<!--    END BELGRADE SECTION      -->
+<!--    END BELGRADE PERSPECTIVE SECTION      -->
 
 <!--    START TESTEMONIALS SECTION      -->
 <section id="testemonials-panel" class="testemonials-section fullwidth interstitial space-y" data-section-name="testemonials">
@@ -357,30 +412,7 @@
 </section>
 <!--    END TESTEMONIALS SECTION      -->
 
-<!--    START BUSINESS SECTION      -->
-<section id="business-panel" class="business-section interstitial fullwidth space-y" data-section-name="business">
-    <div class="container text-center">
-        <div class="description" style="padding: 0 10%; margin-bottom: 25px">
-            <h2>find out more what belgrade luxury can do for you or your company</h2>
-        </div>
-        <div class="col-sm-4">
-            <a class="btn" href="#">
-                business package
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a class="btn" href="#">
-                contact
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a class="btn" href="#">
-                corporate services
-            </a>
-        </div>
-    </div>
-</section>
-<!--    END BUSINESS SECTION        -->
+
 @stop
 
 @section('scripts')

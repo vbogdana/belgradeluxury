@@ -293,6 +293,7 @@ section {
     box-shadow: none;
     -webkit-box-shadow: none;
     border-radius: 0;
+    margin: 0;
 }
 .wrapper {
     height: 100%;
@@ -421,7 +422,7 @@ section {
 }
 .box.panel .hero-holder:before,
 .box.panel .hero-holder:after {
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.5);
     content: "";
     position: absolute;
     left: 1vw;
@@ -632,10 +633,16 @@ a.btn:active {
     background-image: url(../images/backgrounds/boxleft3.jpg);
 }
 #aboutus-panel-1.background-properties {
-    background-image: url('../images/backgrounds/boxleft1.jpg')
+    background-image: url('../images/backgrounds/boxright5.jpg');
 }
 #aboutus-panel-2.background-properties {
-    background-image: url('../images/backgrounds/boxright5.jpg')
+    background-image: url('../images/backgrounds/business2.jpg');
+}
+#aboutus-panel-3.background-properties {
+    background-image: url('../images/backgrounds/boxright5.jpg');
+}
+#belgrade-panel .background-properties {
+    background-image: url('../images/backgrounds/belgrade.jpg');
 }
 #package-description-panel.background-properties {
     background-color: #222222;
@@ -1341,6 +1348,10 @@ a.btn:active {
  *                  BELGRADE EVENTS
  *  
  ******************************************************************************/
+.belgrade-section {
+    
+}
+
 .events-section {
     overflow: hidden;
 }
@@ -1435,19 +1446,19 @@ a.btn:active {
             transform: rotate(-45deg);
 }
 .belgrade-perspective-section .block:nth-child(1) {
-    background-image: url('../images/categories/boxright3.jpg');
+    background-image: url('../images/categories/culture.jpg');
 }
 .belgrade-perspective-section .block:nth-child(2) {
-    background-image: url('../images/categories/boxright3.jpg');
+    background-image: url('../images/categories/society.jpg');
 }
 .belgrade-perspective-section .block:nth-child(3) {
-    background-image: url('../images/categories/boxright3.jpg');
+    background-image: url('../images/categories/gastronomy.jpg');
 }
 .belgrade-perspective-section .block:nth-child(4) {
-    background-image: url('../images/categories/boxright3.jpg');
+    background-image: url('../images/categories/nightlife.jpg');
 }
 .belgrade-perspective-section .center.block {
-    background-image: url('../images/categories/boxright3.jpg');
+    background-image: url('../images/categories/sites.jpg');
 }
 @media screen and (orientation: portrait) {
     .belgrade-perspective-section .center.block {
@@ -1481,6 +1492,7 @@ a.btn:active {
     font-size: 0.9em;
 }
 .testemonials-section .slide .author {
+    font-family: Quicksand, Raleway, sans-serif;
     font-style: italic;
     color: #aaa;
 }
