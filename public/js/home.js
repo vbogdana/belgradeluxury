@@ -44,7 +44,7 @@ $(window).on("load", function() {
 
 /*******************************************************************************
  * 
- *                         SLICK CAROUSEL INIT
+ *                        SLICK CAROUSEL INIT
  *  
  ******************************************************************************/
 $(document).ready(function(){
@@ -83,6 +83,37 @@ $(document).ready(function(){
         // You can unslick at a given breakpoint now by adding:
         // settings: "unslick"
         // instead of a settings object
+      ]
+  });
+});
+
+
+$(document).ready(function(){
+  $('.testemonials-carousel').slick({
+      arrows: false,
+      dots: true,
+      infinite: true,
+      speed: 1000,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      autoplay: true,
+      autoplaySpeed: 6000,
+      adaptiveHeight: true,
+      responsive: [
+        {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 450,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+        }
       ]
   });
 });

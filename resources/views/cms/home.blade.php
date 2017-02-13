@@ -32,9 +32,9 @@
                             <div class='row'>
                             @endif
                                 <div class="col-sm-4">
-                                     <a href="{{ route("cms.".strtolower($service->name)) }}">
-                                         <h4>{{ $service->name }}</h4>
-                                         <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name) }}.jpg">
+                                     <a href="{{ route("cms.".strtolower($service->name_en)) }}">
+                                         <h4>{{ $service->name_en }}</h4>
+                                         <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg">
                                      </a>
                                  </div>
                             @if($i % 3 == 0)

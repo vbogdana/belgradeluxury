@@ -52,9 +52,9 @@
     
     <div class="text-center text-uppercase">
         @foreach($services as $service)
-        <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name) }}.jpg')">
+        <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
             <a href="#">
-                <h3>{{ $service->name }}</h3>
+                <h3>{{ $service->name_en }}</h3>
             </a>
         </div>
         @endforeach        
@@ -144,10 +144,10 @@
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front">
-                                <img id="luxury" src="<?php echo url("") ?>/images/cards/front-1.svg" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
+                                <img id="luxury" src="<?php echo url("") ?>/images/cards/2222-2.png" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/front-1.svg" class="card" height="227px" width="363.5px" alt="Luxury Package" />
+                                <img src="<?php echo url("") ?>/images/cards/2222.png" class="card" height="227px" width="363.5px" alt="Luxury Package" />
                             </div>
                         </div>
                     </div>                  
@@ -243,6 +243,12 @@
 </section>
 <!--    END PACKAGES SECTION      -->
 
+<!--    START BELGRADE SECTION      -->
+<section id="belgrade-panel" class="belgrade-section widescreen panel background-properties" data-section-name="belgrade">
+    
+</section>
+<!--    END BELGRADE SECTION      -->
+
 <!--    START EVENTS SECTION      -->
 <section id="events-panel" class="events-section fullwidth interstitial space-y" data-section-name="events">
     <div class="container">
@@ -259,21 +265,21 @@
         <div class="carousel-holder text-center">
             <div class="events-carousel">
                 @foreach($events as $event)
-                @for($i = 0; $i < 7; $i++)
+                @for($i = 0; $i < 10; $i++)
                 <div class="slide">
                     <div class="header">
-                        <h2>{{ $event->day }}</h2>
+                        <h2>{{ $event->day_en }}</h2>
                         <h3>{{ $event->date }}</h3>
                     </div>
                     <div class="content">
                         <div class="img-holder">
                             <img class="img-responsive" src="<?php echo url('/')."/images/events/".$event->image ?>">                      
                         </div>
-                        <h2>{{ $event->place }}</h2>
-                        <h3>{{ $event->title }}</h3>
+                        <h2>{{ $event->place_en }}</h2>
+                        <h3>{{ $event->title_en }}</h3>
                         <p>
                             <i class="fa fa-music" aria-hidden="true"></i>
-                            {{ $event->category }}
+                            {{ $event->category_en }}
                         </p>
                         <a href="tel:+381644519017">
                             <i class="fa fa-phone" aria-hidden="true"></i>
@@ -290,7 +296,7 @@
 <!--    END EVENTS SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
-<section id="belgrade-panel" class="belgrade-section widescreen panel text-uppercase text-center" data-section-name="belgrade">
+<section id="belgrade-perspective-panel" class="belgrade-perspective-section widescreen panel text-uppercase text-center" data-section-name="belgrade-perspective">
     <div class="block">
         <a href="#">
             <h3>
@@ -328,6 +334,53 @@
     </div>
 </section>
 <!--    END BELGRADE SECTION      -->
+
+<!--    START TESTEMONIALS SECTION      -->
+<section id="testemonials-panel" class="testemonials-section fullwidth interstitial space-y" data-section-name="testemonials">
+    
+    <div class="container-fluid">
+        <div class="carousel-holder text-center">
+            <div class="testemonials-carousel">
+                @foreach ($testemonials as $testemonial)
+                <div class="slide text-left">
+                    <p>
+                        {{ $testemonial->content_en }}
+                    </p>
+                    <div class="author">
+                        {{ $testemonial->author }}, {{ $testemonial->profession_en }}
+                    </div>
+                </div>
+                @endforeach
+            </div>        
+        </div>
+    </div>
+</section>
+<!--    END TESTEMONIALS SECTION      -->
+
+<!--    START BUSINESS SECTION      -->
+<section id="business-panel" class="business-section interstitial fullwidth space-y" data-section-name="business">
+    <div class="container text-center">
+        <div class="description" style="padding: 0 10%; margin-bottom: 25px">
+            <h2>find out more what belgrade luxury can do for you or your company</h2>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn" href="#">
+                business package
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn" href="#">
+                contact
+            </a>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn" href="#">
+                corporate services
+            </a>
+        </div>
+    </div>
+</section>
+<!--    END BUSINESS SECTION        -->
 @stop
 
 @section('scripts')
