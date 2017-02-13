@@ -51,56 +51,13 @@
     <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
     
     <div class="text-center text-uppercase">
-        <div class="block">
+        @foreach($services as $service)
+        <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name) }}.jpg')">
             <a href="#">
-                <h3>accommodation</h3>
+                <h3>{{ $service->name }}</h3>
             </a>
         </div>
-        <div class="block">
-            <a href="#">
-                <h3>vehicles</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>wellness & spa</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>host</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>security</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>reservations</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>events</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>nightlife</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>sightseeing</h3>
-            </a>
-        </div>
-        <div class="block">
-            <a href="#">
-                <h3>diamond</h3>
-            </a>
-        </div>
+        @endforeach        
     </div>
 </section>
 <!--    END ABOUT US SERVICES SECTION      -->
@@ -287,7 +244,7 @@
 <!--    END PACKAGES SECTION      -->
 
 <!--    START EVENTS SECTION      -->
-<section id="events-panel" class="events-section widescreen panel space-y" data-section-name="events">
+<section id="events-panel" class="events-section fullwidth interstitial space-y" data-section-name="events">
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase"> BELGRADE </h2>
@@ -298,7 +255,7 @@
     </div>
     <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
     
-    <div class="container">
+    <div class="container-fluid">
         <div class="carousel-holder text-center">
             <div class="events-carousel">
                 @foreach($events as $event)
@@ -326,222 +283,9 @@
                 </div>
                 @endfor
                 @endforeach
-                <!--
-                <div class="slide">
-                    <div class="header">
-                        <h2>MONDAY</h2>
-                        <h3>30.01.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>TUESDAY</h2>
-                        <h3>31.01.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>WEDNESDAY</h2>
-                        <h3>01.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>THURSDAY</h2>
-                        <h3>02.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>FRIDAY</h2>
-                        <h3>03.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>SATURDAY</h2>
-                        <h3>04.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>SUNDAY</h2>
-                        <h3>05.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>MONDAY</h2>
-                        <h3>06.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>TUESDAY</h2>
-                        <h3>07.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="header">
-                        <h2>WEDNESDAY</h2>
-                        <h3>08.02.</h3>
-                    </div>
-                    <div class="content">
-                        <div class="img-holder">
-                            <img class="img-responsive" src='<?php echo url("/")?>\images\events\boxright3.jpg'>                       
-                        </div>
-                        <h2>Klub Brankov<br/>druga linija</h2>
-                        <h3>naziv zurke<br/> druga linija</h3>
-                        <p>
-                            <i class="fa fa-music" aria-hidden="true"></i>
-                            Pop Rock
-                        </p>
-                        <a href="tel:+381644519017">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 064 4519 017
-                        </a>
-                    </div>
-                </div>
-                -->
             </div>
         </div>        
     </div>
-
 </section>
 <!--    END EVENTS SECTION      -->
 
