@@ -33,7 +33,7 @@
                             <label for="brand" class="col-md-4 control-label">Brand*</label>
 
                             <div class="col-md-6">
-                                <input id="brand" type="text" maxlength="150" class="form-control" name="brand" value="{{ isset($vehicle) ? $vehicle->brand : old('brand') }}" required autofocus>
+                                <input id="brand" type="text" maxlength="255" class="form-control" name="brand" value="{{ isset($vehicle) ? $vehicle->brand : old('brand') }}" required autofocus>
 
                                 @if ($errors->has('brand'))
                                     <span class="help-block">
@@ -47,7 +47,7 @@
                             <label for="model" class="col-md-4 control-label">Model*</label>
 
                             <div class="col-md-6">
-                                <input id="model" type="text" maxlength="150" class="form-control" name="model" value="{{ isset($vehicle) ? $vehicle->model : old('model') }}" required>
+                                <input id="model" type="text" maxlength="255" class="form-control" name="model" value="{{ isset($vehicle) ? $vehicle->model : old('model') }}" required>
 
                                 @if ($errors->has('model'))
                                     <span class="help-block">
@@ -61,7 +61,7 @@
                             <label for="type" class="col-md-4 control-label">Type*</label>
 
                             <div class="col-md-6">
-                                <input id="type" type="text" maxlength="200" class="form-control" name="type" value="{{ isset($vehicle) ? $vehicle->type : old('type') }}" required>
+                                <input id="type" type="text" maxlength="255" class="form-control" name="type" value="{{ isset($vehicle) ? $vehicle->type : old('type') }}" required>
 
                                 @if ($errors->has('type'))
                                     <span class="help-block">
@@ -137,7 +137,7 @@
                             <label for="link" class="col-md-4 control-label">Website link</label>
 
                             <div class="col-md-6">
-                                <input id="link" type="text" maxlength="400" class="form-control" name="link" value="{{ isset($vehicle) ? $vehicle->link : old('link') }}">
+                                <input id="link" type="text" maxlength="255" class="form-control" name="link" value="{{ isset($vehicle) ? $vehicle->link : old('link') }}">
                                 
                                 @if ($errors->has('link'))
                                     <span class="help-block">

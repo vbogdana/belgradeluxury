@@ -94,21 +94,28 @@ $(document).ready(function(){
       dots: true,
       infinite: true,
       speed: 1000,
-      slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToShow: 4,
+      slidesToScroll: 4,
       autoplay: true,
       autoplaySpeed: 6000,
       adaptiveHeight: true,
       responsive: [
         {
-            breakpoint: 768,
+            breakpoint: 1190,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3
+            }
+        },
+        {
+            breakpoint: 900,
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2
             }
         },
         {
-            breakpoint: 450,
+            breakpoint: 610,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1

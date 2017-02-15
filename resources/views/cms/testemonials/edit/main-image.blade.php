@@ -14,18 +14,18 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="{{ route('cms.vehicles') }}">Vehicles ></a>&nbsp;
+                    <a href="{{ route('cms.testemonials') }}">Testemonials ></a>&nbsp;
                     Change main photo
                 </div>
                 <div class="panel-body">
                     <div class="panel-info" style="margin-bottom: 20px">
-                        Here you can change the main photo of a vehicle.
+                        Here you can change the main photo of a testemonial.
                     </div>
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.vehicles.edit.main-image', ['vehID' => $vehID]) }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.testemonials.edit.main-image', ['testID' => $testID]) }}">
                         {{ csrf_field() }}
                         
                         <div class="form-group">
-                            <label for="photo0" class="col-md-4 control-label">Current Image</label>
+                            <label for="image" class="col-md-4 control-label">Current Image</label>
 
                             <div class="col-md-6">
                                 @if ($image != null)
@@ -36,15 +36,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('photo0') ? ' has-error' : '' }}">
-                            <label for="photo0" class="col-md-4 control-label">Image</label>
+                        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                            <label for="image" class="col-md-4 control-label">Image</label>
 
                             <div class="col-md-6">
-                                <input id="photo0" type="file" name="photo0" value="{{ old('photo0') }}">
+                                <input id="image" type="file" name="image" value="{{ old('image') }}">
                                 
-                                @if ($errors->has('photo0'))
+                                @if ($errors->has('image'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('photo0') }}</strong>
+                                        <strong>{{ $errors->first('image') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -55,7 +55,7 @@
                                 <button type="submit" class="btn btn-primary" style="margin-right: 15px">
                                     Upload
                                 </button>
-                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.vehicles') }}">
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.testemonials') }}">
                                     Cancel
                                 </a>
                             </div>
@@ -83,7 +83,7 @@
                                 <div class="modal-body">
                                     Are you sure?<br/>
                                     <div style="margin-top: 15px">
-                                        {{ Form::open(['route' => ['cms.vehicles.delete.main-image', $vehID], 'method' => 'delete', 'class' => 'form-horizontal' ]) }}
+                                        {{ Form::open(['route' => ['cms.testemonials.delete.main-image', $testID], 'method' => 'delete', 'class' => 'form-horizontal' ]) }}
                                         {{ Form::submit('Remove current image', array('class' => 'btn btn-primary')) }}
                                         <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                         {{ Form::close() }}

@@ -23,8 +23,8 @@ All rights reserved
  * 10. BELGRADE
  *      10.1. EVENTS 
  *      10.2. PLACES 
- *
- *
+ *  TESTEMONIALS SECTION
+ *  PACKAGE PAGE
  *  FOOTER
  *
  ******************************************************************************/
@@ -113,6 +113,9 @@ All rights reserved
 }
 .fa-whatsapp:before {
   content: "\f232";
+}
+.fa-user-o:before {
+  content: "\f2c0";
 }
 
 /*******************************************************************************
@@ -732,10 +735,10 @@ a.btn:active {
 }
 .dropdown-menu > li > a {
     color: #E5E4E2;
-    padding: 6px 10px;
+    padding: 6px 8px;
     font-family: Quicksand, Raleway, sans-serif;
     font-weight: lighter;
-    font-size: 0.95em;
+    font-size: 0.9em;
     letter-spacing: 0.1em;
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -792,7 +795,7 @@ a.btn:active {
         min-width: 100vw;
         position: fixed;
         display: block;
-        top: 20px;        
+        top: -5px;        
         padding: 0 15px;
         transition: all 0.5s;
         -webkit-transition: all 0.5s;
@@ -1474,17 +1477,24 @@ a.btn:active {
  *                  TESTEMONIALS
  *  
  ******************************************************************************/
+.testemonials-section .carousel-holder {        
+    width: 1160px;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .testemonials-section .slide {
-    padding: 0 25px;
+    padding: 0 30px;
     margin-bottom: 30px;
 }
 .testemonials-section .slide:before {
-    content: '\"';
+    content: '\201C';
+    font-family: Quicksand;
     color: #CEAB4D;
     position: relative;
     left: -20px;
-    top: 0;
-    font-size: 2em;
+    top: 20px;
+    font-size: 3.5em;
 }
 .testemonials-section .slide p {
     position: relative;
@@ -1496,13 +1506,19 @@ a.btn:active {
     font-style: italic;
     color: #aaa;
 }
-@media screen and (min-width: 768px) {
-    .testemonials-section .carousel-holder {
-        padding: 0 10%;
-        margin-top: 40px;
+@media screen and (max-width: 1189px) {
+    .testemonials-section .carousel-holder {        
+        width: 870px;
     }
-    .testemonials-section .slide {
-        padding: 0 30px;
+}
+@media screen and (max-width: 899px) {
+    .testemonials-section .carousel-holder {        
+        width: 580px;
+    }
+}
+@media screen and (max-width: 609px) {
+    .testemonials-section .carousel-holder {        
+        width: 290px;
     }
 }
 

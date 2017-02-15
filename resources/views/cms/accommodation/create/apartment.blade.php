@@ -34,7 +34,7 @@
                             <label for="title_en" class="col-md-4 control-label">Title (eng)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_en" type="text" maxlength="150" class="form-control" name="title_en" value="{{ isset($accommodation) ? $accommodation->title_en : old('title_en') }}" required autofocus>
+                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($accommodation) ? $accommodation->title_en : old('title_en') }}" required autofocus>
 
                                 @if ($errors->has('title_en'))
                                     <span class="help-block">
@@ -48,7 +48,7 @@
                             <label for="title_ser" class="col-md-4 control-label">Title (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_ser" type="text" maxlength="150" class="form-control" name="title_ser" value="{{ isset($accommodation) ? $accommodation->title_ser : old('title_ser') }}" required>
+                                <input id="title_ser" type="text" maxlength="255" class="form-control" name="title_ser" value="{{ isset($accommodation) ? $accommodation->title_ser : old('title_ser') }}" required>
 
                                 @if ($errors->has('title_ser'))
                                     <span class="help-block">
@@ -62,7 +62,7 @@
                             <label for="address" class="col-md-4 control-label">Address*</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" maxlength="200" class="form-control" name="address" value="{{ isset($accommodation) ? $accommodation->address : old('address') }}" required>
+                                <input id="address" type="text" maxlength="255" class="form-control" name="address" value="{{ isset($accommodation) ? $accommodation->address : old('address') }}" required>
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -138,7 +138,7 @@
                             <label for="geoLat" class="col-md-4 control-label">Geographic latitude*</label>
 
                             <div class="col-md-6">
-                                <input id="geoLat" type="text" maxlength="100" class="form-control" name="geoLat" value="{{ isset($accommodation) ? $accommodation->geoLat : old('geoLat') }}" required>
+                                <input id="geoLat" type="text" maxlength="255" class="form-control" name="geoLat" value="{{ isset($accommodation) ? $accommodation->geoLat : old('geoLat') }}" required>
 
                                 @if ($errors->has('geoLat'))
                                     <span class="help-block">
@@ -152,7 +152,7 @@
                             <label for="geoLong" class="col-md-4 control-label">Geographic longitude*</label>
 
                             <div class="col-md-6">
-                                <input id="geoLong" type="text" maxlength="100" class="form-control" name="geoLong" value="{{ isset($accommodation) ? $accommodation->geoLong : old('geoLong') }}" required>
+                                <input id="geoLong" type="text" maxlength="255" class="form-control" name="geoLong" value="{{ isset($accommodation) ? $accommodation->geoLong : old('geoLong') }}" required>
 
                                 @if ($errors->has('geoLong'))
                                     <span class="help-block">
@@ -166,7 +166,7 @@
                             <label for="link" class="col-md-4 control-label">Website link</label>
 
                             <div class="col-md-6">
-                                <input id="link" type="text" maxlength="400" class="form-control" name="link" value="{{ isset($accommodation) ? $accommodation->link : old('link') }}">
+                                <input id="link" type="text" maxlength="255" class="form-control" name="link" value="{{ isset($accommodation) ? $accommodation->link : old('link') }}">
                                 
                                 @if ($errors->has('link'))
                                     <span class="help-block">

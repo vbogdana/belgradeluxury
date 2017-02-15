@@ -109,7 +109,7 @@
 <!--    END BUSINESS SECTION        -->
 
 <!--    ABOUT US PANEL 2 SECTION      -->
-<section id="aboutus-panel-2" class="aboutus-section box panel widescreen background-properties" data-section-name="packets">
+<section id="aboutus-panel-2" class="aboutus-section box panel widescreen background-properties" data-section-name="business">
     <div class="overlay"></div>
     <div class="box-left">
         <div class="hero-holder">
@@ -294,10 +294,10 @@
 
 <!--    START BELGRADE SECTION      -->
 <section id="belgrade-panel" class="belgrade-section panel" data-section-name="belgrade">
-    <div class="widescreen background-properties">
+    <section class="widescreen background-properties">
         <div class="overlay"></div>
               
-    </div>
+    </section>
     
     <div class="events-section space-y">
         <div class="container text-center">
@@ -350,7 +350,8 @@
 </section>
 <!--    END EVENTS SECTION      -->
 
-<!--    START BELGRADE PERSPECTIVE SECTION      -->
+
+<!--    START BELGRADE PERSPECTIVE SECTION      
 <section id="belgrade-perspective-panel" class="belgrade-perspective-section widescreen panel text-uppercase text-center" data-section-name="belgrade-perspective">
     <div class="block">
         <a href="#">
@@ -401,8 +402,23 @@
                     <p>
                         {{ $testemonial->content_en }}
                     </p>
-                    <div class="author">
-                        {{ $testemonial->author }}, {{ $testemonial->profession_en }}
+                    <div class="author row">   
+                        @if ($testemonial->image != null)
+                        <div class="col-xs-4">
+                            <img class="img-responsive" src="{{ asset('storage/images/'.$testemonial->image) }}">
+                        </div>
+                        <div class="col-xs-8">
+                        @else
+                        <div class="col-xs-2">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-xs-10">
+                        @endif
+                        @if ($testemonial->author != null)
+                        <strong>{{ $testemonial->author }}</strong>, 
+                        @endif
+                        {{ $testemonial->profession_en }}
+                        </div>
                     </div>
                 </div>
                 @endforeach

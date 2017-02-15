@@ -1,0 +1,19 @@
+{
+    "name": "Belgrade Luxury",
+    "icons": [
+        {
+            "src": "public/images/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "public/images/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ceab4d",
+    "background_color": "#ceab4d",
+    "start_url": "http://belgradeluxury.com",
+    "display": "standalone"
+}

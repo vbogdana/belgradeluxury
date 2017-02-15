@@ -9,6 +9,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Belgrade Luxury') }}</title>
+    <!-- favicons  -->       	      
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url("") }}/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="{{ url("") }}/images/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url("") }}/images/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="{{ url("") }}/images/icons/manifest.json">
+    <link rel="mask-icon" href="{{ url("") }}/images/icons/safari-pinned-tab.svg" color="#ceab4d">
+    <link rel="shortcut icon" href="{{ url("") }}/images/icons/favicon.ico">
+    <meta name="msapplication-config" content="{{ url("") }}/images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ceab4d">
 
     <!-- Styles -->
     <link href="{{ url ("") }}/css/app.css" rel="stylesheet">
@@ -60,6 +69,11 @@
                             <li>
                                 <a href='{{ route('cms') }}' role="button">
                                     Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href='{{ route('cms.testemonials') }}' role="button">
+                                    Testemonials
                                 </a>
                             </li>
                             <li class='dropdown'>

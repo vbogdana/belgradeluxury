@@ -25,7 +25,7 @@
                         {{ csrf_field() }}
                         
                         <div class="form-group">
-                            <label for="photo" class="col-md-4 control-label">Current Image</label>
+                            <label for="photo0" class="col-md-4 control-label">Current Image</label>
 
                             <div class="col-md-6">
                                 @if ($image != null)

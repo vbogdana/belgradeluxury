@@ -54,10 +54,10 @@
                             {{ Form::submit('Edit main photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$veh->vehID}}">
                                 Delete a vehicle
                             </button>
-                            <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal fade" id="myModal{{$veh->vehID}}" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">

@@ -34,14 +34,21 @@
         <meta property="og:image" content='{{ route("/") }}/images/DOPUNI' />   
         @show
         
-        <!-- favicons 
-        <link rel="icon" href="<?php echo url("") ?>/images/logo-bl-white.ico"  type="image/x-icon" /> 
-        -->
+        <!-- favicons  -->       	      
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url("") }}/images/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="{{ url("") }}/images/icons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="{{ url("") }}/images/icons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="{{ url("") }}/images/icons/manifest.json">
+        <link rel="mask-icon" href="{{ url("") }}/images/icons/safari-pinned-tab.svg" color="#ceab4d">
+        <link rel="shortcut icon" href="{{ url("") }}/images/icons/favicon.ico">
+        <meta name="msapplication-config" content="{{ url("") }}/images/icons/browserconfig.xml">
+        <meta name="theme-color" content="#ceab4d">
+       
         
         <!-- scripts -->
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        <link href="css/animsition.min.css" rel="stylesheet" type="text/css">       
+        <link href="{{ url("") }}/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="{{ url("") }}/css/style.css" rel="stylesheet" type="text/css">
+        <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">       
         @yield('stylesheets')        
     </head>
     
@@ -103,7 +110,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="{{ route("/") }}">
                                 <img src="{{ url("") }}/images/logo/logo-letters.svg" alt="Belgrade Luxury Logo"/>
                                 <span>HOME</span>
                             </a>
@@ -116,11 +123,13 @@
                                     <ul class='dropdown-menu'>
                                         <li><a href='#'>accommodation</a></li>
                                         <li><a href='#'>vehicles</a></li>
-                                        <li><a href='#'>chauffeur</a></li>
+                                        <li><a href='#'>wellness & spa</a></li>
                                         <li><a href='#'>host</a></li>
                                         <li><a href='#'>security</a></li>
                                         <li><a href='#'>reservations</a></li>
                                         <li><a href='#'>events</a></li>
+										<li><a href='#'>business</a></li>
+										<li><a href='#'>personel</a></li>
                                         <li><a href='#'>nightlife</a></li>
                                         <li><a href='#'>sightseeing</a></li>
                                         <li><a href='#'>diamond</a></li>
@@ -130,9 +139,11 @@
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-hover="PACKAGES">PACKAGES <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
                                         <li><a href='#'>luxury</a></li>
-                                        <li><a href='#'>VIP luxury</a></li>
+                                        <li><a href='#'>diamond</a></li>
+                                        <li><a href='#'>spa</a></li>
                                         <li><a href='#'>bachelor</a></li>
-                                        <li><a href='#'>bachelor penthouse</a></li>
+                                        <li><a href='#'>party</a></li>
+                                        <li><a href='#'>business</a></li>
                                         <li><a href='#'>custom package</a></li>
                                     </ul>
                                 </li>
@@ -245,10 +256,10 @@
         <!-- scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-        <script src="js/bootstrap.js"></script>       
-        <script src="js/animsition.min.js"></script>
-        <script src="js/jquery.scrollify.min.js"></script>
-        <script src="js/main.js"></script>
+        <script src="{{ url("") }}/js/bootstrap.js"></script>       
+        <script src="{{ url("") }}/js/animsition.min.js"></script>
+        <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>
+        <script src="{{ url("") }}/js/main.js"></script>
         @yield('scripts')
         
         

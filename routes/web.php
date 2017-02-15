@@ -95,3 +95,17 @@ Route::get('cms/vehicles/{vehID}/delete/photos', ['as' => 'cms.vehicles.delete.i
 Route::delete('cms/vehicles/{imgID}/delete/photo', ['as' => 'cms.vehicles.delete.image', 'uses' => 'CMS\VehicleImagesController@deleteImage']);
 Route::delete('cms/vehicles/{vehID}/delete/main-photo', ['as' => 'cms.vehicles.delete.main-image', 'uses' => 'CMS\VehicleImagesController@deleteMainImage']);
 Route::delete('cms/vehicles/{vehID}/delete', ['as' => 'cms.vehicles.delete', 'uses' => 'CMS\VehiclesController@delete']);
+
+/***
+ * Testemonials
+ */
+Route::get('cms/testemonials', ['as' => 'cms.testemonials', 'uses' => 'CMS\TestemonialsController@loadTestemonials']);
+Route::get('cms/testemonials/create', ['as' => 'cms.testemonials.create', 'uses' => 'CMS\TestemonialsController@loadCreateTestemonial']);
+Route::post('cms/testemonials/create', ['as' => 'cms.testemonials.create', 'uses' => 'CMS\TestemonialsController@createTestemonial']);
+Route::get('cms/testemonials/{testID}/edit', ['as' => 'cms.testemonials.edit', 'uses' => 'CMS\TestemonialsController@loadEditTestemonial']);
+Route::post('cms/testemonials/{testID}/edit', ['as' => 'cms.testemonials.edit', 'uses' => 'CMS\TestemonialsController@editTestemonial']);
+Route::get('cms/testemonials/{testID}/edit/main-photo', ['as' => 'cms.testemonials.edit.main-image', 'uses' => 'CMS\TestemonialsController@loadEditMainImage']);
+Route::post('cms/testemonials/{testID}/edit/main-photo', ['as' => 'cms.testemonials.edit.main-image', 'uses' => 'CMS\TestemonialsController@editMainImage']);
+Route::delete('cms/testemonials/{testID}/delete/main-photo', ['as' => 'cms.testemonials.delete.main-image', 'uses' => 'CMS\TestemonialsController@deleteMainImage']);
+Route::delete('cms/testemonials/{testID}/delete', ['as' => 'cms.testemonials.delete', 'uses' => 'CMS\TestemonialsController@delete']);
+
