@@ -5,16 +5,6 @@
 <link href="css/slick-theme.css" rel="stylesheet" type="text/css">
 @stop
 
-@section('language-toolbar')
-@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-<li>
-    <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-        {{ $properties['native'] }}
-    </a>
-</li>
-@endforeach
-@stop
-
 @section('content')
 <?php 
     $locale = LaravelLocalization::getCurrentLocale();

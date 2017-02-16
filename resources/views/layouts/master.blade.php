@@ -70,7 +70,15 @@
                             </div>
                             <div class="col-xs-8">
                                 <ul>
-                                    @yield('language-toolbar')
+                                    @section('language-toolbar')
+									@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+									<li>
+										<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+											{{ $properties['native'] }}
+										</a>
+									</li>
+									@endforeach
+									@show
                                 </ul>
                             </div>
                         </div>

@@ -100,15 +100,15 @@ class Translator extends NamespacedItemResolver implements TranslatorInterface
     public function get($key, array $replace = [], $locale = null, $fallback = true)
     {
         list($namespace, $group, $item) = $this->parseKey($key);
-
+		
         // Here we will get the locale that should be used for the language line. If one
         // was not passed, we will use the default locales which was given to us when
         // the translator was instantiated. Then, we can load the lines and return.
         $locales = $fallback ? $this->parseLocale($locale) : [$locale ?: $this->locale];
-
+		
         foreach ($locales as $locale) {
             $this->load($namespace, $group, $locale);
-
+			
             $line = $this->getLine(
                 $namespace, $group, $locale, $item, $replace
             );
@@ -124,7 +124,7 @@ class Translator extends NamespacedItemResolver implements TranslatorInterface
         if (! isset($line)) {
             return $key;
         }
-
+		
         return $line;
     }
 
