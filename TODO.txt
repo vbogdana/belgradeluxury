@@ -1,2 +1,8 @@
 notes
-1. srediti logo-letters - kropovati
+1. srediti ring rotaciju paketa sa imenima
+2. srediti tekstove na home pageu (sa prevodom)
+3. srediti belgrade i blog sekciju home pagea
+4. dodati efekte na home page
+5. srediti linkove na home pageu
+6. srediti slike na home pageu
+7. dodati ukrase na home page

@@ -802,6 +802,13 @@ a.btn:active {
         -webkit-transition: all 0.5s;
         z-index: -1;
     }
+    /* menu on hover */
+    /*
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+        top: 76px;
+    }
+    */
     .open > .dropdown-menu {
         top: 51px;
     }
@@ -917,7 +924,7 @@ a.btn:active {
     display: none;
 }
 .video-section h1 {
-    font-size: 1.3em;
+    font-size: 1.15em;
     line-height: 1.1em;
     font-family: Quicksand, Raleway, sans-serif;
     letter-spacing: 0.1em;

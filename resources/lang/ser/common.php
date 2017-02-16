@@ -41,5 +41,8 @@ return [
 	'terms and conditions' => 'uslovi korišćenja',
 	'slogan' => 'Simply Be Lux.',
 	'contact us' => 'kontakt',
+	'corporate' => '{0}korporativni|{1}korporativne',
+	'inquiry' => 'upit',
+	'details' => 'detalji',
 	
 ];

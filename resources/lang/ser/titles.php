@@ -11,11 +11,7 @@ return [
     |
     */
 
-    'quote1' => 'luksuzni apartmani',
-	'quote2' => 'luksuzna vozila',
-	'quote3' => 'ekskluzivne žurke',
-	'quote4' => 'vip klubovi',
-	'quote5' => 'VIP Iskustvo - Noćni život Beograda',
-	'luxury vip services' => 'luksuzne vip usluge',
-	
+	'index' => 'VIP iskustvo - Noćni Život Beograda',
+	'package' => ':Package paket',
+
 ];

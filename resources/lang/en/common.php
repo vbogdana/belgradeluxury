@@ -41,5 +41,8 @@ return [
 	'terms and conditions' => 'terms and conditions',
 	'slogan' => 'Simply Be Lux.',
 	'contact us' => 'contact us',
+	'corporate' => '[0,1]corporate',
+	'inquiry' => 'inquiry',
+	'details' => 'details',
 	
 ];

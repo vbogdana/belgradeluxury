@@ -16,6 +16,9 @@
 @stop
 
 @section('content')
+<?php 
+    $locale = LaravelLocalization::getCurrentLocale();
+?>
 <!--    START VIDEO SECTION      -->
 <section id="intro-panel" class="video-section interstitial background-properties" data-section-name="intro">
     <div id="content">
@@ -65,11 +68,7 @@
         <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
             <a href="#">
                 <h3>
-                @if (LaravelLocalization::getCurrentLocale() == 'en')
-                {{ $service->name_en }}
-                @elseif (LaravelLocalization::getCurrentLocale() == 'sr')
-                {{ $service->name_ser }}
-                @endif
+                {{ $service['name_'.$locale] }}
                 </h3>
             </a>
         </div>
@@ -85,7 +84,7 @@
         <div class="hero-holder" style="float:right">
             <div class="hero-inner text-right">
                 <div class="description">
-                    <h2 class="text-uppercase">About us</h2>
+                    <h2 class="text-uppercase">@lang('common.about us')</h2>
                     <p>
                         We offer the most exclusive villas and suites, VIP treatment in the city's best restaurants, bars and clubs, personal chauffeur service and luxury vehicles, personal security, boat tours of the city, accompanied by a personal guide and trips to the most interesting sites in Serbia. 
                     </p>
@@ -103,21 +102,21 @@
 <section id="business-panel" class="business-section interstitial fullwidth space-y" data-section-name="business">
     <div class="container text-center">
         <div class="description" style="padding: 0 10%; margin-bottom: 25px">
-            <h2>find out more what belgrade luxury can do for you or your company</h2>
+            <h2>@lang('index.business1')</h2>
         </div>
         <div class="col-sm-4">
             <a class="btn" href="#">
-                business package
+                business @lang('common.package')
             </a>
         </div>
         <div class="col-sm-4">
             <a class="btn" href="#">
-                contact us
+                @lang('common.contact us')
             </a>
         </div>
         <div class="col-sm-4">
             <a class="btn" href="#">
-                corporate services
+                {{ trans_choice('common.corporate',1) }} @lang('common.services')
             </a>
         </div>
     </div>
@@ -155,7 +154,7 @@
         <div class="hero-holder" style="float:right">
             <div class="hero-inner text-right">
                 <div class="description">
-                    <h2 class="text-uppercase">Packages</h2>
+                    <h2 class="text-uppercase">@lang('common.packages')</h2>
                     <p>
                         To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
                     </p>
@@ -176,7 +175,7 @@
 <section id="packages-panel" class="packages-section widescreen panel space-y" data-section-name="select-package">
     <div class="container">
         <div class="description text-center">
-            <h2 class="text-uppercase"> packages </h2>
+            <h2 class="text-uppercase"> @lang('common.packages') </h2>
             <p>
                 These are our special packages that we have prepared for You. 
                 Each one has been carefully selected by 
@@ -190,9 +189,9 @@
         
     <div class="container">
         <div class="description text-center" id="package-info">
-            <h4 id="package-title"> LUXURY PACKAGE </h4>
-            <a id="inquiry" class="btn"> INQUIRY </a>
-            <a id="details" class="btn"> DETAILS </a>
+            <h4 id="package-title" class="text-uppercase"> LUXURY @lang('common.package') </h4>
+            <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
+            <a id="details" class="btn"> @lang('common.details') </a>
         </div>
     </div>
     
@@ -284,7 +283,7 @@
     <div class="custom-package-container">
         <div class="container text-center">
             <div class="description">
-                <h2 class="text-uppercase"> custom package </h2>
+                <h2 class="text-uppercase"> custom @lang('common.package') </h2>
                 <p>
                     If You would prefer something a little bit different than services included in our packages, You can always create You own custom package. Put together a package tailored to fit your needs, because - <i> The Best Luxury Services Are Customized, Not Standardized. </i>
                 </p>                
@@ -294,13 +293,13 @@
         <div class="container text-center">
             <div class="text-uppercase">
                 <div class="col-sm-4">
-                    Choose Your services
+                    {{ trans_choice('index.custom step',1) }}
                 </div>
                 <div class="col-sm-4">
-                    Set a date for your visit
+                    {{ trans_choice('index.custom step',2) }}
                 </div>
                 <div class="col-sm-4">
-                    Book!
+                    {{ trans_choice('index.custom step',3) }}!
                 </div>
             </div>
         </div>
@@ -310,7 +309,7 @@
 
 <!--    START BELGRADE SECTION      -->
 <section id="belgrade-panel" class="belgrade-section panel fullwidth" data-section-name="belgrade">
-    <div class="widescreen background-properties">
+    <section class="widescreen background-properties">
         <div class="overlay"></div>
         <div class="hero-holder">
             <div class="hero-inner">
@@ -318,12 +317,12 @@
             </div>
         </div>
               
-    </div>
+    </section>
     
     <div class="events-section space-y">
         <div class="container text-center">
             <div class="description">
-                <h2 class="text-uppercase"> upcoming events </h2>
+                <h2 class="text-uppercase"> @lang('common.upcoming') @lang('common.events') </h2>
                 <p>
                 </p>                
             </div>
@@ -335,18 +334,18 @@
                     @for($i = 0; $i < 10; $i++)
                     <div class="slide">
                         <div class="header">
-                            <h2>{{ $event->day_en }}</h2>
+                            <h2>{{ $event['day_'.$locale] }}</h2>
                             <h3>{{ $event->date }}</h3>
                         </div>
                         <div class="content">
                             <div class="img-holder">
                                 <img class="img-responsive" src="<?php echo url('/')."/images/events/".$event->image ?>">                      
                             </div>
-                            <h2>{{ $event->place_en }}</h2>
-                            <h3>{{ $event->title_en }}</h3>
+                            <h2>{{ $event['place_'.$locale] }}</h2>
+                            <h3>{{ $event['title_'.$locale] }}</h3>
                             <p>
                                 <i class="fa fa-music" aria-hidden="true"></i>
-                                {{ $event->category_en }}
+                                {{ $event['category_'.$locale] }}
                             </p>
                             <a href="tel:+381644519017">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
@@ -421,7 +420,7 @@
                 @foreach ($testemonials as $testemonial)
                 <div class="slide text-left">
                     <p>
-                        {{ $testemonial->content_en }}
+                        {{ $testemonial['content_'.$locale] }}
                     </p>
                     <div class="author row">   
                         @if ($testemonial->image != null)
@@ -438,7 +437,7 @@
                         @if ($testemonial->author != null)
                         <strong>{{ $testemonial->author }}</strong>, 
                         @endif
-                        {{ $testemonial->profession_en }}
+                        {{ $testemonial['profession_'.$locale] }}
                         </div>
                     </div>
                 </div>
