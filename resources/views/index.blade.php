@@ -5,6 +5,16 @@
 <link href="css/slick-theme.css" rel="stylesheet" type="text/css">
 @stop
 
+@section('language-toolbar')
+@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+<li>
+    <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+        {{ $properties['native'] }}
+    </a>
+</li>
+@endforeach
+@stop
+
 @section('content')
 <!--    START VIDEO SECTION      -->
 <section id="intro-panel" class="video-section interstitial background-properties" data-section-name="intro">
@@ -22,12 +32,12 @@
                         <img class="img-responsive" src='<?php echo url("/")?>\images\logo\logo.svg'>
                     </div>
                     <h2 class="quotes"> BELGRADE <span> LUXURY </span> </h2>
-                    <h2 class="quotes"> LUXURY <span> APARTMENTS </span> </h2>
-                    <h2 class="quotes"> <span> HIGH CLASS </span> VEHICLES </h2>
+                    <h2 class="quotes"> @lang('index.quote1') </h2>
+                    <h2 class="quotes"> @lang('index.quote2') </h2>
                     <h2 class="quotes"> BELGRADE <span> LUXURY </span> </h2>
-                    <h2 class="quotes"> EXCLUSIVE <span> PARTIES </span> </h2>
-                    <h2 class="quotes"> <span> VIP </span> TABLES </h2>
-                    <h1> VIP Experience - Belgrade Nightlife </h1> 
+                    <h2 class="quotes"> @lang('index.quote3') </h2>
+                    <h2 class="quotes"> @lang('index.quote4') </h2>
+                    <h1> @lang('index.quote5') </h1> 
                     <p> Simply Be Lux. </p>                    
                 </div>
             </div>
@@ -41,8 +51,8 @@
 <section id="services-panel" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services">            
     <div class="container">
         <div class="description text-center">
-            <h2 class="text-uppercase">LUXURY VIP SERVICE</h2>
-            <a id="contact" class="btn"> CONTACT US </a>
+            <h2 class="text-uppercase"> @lang('index.luxury vip services') </h2>
+            <a id="contact" class="btn"> @lang('common.contact us') </a>
             <p class="">
                 Belgrade Luxury is a unique concept, established in 2016 in Belgrade, designed exclusively for people with exquisite taste who want the quality of their visit to the capital of Serbia to be to the highest of standards. Our mission is to satisfy the most demanding wishes of our clients and do everything to make their stay in Belgrade according to their preferences.
             </p>           
@@ -54,7 +64,13 @@
         @foreach($services as $service)
         <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
             <a href="#">
-                <h3>{{ $service->name_en }}</h3>
+                <h3>
+                @if (LaravelLocalization::getCurrentLocale() == 'en')
+                {{ $service->name_en }}
+                @elseif (LaravelLocalization::getCurrentLocale() == 'sr')
+                {{ $service->name_ser }}
+                @endif
+                </h3>
             </a>
         </div>
         @endforeach        
@@ -193,7 +209,7 @@
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front">
-                                <img id="luxury" src="<?php echo url("") ?>/images/cards/2222-2.png" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
+                                <img id="luxury" src="<?php echo url("") ?>/images/cards/123-1.png" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
                             </div>
                             <div class="back">
                                 <img src="<?php echo url("") ?>/images/cards/2222.png" class="card" height="227px" width="363.5px" alt="Luxury Package" />
@@ -293,11 +309,16 @@
 <!--    END PACKAGES SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
-<section id="belgrade-panel" class="belgrade-section panel" data-section-name="belgrade">
-    <section class="widescreen background-properties">
+<section id="belgrade-panel" class="belgrade-section panel fullwidth" data-section-name="belgrade">
+    <div class="widescreen background-properties">
         <div class="overlay"></div>
+        <div class="hero-holder">
+            <div class="hero-inner">
+                
+            </div>
+        </div>
               
-    </section>
+    </div>
     
     <div class="events-section space-y">
         <div class="container text-center">

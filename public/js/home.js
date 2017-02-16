@@ -9,7 +9,7 @@
  *  
  ******************************************************************************/
 /* changing quotes on video */
-$(document).ready(function(){
+$(window).on("load", function() {
     var quotes = $(".quotes");
     var quoteIndex = -1;
 
@@ -47,7 +47,7 @@ $(window).on("load", function() {
  *                        SLICK CAROUSEL INIT
  *  
  ******************************************************************************/
-$(document).ready(function(){
+$(window).on("load", function() {
   $('.events-carousel').slick({
       arrows: true,
       dots: true,
@@ -88,7 +88,7 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function(){
+$(window).on("load", function() {
   $('.testemonials-carousel').slick({
       arrows: false,
       dots: true,
@@ -130,7 +130,7 @@ $(document).ready(function(){
  *                         CARD REFLECTIONS
  *  
  ******************************************************************************/
-$(window).load(function() {    
+$(window).on("load", function() {    
     var $cards = $('.card');
     $.each($cards, function() {
         var $element = $(this);

@@ -14,12 +14,12 @@ class AppController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function loadIndex() {
         $events = Event::all();
         $services = Service::all();
         $testemonials = Testemonial::all();
         
         return view('index', ["events" => $events, 'services' => $services, 'testemonials' => $testemonials]);
     }
+  
 }

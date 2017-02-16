@@ -45,13 +45,12 @@ $(document).ready(function() {
     transition: function(url){ window.location.href = url; }
   });
 });
-
 /*******************************************************************************
  * 
  *                         SCROLLIFY INIT
  *  
  ******************************************************************************/
-$(window).load(function() { 
+$(document).ready(function() {
     $(function() {
         $.scrollify({
                 section : ".panel",

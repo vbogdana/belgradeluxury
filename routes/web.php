@@ -10,12 +10,27 @@
 //Auth::routes();
 //Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
 
-Route::get('/', 'App\AppController@index')->name('/');
+
+Route::group([
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localize' ]
+    ], function()
+    {
+        /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+        Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
+        
+        Route::get(LaravelLocalization::transRoute('routes.packages'), 
+            [
+              'as' => 'packages', 
+              'uses' => function(){
+                  return view('/packages/package');
+                }
+            ]
+        );
+    });
+    
 //Route::get('home', 'App\HomeController@index')->name('home');
 
-Route::get('/packages', function() {
-    return view('/packages/package');
-});
 
 /*
 Route::get('/under-construction', function () {
