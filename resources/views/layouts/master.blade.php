@@ -71,14 +71,14 @@
                             <div class="col-xs-8">
                                 <ul>
                                     @section('language-toolbar')
-									@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-									<li>
-										<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-											{{ $properties['native'] }}
-										</a>
-									</li>
-									@endforeach
-									@show
+                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                    <li>
+                                        <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+                                    </li>
+                                    @endforeach
+                                    @show
                                 </ul>
                             </div>
                         </div>
@@ -209,20 +209,12 @@
                             </div>
 
                             <div class="col-md-5 social">
-                                <p>
-                                    <a href="#">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                    </a>  
-                                    <a href="#">
-                                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                                    </a>
-                                </p>
+                                <div class="hi-icon-wrap hi-icon-effect">					
+                                    <a href="http://www.facebook.com/belgradeluxury" target="blank" class="hi-icon fa-facebook"></a>
+                                    <a href="http://www.instagram.com/belgradeluxury" target="blank" class="hi-icon fa-instagram"></a>  
+                                    <a href="#" class="hi-icon fa-youtube-play"></a>                                   
+                                    <a id="whatsapp" href="" class="hi-icon fa-whatsapp"></a>
+                                </div>
                             </div>
                         </div>
                     </div>            
@@ -247,7 +239,21 @@
         <script src="{{ url("") }}/js/main.js"></script>
         @yield('scripts')
         
-        
+        <script>
+            var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            var android = /Android/.test(navigator.userAgent) && !window.MSStream;
+            var url;
+            if (android) {
+                url = "intent://send/+381644519017#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end";                                           
+            } else if (iOS) {
+                url = "whatsapp://send";
+            } else {
+                url = "tel:+381644519017";
+            }
+            $('#whatsapp').attr({
+                href: url
+            });
+        </script>
     </body>
     
 </html>

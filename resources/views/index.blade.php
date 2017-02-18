@@ -322,26 +322,36 @@
                 <div class="events-carousel">
                     @foreach($events as $event)
                     @for($i = 0; $i < 10; $i++)
-                    <div class="slide">
-                        <div class="header">
-                            <h2>{{ $event['day_'.$locale] }}</h2>
-                            <h3>{{ $event->date }}</h3>
-                        </div>
-                        <div class="content">
+                    <div class="slide hover-effects hi-icon-effect">
+                        <figure>
                             <div class="img-holder">
-                                <img class="img-responsive" src="<?php echo url('/')."/images/events/".$event->image ?>">                      
+                                <img src="<?php echo url('/')."/images/events/".$event->image ?>">
                             </div>
-                            <h2>{{ $event['place_'.$locale] }}</h2>
-                            <h3>{{ $event['title_'.$locale] }}</h3>
-                            <p>
-                                <i class="fa fa-music" aria-hidden="true"></i>
-                                {{ $event['category_'.$locale] }}
-                            </p>
-                            <a href="tel:+381644519017">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                (+381) 064 4519 017
-                            </a>
-                        </div>
+                            <figcaption>                               
+                                <div class="header">
+                                    <!--
+                                        <h3>{{ $event['title_'.$locale] }}<br/>DRUGA LINIJA</h3>
+                                    -->
+                                        <a href="#"  class="hi-icon fa-{{ strtolower($event->category_en) }}"></a>
+                                        <p style='padding: 4px 0 0;'>
+                                            {{ $event['category_'.$locale] }}
+                                        </p>
+                                        <h2>{{ $event['day_'.$locale] }}</h2>
+                                        <h3>{{ $event->date }}</h3>                          
+                                </div>
+                                <div class="content">
+                                    <a href="#" class="hi-icon fa-map-marker"></a>                               
+                                    <h2>{{ $event['place_'.$locale] }}</h2>
+                                    <a class="btn" style="margin: 0; padding: 5px 10px; font-size: 0.8em;">
+                                        MORE
+                                    </a>
+                                    <a class="telephone" href="tel:+381644519017">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        (+381) 064 4519 017
+                                    </a>
+                                </div>
+                            </figcaption>
+                        </figure>
                     </div>
                     @endfor
                     @endforeach
@@ -402,8 +412,8 @@
 <!--    END BELGRADE PERSPECTIVE SECTION      -->
 
 <!--    START TESTEMONIALS SECTION      -->
-<section id="testemonials-panel" class="testemonials-section fullwidth interstitial space-y" data-section-name="testemonials">
-    
+<section id="testemonials-panel" class="testemonials-section fullwidth interstitial space-y background-properties" data-section-name="testemonials">
+    <div class="overlay"></div>
     <div class="container-fluid">
         <div class="carousel-holder text-center">
             <div class="testemonials-carousel">
