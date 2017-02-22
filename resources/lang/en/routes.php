@@ -9,4 +9,5 @@
 
 return [
     'packages' => 'packages',
+	'accommodation' => 'accommodation',
 ];

@@ -13,5 +13,6 @@ return [
 
 	'index' => 'VIP Experience Belgrade Nightlife',
 	'package' => ':Package package',
+	'accommodation' => 'Accommodation',
 
 ];

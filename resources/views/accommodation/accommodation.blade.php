@@ -9,18 +9,18 @@
 
 @section('title-meta')
 <!-- page titles and meta tags -->
-<title>Belgrade Luxury - @lang('titles.package', ['package' => 'ime paketa']) </title>
+<title>Belgrade Luxury - @lang('titles.accommodation') </title>
 
 <meta name="description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
 <meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
 <meta property="fb:pages" content="belgradeluxury">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://belgradeluxury.com/packages/DOPUNI">
-<meta property="og:title" content="Belgrade Luxury - <?php echo Lang::get('titles.package', ['package' => 'ime paketa']) ?>" />
+<meta property="og:url" content="http://belgradeluxury.com/accommodation">
+<meta property="og:title" content="Belgrade Luxury - <?php echo Lang::get('titles.accommodation') ?>" />
 <meta property="og:description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
 <meta property="og:site_name" content="Belgrade Luxury">        
-<meta property="og:image" content='{{ route("/") }}/images/DOPUNI' />   
+<meta property="og:image" content='{{ route("/") }}/images/services/accommodation.jpg' />   
 @stop
 
 @section('stylesheets')
@@ -28,14 +28,14 @@
 @stop
 
 @section('content')
-<!--   START PACKAGE DESCRIPTION PANEL SECTION      -->
-<section id="package-description-panel" class="package-description-section box panel widescreen background-properties" data-section-name="package-description">
+<!--   START ACCOMMODATION SERVICES DESCRIPTION PANEL SECTION      -->
+<section id="accommodation-description-panel" class="accommodation-description-section box panel widescreen background-properties" data-section-name="accommodation-description">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
             <div class="hero-inner text-right">
                 <div class="description">
-                    <h2 class="text-uppercase">Package name</h2>
+                    <h2 class="text-uppercase">@lang('common.accommodation')</h2>
                     <p>
                         To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
                     </p>
@@ -50,10 +50,10 @@
         </div>
     </div>
 </section>
-<!--   END PACKAGE DESCRIPTION SECTION      -->
+<!--   END ACCOMMODATION SERVICES DESCRIPTION SECTION      -->
 
 <!--   START INQUIRY SECTION      -->
-<section id="inquiry-panel" class="package-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="package-inquiry">            
+<section id="inquiry-panel" class="service-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="service-inquiry">            
     <img class="gold-decor" src='<?php echo url("/")?>/images/decor.svg'>
     <div class="container">
         <div class="description text-center">
@@ -69,80 +69,45 @@
 </section>
 <!--   END INQUIRY SECTION      -->
 
-<!--   START PACKAGE DETAILS PANEL SECTION      -->
-<section id="package-details-panel" class="package-details-section box panel fullwidth background-properties" data-section-name="package-details">
-    <!--<div class="overlay"></div>-->
-    <div class="container-fluid">
-        <div class="widescreen">
-            <div class="box-left">
-                <div class="hero-holder">
-                    <div class="hero-inner">
-                        <div class="description">
-                            <h2 class="text-uppercase">About us</h2>
-                            <p>
-                                If you wish to book Your stay with us please send us an inquiry. As for any requests in addition to those included in the package, we are always at Your disposal!
-                            </p>
-                            <p>
-                                Our phone lines and mail are available 24/7 to answer all Your questions. For any additional information, suggestions and proposals, contact us, we would be delighted to be of assistance.
-                            </p>                                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--   START ACCOMMODATION SECTION      -->
+<section id="accommodation-panel" class="accommodation-section panel fullwidth space-y" data-section-name="accommodation">            
     
-        <div class="package-details col-xs-12 col-sm-offset-5 col-sm-7 space-y text-center">
-            <div class="row">
-                <div class="col-sm-4">
-                    LALALA
-                </div>
-                <div class="col-sm-4">
-                    LALALA
-                </div>
-                <div class="col-sm-4">
-                    LALALA
-                </div>
-                <div class="col-xs-12">
-                    Free of service
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--   END PACKAGE DETAILS SECTION      -->
+    <div class="container">	
+        <ul  class="nav nav-pills">
+            <li class="active">
+                <a href="#apartments" data-toggle="tab">Apartments</a>
+            </li>
+            <li>
+                <a href="#hotels" data-toggle="tab">Hotels</a>
+            </li>
+            <li>
+                <a href="#spas" data-toggle="tab">Wellness & Spa</a>
+            </li>
+        </ul>
 
-<!--   START CUSTOM PACKAGE SECTION      -->
-<section id="custom-package-panel" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package">            
-    <div class="container text-center">
-        <div class="description">
-            <h2 class="text-uppercase"> custom package </h2>
-            <p>
-                If You would prefer something a little bit different than services included in our packages, You can always create You own custom package. Put together a package tailored to fit your needs, because - <i> The Best Luxury Services Are Customized, Not Standardized. </i>
-            </p>                
-        </div>
-    </div>
-    <img class="gold-decor" src='{{ url("/") }}/images/decor.svg'>
-    <div class="container text-center">
-        <div class="text-uppercase">
-            <div class="col-sm-4">
-                Choose Your services
+        <div class="tab-content clearfix">
+            <div class="tab-pane active container" id="apartments">               
+                @include('accommodation.apartments')
             </div>
-            <div class="col-sm-4">
-                Set a date for your visit
+            <div class="tab-pane" id="hotels">
+                <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
             </div>
-            <div class="col-sm-4">
-                Book!
+            <div class="tab-pane" id="spas">
+                <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
             </div>
         </div>
     </div>
+    
+    
+    
 </section>
-<!--   END CUSTOM PACKAGE SECTION      -->
+<!--   END ACCOMMODATION SECTION      -->
 
-<!--   START OTHER PACKAGES SECTION      -->
+<!--   START PACKAGES SECTION      -->
 <section id="other-packages-panel" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="other-packages">            
     <div class="container">
         <div class="description text-center">
-            <h2 class="text-uppercase">OTHER PACKAGES</h2>
+            <h2 class="text-uppercase">@lang('common.packages')</h2>
             <p>
                 These are our special packages that we have prepared for You. 
                 Each one has been carefully selected by 
@@ -176,10 +141,68 @@
         </div>
     </div>
 </section>
-<!--   END OTHER PACKAGES SECTION      -->
+<!--   END PACKAGES SECTION      -->
+
+<!--   START CUSTOM PACKAGE SECTION      -->
+<section id="custom-package-panel" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package">            
+    <div class="container text-center">
+        <div class="description">
+            <h2 class="text-uppercase"> custom @lang('common.package') </h2>
+            <p>
+                If You would prefer something a little bit different than services included in our packages, You can always create You own custom package. Put together a package tailored to fit your needs, because - <i> The Best Luxury Services Are Customized, Not Standardized. </i>
+            </p>                
+        </div>
+    </div>
+    <img class="gold-decor" src='{{ url("/") }}/images/decor.svg'>
+    <div class="container text-center">
+        <div class="text-uppercase">
+            <div class="col-sm-4">
+                Choose Your services
+            </div>
+            <div class="col-sm-4">
+                Set a date for your visit
+            </div>
+            <div class="col-sm-4">
+                Book!
+            </div>
+        </div>
+    </div>
+</section>
+<!--   END CUSTOM PACKAGE SECTION      -->
 @stop
 
 @section('scripts')
 <script src="{{ url("/") }}/js/reflection.js"></script>
+
+<script>
+    $(window).on('hashchange', function() {
+        if (window.location.hash) {
+            var page = window.location.hash.replace('#', '');
+            if (page == Number.NaN || page <= 0) {
+                return false;
+            } else {
+                getApartments(page);
+            }
+        }
+    });
+    $(document).ready(function() {
+        $(document).on('click', '.pagination a', function (e) {
+            getApartments($(this).attr('href').split('page=')[1]);
+            e.preventDefault();
+        });
+    });
+    function getApartments(page) {
+        $.ajax({
+            url : '?page=' + page,
+            dataType: 'json'
+        }).done(function (data) {
+            $('#apartments').html(data);
+            location.hash = page;
+        }).fail(function () {
+            alert('Apartments could not be loaded.');
+        });
+    }
+    
+    </script>
 @stop
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               

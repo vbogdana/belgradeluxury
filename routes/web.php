@@ -17,8 +17,10 @@ Route::group([
     ], function()
     {
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+        // Index page
         Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
         
+        // Template for a single package
         Route::get(LaravelLocalization::transRoute('routes.packages'), 
             [
               'as' => 'packages', 
@@ -27,33 +29,18 @@ Route::group([
                 }
             ]
         );
+        
+        // List accommodation services
+        Route::get(LaravelLocalization::transRoute('routes.accommodation'), 
+            [
+              'as' => 'accommodation', 
+              'uses' => 'App\AccommodationController@loadAccommodation'
+            ]
+        );    
     });
     
 //Route::get('home', 'App\HomeController@index')->name('home');
 
-
-/*
-Route::get('/under-construction', function () {
-    return view('under-construction');
-})->name('construction');
- */
-
-/*
-Route::get('/packages/under-construction', function () {
-    return view('under-construction');
-})->name('packages.construction');
- */
-
-/*
-Route::get('/packages/{package}', //'PackageController@goToPackage');
-        function($package) {
-            return view('/packages/'.$package);
-        })->name('package');         
-
-//apartmani
-Route::get('/apartments/Belux-Belgrade-apartment', 'ApartmentsController@getApartmanData');
-Route::get('/apartments/belgrade-apartments', 'ApartmentsController@getSviApartmaniData');
-*/
 
 /*
 |

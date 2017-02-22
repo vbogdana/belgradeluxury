@@ -23,9 +23,12 @@ All rights reserved
  * 10. BELGRADE
  *      10.1. EVENTS 
  *      10.2. PLACES 
- *  TESTEMONIALS SECTION
- *  PACKAGE PAGE
- *  FOOTER
+ * 11. TESTEMONIALS SECTION
+ *
+ *
+ * PACKAGE TEMPLATE PAGE
+ * ACCOMMODATION PAGE
+ * FOOTER
  *
  ******************************************************************************/
 
@@ -129,6 +132,11 @@ All rights reserved
   content: "\f278";
 }
 .fa-social:before {
+  content: "\f0c0";
+}
+
+/* Accommodation icons */
+.fa-people:before {
   content: "\f0c0";
 }
 
@@ -757,6 +765,9 @@ a.btn:active {
 }
 #testemonials-panel.background-properties {
     background-image: url('../images/backgrounds/business.jpg');
+}
+#accommodation-description-panel.background-properties {
+    background-image: url('../images/services/accommodation-big.jpg');
 }
 #package-description-panel.background-properties {
     background-color: #222222;
@@ -1512,27 +1523,27 @@ a.btn:active {
     }
 }
 
-.events-section .hover-effects figure {
+.hover-effects figure {
     overflow: hidden;
     cursor: pointer;
     height: 250px;
 }
-.events-section .hover-effects figure .img-holder {
+.hover-effects figure .img-holder {
     height: 150px;
 }
-.events-section .hover-effects figure .img-holder img {
+.hover-effects figure .img-holder img {
     max-height: 150px;
     width: auto;
 }
-.events-section .hover-effects figure .hi-icon {
+.hover-effects figure .hi-icon {
     width: 24px;
     height: 24px;
 }
-.events-section .hover-effects figure .hi-icon:before {
+.hover-effects figure .hi-icon:before {
     font-size: 12px;
     line-height: 24px;
 }
-.events-section .hover-effects figcaption {
+.hover-effects figcaption {
     background: black;
     height: 250px;
     width: 100%;
@@ -1547,7 +1558,7 @@ a.btn:active {
     -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
     transition: transform 0.4s, opacity 0.1s 0.3s;
 }
-.events-section .hover-effects figure:hover figcaption {
+.hover-effects figure:hover figcaption {
     opacity: 1;
     -webkit-transform: translateY(100px);
     -moz-transform: translateY(100px);
@@ -1557,7 +1568,7 @@ a.btn:active {
     -moz-transition: -moz-transform 0.4s, opacity 0.1s;
     transition: transform 0.4s, opacity 0.1s;
 }
-.events-section .hover-effects figcaption h2 {
+.hover-effects figcaption h2 {
     margin-top: 10px;
     padding: 0 0.5em 1em;
     font-size: 1em;    
@@ -1565,15 +1576,15 @@ a.btn:active {
     line-height: 1em;  
     text-transform: uppercase;
 }
-.events-section .hover-effects figcaption .header {   
+.hover-effects figcaption .header {   
     padding: 0.8em 0.2em;
     //height: 100px;
 }
-.events-section .hover-effects figcaption .header h2 {
+.hover-effects figcaption .header h2 {
     margin: 0 0 0.2em;
     padding: 0;
 }
-.events-section .hover-effects figcaption .header h3 {
+.hover-effects figcaption .header h3 {
     font-family: Quicksand, Raleway, sans-serif;
     font-size: 0.8em;
     font-weight: 300;    
@@ -1582,10 +1593,10 @@ a.btn:active {
     margin: 0;
     color: #CEAB4D;
 }
-.events-section .hover-effects figcaption .content {    
+.hover-effects figcaption .content {    
     padding: 0.8em 0;
 }
-.events-section .hover-effects figcaption .content a.telephone {
+.hover-effects figcaption .content a.telephone {
     bottom: 0.8em;
     font-family: Quicksand, Raleway, sans-serif;
     font-size: 0.8em;
@@ -1597,7 +1608,7 @@ a.btn:active {
     transform: translate(-50%);
     color: #E5E4E2;
 }
-.events-section .hover-effects figcaption .content a.telephone:hover {
+.hover-effects figcaption .content a.telephone:hover {
     color: #CEAB4D;
 }
 
@@ -1709,7 +1720,7 @@ a.btn:active {
 
 /*******************************************************************************
  * 
- *                  PACKAGES
+ *                  PACKAGE TEMPLATE PAGE
  *  
  ******************************************************************************/
 .package-details-section .container-fluid {
@@ -1730,6 +1741,19 @@ a.btn:active {
     }
 }
 
+/*******************************************************************************
+ * 
+ *                  ACCOMMODATION
+ *  
+ ******************************************************************************/
+/*
+.tab a.active {
+    background: #CEAB4D;
+}
+.tabcontent {
+    display: none;
+}
+*/
 
 /*******************************************************************************
  * 

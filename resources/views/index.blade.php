@@ -56,7 +56,7 @@
     <div class="text-center text-uppercase">
         @foreach($services as $service)
         <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
-            <a href="#">
+            <a href="{{ /*LaravelLocalization::localizeURL(route(strtolower($service['name_en'])))*/ "#" }}">
                 <h3>
                 {{ $service['name_'.$locale] }}
                 </h3>
@@ -169,13 +169,13 @@
             <p>
                 These are our special packages that we have prepared for You. 
                 Each one has been carefully selected by 
-                <a href="<?php echo url('/') ?>" class="">BELGRADE LUXURY</a> 
+                <a href="{{ route("/") }}" class="">BELGRADE LUXURY</a> 
                 team to meet all of Your needs.
-                Choose Your favorite, or <a class="" href="<?php echo url('/under-construction') ?>"> create one </a> according to Your taste.
+                Choose Your favorite, or <a class="" href="#"> create one </a> according to Your taste.
             </p>
         </div>    
     </div>
-    <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
+    <img class="gold-decor" src='{{ url("/") }}\images\decor.svg'>
         
     <div class="container">
         <div class="description text-center" id="package-info">
