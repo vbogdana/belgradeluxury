@@ -42,26 +42,26 @@ $(window).on("load", function() {
       adaptiveHeight: false,
       responsive: [
         {
-          breakpoint: 1440,
+          breakpoint: 1490,
           settings: {
             slidesToShow: 6
           }
         },
         {
-          breakpoint: 1240,
+          breakpoint: 1290,
           settings: {
             slidesToShow: 5
           }
         },
         {
-          breakpoint: 1040,
+          breakpoint: 1090,
           settings: {
             slidesToShow: 4,            
             slidesToScroll: 2
           }
         },
         {
-          breakpoint: 840,
+          breakpoint: 890,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3

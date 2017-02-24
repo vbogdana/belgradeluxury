@@ -58,10 +58,10 @@
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase">LUXURY VIP SERVICE</h2>
-            <div class='col-xs-6 col-sm-offset-4 col-sm-2'>
+            <div class='col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2'>
             <a id="contact" class="btn"> @lang('common.contact us') </a>
             </div>
-            <div class='col-xs-6 col-sm-2'>
+            <div class='col-xs-6 col-sm-3 col-md-2'>
             <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
             </div>
         </div>    

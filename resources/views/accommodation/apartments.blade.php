@@ -8,10 +8,11 @@
 
 <?php 
     $locale = LaravelLocalization::getCurrentLocale();
+    $i = 0;
 ?>
 
 @foreach($apartments as $apartment)
-<div class="col-sm-3 hover-effects hi-icon-effect">
+<div class="col-sm-12 col-md-6 hover-effects hi-icon-effect">
     <figure>
         <div class="img-holder">
             @if ($apartment->image != null)
@@ -20,13 +21,13 @@
             No image
             @endif
         </div>
-        <figcaption>                               
+        <figcaption class="text-center">                               
             <div class="header">
                     <a href="#"  class="hi-icon fa-map-marker"></a>
                     <p style='padding: 4px 0 0;'>
                         {{ $apartment['address'] }}
                     </p>
-                    <h2>{{ $apartment['title'.$locale] }}</h2>                         
+                    <h2>{{ $apartment['title_'.$locale] }}</h2>                         
             </div>
             <div class="content">
                 <a href="#" class="hi-icon fa-people"></a>                               
