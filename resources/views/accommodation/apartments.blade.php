@@ -23,21 +23,17 @@
         </div>
         <figcaption class="text-center">                               
             <div class="header">
-                    <a href="#"  class="hi-icon fa-map-marker"></a>
-                    <p style='padding: 4px 0 0;'>
-                        {{ $apartment['address'] }}
-                    </p>
-                    <h2>{{ $apartment['title_'.$locale] }}</h2>                         
+                <h2 class="text-uppercase">{{ $apartment['title_'.$locale] }}</h2>                                                               
             </div>
             <div class="content">
+                <a href="#"  class="hi-icon fa-map-marker"></a>
+                <p style='padding: 4px 0 0;'>
+                    {{ $apartment['address'] }}
+                </p> 
                 <a href="#" class="hi-icon fa-people"></a>                               
                 <h2></h2>
                 <a class="btn" style="margin: 0; padding: 5px 10px; font-size: 0.8em;">
-                    MORE
-                </a>
-                <a class="telephone" href="tel:+381644519017">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    (+381) 064 4519 017
+                    @lang('common.more')
                 </a>
             </div>
         </figcaption>

@@ -343,7 +343,7 @@
                                     <a href="#" class="hi-icon fa-map-marker"></a>                               
                                     <h2>{{ $event['place_'.$locale] }}</h2>
                                     <a class="btn" style="margin: 0; padding: 5px 10px; font-size: 0.8em;">
-                                        MORE
+                                        @lang('common.more')
                                     </a>
                                     <a class="telephone" href="tel:+381644519017">
                                         <i class="fa fa-phone" aria-hidden="true"></i>

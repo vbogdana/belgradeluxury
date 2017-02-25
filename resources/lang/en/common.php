@@ -44,5 +44,8 @@ return [
 	'corporate' => '[0,1]corporate',
 	'inquiry' => 'inquiry',
 	'details' => 'details',
+	'more' => 'more',
+	'apartment' => '{0}apartment|{1}apartments',
+	'hotel' => '{0}hotel|{1}hotels',
 	
 ];

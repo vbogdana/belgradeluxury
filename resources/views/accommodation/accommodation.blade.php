@@ -72,13 +72,13 @@
 <!--   START ACCOMMODATION SECTION      -->
 <section id="accommodation-panel" class="accommodation-section panel fullwidth space-y" data-section-name="accommodation">            
     
-    <div class="container">	
-        <ul  class="nav nav-pills">
+    <div class="text-center">	
+        <ul  class="nav nav-pills text-uppercase">
             <li class="active">
-                <a href="#apartments" data-toggle="tab">Apartments</a>
+                <a href="#apartments" data-toggle="tab">{{ trans_choice('common.apartment', 1) }}</a>
             </li>
             <li>
-                <a href="#hotels" data-toggle="tab">Hotels</a>
+                <a href="#hotels" data-toggle="tab">{{ trans_choice('common.hotel', 1) }}</a>
             </li>
             <li>
                 <a href="#spas" data-toggle="tab">Wellness & Spa</a>
@@ -90,15 +90,13 @@
                 @include('accommodation.apartments')
             </div>
             <div class="tab-pane" id="hotels">
-                <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+                
             </div>
             <div class="tab-pane" id="spas">
-                <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+                
             </div>
         </div>
-    </div>
-    
-    
+    </div>  
     
 </section>
 <!--   END ACCOMMODATION SECTION      -->

@@ -44,5 +44,7 @@ return [
 	'corporate' => '{0}korporativni|{1}korporativne',
 	'inquiry' => 'upit',
 	'details' => 'detalji',
-	
+	'more' => 'još',
+	'apartment' => '{0}apartman|{1}apartmani',
+	'hotel' => '{0}hotel|{1}hoteli',
 ];

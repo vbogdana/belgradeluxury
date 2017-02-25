@@ -51,25 +51,27 @@ $(document).ready(function() {
  *  
  ******************************************************************************/
 $(document).ready(function() {
-    $(function() {
-        $.scrollify({
-                section : ".panel",
-                interstitialSection : ".interstitial",
-                easing: "easeOutExpo",
-		scrollSpeed: 1500,
-		offset : 0,
-		scrollbars: true,
-		standardScrollElements: "",
-		setHeights: false,
-		overflowScroll: true,
-		updateHash: false,
-		touchScroll:false,
-		before:function() {},
-		after:function() {},
-		afterResize:function() {},
-		afterRender:function() {}
+    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+        $(function() {
+            $.scrollify({
+                    section : ".panel",
+                    interstitialSection : ".interstitial",
+                    easing: "easeOutExpo",
+                    scrollSpeed: 1500,
+                    offset : 0,
+                    scrollbars: true,
+                    standardScrollElements: "",
+                    setHeights: false,
+                    overflowScroll: true,
+                    updateHash: false,
+                    touchScroll:false,
+                    before:function() {},
+                    after:function() {},
+                    afterResize:function() {},
+                    afterRender:function() {}
+            });
         });
-    });
+    }
 });
 
 /*******************************************************************************
