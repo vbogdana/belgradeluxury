@@ -17,6 +17,8 @@ class Accommodation extends Model
      * @var array
      */
     protected $fillable = [
-        'title_en', 'title_ser', 'address', 'price', 'description_en', 'description_ser', 'geoLat', 'geoLong', 'link'
+        'title_en', 'title_ser', 'address', 'price', 
+        'description_en', 'description_ser', 'geoLat', 
+        'geoLong', 'link', 'spa', 'priority'
     ];
 }

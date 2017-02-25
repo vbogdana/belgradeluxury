@@ -162,6 +162,8 @@ class ApartmentsController extends Controller {
         $accommodation->geoLat = $data['geoLat'];
         $accommodation->geoLong = $data['geoLong'];
         $accommodation->link = $data['link'];
+        $accommodation->spa = $data['spa'];
+        $accommodation->priority = $data['priority'];
         
         $apartment->people = $data['people'];
         $apartment->tv = $data['tv'];

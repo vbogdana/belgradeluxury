@@ -87,13 +87,13 @@
 
         <div class="tab-content clearfix">
             <div class="tab-pane active text-center" id="apartments">               
-                @include('accommodation.apartments')
+                @include('accommodation.apartments', ['accommodation' => $apartments])
             </div>
             <div class="tab-pane" id="hotels">
                 
             </div>
             <div class="tab-pane" id="spas">
-                
+                @include('accommodation.apartments', ['accommodation' => $spas])
             </div>
         </div>
     </div>  
@@ -173,31 +173,40 @@
 <script src="{{ url("/") }}/js/reflection.js"></script>
 
 <script>
+    var type = 'apartments';
+    
     $(window).on('hashchange', function() {
         if (window.location.hash) {
             var page = window.location.hash.replace('#', '');
             if (page == Number.NaN || page <= 0) {
                 return false;
             } else {
-                getApartments(page);
+                getApartments(page, type);
             }
         }
     });
+
     $(document).ready(function() {
+        $(document).on('click', '.nav-pills li a', function (e) {
+            var hash = $(this).attr('href').replace('#', '');
+            type = hash;
+            e.preventDefault();
+        });
         $(document).on('click', '.pagination a', function (e) {
-            getApartments($(this).attr('href').split('page=')[1]);
+            getAccommodation($(this).attr('href').split('page=')[1], type);
             e.preventDefault();
         });
     });
-    function getApartments(page) {
+    
+    function getAccommodation(page, type) {
         $.ajax({
-            url : '?page=' + page,
+            url : '?page=' + page + '&type=' + type,
             dataType: 'json'
         }).done(function (data) {
-            $('#apartments').html(data);
+            $('#' + type).html(data);
             location.hash = page;
         }).fail(function () {
-            alert('Apartments could not be loaded.');
+            alert(type + ' could not be loaded.');
         });
     }
     

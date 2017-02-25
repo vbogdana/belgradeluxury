@@ -86,6 +86,38 @@
                             </div>
                         </div>
                         
+                        <div class="form-group">
+                            <label for="spa" class="col-md-4 control-label">Is it a SPA apartment?</label>
+
+                            <div class="col-md-6">
+                                @if (isset($accommodation) && $accommodation->spa)
+                                <input type="radio" name="spa" value="1" checked> Yes
+                                <input type="radio" name="spa" value="0"> No
+                                @else
+                                <input type="radio" name="spa" value="1" > Yes
+                                <input type="radio" name="spa" value="0" checked> No
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priority" class="col-md-4 control-label">Priority</label>
+
+                            <div class="col-md-6">
+                                <select name="priority">
+                                    <option value="low" 
+                                            <?php if (isset($accommodation) && $accommodation->priority == "low") echo "selected" ?>
+                                            >low</option>
+                                    <option value="middle" 
+                                            <?php if (isset($accommodation) && $accommodation->priority == "middle") echo "selected" ?>
+                                            >middle</option>
+                                    <option value="high" 
+                                            <?php if (isset($accommodation) && $accommodation->priority == "high") echo "selected" ?>
+                                            >high</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         <div class="form-group{{ $errors->has('description_en') ? ' has-error' : '' }}">
                             <label for="description_en" class="col-md-4 control-label">Description (eng)</label>
 

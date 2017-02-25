@@ -8,27 +8,29 @@
 
 <?php 
     $locale = LaravelLocalization::getCurrentLocale();
-    $i = 0;
 ?>
 
-@foreach($apartments as $apartment)
+<div class='col-xs-12'>
+{{ $accommodation->links() }}
+</div>
+@foreach($accommodation as $acc)
 <div class="col-sm-12 col-md-6 hover-effects hi-icon-effect">
     <figure>
         <div class="img-holder">
-            @if ($apartment->image != null)
-            <img src="{{ asset('storage/images/'.$apartment->image) }}" alt="">
+            @if ($acc->image != null)
+            <img src="{{ asset('storage/images/'.$acc->image) }}" alt="">
             @else
             No image
             @endif
         </div>
         <figcaption class="text-center">                               
             <div class="header">
-                <h2 class="text-uppercase">{{ $apartment['title_'.$locale] }}</h2>                                                               
+                <h2 class="text-uppercase">{{ $acc['title_'.$locale] }}</h2>                                                               
             </div>
             <div class="content">
                 <a href="#"  class="hi-icon fa-map-marker"></a>
                 <p style='padding: 4px 0 0;'>
-                    {{ $apartment['address'] }}
+                    {{ $acc['address'] }}
                 </p> 
                 <a href="#" class="hi-icon fa-people"></a>                               
                 <h2></h2>
@@ -40,4 +42,6 @@
     </figure>
 </div>
 @endforeach
-{{ $apartments->links() }}
+<div class='col-xs-12'>
+{{ $accommodation->links() }}
+</div>
