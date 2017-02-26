@@ -105,14 +105,14 @@
 
                             <div class="col-md-6">
                                 <select name="priority">
-                                    <option value="low" 
-                                            <?php if (isset($accommodation) && $accommodation->priority == "low") echo "selected" ?>
+                                    <option value="1" 
+                                            <?php if (isset($accommodation) && $accommodation->priority == 1) echo "selected" ?>
                                             >low</option>
-                                    <option value="middle" 
-                                            <?php if (isset($accommodation) && $accommodation->priority == "middle") echo "selected" ?>
-                                            >middle</option>
-                                    <option value="high" 
-                                            <?php if (isset($accommodation) && $accommodation->priority == "high") echo "selected" ?>
+                                    <option value="2" 
+                                            <?php if (isset($accommodation) && $accommodation->priority == 2) echo "selected" ?>
+                                            >medium</option>
+                                    <option value="3" 
+                                            <?php if (isset($accommodation) && $accommodation->priority == 3) echo "selected" ?>
                                             >high</option>
                                 </select>
                             </div>

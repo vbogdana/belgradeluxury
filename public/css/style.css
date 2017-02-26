@@ -135,9 +135,12 @@ All rights reserved
   content: "\f0c0";
 }
 
-/* Accommodation icons */
+/* Pictograms */
 .fa-people:before {
   content: "\f0c0";
+}
+.fa-car:before {
+  content: "\f1b9";
 }
 
 /* SOCIAL MEDIA ICONS */
@@ -855,6 +858,9 @@ a.btn:active {
 }
 #accommodation-description-panel.background-properties {
     background-image: url('../images/services/accommodation-big.jpg');
+}
+#vehicles-description-panel.background-properties {
+    background-image: url('../images/services/vehicles-big.jpg');
 }
 #package-description-panel.background-properties {
     background-color: #222222;
@@ -1797,41 +1803,38 @@ a.btn:active {
  *                  ACCOMMODATION
  *  
  ******************************************************************************/
-.accommodation-section .nav-pills > li {
-    width: 100%;
+.pagination-grid ul.nav-pills {
+    margin-bottom: 30px;
+}
+.pagination-grid .nav-pills > li {
     background: rgba(256,256,256,0.08);
     margin: 0;
+    padding: 0 !important;
     border-bottom: 1px solid black;   
     display: table;
-    height: 100px;
+    height: 50px;
 }
-.accommodation-section .nav-pills > li a {
+.pagination-grid .nav-pills > li a {
     color: #E5E4E2;
     border-radius: 0;    
     display: table-cell;
     vertical-align: middle;
     height: 100%;
 }
-.accommodation-section .nav-pills li.active > a, 
-.accommodation-section .nav-pills li.active a:hover, 
-.accommodation-section .nav-pills li.active a:focus {
+.pagination-grid .nav-pills li.active > a, 
+.pagination-grid .nav-pills li.active a:hover, 
+.pagination-grid .nav-pills li.active a:focus {
     background-color: #8A652A;
 }
-.accommodation-section .nav-pills > li a:active,
-.accommodation-section .nav-pills > li a:hover,
-.accommodation-section .nav-pills > li a:focus {
+.pagination-grid .nav-pills > li a:active,
+.pagination-grid .nav-pills > li a:hover,
+.pagination-grid .nav-pills > li a:focus {
     background-color: #8A652A;
 }
-.accommodation-section .hover-effects figure .img-holder {
+.pagination-grid .hover-effects figure .img-holder {
     height: 250px;
 }
-.accommodation-section .hover-effects figure .img-holder img {
-    /*
-    max-height: none;
-    max-width: none;
-    width: 120%;
-    height: auto;
-    */
+.pagination-grid .hover-effects figure .img-holder img {
     min-width: 100%;
     max-width: none;
     max-height: 650px;
@@ -1842,25 +1845,30 @@ a.btn:active {
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
-.accommodation-section .tab-content .tab-pane figure {
+/*.vehicles-section*/.pagination-grid .hover-effects figure .img-holder img {
+    max-height: none;
+    max-width: 100%;
+    height: auto;
+}
+.pagination-grid .tab-content .tab-pane figure {
     margin: 30px 0 30px;
 }
-.accommodation-section .hover-effects figcaption {
+.pagination-grid .hover-effects figcaption {
     background: rgba(0,0,0,0.8);
     //background: #8a652a;
 }
-.accommodation-section .hover-effects figcaption .header {
+.pagination-grid .hover-effects figcaption .header {
     height: 100px;
     display: table;
     width: 100%;
 }
-.accommodation-section .hover-effects figcaption .header h2 {
+.pagination-grid .hover-effects figcaption .header h2 {
     font-size: 1.2em;
     margin: 0.5em 0 1em;
     display: table-cell;
     vertical-align: middle;
 }
-.accommodation-section .hover-effects figcaption .header:before {
+.pagination-grid .hover-effects figcaption .header:before {
     content: "";
     position: absolute;
     width: 80%;
@@ -1874,74 +1882,76 @@ a.btn:active {
     -webkit-transition: all 0.8s ease-in-out 0s;
     transition: all 0.8s ease-in-out 0s;
 }
-.accommodation-section .hover-effects figure:hover figcaption .header:before {
+.pagination-grid .hover-effects figure:hover figcaption .header:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
-.accommodation-section .hover-effects figcaption .content {
+.pagination-grid .hover-effects figcaption .content {
     position: relative;
     top: 100px;
 }
-.accommodation-section .hover-effects figure:hover figcaption .content {
+.pagination-grid .hover-effects figure:hover figcaption .content {
     top: 0px;
     -webkit-transition: top 0.8s;
     -moz-transition: top 0.8s;
     transition: top 0.8s;
 }
 @media screen and (min-width: 451px) {
-    .accommodation-section .nav-pills > li {
-        width: 33.3%;
-        border-right: 1px solid black;
-        margin-bottom: 30px;
-    }
-    .accommodation-section .hover-effects figure {
+    .pagination-grid .hover-effects figure {
         height: 350px;
     }
-    .accommodation-section .hover-effects figure .img-holder {
+    .pagination-grid .hover-effects figure .img-holder {
         height: 350px;
     }
-    .accommodation-section .hover-effects figure .img-holder img {
+    /*
+    .pagination-grid .hover-effects figure .img-holder img {
         height: 450px;
     }
-    .accommodation-section .hover-effects figcaption {
+    */
+    .pagination-grid .hover-effects figcaption {
         height: 350px;
     }
-    .accommodation-section .hover-effects figcaption .header h2 {
+    .pagination-grid .hover-effects figcaption .header h2 {
         font-size: 1.5em;
     }
-    .accommodation-section .hover-effects figcaption .header {
+    .pagination-grid .hover-effects figcaption .header {
         -webkit-transition: margin-top 0.8s;
         -moz-transition: margin-top 0.8s;
         transition: margin-top 0.8s;
     }
-    .accommodation-section .hover-effects figcaption .header:before {
+    .pagination-grid .hover-effects figcaption .header:before {
         top: 100px;
     }
-    .accommodation-section .hover-effects figure:hover figcaption .header {
+    .pagination-grid .hover-effects figure:hover figcaption .header {
         margin-top: 20px;
         -webkit-transition: margin-top 0.8s;
         -moz-transition: margin-top 0.8s;
         transition: margin-top 0.8s;
     }
 }
+@media screen and (min-width: 768px) {
+    .pagination-grid .nav-pills > li {
+        border-right: 1px solid black;
+        height: 100px;
+    }
+}
 @media screen and (min-width: 1400px) {
-    .accommodation-section .hover-effects figure {
+    .pagination-grid .hover-effects figure {
         height: 450px;
     }
-    .accommodation-section .hover-effects figure .img-holder {
+    .pagination-grid .hover-effects figure .img-holder {
         height: 450px;
     }
-    .accommodation-section .hover-effects figure .img-holder img {
+    /*
+    .pagination-grid .hover-effects figure .img-holder img {
         height: 650px;
     }
-    .accommodation-section .hover-effects figcaption {
+    */
+    .pagination-grid .hover-effects figcaption {
         height: 450px;
     }
 }
-
-
-
 
 /*******************************************************************************
  * 

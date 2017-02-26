@@ -10,4 +10,8 @@
 return [
     'packages' => 'paketi',
 	'accommodation' => 'smestaj',
+	'apartment' => 'smestaj/apartman/{accID}',	
+	'hotel' => 'smestaj/hotel/{accID}',
+	'vehicles' => 'vozila',
+	'vehicle' => 'vozila/{vehID}',
 ];

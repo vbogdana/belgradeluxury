@@ -14,5 +14,6 @@ return [
 	'index' => 'VIP iskustvo - Noćni Život Beograda',
 	'package' => ':Package paket',
 	'accommodation' => 'Smeštaj',
+	'vehicles' => 'Vozila',
 	
 ];

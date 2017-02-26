@@ -12,8 +12,11 @@ return [
     */
 
 	'' => '',	
+	'error' => 'greška',
+	'notfound' => '{0}:Var nije pronađen!|{1}:Var nije pronađena!|{2}:Var nije pronađeno!',
 	'belgrade' => 'Beograd',
 	'serbia' => 'Srbija',
+	'slogan' => 'Simply Be Lux.',
 	'language' => 'jezik',
 	'toggle navigation' => 'Navigacija',
 	'home' => 'početna',
@@ -39,12 +42,12 @@ return [
 	'about us' => 'o nama',
 	'partners' => 'partneri',
 	'terms and conditions' => 'uslovi korišćenja',
-	'slogan' => 'Simply Be Lux.',
 	'contact us' => 'kontakt',
-	'corporate' => '{0}korporativni|{1}korporativne',
 	'inquiry' => 'upit',
 	'details' => 'detalji',
 	'more' => 'još',
+	'corporate' => '{0}korporativni|{1}korporativne',
 	'apartment' => '{0}apartman|{1}apartmani',
 	'hotel' => '{0}hotel|{1}hoteli',
+	'vehicle' => '{0}vozilo|{1}vozila',
 ];

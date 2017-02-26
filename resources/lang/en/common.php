@@ -11,9 +11,12 @@ return [
     |
     */
 
-	'' => '',	
+	'' => '',
+	'error' => 'error',
+	'notfound' => ':Var not found!',
 	'belgrade' => 'Belgrade',
 	'serbia' => 'Serbia',
+	'slogan' => 'Simply Be Lux.',
 	'language' => 'language',
 	'toggle navigation' => 'Toggle navigation',
 	'home' => 'home',
@@ -39,13 +42,13 @@ return [
 	'about us' => 'about us',
 	'partners' => 'partners',
 	'terms and conditions' => 'terms and conditions',
-	'slogan' => 'Simply Be Lux.',
 	'contact us' => 'contact us',
-	'corporate' => '[0,1]corporate',
 	'inquiry' => 'inquiry',
 	'details' => 'details',
 	'more' => 'more',
+	'corporate' => '[0,1]corporate',
 	'apartment' => '{0}apartment|{1}apartments',
 	'hotel' => '{0}hotel|{1}hotels',
+	'vehicle' => '{0}vehicle|{1}vehicles',
 	
 ];

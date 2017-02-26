@@ -9,7 +9,8 @@
 */
 //Auth::routes();
 //Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
-
+// Index page
+Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
@@ -17,8 +18,6 @@ Route::group([
     ], function()
     {
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-        // Index page
-        Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
         
         // Template for a single package
         Route::get(LaravelLocalization::transRoute('routes.packages'), 
@@ -36,7 +35,31 @@ Route::group([
               'as' => 'accommodation', 
               'uses' => 'App\AccommodationController@loadAccommodation'
             ]
-        );    
+        );
+        
+        // Single apartment page
+        Route::get(LaravelLocalization::transRoute('routes.apartment'), 
+            [
+              'as' => 'accommodation.apartment', 
+              'uses' => 'App\AccommodationController@loadApartment'
+            ]
+        );
+        
+        // List vehicles services
+        Route::get(LaravelLocalization::transRoute('routes.vehicles'), 
+            [
+              'as' => 'vehicles', 
+              'uses' => 'App\VehiclesController@loadVehicles'
+            ]
+        );
+        
+        // Single vehicle page
+        Route::get(LaravelLocalization::transRoute('routes.vehicle'), 
+            [
+              'as' => 'vehicles.vehicle', 
+              'uses' => 'App\VehiclesController@loadVehicle'
+            ]
+        );
     });
     
 //Route::get('home', 'App\HomeController@index')->name('home');
