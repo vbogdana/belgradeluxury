@@ -28,7 +28,7 @@
                 <h2 class="text-uppercase">{{ $acc['title_'.$locale] }}</h2>                                                               
             </div>
             <div class="content">
-                <a href="#"  class="hi-icon fa-map-marker"></a>
+                <a href="{{ $acc->geoLat.','.$acc->geoLong }}" target="blank" class="hi-icon fa-map-marker"></a>
                 <p style='padding: 4px 0 0;'>
                     {{ $acc['address'] }}
                 </p>

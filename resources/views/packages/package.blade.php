@@ -57,7 +57,7 @@
     <img class="gold-decor" src='<?php echo url("/")?>/images/decor.svg'>
     <div class="container">
         <div class="description text-center">
-            <h2 class="text-uppercase">LUXURY VIP SERVICE</h2>
+            <h2 class="text-uppercase">@lang('common.luxury vip services')</h2>
             <div class='col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-4 col-md-2'>
             <a id="contact" class="btn"> @lang('common.contact us') </a>
             </div>
@@ -115,24 +115,24 @@
 <section id="custom-package-panel" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package">            
     <div class="container text-center">
         <div class="description">
-            <h2 class="text-uppercase"> custom package </h2>
+            <h2 class="text-uppercase"> custom @lang('common.package') </h2>
             <p>
-                If You would prefer something a little bit different than services included in our packages, You can always create You own custom package. Put together a package tailored to fit your needs, because - <i> The Best Luxury Services Are Customized, Not Standardized. </i>
-            </p>                
+                {{ trans_choice('common.custom package', 0) }} <i> {{ trans_choice('common.custom package', 1) }} </i>
+            </p>               
         </div>
     </div>
     <img class="gold-decor" src='{{ url("/") }}/images/decor.svg'>
     <div class="container text-center">
         <div class="text-uppercase">
             <div class="col-sm-4">
-                Choose Your services
-            </div>
-            <div class="col-sm-4">
-                Set a date for your visit
-            </div>
-            <div class="col-sm-4">
-                Book!
-            </div>
+                    {{ trans_choice('common.custom step',1) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ trans_choice('common.custom step',2) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ trans_choice('common.custom step',3) }}!
+                </div>
         </div>
     </div>
 </section>
@@ -142,13 +142,13 @@
 <section id="other-packages-panel" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="other-packages">            
     <div class="container">
         <div class="description text-center">
-            <h2 class="text-uppercase">OTHER PACKAGES</h2>
+            <h2 class="text-uppercase">{{ trans_choice('common.other', 0) }} @lang('common.packages')</h2>
             <p>
-                These are our special packages that we have prepared for You. 
-                Each one has been carefully selected by 
-                <a href="{{ route("/") }}" class="">BELGRADE LUXURY</a> 
-                team to meet all of Your needs.
-                Choose Your favorite, or <a class="" href="#"> create one </a> according to Your taste.
+                {{ trans_choice('common.other packages', 0) }}
+                <a href="{{ route("/") }}" class="">{{ trans_choice('common.other packages', 1) }}</a> 
+                {{ trans_choice('common.other packages', 2) }}
+                <a class="" href="#">{{ trans_choice('common.other packages', 3) }}</a>
+                {{ trans_choice('common.other packages', 4) }}
             </p>
         </div>    
     </div>

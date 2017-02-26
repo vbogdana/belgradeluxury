@@ -30,7 +30,8 @@
                     <h2 class="quotes"> BELGRADE <span> LUXURY </span> </h2>
                     <h2 class="quotes"> @lang('index.quote3') </h2>
                     <h2 class="quotes"> @lang('index.quote4') </h2>
-                    <h1> @lang('index.quote5') </h1> 
+                    <h2 class="quotes"> @lang('index.quote5') </h2>
+                    <h1> @lang('index.quote6') </h1> 
                     <p> Simply Be Lux. </p>                    
                 </div>
             </div>
@@ -44,10 +45,10 @@
 <section id="services-panel" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services">            
     <div class="container">
         <div class="description text-center">
-            <h2 class="text-uppercase"> @lang('index.luxury vip services') </h2>
+            <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
             <a id="contact" class="btn"> @lang('common.contact us') </a>
             <p class="">
-                Belgrade Luxury is a unique concept, established in 2016 in Belgrade, designed exclusively for people with exquisite taste who want the quality of their visit to the capital of Serbia to be to the highest of standards. Our mission is to satisfy the most demanding wishes of our clients and do everything to make their stay in Belgrade according to their preferences.
+                @lang('index.short about us')
             </p>           
         </div>    
     </div>
@@ -76,10 +77,10 @@
                 <div class="description">
                     <h2 class="text-uppercase">@lang('common.about us')</h2>
                     <p>
-                        We offer the most exclusive villas and suites, VIP treatment in the city's best restaurants, bars and clubs, personal chauffeur service and luxury vehicles, personal security, boat tours of the city, accompanied by a personal guide and trips to the most interesting sites in Serbia. 
+                       {{ trans_choice('index.long about us', 0) }} 
                     </p>
                     <p>
-                        And for our most demanding clients we provide DIAMOND services such as - renting a penthouse, a luxury villa or a yacht and many more.
+                       {{ trans_choice('index.long about us', 1) }} 
                     </p>
                 </div>
             </div>
@@ -122,14 +123,8 @@
                 <div class="description">
                     <h2 class="text-uppercase">Business</h2>
                     <p>
-                        To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
-                    </p>
-                    <p>
-                        Belgrade Luxury packages have derived from our many years of experience encompassing all the necessary services for an unforgettable VIP experience of Belgrade. 
-                    </p>
-                    <p>
-                        Depending on your affinity and intent You can choose one of the packages, but also put together a package tailored to fit your needs, because - The Best Luxury Services Are Customized, Not Standardized.
-                    </p>
+                        @lang('index.business2')
+                    </p>                   
                 </div>
             </div>
         </div>
@@ -146,13 +141,13 @@
                 <div class="description">
                     <h2 class="text-uppercase">@lang('common.packages')</h2>
                     <p>
-                        To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
+                        {{ trans_choice('index.packages', 0) }}
                     </p>
                     <p>
-                        Belgrade Luxury packages have derived from our many years of experience encompassing all the necessary services for an unforgettable VIP experience of Belgrade. 
+                        {{ trans_choice('index.packages', 1) }}
                     </p>
                     <p>
-                        Depending on your affinity and intent You can choose one of the packages, but also put together a package tailored to fit your needs, because - The Best Luxury Services Are Customized, Not Standardized.
+                        {{ trans_choice('index.packages', 2) }}
                     </p>
                 </div>
             </div>
@@ -167,11 +162,11 @@
         <div class="description text-center">
             <h2 class="text-uppercase"> @lang('common.packages') </h2>
             <p>
-                These are our special packages that we have prepared for You. 
-                Each one has been carefully selected by 
-                <a href="{{ route("/") }}" class="">BELGRADE LUXURY</a> 
-                team to meet all of Your needs.
-                Choose Your favorite, or <a class="" href="#"> create one </a> according to Your taste.
+                {{ trans_choice('common.other packages', 0) }}
+                <a href="{{ route("/") }}" class="">{{ trans_choice('common.other packages', 1) }}</a> 
+                {{ trans_choice('common.other packages', 2) }}
+                <a class="" href="#">{{ trans_choice('common.other packages', 3) }}</a>
+                {{ trans_choice('common.other packages', 4) }}
             </p>
         </div>    
     </div>
@@ -275,7 +270,7 @@
             <div class="description">
                 <h2 class="text-uppercase"> custom @lang('common.package') </h2>
                 <p>
-                    If You would prefer something a little bit different than services included in our packages, You can always create You own custom package. Put together a package tailored to fit your needs, because - <i> The Best Luxury Services Are Customized, Not Standardized. </i>
+                    {{ trans_choice('common.custom package', 0) }} <i> {{ trans_choice('common.custom package', 1) }} </i>
                 </p>                
             </div>
         </div>
@@ -283,13 +278,13 @@
         <div class="container text-center">
             <div class="text-uppercase">
                 <div class="col-sm-4">
-                    {{ trans_choice('index.custom step',1) }}
+                    {{ trans_choice('common.custom step',1) }}
                 </div>
                 <div class="col-sm-4">
-                    {{ trans_choice('index.custom step',2) }}
+                    {{ trans_choice('common.custom step',2) }}
                 </div>
                 <div class="col-sm-4">
-                    {{ trans_choice('index.custom step',3) }}!
+                    {{ trans_choice('common.custom step',3) }}!
                 </div>
             </div>
         </div>

@@ -6,3 +6,4 @@ notes
 5. srediti linkove na home pageu
 6. srediti slike na home pageu
 7. dodati ukrase na home page
+8. zasto na accommodation strani hero-holder uzima 60% od cele sirine ekrana

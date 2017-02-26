@@ -54,7 +54,7 @@
             ga('create', 'UA-92215993-1', 'auto');
             ga('send', 'pageview');
 
-        </script>
+        </script>        
 
         <!-- page content -->
         <div class='animsition'>
@@ -109,7 +109,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ LaravelLocalization::getLocalizedURL(null, "/") }}">
+                            <a class="navbar-brand" href="{{ route("/") }}">
                                 <img src="{{ url("") }}/images/logo/logo-letters.svg" alt="Belgrade Luxury Logo"/>
                                 <span class='text-uppercase'>@lang('common.home')</span>
                             </a>
@@ -121,7 +121,7 @@
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.services') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
                                         <li><a href='{{ LaravelLocalization::localizeURL(route("accommodation")) }}'>@lang('common.accommodation')</a></li>
-                                        <li><a href='#'>@lang('common.vehicles')</a></li>
+                                        <li><a href='{{ LaravelLocalization::localizeURL(route("vehicles")) }}'>@lang('common.vehicles')</a></li>
                                         <li><a href='#'>wellness & spa</a></li>
                                         <li><a href='#'>host</a></li>
                                         <li><a href='#'>@lang('common.security')</a></li>
@@ -236,9 +236,7 @@
         <!-- Animsition -->
         
         
-        <!-- scripts -->
-        
-        
+        <!-- scripts -->     
         <script src="{{ url("") }}/js/jquery-3.1.1.min.js"></script>
         <script>
             url = "https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js";
@@ -250,21 +248,34 @@
         <script src="{{ url("") }}/js/main.js"></script>
         @yield('scripts')
         
+        <!-- Detecting the OS -->
         <script>
             var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             var android = /Android/.test(navigator.userAgent) && !window.MSStream;
             var url;
             if (android) {
-                url = "intent://send/+381644519017#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end";                                           
+                url = "intent://send/+381644519017#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
+                //maps_protocol = 'http://maps.google.com/maps';
             } else if (iOS) {
                 url = "whatsapp://send";
+                //maps_protocol = 'maps://';
             } else {
                 url = "tel:+381644519017";
+                //maps_protocol = 'http://www.google.com/maps/place/';
             }
             $('#whatsapp').attr({
                 href: url
             });
+            maps_protocol = 'http://maps.apple.com/?q=';
+             
+            $('.fa-map-marker').each(function() {
+                geoLoc = $(this).attr('href');
+                $(this).attr({
+                    href: maps_protocol + geoLoc
+                });
+            });
         </script>
+       
     </body>
     
 </html>

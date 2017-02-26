@@ -10,7 +10,7 @@
 //Auth::routes();
 //Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
 // Index page
-Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
+
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
@@ -18,6 +18,7 @@ Route::group([
     ], function()
     {
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+        Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
         
         // Template for a single package
         Route::get(LaravelLocalization::transRoute('routes.packages'), 
