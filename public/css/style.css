@@ -615,12 +615,13 @@ section {
     position: relative;
     height: 100%;
     width: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.3);
     color: #E5E4E2;
 }
 .block a:hover,
 .block a:focus {
-    background: rgba(0,0,0,0.25);
+    //background: #8A652A;
+    background: rgba(0,0,0,0.7);
 }
 .block a h3 {
     margin-top: auto;
@@ -839,22 +840,22 @@ a.btn:active {
     }
 }
 #intro-panel.background-properties {
-    background-image: url(../images/backgrounds/boxleft3.jpg);
+    background-image: url(../images/backgrounds/index.jpg);
 }
 #aboutus-panel-1.background-properties {
-    background-image: url('../images/backgrounds/boxright5.jpg');
+    background-image: url('../images/backgrounds/aboutus.jpg');
 }
 #aboutus-panel-2.background-properties {
-    background-image: url('../images/backgrounds/business2.jpg');
+    background-image: url('../images/backgrounds/business.jpg');
 }
 #aboutus-panel-3.background-properties {
-    background-image: url('../images/backgrounds/boxright5.jpg');
+    background-image: url('../images/backgrounds/packages.jpg');
 }
 #belgrade-panel .background-properties {
     background-image: url('../images/backgrounds/belgrade.jpg');
 }
 #testemonials-panel.background-properties {
-    background-image: url('../images/backgrounds/business.jpg');
+    background-image: url('../images/backgrounds/testemonials.jpg');
 }
 #accommodation-description-panel.background-properties {
     background-image: url('../images/services/accommodation-big.jpg');

@@ -15,16 +15,27 @@
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localize', 'localeSessionRedirect', 'localizationRedirect' ]
-    ], function()
-    {
+    ], function() {
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    
+        // Index page
         Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
+        
+        //Contact page
+        Route::get(LaravelLocalization::transRoute('routes.contact'), 
+            [
+                'as' => 'contact', 
+                'uses' => function() {
+                  return view('contact');
+                }
+            ]
+        );
         
         // Template for a single package
         Route::get(LaravelLocalization::transRoute('routes.packages'), 
             [
               'as' => 'packages', 
-              'uses' => function(){
+              'uses' => function() {
                   return view('/packages/package');
                 }
             ]

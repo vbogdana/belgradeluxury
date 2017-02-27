@@ -8,6 +8,7 @@
   - */
 
 return [
+	'contact' => 'contact',
     'packages' => 'packages',
 	'accommodation' => 'accommodation',
 	'apartment' => 'accommodation/apartment/{accID}',

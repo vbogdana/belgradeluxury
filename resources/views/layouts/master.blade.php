@@ -158,7 +158,7 @@
                                     </ul>
                                 </li>                              
                                 <li>
-                                    <a href='#'>@lang('common.contact')</a>
+                                    <a href='{{ LaravelLocalization::localizeURL(route("contact")) }}'>@lang('common.contact')</a>
                                 </li>
                             </ul>
                         </div>
@@ -188,7 +188,7 @@
                             <div class="col-md-6">
                                 <p>
                                     <a href="#">@lang('common.about us')</a>
-                                    <a href="#">@lang('common.contact')</a>
+                                    <a href="{{ LaravelLocalization::localizeURL(route("contact")) }}">@lang('common.contact')</a>
                                     <a href="#">@lang('common.partners')</a>                       
                                     <a href="#">@lang('common.terms and conditions')</a>
                                 </p>

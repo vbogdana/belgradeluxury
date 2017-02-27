@@ -46,7 +46,7 @@
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
-            <a id="contact" class="btn"> @lang('common.contact us') </a>
+            <a id="contact" class="btn" href='{{ LaravelLocalization::localizeURL(route("contact")) }}'> @lang('common.contact us') </a>
             <p class="">
                 @lang('index.short about us')
             </p>           
@@ -101,7 +101,7 @@
             </a>
         </div>
         <div class="col-sm-4">
-            <a class="btn" href="#">
+            <a class="btn" href="{{ LaravelLocalization::localizeURL(route("contact")) }}">
                 @lang('common.contact us')
             </a>
         </div>
