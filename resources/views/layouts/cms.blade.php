@@ -71,6 +71,16 @@
                                     Dashboard
                                 </a>
                             </li>
+                            <li class='dropdown'>
+                                <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Packages<span class="caret"></span>
+                                </a>
+                                <ul class='dropdown-menu'>
+                                    <li><a href='{{ route('cms.packages') }}'>All packages</a></li>
+                                    <li><a href='{{ route('cms.packages.reorder') }}'>Reorder packages</a></li>
+                                    <li><a href='{{ route('cms.packages.create') }}'>New package</a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href='{{ route('cms.testemonials') }}' role="button">
                                     Testemonials

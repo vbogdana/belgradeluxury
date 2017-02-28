@@ -117,9 +117,12 @@
     </div>
     <img class="gold-decor" src='{{ url("/") }}/images/decor.svg'>
     <div class="container-fluid">
-        <div class="">
-            <div class="col-sm-2">
-                <img class="img-responsive" src="{{ url("") }}/images/cards/businessS.svg">
+        <div class="col-sm-9">
+            
+        </div>
+        <div class="col-sm-offset-0 col-sm-3">
+            <div class="">
+                DRUGI
             </div>
             <div class="">
                 DRUGI

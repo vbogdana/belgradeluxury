@@ -97,7 +97,7 @@
         </div>
         <div class="col-sm-4">
             <a class="btn" href="#">
-                business @lang('common.package')
+                @lang('common.business') @lang('common.package')
             </a>
         </div>
         <div class="col-sm-4">
@@ -121,7 +121,7 @@
         <div class="hero-holder">
             <div class="hero-inner">
                 <div class="description">
-                    <h2 class="text-uppercase">Business</h2>
+                    <h2 class="text-uppercase">{{ trans_choice('common.corporate',1) }} @lang('common.services')</h2>
                     <p>
                         @lang('index.business2')
                     </p>                   
@@ -174,7 +174,7 @@
         
     <div class="container">
         <div class="description text-center" id="package-info">
-            <h4 id="package-title" class="text-uppercase"> <span>LUXURY</span> @lang('common.package') </h4>
+            <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('luxury', 0) }}</span> @lang('common.package') </h4>
             <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
             <a id="details" class="btn"> @lang('common.details') </a>
         </div>
@@ -189,6 +189,24 @@
                 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
             </div>
             <div id="carousel">
+                <?php $i = 0; ?>
+                @foreach($packages as $package)
+                <figure id="{{ $i }}" class="{{ $package['title_'.$locale] }}">
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <div class="front">
+                                <img id="{{ $package['title_'.$locale] }}" src="{{ asset('storage/images/'.$package->cardFront) }}" class="card" height="227px" width="363.5px" alt="{{ $package['title_'.$locale] }} {{ Lang::get('common.package') }}"/>
+                            </div>
+                            <div class="back">
+                                <img src="{{ asset('storage/images/'.$package->cardBack) }}" class="card" height="227px" width="363.5px" alt="{{ $package['title_'.$locale] }} {{ Lang::get('common.package') }}" />
+                            </div>
+                        </div>
+                    </div>                  
+                </figure>
+                <?php $i++; ?>
+                @endforeach
+                
+                <!--
                 <figure id="0" class="luxury">
                     <div class="flip-container">
                         <div class="flipper">
@@ -261,6 +279,7 @@
                         </div>
                     </div> 
                 </figure>
+                -->
             </div>
         </div>
     </div>

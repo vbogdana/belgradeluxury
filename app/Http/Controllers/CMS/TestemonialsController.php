@@ -56,7 +56,7 @@ class TestemonialsController extends Controller {
     }    
     
     /**
-     * Loads a view for editing the main image of an accommodation.
+     * Loads a view for editing the main image of an author of the testemonial.
      *
      * @param $testID primary key of Testemonial
      * @return view

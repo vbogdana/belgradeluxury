@@ -15,6 +15,7 @@ return [
 	'error' => 'error',
 	'notfound' => ':Var not found!',
 	'belgrade' => 'Belgrade',
+	'luxury' => 'luxury',
 	'serbia' => 'Serbia',
 	'slogan' => 'Simply Be Lux.',
 	'language' => 'language',

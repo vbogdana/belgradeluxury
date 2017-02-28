@@ -15,6 +15,7 @@ return [
 	'error' => 'greška',
 	'notfound' => '{0}:Var nije pronađen!|{1}:Var nije pronađena!|{2}:Var nije pronađeno!',
 	'belgrade' => 'Beograd',
+	'luxury' => '{0}luksuzni|{1}luksuzna|{2}luksuzno',
 	'serbia' => 'Srbija',
 	'slogan' => 'Simply Be Lux.',
 	'language' => 'jezik',

@@ -146,3 +146,19 @@ Route::post('cms/testemonials/{testID}/edit/main-photo', ['as' => 'cms.testemoni
 Route::delete('cms/testemonials/{testID}/delete/main-photo', ['as' => 'cms.testemonials.delete.main-image', 'uses' => 'CMS\TestemonialsController@deleteMainImage']);
 Route::delete('cms/testemonials/{testID}/delete', ['as' => 'cms.testemonials.delete', 'uses' => 'CMS\TestemonialsController@delete']);
 
+/***
+ * Packages
+ */
+Route::get('cms/packages', ['as' => 'cms.packages', 'uses' => 'CMS\PackagesController@loadPackages']);
+Route::get('cms/packages/create', ['as' => 'cms.packages.create', 'uses' => 'CMS\PackagesController@loadCreatePackage']);
+Route::post('cms/packages/create', ['as' => 'cms.packages.create', 'uses' => 'CMS\PackagesController@createPackage']);
+Route::get('cms/packages/{packID}/edit', ['as' => 'cms.packages.edit', 'uses' => 'CMS\PackagesController@loadEditPackage']);
+Route::post('cms/packages/{packID}/edit', ['as' => 'cms.packages.edit', 'uses' => 'CMS\PackagesController@editPackage']);
+Route::get('cms/packages/{packID}/edit/photo/{imgType}', ['as' => 'cms.packages.edit.image', 'uses' => 'CMS\PackagesController@loadEditImage']);
+Route::post('cms/packages/{packID}/edit/photo/{imgType}', ['as' => 'cms.packages.edit.image', 'uses' => 'CMS\PackagesController@editImage']);
+Route::delete('cms/packages/{packID}/delete/photo/{imgType}', ['as' => 'cms.packages.delete.image', 'uses' => 'CMS\PackagesController@deleteImage']);
+Route::delete('cms/packages/{packID}/delete', ['as' => 'cms.packages.delete', 'uses' => 'CMS\PackagesController@delete']);
+Route::post('cms/packages/{packID}/show', ['as' => 'cms.packages.show', 'uses' => 'CMS\PackagesController@show']);
+Route::post('cms/packages/{packID}/hide', ['as' => 'cms.packages.hide', 'uses' => 'CMS\PackagesController@hide']);
+Route::get('cms/packages/reorder', ['as' => 'cms.packages.reorder', 'uses' => 'CMS\PackagesController@loadReorderPackages']);
+Route::post('cms/packages/reorder', ['as' => 'cms.packages.reorder', 'uses' => 'CMS\PackagesController@reorderPackages']);
