@@ -52,14 +52,7 @@ $(document).ready(function() {
  *  
  ******************************************************************************/
 $(window).on("load", function() {
-    smoothScroll.init({
-        selector: '[data-scroll]', // Selector for links (must be a class, ID, data attribute, or element tag)
-        selectorHeader: null, // Selector for fixed headers (must be a valid CSS selector) [optional]
-        speed: 500, // Integer. How fast to complete the scroll in milliseconds
-        easing: 'easeInOutCubic', // Easing pattern to use
-        offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
-        callback: function ( anchor, toggle ) {} // Function to run after scrolling
-    });
+    
 });
 
 /*******************************************************************************
@@ -88,7 +81,41 @@ $(document).ready(function() {
                     afterRender:function() {}
             });
         });
+        /*
+        $('a[data-scroll]').each(function () {           
+            $(this).on('click', function(ev) {
+                ev.preventDefault();                
+                href = $(this).attr('href');
+                page = href.substr(0, href.indexOf('#'));
+                anchor = href.substr(href.indexOf('#'));
+                if (page == "" || window.location == page) {
+                    anchor += '-panel';
+                    $.scrollify.move(anchor);
+                } else {                   
+                    window.location = page + anchor;
+                }
+            });
+        });
+         */
+    } else {       
+             
     }
+});
+
+/*******************************************************************************
+ * 
+ *                  SMOOTH SCROLL INIT
+ *  
+ ******************************************************************************/
+$(window).on("load", function(ev) {
+    smoothScroll.init({
+        selector: '[data-scroll]', // Selector for links (must be a class, ID, data attribute, or element tag)
+        selectorHeader: null, // Selector for fixed headers (must be a valid CSS selector) [optional]
+        speed: 500, // Integer. How fast to complete the scroll in milliseconds
+        easing: 'easeInOutCubic', // Easing pattern to use
+        offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
+        callback: function ( anchor, toggle ) {} // Function to run after scrolling
+    });  
 });
 
 /*******************************************************************************

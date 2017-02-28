@@ -191,14 +191,7 @@ function showPackageInfo() {
     var $package = $('figure#0').attr("class");
             
     $('#package-title').delay(500).queue(function (next) {
-        switch ($package) {
-            case "luxury": $('#package-title').html("LUXURY PACKAGE"); break;
-            case "vip-luxury": $('#package-title').html("VIP LUXURY PACKAGE"); break;
-            case "bachelor-luxury": $('#package-title').html("BACHELOR LUXURY PACKAGE"); break;
-            case "bachelor-penthouse": $('#package-title').html("BACHELOR PENTHOUSE PARTY"); break;
-            case "new-year-luxury": $('#package-title').html("NEW YEAR LUXURY PACKAGE"); break;
-            case "new-year-vip-luxury": $('#package-title').html("NEW YEAR VIP LUXURY PACKAGE"); break;            
-        }
+        $('#package-title span').html($package);
         $('#package-title').css("opacity", "1");
         next();
     });     
@@ -288,7 +281,7 @@ $(window).on("load", function() {
         ev.preventDefault();
         var $package = $('figure#0').attr("class");
         //window.location.href = "{{ URL::to('packages/" + $package + "') }}";
-        window.location.href = "packages/" + $package + "-package";
+        //window.location.href = ;
     });
     
     // FOR TABLETS AND MOBILES

@@ -29,7 +29,7 @@
 
 @section('content')
 <!--   START PACKAGE DESCRIPTION PANEL SECTION      -->
-<section id="package-description-panel" class="package-description-section box panel widescreen background-properties" data-section-name="package-description">
+<section id="package-description" class="package-description-section box panel widescreen background-properties" data-section-name="package-description-panel">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
@@ -53,7 +53,7 @@
 <!--   END PACKAGE DESCRIPTION SECTION      -->
 
 <!--   START INQUIRY SECTION      -->
-<section id="inquiry-panel" class="package-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="package-inquiry">            
+<section id="inquiry" class="package-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="inquiry-panel">            
     <img class="gold-decor" src='<?php echo url("/")?>/images/decor.svg'>
     <div class="container">
         <div class="description text-center">
@@ -70,7 +70,7 @@
 <!--   END INQUIRY SECTION      -->
 
 <!--   START PACKAGE DETAILS PANEL SECTION      -->
-<section id="package-details-panel" class="package-details-section box panel fullwidth background-properties" data-section-name="package-details">
+<section id="package-details" class="package-details-section box panel fullwidth background-properties" data-section-name="package-details-panel">
     <!--<div class="overlay"></div>-->
     <div class="container-fluid">
         <div class="widescreen">
@@ -112,7 +112,7 @@
 <!--   END PACKAGE DETAILS SECTION      -->
 
 <!--   START CUSTOM PACKAGE SECTION      -->
-<section id="custom-package-panel" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package">            
+<section id="custom-package" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package-panel">            
     <div class="container text-center">
         <div class="description">
             <h2 class="text-uppercase"> custom @lang('common.package') </h2>
@@ -139,7 +139,7 @@
 <!--   END CUSTOM PACKAGE SECTION      -->
 
 <!--   START OTHER PACKAGES SECTION      -->
-<section id="other-packages-panel" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="other-packages">            
+<section id="other-packages" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="other-packages-panel">            
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase">{{ trans_choice('common.other', 0) }} @lang('common.packages')</h2>

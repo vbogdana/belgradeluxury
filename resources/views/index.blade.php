@@ -10,7 +10,7 @@
     $locale = LaravelLocalization::getCurrentLocale();
 ?>
 <!--    START VIDEO SECTION      -->
-<section id="intro-panel" class="video-section interstitial background-properties" data-section-name="intro">
+<section id="intro" class="video-section interstitial background-properties" data-section-name="intro-panel">
     <div id="content">
         <!--<iframe frameborder="0" scrolling="no" seamless="seamless" webkitallowfullscreen="webkitAllowFullScreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen" id="player" src='https://www.youtube.com/embed/L0UH4iz6o0Y?enablejsapi=1&rel=0&playsinline=1&autoplay=1&showinfo=0&autohide=1&controls=0&loop=1&modestbranding=1&playlist=L0UH4iz6o0Y'></iframe>      
         -->
@@ -42,7 +42,7 @@
 <!--    END VIDEO SECTION      -->
 
 <!--    START ABOUT US SERVICES SECTION      -->
-<section id="services-panel" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services">            
+<section id="services" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services-panel">            
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
@@ -69,7 +69,7 @@
 <!--    END ABOUT US SERVICES SECTION      -->
 
 <!--    ABOUT US PANEL 1 SECTION      -->
-<section id="aboutus-panel-1" class="aboutus-section box panel widescreen background-properties" data-section-name="about-us">
+<section id="about-us" class="aboutus-section box panel widescreen background-properties" data-section-name="about-us-panel">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
@@ -90,7 +90,7 @@
 <!--    END ABOUT US PANEL 1 SECTION      -->
 
 <!--    START BUSINESS SECTION      -->
-<section id="business-panel" class="business-section interstitial fullwidth space-y" data-section-name="business">
+<section id="business-services" class="business-section interstitial fullwidth space-y" data-section-name="business-services-panel">
     <div class="container text-center">
         <div class="description" style="padding: 0 10%; margin-bottom: 25px">
             <h2>@lang('index.business1')</h2>
@@ -115,7 +115,7 @@
 <!--    END BUSINESS SECTION        -->
 
 <!--    ABOUT US PANEL 2 SECTION      -->
-<section id="aboutus-panel-2" class="aboutus-section box panel widescreen background-properties" data-section-name="business">
+<section id="business" class="aboutus-section box panel widescreen background-properties" data-section-name="business-panel">
     <div class="overlay"></div>
     <div class="box-left">
         <div class="hero-holder">
@@ -133,7 +133,7 @@
 <!--    END ABOUT US PANEL 2 SECTION      -->
 
 <!--    ABOUT US PANEL 3 SECTION      -->
-<section id="aboutus-panel-3" class="aboutus-section box panel widescreen background-properties" data-section-name="packets">
+<section id="packages" class="aboutus-section box panel widescreen background-properties" data-section-name="packages-panel">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
@@ -157,7 +157,7 @@
 <!--    END ABOUT US PANEL 3 SECTION      -->
 
 <!--    START PACKAGES SECTION      -->
-<section id="packages-panel" class="packages-section widescreen panel space-y" data-section-name="select-package">
+<section id="select-package" class="packages-section widescreen panel space-y" data-section-name="select-package-panel">
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase"> @lang('common.packages') </h2>
@@ -174,7 +174,7 @@
         
     <div class="container">
         <div class="description text-center" id="package-info">
-            <h4 id="package-title" class="text-uppercase"> LUXURY @lang('common.package') </h4>
+            <h4 id="package-title" class="text-uppercase"> <span>LUXURY</span> @lang('common.package') </h4>
             <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
             <a id="details" class="btn"> @lang('common.details') </a>
         </div>
@@ -193,70 +193,70 @@
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front">
-                                <img id="luxury" src="<?php echo url("") ?>/images/cards/123-1.png" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
+                                <img id="luxury" src="<?php echo url("") ?>/images/cards/luxury.svg" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/2222.png" class="card" height="227px" width="363.5px" alt="Luxury Package" />
+                                <img src="<?php echo url("") ?>/images/cards/luxury.svg" class="card" height="227px" width="363.5px" alt="Luxury Package" />
                             </div>
                         </div>
                     </div>                  
                 </figure>
-                <figure id="1" class="vip-luxury">
+                <figure id="1" class="diamond">
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front floating floating1">
-                                <img id="vip-luxury" src="<?php echo url("") ?>/images/cards/front-2.svg" class="card" height="227px" width="363.5px" alt="VIP Luxury Package"/>
+                                <img id="diamond" src="<?php echo url("") ?>/images/cards/diamond.svg" class="card" height="227px" width="363.5px" alt="Diamond Package"/>
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/front-2.svg" class="card" height="227px" width="363.5px" alt="VIP Luxury Package"/>
+                                <img src="<?php echo url("") ?>/images/cards/diamond.svg" class="card" height="227px" width="363.5px" alt="Diamond Package"/>
                             </div>
                         </div>
                     </div> 
                 </figure>
-                <figure id="2" class="bachelor-luxury">
+                <figure id="2" class="bachelor">
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front floating floating2">
-                                <img id="bachelor-luxury" src="<?php echo url("") ?>/images/cards/front-3.svg" class="card" height="227px" width="363.5px" alt="NEWYEAR Luxury Package" />
+                                <img id="bachelor" src="<?php echo url("") ?>/images/cards/bachelor.svg" class="card" height="227px" width="363.5px" alt="Bachelor Package" />
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/front-3.svg" class="card" height="227px" width="363.5px"alt="NEWYEAR Luxury Package" />
+                                <img src="<?php echo url("") ?>/images/cards/bachelor.svg" class="card" height="227px" width="363.5px"alt="Bachelor Package" />
                             </div>
                         </div>
                     </div> 
                 </figure>
-                <figure id="3" class="bachelor-penthouse">
+                <figure id="3" class="business">
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front floating floating3">
-                                <img id="bachelor-penthouse" src="<?php echo url("") ?>/images/cards/front-4.svg" class="card" height="227px" width="363.5px" alt="Luxury Package" />
+                                <img id="business" src="<?php echo url("") ?>/images/cards/business.svg" class="card" height="227px" width="363.5px" alt="Business Package" />
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/front-4.svg" class="card" height="227px" width="363.5px"alt="Luxury Package" />
+                                <img src="<?php echo url("") ?>/images/cards/business.svg" class="card" height="227px" width="363.5px"alt="Business Package" />
                             </div>
                         </div>
                     </div> 
                 </figure>
-                <figure id="4" class="new-year-vip-luxury">
+                <figure id="4" class="spa">
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front floating floating4">
-                                <img id="new-year-vip-luxury" src="<?php echo url("") ?>/images/cards/front-5.svg" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
+                                <img id="spa" src="<?php echo url("") ?>/images/cards/spa.svg" class="card" height="227px" width="363.5px" alt="Spa Package"/>
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/front-5.svg" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
+                                <img src="<?php echo url("") ?>/images/cards/spa.svg" class="card" height="227px" width="363.5px" alt="Spa Package"/>
                             </div>
                         </div>
                     </div> 
                 </figure>
-                <figure id="5" class="new-year-luxury">
+                <figure id="5" class="party">
                     <div class="flip-container">
                         <div class="flipper">
                             <div class="front floating floating5">
-                                <img id="new-year-luxury" src="<?php echo url("") ?>/images/cards/front-6.svg" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
+                                <img id="party" src="<?php echo url("") ?>/images/cards/party.svg" class="card" height="227px" width="363.5px" alt="Party Package"/>
                             </div>
                             <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/front-6.svg" class="card" height="227px" width="363.5px" alt="Luxury Package" />
+                                <img src="<?php echo url("") ?>/images/cards/party.svg" class="card" height="227px" width="363.5px" alt="Party Package" />
                             </div>
                         </div>
                     </div> 
@@ -293,7 +293,7 @@
 <!--    END PACKAGES SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
-<section id="belgrade-panel" class="belgrade-section panel fullwidth" data-section-name="belgrade">
+<section id="belgrade" class="belgrade-section panel fullwidth" data-section-name="belgrade-panel">
     <section class="widescreen background-properties">
         <div class="overlay"></div>
         <div class="hero-holder">
@@ -358,7 +358,7 @@
 <!--    END BELGRADE SECTION      -->
 
 <!--    START EVENTS SECTION      
-<section id="events-panel" class="events-section fullwidth interstitial space-y" data-section-name="events">
+<section id="events" class="events-section fullwidth interstitial space-y" data-section-name="events-panel">
 
     
     
@@ -367,7 +367,7 @@
 
 
 <!--    START BELGRADE PERSPECTIVE SECTION      
-<section id="belgrade-perspective-panel" class="belgrade-perspective-section widescreen panel text-uppercase text-center" data-section-name="belgrade-perspective">
+<section id="belgrade-perspective" class="belgrade-perspective-section widescreen panel text-uppercase text-center" data-section-name="belgrade-perspective-panel">
     <div class="block">
         <a href="#">
             <h3>
@@ -407,7 +407,7 @@
 <!--    END BELGRADE PERSPECTIVE SECTION      -->
 
 <!--    START TESTEMONIALS SECTION      -->
-<section id="testemonials-panel" class="testemonials-section fullwidth interstitial space-y background-properties" data-section-name="testemonials">
+<section id="testemonials" class="testemonials-section fullwidth interstitial space-y background-properties" data-section-name="testemonials-panel">
     <div class="overlay"></div>
     <div class="container-fluid">
         <div class="carousel-holder text-center">

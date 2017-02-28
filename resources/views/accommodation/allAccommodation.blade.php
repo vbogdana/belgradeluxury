@@ -29,7 +29,7 @@
 
 @section('content')
 <!--   START ACCOMMODATION SERVICES DESCRIPTION PANEL SECTION      -->
-<section id="accommodation-description-panel" class="service-description-section box panel widescreen background-properties" data-section-name="accommodation-description">
+<section id="accommodation" class="service-description-section box panel widescreen background-properties" data-section-name="accommodation-panel">
     <div class="overlay"></div>
     <div class="box-right">
         <div class="hero-holder" style="float:right">
@@ -53,7 +53,7 @@
 <!--   END ACCOMMODATION SERVICES DESCRIPTION SECTION      -->
 
 <!--   START INQUIRY SECTION      -->
-<section id="inquiry-panel" class="service-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="service-inquiry">            
+<section id="inquiry" class="service-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="inquiry-panel">            
     <img class="gold-decor" src='<?php echo url("/")?>/images/decor.svg'>
     <div class="container">
         <div class="description text-center">
@@ -70,7 +70,7 @@
 <!--   END INQUIRY SECTION      -->
 
 <!--   START ACCOMMODATION SECTION      -->
-<section id="accommodation-panel" class="accommodation-section pagination-grid panel fullwidth space-y" data-section-name="accommodation">            
+<section id="all-accommodation" class="accommodation-section pagination-grid panel fullwidth space-y" data-section-name="all-accommodation-panel">            
     
     <div class="text-center">	
         <ul  class="nav nav-pills text-uppercase">
@@ -102,7 +102,7 @@
 <!--   END ACCOMMODATION SECTION      -->
 
 <!--   START PACKAGES SECTION      -->
-<section id="other-packages-panel" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="other-packages">            
+<section id="packages" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="packages-panel">            
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase">@lang('common.packages')</h2>
@@ -117,12 +117,9 @@
     </div>
     <img class="gold-decor" src='{{ url("/") }}/images/decor.svg'>
     <div class="container-fluid">
-        <div class="col-sm-9">
-            
-        </div>
-        <div class="col-sm-offset-0 col-sm-3">
-            <div class="">
-                DRUGI
+        <div class="">
+            <div class="col-sm-2">
+                <img class="img-responsive" src="{{ url("") }}/images/cards/businessS.svg">
             </div>
             <div class="">
                 DRUGI
@@ -142,7 +139,7 @@
 <!--   END PACKAGES SECTION      -->
 
 <!--   START CUSTOM PACKAGE SECTION      -->
-<section id="custom-package-panel" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package">            
+<section id="custom-package" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package-panel">            
     <div class="container text-center">
         <div class="description">
             <h2 class="text-uppercase"> custom @lang('common.package') </h2>

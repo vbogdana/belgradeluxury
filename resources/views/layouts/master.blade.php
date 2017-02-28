@@ -169,7 +169,7 @@
             
             @yield('content')
             
-            <section id="footer" class="footer-section interstitial fullwidth space-y" data-section-name="contact-information">
+            <section id="quick-links" class="footer-section interstitial fullwidth space-y" data-section-name="quick-links-panel">
                 <div class="container">
                     <div class="col-xs-12">
                         <h4 class="text-uppercase">Belgrade Luxury</h4>
@@ -178,19 +178,19 @@
                         <div class="row">
                             <div class="col-md-6">                       
                                 <p>
-                                    <a data-scroll href="{{ route("/") }}#services-panel">@lang('common.services')</a>
-                                    <a data-scroll href="{{ route("/") }}#aboutus-panel-3">@lang('common.packages')</a>
-                                    <a data-scroll href="{{ route("/") }}#upcoming-events">@lang('common.upcoming') @lang('common.events')</a>
-                                    <a href="#">Blog</a>
+                                    <a class="link" data-scroll href="{{ route("/") }}#services">@lang('common.services')</a>
+                                    <a class="link" data-scroll href="{{ route("/") }}#packages">@lang('common.packages')</a>
+                                    <a class="link" data-scroll href="{{ route("/") }}#upcoming-events">@lang('common.upcoming') @lang('common.events')</a>
+                                    <a class="link" href="#">Blog</a>
                                 </p>
                             </div>
 
                             <div class="col-md-6">
                                 <p>
-                                    <a data-scroll href="{{ route("/") }}#aboutus-panel-1">@lang('common.about us')</a>
-                                    <a href="{{ route("contact") }}">@lang('common.contact')</a>
-                                    <a href="#">@lang('common.partners')</a>                       
-                                    <a href="#">@lang('common.terms and conditions')</a>
+                                    <a class="link" data-scroll href="{{ route("/") }}#about-us">@lang('common.about us')</a>
+                                    <a class="link" href="{{ route("contact") }}">@lang('common.contact')</a>
+                                    <a class="link" href="#">@lang('common.partners')</a>                       
+                                    <a class="link" href="#">@lang('common.terms and conditions')</a>
                                 </p>
                             </div>                    
                         </div>
@@ -200,19 +200,19 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <p> 
-                                    <a href="#">
+                                    <a class="link" href="#">
                                         <i class="fa fa-globe" aria-hidden="true"></i>
                                         @lang('common.belgrade'), @lang('common.serbia')
                                     </a>
-                                    <a href="tel:+381644519017">
+                                    <a class="link" href="tel:+381644519017">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         (+381) 064 4519 017
                                     </a>
-                                    <a href="mailto:office@belgradeluxury.com">
+                                    <a class="link" href="mailto:office@belgradeluxury.com">
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
                                         office@belgradeluxury.com
                                     </a>
-                                    <a href="mailto:inquiry@belgradeluxury.com">
+                                    <a class="link" href="mailto:inquiry@belgradeluxury.com">
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
                                         inquiry@belgradeluxury.com
                                     </a>

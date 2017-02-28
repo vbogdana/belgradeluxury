@@ -51,6 +51,15 @@ All rights reserved
 		url('../fonts/aspergit-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
 		url('../fonts/aspergit-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
 }
+@font-face {
+  font-family: 'aspergit latin';
+  src: 	url('../fonts/aspergit-latin.eot'); /* IE9 Compat Modes */
+  src: 	url('../fonts/aspergit-latin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		url('../fonts/aspergit-latin.woff2') format('woff2'),
+		url('../fonts/aspergit-latin.woff') format('woff'),
+		url('../fonts/aspergit-latin.ttf')  format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/aspergit-latin.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
 
 @font-face {
   font-family: 'elegant light';
@@ -234,7 +243,7 @@ All rights reserved
  *  
  ******************************************************************************/
 body {
-    font: 14px/22px 'aspergit', Raleway, sans-serif;
+    font: 14px/22px 'aspergit latin', Raleway, sans-serif;
     font-weight: lighter;
     letter-spacing: 0.5px;
     line-height: 1.5em;
@@ -387,7 +396,7 @@ i {
 @media screen and (max-width: 450px) {
     .space-y-t,
     .space-y {
-        padding-top: 75px;
+        padding-top: 80px;
     }
     .space-y-b,
     .space-y {
@@ -419,6 +428,13 @@ section {
   .container {
     padding: 0 15px;
   }
+}
+.col {
+    float: left;
+    padding: 0 15px;
+    word-break: break-word;
+    word-wrap: break-word;
+    width: 100%;
 }
 .ribbon {
    height: auto !important;
@@ -683,6 +699,16 @@ section {
     width: 100%;
     overflow: hidden;
 }
+a.link {
+    font-family: Quicksand, Raleway, sans-serif;
+    color: #E5E4E2;
+    text-transform: uppercase;
+}
+a.link:hover,
+a.link:focus,
+a.link:active {
+    color: #CEAB4D;
+}
 a.btn {
     color: #E5E4E2;
     text-transform: uppercase;
@@ -839,37 +865,37 @@ a.btn:active {
         background-attachment: scroll;
     }
 }
-#intro-panel.background-properties {
+#intro.background-properties {
     background-image: url(../images/backgrounds/index.jpg);
 }
-#aboutus-panel-1.background-properties {
+#about-us.background-properties {
     background-image: url('../images/backgrounds/aboutus.jpg');
 }
-#aboutus-panel-2.background-properties {
+#business.background-properties {
     background-image: url('../images/backgrounds/business.jpg');
 }
-#aboutus-panel-3.background-properties {
+#packages.background-properties {
     background-image: url('../images/backgrounds/packages.jpg');
 }
-#belgrade-panel .background-properties {
+#belgrade .background-properties {
     background-image: url('../images/backgrounds/belgrade.jpg');
 }
-#testemonials-panel.background-properties {
+#testemonials.background-properties {
     background-image: url('../images/backgrounds/testemonials.jpg');
 }
-#contact-panel.background-properties {
+#get-in-touch.background-properties {
     background-image: url('../images/backgrounds/contact.jpg');
 }
-#accommodation-description-panel.background-properties {
+#accommodation.background-properties {
     background-image: url('../images/services/accommodation-big.jpg');
 }
-#vehicles-description-panel.background-properties {
+#vehicles.background-properties {
     background-image: url('../images/services/vehicles-big.jpg');
 }
-#package-description-panel.background-properties {
+#package-description.background-properties {
     background-color: #222222;
 }
-#package-details-panel.background-properties {
+#package-details.background-properties {
     background-color: #0a0a0a;
 }
 
@@ -1159,7 +1185,7 @@ a.btn:active {
     color: #CEAB4D;
 }
 .video-section p {
-    font-family: aspergit, Raleway, sans-serif;
+    font-family: 'aspergit latin', Raleway, sans-serif;
     letter-spacing: 0.4em;
     font-size: 1.1em;
     margin-top: 7px;
@@ -1784,33 +1810,54 @@ a.btn:active {
  *                  CONTACT PAGE
  *  
  ******************************************************************************/
-#contact-panel .hero-inner {
+#get-in-touch .hero-inner {
     vertical-align: bottom;
 }
-#contact-panel .description {
+#get-in-touch .description {
     background: rgba(0,0,0,0.45);
     padding: 20px 0;
 }
-#contact-panel a.btn {
+#get-in-touch a.btn {
     margin: 0;
 }
+.contact-section .col {
+    margin: 20px 0;
+}
+.contact-section .col h2 {
+    font-size: 1.4em;
+    padding: 0 0.7em;
+    //height: calc(1.5em + 30px);
+}
+.contact-section .col a.link {
+    font-size: 0.9em;
+}
 .contact-section .hi-icon {
-    height: 120px;
-    width: 120px;
+    height: 70px;
+    width: 70px;
 }
 .contact-section .hi-icon:before {
-    line-height: 120px;
-    font-size: 45px;
+    line-height: 70px;
+    font-size: 30px;
 }
 @media screen and (min-width: 768px) {
-    #contact-panel .hero-holder {
+    #get-in-touch .hero-holder {
         width: 80%;
         margin-right: auto;
         margin-left: auto;
-    }
-    
-    #contact-panel .description {
+    }    
+    #get-in-touch .description {
         margin-bottom: 20px;
+    }
+    #contact-information .col {
+        width: 33.3%;
+    }
+    .contact-section .hi-icon {
+        height: 120px;
+        width: 120px;
+    }
+    .contact-section .hi-icon:before {
+        line-height: 120px;
+        font-size: 45px;
     }
 }
 
@@ -2009,15 +2056,10 @@ a.btn:active {
 }
 .footer-section a {
     display: block;
-    text-transform: uppercase;
     margin-bottom: 10px;
-    color: #E5E4E2;
-}
-.footer-section a:hover {
-    color: #CEAB4D;
 }
 .footer-section .social a {
-    color: #CEAB4D;
+    //color: #CEAB4D;
     display: inline-block;
     width: 30px;
 }

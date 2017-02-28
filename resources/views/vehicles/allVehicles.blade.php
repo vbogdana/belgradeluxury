@@ -29,7 +29,7 @@
 
 @section('content')
 <!--   START VEHICLES SERVICES DESCRIPTION PANEL SECTION      -->
-<section id="vehicles-description-panel" class="service-description-section box panel widescreen background-properties" data-section-name="vehicles-description">
+<section id="vehicles" class="service-description-section box panel widescreen background-properties" data-section-name="vehicles-panel">
     <div class="overlay"></div>
     <div class="box-left">
         <div class="hero-holder">
@@ -53,7 +53,7 @@
 <!--   END VEHICLES SERVICES DESCRIPTION SECTION      -->
 
 <!--   START INQUIRY SECTION      -->
-<section id="inquiry-panel" class="service-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="service-inquiry">            
+<section id="inquiry" class="service-inquiry-section interstitial ribbon fullwidth space-y" data-section-name="inquiry-panel">            
     <img class="gold-decor" src='<?php echo url("/")?>/images/decor.svg'>
     <div class="container">
         <div class="description text-center">
@@ -70,7 +70,7 @@
 <!--   END INQUIRY SECTION      -->
 
 <!--   START VEHICLES SECTION      -->
-<section id="vehicles-panel" class="vehicles-section pagination-grid panel fullwidth space-y" data-section-name="vehicles">            
+<section id="all-vehicles" class="vehicles-section pagination-grid panel fullwidth space-y" data-section-name="all-vehicles-panel">            
     
     <div class="text-center">	
         <ul  class="nav nav-pills text-uppercase"> 
@@ -113,7 +113,7 @@
 <!--   END VEHICLES SECTION      -->
 
 <!--   START PACKAGES SECTION      -->
-<section id="other-packages-panel" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="other-packages">            
+<section id="packages" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="packages-panel">            
     <div class="container">
         <div class="description text-center">
             <h2 class="text-uppercase">@lang('common.packages')</h2>
@@ -153,7 +153,7 @@
 <!--   END PACKAGES SECTION      -->
 
 <!--   START CUSTOM PACKAGE SECTION      -->
-<section id="custom-package-panel" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package">            
+<section id="custom-package" class="custom-package-section interstitial ribbon fullwidth space-y" data-section-name="custom-package-panel">            
     <div class="container text-center">
         <div class="description">
             <h2 class="text-uppercase"> custom @lang('common.package') </h2>
