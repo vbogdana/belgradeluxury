@@ -25,7 +25,45 @@
 @stop
 
 @section('stylesheets')
-
+<link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">
 @stop
 
 @section('content')
+<section id="contact-panel" class="contact-section panel widescreen background-properties">
+    <div class="overlay"></div>
+    <div class="hero-holder">
+        <div class="hero-inner text-center hi-icon-effect">
+            <div class="description">
+                <h1 class="text-uppercase">@lang('contact.h1')</h1>
+                <p>@lang('contact.description')</p>
+                <a data-scroll href="#contact-us" class="btn">@lang('common.contact')</a>
+            </div>
+        </div>
+    </div>    
+</section>
+
+<section id="contact-us" class="contact-section panel widescreen background-properties space-y">
+    <div class="overlay"></div>
+    <div class="hero-holder">
+        <div class="hero-inner text-center hi-icon-effect">
+            <div class="col-sm-4">
+                <a class="hi-icon contact-client">
+                    <h2>{{ trans_choice('contact.type', 0) }}</h2>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a class="hi-icon contact-partner"></a>
+                <h2>{{ trans_choice('contact.type', 1) }}</h2>
+            </div>
+            <div class="col-sm-4">
+                <a class="hi-icon contact-career"></a>
+                <h2>{{ trans_choice('contact.type', 2) }}</h2>
+            </div>
+        </div>
+    </div>    
+</section>
+
+@stop
+
+@section('scripts')
+@stop

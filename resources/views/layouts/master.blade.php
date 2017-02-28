@@ -120,8 +120,8 @@
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.services') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
-                                        <li><a href='{{ LaravelLocalization::localizeURL(route("accommodation")) }}'>@lang('common.accommodation')</a></li>
-                                        <li><a href='{{ LaravelLocalization::localizeURL(route("vehicles")) }}'>@lang('common.vehicles')</a></li>
+                                        <li><a href='{{ route("accommodation") }}'>@lang('common.accommodation')</a></li>
+                                        <li><a href='{{ route("vehicles") }}'>@lang('common.vehicles')</a></li>
                                         <li><a href='#'>wellness & spa</a></li>
                                         <li><a href='#'>host</a></li>
                                         <li><a href='#'>@lang('common.security')</a></li>
@@ -158,7 +158,7 @@
                                     </ul>
                                 </li>                              
                                 <li>
-                                    <a href='{{ LaravelLocalization::localizeURL(route("contact")) }}'>@lang('common.contact')</a>
+                                    <a href='{{ route("contact") }}'>@lang('common.contact')</a>
                                 </li>
                             </ul>
                         </div>
@@ -178,17 +178,17 @@
                         <div class="row">
                             <div class="col-md-6">                       
                                 <p>
-                                    <a href="#">@lang('common.services')</a>
-                                    <a href="#">@lang('common.packages')</a>
-                                    <a href="#">@lang('common.upcoming') @lang('common.events')</a>
+                                    <a data-scroll href="{{ route("/") }}#services-panel">@lang('common.services')</a>
+                                    <a data-scroll href="{{ route("/") }}#aboutus-panel-3">@lang('common.packages')</a>
+                                    <a data-scroll href="{{ route("/") }}#upcoming-events">@lang('common.upcoming') @lang('common.events')</a>
                                     <a href="#">Blog</a>
                                 </p>
                             </div>
 
                             <div class="col-md-6">
                                 <p>
-                                    <a href="#">@lang('common.about us')</a>
-                                    <a href="{{ LaravelLocalization::localizeURL(route("contact")) }}">@lang('common.contact')</a>
+                                    <a data-scroll href="{{ route("/") }}#aboutus-panel-1">@lang('common.about us')</a>
+                                    <a href="{{ route("contact") }}">@lang('common.contact')</a>
                                     <a href="#">@lang('common.partners')</a>                       
                                     <a href="#">@lang('common.terms and conditions')</a>
                                 </p>
@@ -244,7 +244,8 @@
         </script>
         <script src="{{ url("") }}/js/bootstrap.js"></script>       
         <script src="{{ url("") }}/js/animsition.min.js"></script>
-        <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>
+        <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>        
+        <script src="{{ url("") }}/js/smooth-scroll.js"></script>
         <script src="{{ url("") }}/js/main.js"></script>
         @yield('scripts')
         

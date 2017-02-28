@@ -1,0 +1,32 @@
+	/*
+  	contact icon font: contact
+  	Creation date: 27/02/2017 23:38
+  	*/
+
+@font-face {
+  font-family: "contact";
+  src: url("../fonts/contact.eot");
+  src: url("../fonts/contact.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/contact.woff") format("woff"),
+       url("../fonts/contact.ttf") format("truetype"),
+       url("../fonts/contact.svg#contact") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "contact";
+    src: url("./contact.svg#contact") format("svg");
+  }
+}
+
+[class^="contact-"]:before, [class*=" contact-"]:before,
+[class^="contact-"]:after, [class*=" contact-"]:after {   
+	font-family: contact;
+}
+
+.contact-client:before { content: "\f100"; }
+.contact-career:before { content: "\f101"; }
+.contact-partner:before { content: "\f102"; }
+.contact-partner1:before { content: "\f103"; }
