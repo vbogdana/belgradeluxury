@@ -9,8 +9,9 @@
 */
 //Auth::routes();
 //Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
-// Index page
 
+// Contact us
+Route::post('contact', ['as' => 'contact', 'uses' => 'App\AppController@contact']);
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),

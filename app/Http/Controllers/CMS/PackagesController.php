@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class PackagesController extends Controller {
     
@@ -82,7 +83,7 @@ class PackagesController extends Controller {
         if ($package == null) {
             return view('cms.error', ['message' => 'Package not found!']);
         }
-        return view('cms.packages.edit.image', ['packID' => $packID, 'imgType' => $imgType, 'image' => $package[$imgType]]);
+        return view('cms.packages.edit.image', ['packID' => $packID, 'imgType' => $imgType, 'image' => $package[$imgType], 'package' => $package->title_en]);
     } 
     
     /**
@@ -246,17 +247,20 @@ class PackagesController extends Controller {
         $package->save();
 
         if (array_key_exists('symbol', $data)) {
-            $path = $data['symbol']->storeAs('packages/'.$package->packID, 'symbol.svg', 'images');
+            $ext = $data['symbol']->clientExtension();
+            $path = $data['symbol']->storeAs('packages/'.$package->packID, 'symbol.'.$ext, 'images');
             $package->symbol = $path;          
         }
         
         if (array_key_exists('cardFront', $data)) {
-            $path = $data['cardFront']->storeAs('packages/'.$package->packID, 'cardFront.svg', 'images');
+            $ext = $data['cardFront']->clientExtension();
+            $path = $data['cardFront']->storeAs('packages/'.$package->packID, 'cardFront.'.$ext, 'images');
             $package->cardFront = $path;
         }
         
         if (array_key_exists('cardBack', $data)) {
-            $path = $data['cardBack']->storeAs('packages/'.$package->packID, 'cardBack.svg', 'images');
+            $ext = $data['cardBack']->clientExtension();
+            $path = $data['cardBack']->storeAs('packages/'.$package->packID, 'cardBack.'.$ext, 'images');
             $package->cardBack = $path;
         }
         $package->save();
@@ -331,7 +335,8 @@ class PackagesController extends Controller {
         }
         
         if (array_key_exists('image', $data)) {
-            $path = $data['image']->storeAs('packages/'.$package->packID, $imgType.'.svg', 'images');
+            $ext = $data['image']->clientExtension();
+            $path = $data['image']->storeAs('packages/'.$package->packID, $imgType.'.'.$ext, 'images');
             $package[$imgType] = $path;
             $package->save();
         }

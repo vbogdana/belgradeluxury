@@ -19,7 +19,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="panel-info" style="margin-bottom: 20px">
-                        Here you can change {{ $imgType }} photo of a package.
+                        Here you can change {{ $imgType }} photo of a {{ $package }} package.
                     </div>
                     <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.packages.edit.image', [$packID, $imgType]) }}">
                         {{ csrf_field() }}

@@ -246,6 +246,8 @@ body {
     font: 14px/22px 'aspergit latin', Raleway, sans-serif;
     font-weight: lighter;
     letter-spacing: 0.5px;
+    word-break: break-word;
+    word-wrap: break-word;
     line-height: 1.5em;
     background: black;
     color: #E5E4E2; // Platinum
@@ -387,11 +389,11 @@ i {
 }
 .space-y-t,
 .space-y {
-    padding-top: 60px;
+    padding-top: 70px;
 }
 .space-y-b,
 .space-y {
-    padding-bottom: 8vh;
+    padding-bottom: 60px;
 }
 @media screen and (max-width: 450px) {
     .space-y-t,
@@ -400,7 +402,7 @@ i {
     }
     .space-y-b,
     .space-y {
-        padding-bottom: 6vh;
+        padding-bottom: 60px;
     }
 }
 section {
@@ -428,13 +430,6 @@ section {
   .container {
     padding: 0 15px;
   }
-}
-.col {
-    float: left;
-    padding: 0 15px;
-    word-break: break-word;
-    word-wrap: break-word;
-    width: 100%;
 }
 .ribbon {
    height: auto !important;
@@ -709,7 +704,7 @@ a.link:focus,
 a.link:active {
     color: #CEAB4D;
 }
-a.btn {
+a.btn, .btn {
     color: #E5E4E2;
     text-transform: uppercase;
     //border: 0.5px solid #E5E4E2;
@@ -720,17 +715,31 @@ a.btn {
     margin-bottom: 10px;
     padding: 10px 18px;
 }
-a.btn:hover,
-a.btn:focus,
-a.btn:active {
+a.btn:hover, .btn:hover,
+a.btn:focus, .btn:focus,
+a.btn:active, .btn:active {
     color: #E5E4E2;
     //background: rgba(189, 152, 51, 0.8);
     background: #8A652A;
 }
 @media screen and (max-width: 767px) {
-    a.btn {
+    a.btn, .btn {
         margin-top: 10px;
     }
+}
+
+.form-control {
+    color: #e5e4e2;
+    background-color: rgba(255, 255, 255, 0.09);
+    background-image: none;
+    border: 1px solid rgba(204, 204, 204, 0);
+    border-radius: 2px;
+}
+.form-control:focus {
+    border-color: #8a652a;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(138, 101, 42, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(138, 101, 42, 0.6);
 }
 .card img {
     width: 363.5px;
@@ -848,6 +857,7 @@ a.btn:active {
 }
 
 
+
 /*******************************************************************************
  * 
  *                 BACKGROUNDS
@@ -942,7 +952,7 @@ a.btn:active {
     margin-left: 15px;
     float: left;
 }
-.toolbar .col-sm-4 .col-xs-8 ul {
+.toolbar .col-sm-5 .col-xs-7 ul {
     float: right;
 }
 .navbar {
@@ -1839,6 +1849,34 @@ a.btn:active {
     line-height: 70px;
     font-size: 30px;
 }
+.google-map {
+    min-height: 35rem;
+}
+.google-map img {
+    max-width: inherit;
+}
+.googleMap .container-fluid {
+    padding: 0;
+    border-bottom-color: black;
+    border-bottom-width: 3px;
+}
+.contact-section .form-horizontal {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px 0 0px;
+    background: rgba(0,0,0,0.5);
+    font-family: Quicksand, Raleway, sans-serif;
+    font-weight: 400;
+}
+.contact-section .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+@media screen and (min-width: 451px) {
+    .contact-section .form-horizontal {
+        max-width: 500px;
+    }
+}
 @media screen and (min-width: 768px) {
     #get-in-touch .hero-holder {
         width: 80%;
@@ -1848,9 +1886,6 @@ a.btn:active {
     #get-in-touch .description {
         margin-bottom: 20px;
     }
-    #contact-information .col {
-        width: 33.3%;
-    }
     .contact-section .hi-icon {
         height: 120px;
         width: 120px;
@@ -1859,7 +1894,16 @@ a.btn:active {
         line-height: 120px;
         font-size: 45px;
     }
+    .contact-section .form-horizontal {
+        max-width: 750px;
+    }
 }
+@media screen and (min-width: 993px) {
+    .contact-section .form-horizontal {
+        max-width: 850px;
+    }
+}
+
 
 /*******************************************************************************
  * 

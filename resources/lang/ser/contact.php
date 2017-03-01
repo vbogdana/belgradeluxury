@@ -14,5 +14,6 @@ return [
 	'h1' => '',
 	'description' => '',
 	'type' => '',
+	'general information' => 'opšte informacije',
 
 ];

@@ -75,11 +75,11 @@
                                 </a>                                
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-2">
-                            <div class="col-xs-4 text-capitalize">
+                        <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-2">
+                            <div class="col-xs-5 text-capitalize">
                                 @lang('common.language'):
                             </div>
-                            <div class="col-xs-8">
+                            <div class="col-xs-7">
                                 <ul>
                                     @section('language-toolbar')
                                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
