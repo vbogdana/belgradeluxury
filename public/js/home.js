@@ -266,32 +266,14 @@ $(window).on("load", function() {
     });   
 });
 
-// rotate ring
-$(window).on("load", function() {
-    
-    checkMedia();
-    var $figures = $('#carousel figure');
-    
-    $('#inquiry').on('click', function(ev) {
-        ev.preventDefault();
-        window.location.href = "under-construction";
-    });
-    
-    $('#details').on('click', function(ev) {
-        ev.preventDefault();
-        var $package = $('figure#0').attr("class");
-        //window.location.href = "{{ URL::to('packages/" + $package + "') }}";
-        //window.location.href = ;
-    });
-    
-    // FOR TABLETS AND MOBILES
-    $('.next-btn').on('click', swipeleftHandler);   
-    $('.previous-btn').on('click', swiperightHandler);
-    $('.carousel-container').on('swipeleft', swipeleftHandler);   
-    $('.carousel-container').on('swiperight', swiperightHandler);
-    
-    function swiperightHandler( ev ) {
-        ev.preventDefault();
+function swiperightHandler($figures ) {
+        //ev.preventDefault();
+        // flip back the center one
+        var $flipper = $('figure#0').find(".flipper");
+        $flipper.css({
+            "-webkit-transform" : "rotateY(0deg)",
+            transform: "rotateY(0deg)"
+        });
         $.each($figures, function() {
             var $element = $(this);
             var $curr_id = parseInt($element.attr("id"));
@@ -314,8 +296,14 @@ $(window).on("load", function() {
         showPackageInfo();
     }
     
-    function swipeleftHandler( ev ){
-        ev.preventDefault();
+    function swipeleftHandler($figures ){
+        //ev.preventDefault();
+        // flip back the center one
+        var $flipper = $('figure#0').find(".flipper");
+        $flipper.css({
+            "-webkit-transform" : "rotateY(0deg)",
+            transform: "rotateY(0deg)"
+        });
         $.each($figures, function() {
             var $element = $(this);
             var $curr_id = parseInt($element.attr("id"));
@@ -339,7 +327,50 @@ $(window).on("load", function() {
         });
         showPackageInfo();
     }
+
+$(document).on('pageinit', function(ev) {
+    var $figures = $('#carousel figure');
+    // FOR TABLETS AND MOBILES
     
+    
+});
+
+// rotate ring
+$(window).on("load", function(ev) {
+    
+    checkMedia();
+    var $figures = $('#carousel figure');
+    
+    $('#inquiry').on('click', function(ev) {
+        ev.preventDefault();
+        window.location.href = "under-construction";
+    });
+    
+    $('#details').on('click', function(ev) {
+        ev.preventDefault();
+        var $package = $('figure#0').attr("class");
+        //window.location.href = "{{ URL::to('packages/" + $package + "') }}";
+        //window.location.href = ;
+    });
+    
+    // FOR TABLETS AND MOBILES
+    $('.next-btn').on('click', function(ev) {
+        ev.preventDefault();
+        swipeleftHandler($figures);
+    });   
+    $('.previous-btn').on('click', function(ev) {
+        ev.preventDefault();
+        swiperightHandler($figures);
+    });
+    $('.packages-container').on('swipeleft', function(ev) {
+        ev.preventDefault();
+        swipeleftHandler($figures);
+    });   
+    $('.packages-container').on('swiperight', function(ev) {
+        ev.preventDefault();
+        swiperightHandler($figures);
+    });
+   
     // FOR LAPTOPS AND DESKTOPS
     $('#carousel figure').on('click', function(ev) {
         ev.preventDefault();       
@@ -348,7 +379,7 @@ $(window).on("load", function() {
         
         
         if (id == 0) {
-            // kliknut sredisnji
+            // kliknut sredisnji - obrni ga nazad
             var $flipper = $(this).find(".flipper");
             $flipper.css({
                 "-webkit-transform" : "rotateY(180deg)",
@@ -359,18 +390,12 @@ $(window).on("load", function() {
                 
         if (!isMobile && !isTablet) {
             // flip back the center one
-            $.each($figures, function() {
-                var $element = $(this);
-                var $curr_id = parseInt($element.attr("id"));
-                if ($curr_id == 0) {
-                    var $flipper = $element.find(".flipper");
-                    $flipper.css({
-                        "-webkit-transform" : "rotateY(0deg)",
-                        transform: "rotateY(0deg)"
-                    })  
-                };
+            var $flipper = $('figure#0').find(".flipper");
+            $flipper.css({
+                "-webkit-transform" : "rotateY(0deg)",
+                transform: "rotateY(0deg)"
             });
-            
+                    
             // if need to rotate by 2 cards
             if (id == 2 || id == 4) {           
                 $.each($figures, function() {

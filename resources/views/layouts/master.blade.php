@@ -117,6 +117,9 @@
 
                         <div id='navbar' class='navbar-collapse collapse'>
                             <ul class='nav navbar-nav '>
+                                <li class="home">
+                                    <a href='{{ route("/") }}'>@lang('common.home')</a>
+                                </li>
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.services') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
@@ -237,16 +240,16 @@
         
         
         <!-- scripts -->     
-        <script src="{{ url("") }}/js/jquery-3.1.1.min.js"></script>
-        <script>
-            url = "https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js";
-            $.getScript(url);
-        </script>
+        <script src="{{ url("") }}/js/jquery-3.1.1.min.js"></script>        
         <script src="{{ url("") }}/js/bootstrap.js"></script>       
         <script src="{{ url("") }}/js/animsition.min.js"></script>
         <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>        
         <script src="{{ url("") }}/js/smooth-scroll.js"></script>
         <script src="{{ url("") }}/js/main.js"></script>
+        <script>
+            url = "https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js";
+            $.getScript(url);
+        </script>
         @yield('scripts')
         
         <!-- Detecting the OS -->

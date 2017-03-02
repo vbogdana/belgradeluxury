@@ -46,7 +46,7 @@
 
 <!--    START CONTACT INFO SECTION      -->
 <section id="contact-information" class="contact-section panel fullwidth background-properties space-y" data-section-name="contact-information-panel">
-    <div class="container hi-icon-effect text-center text-uppercase">
+    <div class="container hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
         <div class="row">
             <div class="col col-sm-4">
                 <a class="hi-icon contact-client"></a>
@@ -92,111 +92,139 @@
         </div>   
     </div>
     
-    <div class="container-fluid">
-        <div class="row">
-            <div class="">
-                <div id="map-canvas" class="google-map" data-lat="44.8159831" data-long="20.4579811" data-img="{{ url("") }}/images/map-pin.png" ></div>
-            </div>
-        </div>
-    </div>
 </section>
 <!--    END CONTACT INFO SECTION      -->
 
 <!--    START CONTACT US SECTION      -->
-<section id="contact-us" class="contact-section panel widescreen background-properties space-y" data-section-name="contact-us-panel" style="background-image: url(../images/backgrounds/contact1.jpg)">
+<section id="contact-us" class="contact-section panel fullwidth background-properties space-y" data-section-name="contact-us-panel" style="background-image: url(../images/backgrounds/contact1.jpg)">
     <div class="overlay"></div>
     <div class="hero-holder">
         <div class="hero-inner text-center hi-icon-effect">
+   
             <div>
                 {{ Form::open(['route' => 'contact', 'method' => 'post', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal']) }}
                 
-                <div class="row">
-                    <div class="form-group col-sm-6 {{ $errors->has('subject') ? ' has-error' : '' }}">
-                        <label for="subject" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">Nature of enquiry: </label>
-
-                        <div class="col-xs-5 col-sm-6">
-                            <select id="subject" class="form-control" name="subject" value="{{ old('subject') }}" required autofocus>
-                                <option value="client">Client support</option>
-                                <option value="business">Business inquiry</option>
-                                <option value="careers">Career opportunities</option>
-                            </select>
-                            @if ($errors->has('subject'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('subject') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="form-group col-sm-6 {{ $errors->has('country') ? ' has-error' : '' }}">
-                        <label for="country" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">Country: </label>
-
-                        <div class="col-xs-5 col-sm-6">
-                            <select id="country" class="form-control" name="country" value="{{ old('country') }}" required>
-                                <option value="Srbija">Србија</option>
-                                <option value="Crna Gora">Црна Гора</option>
-                                <option value="Hrvatska">Hrvatska</option>
-                                <option value="Makedonija">Македонија</option>
-                            </select>
-                            @if ($errors->has('country'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('country') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
+                <div class="container" style="font-family: Aspergit, Raleway, sans-serif">
+                    <div class="description text-center">
+                        <h2 class="text-uppercase"> @lang('contact.form')</h2>
+                        <p class="">
+                            @lang('contact.')
+                        </p>           
+                    </div>    
                 </div>
                 
-                <div class="row">
-                    <div class="form-group col-sm-6 {{ $errors->has('first_name') ? ' has-error' : '' }}">
-                        <label for="first_name" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">First Name: *</label>
+                <div class="container-fluid">
+                    <div class="row">                       
 
-                        <div class="col-xs-5 col-sm-6">
-                            <input id="first_name" type="text" maxlength="255" class="form-control" name="first_name" value="{{ old('first_name') }}" required>
+                        <div class="form-group col-sm-6 {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.name'): *</label>
 
-                            @if ($errors->has('first_name'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('first_name') }}</strong>
-                                </span>
-                            @endif
+                            <div class="col-xs-5 col-sm-6">
+                                <input id="name" type="text" maxlength="255" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group col-sm-6 {{ $errors->has('last_name') ? ' has-error' : '' }}">
-                        <label for="last_name" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">Last Name: *</label>
+                        <div class="form-group col-sm-6 {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.email'): *</label>
 
-                        <div class="col-xs-5 col-sm-6">
-                            <input id="last_name" type="text" maxlength="255" class="form-control" name="last_name" value="{{ old('last_name') }}" required>
+                            <div class="col-xs-5 col-sm-6">
+                                <input id="email" type="text" maxlength="255" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                            @if ($errors->has('last_name'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('last_name') }}</strong>
-                                </span>
-                            @endif
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="form-group col-sm-12{{ $errors->has('message') ? ' has-error' : '' }}">
-                        <label for="message" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-3 control-label">Message: </label>
+                        
+                        <div class="form-group col-sm-6 {{ $errors->has('subject') ? ' has-error' : '' }}">
+                            <label for="subject" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.subject'):</label>
 
-                        <div class="col-xs-5 col-sm-9">
-                            <textarea id="message" maxlength="800" 
-                                      rows="5" cols="70" class="form-control" 
-                                      name="message">{{ old('message') }}</textarea>
-
-                            @if ($errors->has('message'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('message') }}</strong>
-                                </span>
-                            @endif
+                            <div class="col-xs-5 col-sm-6">
+                                <select id="subject" class="form-control" name="subject" value="{{ old('subject') }}" required onchange="enableBusiness()">
+                                    <option value="client">Client support</option>
+                                    <option value="business">Business inquiry</option>
+                                    <option value="careers">Career opportunities</option>
+                                </select>
+                                @if ($errors->has('subject'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('subject') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                            {{ Form::submit('Send message', ['class' => 'btn']) }}
+                        <div class="form-group col-sm-6 {{ $errors->has('country') ? ' has-error' : '' }}">
+                            <label for="country" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.country'):</label>
+
+                            <div class="col-xs-5 col-sm-6">
+                                <select id="country" class="form-control" name="country" value="{{ old('country') }}" required>
+                                    <option value="Srbija">Србија</option>
+                                    <option value="Crna Gora">Црна Гора</option>
+                                    <option value="Hrvatska">Hrvatska</option>
+                                    <option value="Makedonija">Македонија</option>
+                                </select>
+                                @if ($errors->has('country'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('country') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-sm-6 {{ $errors->has('company') ? ' has-error' : '' }}">
+                            <label for="company" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label" disabled>@lang('contact.company name'):</label>
+
+                            <div class="col-xs-5 col-sm-6">
+                                <input id="company" type="text" maxlength="255" class="form-control" name="company" value="{{ old('company') }}" required disabled>
+
+                                @if ($errors->has('company'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('company') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6 {{ $errors->has('website') ? ' has-error' : '' }}">
+                            <label for="website" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label" disabled>@lang('contact.company website'):</label>
+
+                            <div class="col-xs-5 col-sm-6">
+                                <input id="website" type="text" maxlength="255" class="form-control" name="website" value="{{ old('website') }}" required disabled>
+
+                                @if ($errors->has('website'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('website') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+                            <label for="message" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-3 control-label">{{ trans_choice('contact.message', 0) }}:</label>
+
+                            <div class="col-xs-5 col-sm-9" style="padding-right: 30px">
+                                <textarea id="message" maxlength="800" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="message">{{ old('message') }}</textarea>
+
+                                @if ($errors->has('message'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::submit(Lang::get('contact.send').' '.trans_choice('contact.message', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
                         </div>
                     </div>
                 </div>
@@ -212,4 +240,21 @@
 
 @section('scripts')
 <script src="{{ url("") }}/js/map.js"></script>
+<script>   
+    function enableBusiness() {
+        val = $('#subject').val();
+        if (val === "business") {
+            $("label[for=company]").removeAttr('disabled');
+            $("#company").removeAttr('disabled');
+            $("label[for=website]").removeAttr('disabled');
+            $("#website").removeAttr('disabled');
+        } else {
+            $("label[for=company]").attr('disabled', '');
+            $("#company").attr('disabled', '');
+            $("label[for=website]").attr('disabled', '');
+            $("#website").attr('disabled', '');           
+        }
+    }
+
+</script>
 @stop

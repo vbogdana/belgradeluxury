@@ -201,7 +201,7 @@ class PackagesController extends Controller {
     public function editImage(Request $request, $packID, $imgType)
     {
         $this->validate($request, [
-                'image' => 'required|max:15000|mimes:jpeg,jpg,bmp,png,svg']
+                'image' => 'required|max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg']
                 );
         
         $package = Package::find($packID);
@@ -229,9 +229,9 @@ class PackagesController extends Controller {
             'price' => 'required|numeric',
             'description_en' => 'max:800',
             'description_ser' => 'max:800',
-            'symbol' => 'max:15000|mimes:jpeg,jpg,bmp,png,svg',
-            'cardFront' => 'max:15000|mimes:jpeg,jpg,bmp,png,svg',
-            'cardBack' => 'max:15000|mimes:jpeg,jpg,bmp,png,svg',
+            'symbol' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+            'cardFront' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+            'cardBack' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
         ]);
     }
 
