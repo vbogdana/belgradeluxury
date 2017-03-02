@@ -26,7 +26,8 @@
 	font-family: contact;
 }
 
-.contact-client:before { content: "\f100"; }
-.contact-career:before { content: "\f101"; }
-.contact-partner:before { content: "\f102"; }
-.contact-partner1:before { content: "\f103"; }
+.contact-viber:before { content: "\f100"; }
+.contact-client:before { content: "\f101"; }
+.contact-career:before { content: "\f102"; }
+.contact-partner:before { content: "\f103"; }
+.contact-partner1:before { content: "\f104"; }

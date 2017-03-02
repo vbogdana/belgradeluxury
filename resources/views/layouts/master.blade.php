@@ -39,7 +39,8 @@
         <!-- scripts -->
         <link href="{{ url("") }}/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/style.css" rel="stylesheet" type="text/css">
-        <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">       
+        <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">
+        <link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">       
         @yield('stylesheets')        
     </head>
     
@@ -227,7 +228,8 @@
                                     <a href="http://www.facebook.com/belgradeluxury" target="blank" class="hi-icon fa-facebook"></a>
                                     <a href="http://www.instagram.com/belgradeluxury" target="blank" class="hi-icon fa-instagram"></a>  
                                     <a href="#" class="hi-icon fa-youtube-play"></a>                                   
-                                    <a id="whatsapp" href="" class="hi-icon fa-whatsapp"></a>
+                                    <a href="" class="hi-icon fa-whatsapp whatsapp"></a>
+                                    <a href="" class="hi-icon contact-viber viber"></a>
                                 </div>
                             </div>
                         </div>
@@ -256,19 +258,21 @@
         <script>
             var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             var android = /Android/.test(navigator.userAgent) && !window.MSStream;
-            var url;
+            var url_wa, url_vib;
             if (android) {
-                url = "intent://send/+381644519017#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
-                //maps_protocol = 'http://maps.google.com/maps';
+                url_wa = "intent://send/+381644519017#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
+                url_vib = "intent://send/+381644519017#Intent;scheme=smsto;package=com.viber;action=android.intent.action.SENDTO;end"; 
             } else if (iOS) {
-                url = "whatsapp://send";
-                //maps_protocol = 'maps://';
+                url_wa = "whatsapp://send";
+                url_vib = "viber://send";
             } else {
-                url = "tel:+381644519017";
-                //maps_protocol = 'http://www.google.com/maps/place/';
+                url_wa = url_vib = "tel:+381644519017";
             }
-            $('#whatsapp').attr({
-                href: url
+            $('.whatsapp').attr({
+                href: url_wa
+            });
+            $('.viber').attr({
+                href: url_vib
             });
             maps_protocol = 'http://maps.apple.com/?q=';
              

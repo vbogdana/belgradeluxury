@@ -11,7 +11,7 @@
 //Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
 
 // Contact us
-Route::post('contact', ['as' => 'contact', 'uses' => 'App\AppController@contact']);
+
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
@@ -29,6 +29,12 @@ Route::group([
                 'uses' => function() {
                   return view('contact');
                 }
+            ]
+        );
+        Route::post(LaravelLocalization::transRoute('routes.contact'),
+            [
+                'as' => 'contact', 
+                'uses' => 'App\AppController@contact'
             ]
         );
         

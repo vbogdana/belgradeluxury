@@ -25,7 +25,6 @@
 @stop
 
 @section('stylesheets')
-<link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">
 @stop
 
 @section('content')
@@ -35,7 +34,7 @@
     <div class="hero-holder">
         <div class="hero-inner text-center hi-icon-effect">
             <div class="description">
-                <h1 class="text-uppercase">@lang('contact.h1')</h1>
+                <h1 class="text-uppercase" style="padding: 0 15px">@lang('contact.h1')</h1>
                 <p>@lang('contact.description')</p>
                 <a class="btn" data-scroll href="#contact-information">@lang('common.contact')</a>
             </div>
@@ -45,7 +44,7 @@
 <!--    END GET IN TOUCH SECTION      -->
 
 <!--    START CONTACT INFO SECTION      -->
-<section id="contact-information" class="contact-section panel fullwidth background-properties space-y" data-section-name="contact-information-panel">
+<section id="contact-information" class="contact-section panel fullwidth space-y" data-section-name="contact-information-panel">
     <div class="container hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
         <div class="row">
             <div class="col col-sm-4">
@@ -110,126 +109,101 @@
         <div class="hero-inner text-center hi-icon-effect">
    
             <div>
-                {{ Form::open(['route' => 'contact', 'method' => 'post', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal']) }}
+                {{ Form::open(['route' => 'contact', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
                 
                 <div class="container" style="font-family: Aspergit, Raleway, sans-serif">
                     <div class="description text-center">
                         <h2 class="text-uppercase"> @lang('contact.form')</h2>
-                        <p class="">
-                            @lang('contact.')
-                        </p>           
+                        <p id="status" style="font-size: 1.2em"></p>           
                     </div>    
                 </div>
                 
                 <div class="container-fluid">
+                    
                     <div class="row">                       
-
-                        <div class="form-group col-sm-6 {{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group col-sm-6">
                             <label for="name" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.name'): *</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <input id="name" type="text" maxlength="255" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" maxlength="255" class="form-control" name="name" required autofocus>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
 
-                        <div class="form-group col-sm-6 {{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group col-sm-6">
                             <label for="email" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.email'): *</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <input id="email" type="text" maxlength="255" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="text" maxlength="255" class="form-control" name="email" required>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                                <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
-                        
-                        <div class="form-group col-sm-6 {{ $errors->has('subject') ? ' has-error' : '' }}">
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label for="subject" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.subject'):</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <select id="subject" class="form-control" name="subject" value="{{ old('subject') }}" required onchange="enableBusiness()">
-                                    <option value="client">Client support</option>
-                                    <option value="business">Business inquiry</option>
-                                    <option value="careers">Career opportunities</option>
+                                <select id="subject" class="form-control" name="subject" onchange="enableBusiness()">
+                                    <option value="client">{{ trans_choice('contact.type', 0) }}</option>
+                                    <option value="business">{{ trans_choice('contact.type', 1) }}</option>
+                                    <option value="careers">{{ trans_choice('contact.type', 2) }}</option>
                                 </select>
-                                @if ($errors->has('subject'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('subject') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group col-sm-6 {{ $errors->has('country') ? ' has-error' : '' }}">
+                        <div class="form-group col-sm-6">
                             <label for="country" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.country'):</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <select id="country" class="form-control" name="country" value="{{ old('country') }}" required>
+                                <select id="country" class="form-control" name="country">
                                     <option value="Srbija">Србија</option>
                                     <option value="Crna Gora">Црна Гора</option>
                                     <option value="Hrvatska">Hrvatska</option>
                                     <option value="Makedonija">Македонија</option>
                                 </select>
-                                @if ($errors->has('country'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
-                        
-                        <div class="form-group col-sm-6 {{ $errors->has('company') ? ' has-error' : '' }}">
-                            <label for="company" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label" disabled>@lang('contact.company name'):</label>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="company" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label" disabled>@lang('contact.company name'): *</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <input id="company" type="text" maxlength="255" class="form-control" name="company" value="{{ old('company') }}" required disabled>
+                                <input id="company" type="text" maxlength="255" class="form-control" name="company" required disabled>
 
-                                @if ($errors->has('company'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('company') }}</strong>
-                                    </span>
-                                @endif
+                                <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
 
-                        <div class="form-group col-sm-6 {{ $errors->has('website') ? ' has-error' : '' }}">
+                        <div class="form-group col-sm-6">
                             <label for="website" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label" disabled>@lang('contact.company website'):</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <input id="website" type="text" maxlength="255" class="form-control" name="website" value="{{ old('website') }}" required disabled>
+                                <input id="website" type="text" maxlength="255" class="form-control" name="website" disabled>
 
-                                @if ($errors->has('website'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('website') }}</strong>
-                                    </span>
-                                @endif
+                                <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
+                    <div class="row">
+                        <div class="form-group">
                             <label for="message" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-3 control-label">{{ trans_choice('contact.message', 0) }}:</label>
 
                             <div class="col-xs-5 col-sm-9" style="padding-right: 30px">
                                 <textarea id="message" maxlength="800" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="message">{{ old('message') }}</textarea>
+                                          name="message"></textarea>
 
-                                @if ($errors->has('message'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('message') }}</strong>
-                                    </span>
-                                @endif
+                                <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
+                    </div>
 
                         <div class="form-group">
                             {{ Form::submit(Lang::get('contact.send').' '.trans_choice('contact.message', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
@@ -244,11 +218,66 @@
 </section>
 <!--    END CONTACT US SECTION      -->
 
+<!--    START SOCIAL SECTION      -->
+<section id="social" class="contact-section panel fullwidth space-y-t" data-section-name="social-panel">
+    <div class="container hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
+        <div class="description">
+            <h2>@lang('contact.social')</h2>
+            <p></p>
+        </div>
+        <div class="row">
+            <div class="col col-sm-4">
+                <a class="hi-icon fa-instagram" href="http://www.instagram.com/belgradeluxury"></a>
+                <h2>@lang('contact.instagram')</h2>               
+            </div>
+            <div class="col col-sm-4">
+                <a class="hi-icon fa-facebook" href="http://www.facebook.com/belgradeluxury"></a>
+                <h2>@lang('contact.facebook')</h2>                                
+            </div>
+            <div class="col col-sm-4">
+                <a class="hi-icon fa-youtube-play" href="#"></a>
+                <h2>@lang('contact.youtube')</h2>                
+            </div>
+        </div>
+
+        <div style="margin: 50px 0">
+            <h5>@lang('contact.phone')</h5>
+            <p>
+                <a class="link" href="tel:+381644519017">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    (+381) 064 4519 017
+                </a>
+                <br/>
+                <a class="link whatsapp" href="#">
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                    (+381) 064 4519 017
+                </a>
+                <br/>
+                <a class="link viber" href="#">
+                    <i class="fa contact-viber" aria-hidden="true"></i>
+                    (+381) 064 4519 017
+                </a>
+            </p>
+        </div>     
+    </div>
+    
+</section>
+<!--    END SOCIAL SECTION      -->
+
 @stop
 
 @section('scripts')
-<script src="{{ url("") }}/js/map.js"></script>
+
 <script>   
+    var validation = true;
+    
+    $(window).on('load', function() {
+        $('input[type=submit]').on('click', function(ev) {
+            ev.preventDefault();
+            sendMessage();
+        });
+    });
+    
     function enableBusiness() {
         val = $('#subject').val();
         if (val === "business") {
@@ -264,5 +293,74 @@
         }
     }
 
+    function checkError(msg, field, offset) {
+        i = msg.responseText.search("\"" + field + "\"");            
+        var error = msg.responseText.substring(i + offset);
+        var message = error.substring(0, error.indexOf("\""));
+        div = $('#' + field).parent().parent();
+        div.addClass('has-error');
+        block = div.find('.help-block');
+        block.css('display', 'block');
+        block.html("<strong>" + message + "</strong>");
+        validation = false;
+    }
+    
+    function sendMessage() {
+        var _token = $('input[name=_token]').val();
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var subject = $('#subject').val();
+        var country = $('#country').val();
+        var company = $('#company').val();
+        var website = $('#website').val();
+        var message = $('#message').val();
+        
+        
+        $('#status').css('background', 'transparent');
+        $('#status').html('');
+        $('.has-error').removeClass('has-error');
+        $('.help-block').html("");
+        $('.help-block').css('display', 'none');
+        
+        $.ajax({
+            //url: window.location,
+            type: 'POST',
+            data: {_token:_token, name:name, email:email, subject:subject, country:country, company:company, website:website, message:message}
+            
+        }).done(function(data) {          
+            $('#status').css('background', 'rgba(0,0,0,0.7)');        
+            $('#status').css('color', 'green');
+            $('#status').html(data);
+            
+            // RESET FORM
+            $('form').find("input[type=text], textarea").val("");
+            $('option').removeAttr('selected');
+            $('option[value=client]').attr('selected', '');
+            $('option[value=Srbija]').attr('selected', '');            
+            $("label[for=company]").attr('disabled', '');
+            $("#company").attr('disabled', '');
+            $("label[for=website]").attr('disabled', '');
+            $("#website").attr('disabled', '');
+        }).fail(function(msg) {
+            if (msg.responseText.search("\"name\"") !== -1)
+                checkError(msg, "name", 9); 
+            if (msg.responseText.search("\"email\"") !== -1)
+                checkError(msg, "email", 10); 
+            if (msg.responseText.search("\"company\"") !== -1)
+                checkError(msg, "company", 12);
+            if (msg.responseText.search("\"website\"") !== -1)
+                checkError(msg, "website", 12);
+            if (msg.responseText.search("\"message\"") !== -1)
+                checkError(msg, "message", 12);
+            
+            if (validation) {
+                $('#status').css('color', 'red');
+                $('#status').css('background', 'rgba(0,0,0,0.7)');
+                $('#status').html(msg.responseText);
+            }
+        });
+    }
+
 </script>
+<script src="{{ url("/") }}/js/map.js"></script>
 @stop

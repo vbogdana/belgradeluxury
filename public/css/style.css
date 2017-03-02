@@ -201,7 +201,7 @@ All rights reserved
 
 /* Effect */
 .hi-icon-effect .hi-icon {
-    background: rgba(256,256,256,0.08);
+    background: rgba(256,256,256,0.12);
     //border: 0.5px solid #8A652A;
     -webkit-transition: background 0.2s, color 0.2s;
     -moz-transition: background 0.2s, color 0.2s;
@@ -708,7 +708,7 @@ a.btn, .btn {
     color: #E5E4E2;
     text-transform: uppercase;
     //border: 0.5px solid #E5E4E2;
-    background: rgba(256,256,256,0.08);
+    background: rgba(256,256,256,0.12);
     border-radius: 0;
     font-family: Quicksand, Raleway, sans-serif;
     margin-top: 20px;
@@ -770,7 +770,7 @@ a.btn:active, .btn:active {
 }
 .pagination > li > a, 
 .pagination > li > span {
-    background: rgba(256,256,256,0.08);
+    background: rgba(256,256,256,0.12);
     color: #E5E4E2;
     border: 1px solid black;
 }
@@ -1972,7 +1972,7 @@ a.btn:active, .btn:active {
     margin-bottom: 30px;
 }
 .pagination-grid .nav-pills > li {
-    background: rgba(256,256,256,0.08);
+    background: rgba(256,256,256,0.12);
     margin: 0;
     padding: 0 !important;
     border-bottom: 1px solid black;   
