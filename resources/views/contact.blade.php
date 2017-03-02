@@ -89,7 +89,15 @@
                 <br/>
                 SMS, WhatsApp & Viber                                        
             </p>
-        </div>   
+        </div>  
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="">
+                    <div id="map-canvas" class="google-map" data-lat="44.8159831" data-long="20.4579811" data-img="{{ url("") }}/images/map-pin.png" ></div>
+                </div>
+            </div>
+        </div>    
     </div>
     
 </section>
