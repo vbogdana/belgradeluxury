@@ -55,7 +55,11 @@
             ga('create', 'UA-92215993-1', 'auto');
             ga('send', 'pageview');
 
-        </script>        
+        </script> 
+
+        <?php
+        $locale = LaravelLocalization::getCurrentLocale();
+        ?>
 
         <!-- page content -->
         <div class='animsition'>
@@ -124,32 +128,33 @@
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.services') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
-                                        <li><a href='{{ route("accommodation") }}'>@lang('common.accommodation')</a></li>
-                                        <li><a href='{{ route("vehicles") }}'>@lang('common.vehicles')</a></li>
-                                        <li><a href='#'>wellness & spa</a></li>
-                                        <li><a href='#'>host</a></li>
-                                        <li><a href='#'>@lang('common.security')</a></li>
-                                        <li><a href='#'>@lang('common.reservations')</a></li>
-                                        <li><a href='#'>@lang('common.events')</a></li>
-                                        <li><a href='#'>@lang('common.business')</a></li>
-                                        <li><a href='#'>@lang('common.personel')</a></li>
-                                        <li><a href='#'>@lang('common.nightlife')</a></li>
-                                        <li><a href='#'>@lang('common.sightseeing')</a></li>
-                                        <li><a href='#'>diamond</a></li>
+                                        @foreach ($services as $service)
+                                        <li>
+                                            <a href='{{ route(str_replace(" ", "-", strtolower($service->name_en))) }}'>
+                                                {{ $service['name_'.$locale] }}
+                                            </a>
+                                        </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.packages') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
-                                        <li><a href='#'>luxury</a></li>
-                                        <li><a href='#'>diamond</a></li>
-                                        <li><a href='#'>spa</a></li>
-                                        <li><a href='#'>bachelor</a></li>
-                                        <li><a href='#'>party</a></li>
-                                        <li><a href='#'>business</a></li>
-                                        <li><a href='#'>custom @lang('common.package')</a></li>
+                                        @foreach ($packages as $package)
+                                        <li>
+                                            <a href='#'>
+                                                {{ $package['title_'.$locale] }}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                        <li>
+                                            <a href='#'>
+                                                custom @lang('common.package')
+                                            </a>
+                                        </li>
                                     </ul>
                                 </li>
+                                <!--
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blog<span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
@@ -160,7 +165,8 @@
                                         <li><a href='#'>@lang('common.tourism')</a></li>
                                         <li><a href='#'>@lang('common.upcoming') @lang('common.events')</a></li>
                                     </ul>
-                                </li>                              
+                                </li> 
+                                -->
                                 <li>
                                     <a href='{{ route("contact") }}'>@lang('common.contact')</a>
                                 </li>
@@ -204,7 +210,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <p> 
-                                    <a class="link" href="#">
+                                    <a class="link" href="http://maps.apple.com/?q=44.8159831,20.4579811">
                                         <i class="fa fa-globe" aria-hidden="true"></i>
                                         @lang('common.belgrade'), @lang('common.serbia')
                                     </a>

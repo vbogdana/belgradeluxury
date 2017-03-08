@@ -11,7 +11,7 @@
 //Route::get('/storage/{filename}', 'StorageController@goToStorage')->name('storage');
 
 // Contact us
-
+use App\Http\Controllers\App\AppController;
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
@@ -27,7 +27,8 @@ Route::group([
             [
                 'as' => 'contact', 
                 'uses' => function() {
-                  return view('contact');
+                    AppController::loadServices($services, $packages);
+                    return view('contact', ['services' => $services, 'packages' => $packages]);
                 }
             ]
         );
@@ -43,7 +44,8 @@ Route::group([
             [
               'as' => 'packages', 
               'uses' => function() {
-                  return view('/packages/package');
+                    AppController::loadServices($services, $packages);
+                    return view('/packages/package', ['services' => $services, 'packages' => $packages]);
                 }
             ]
         );
@@ -79,6 +81,17 @@ Route::group([
               'uses' => 'App\VehiclesController@loadVehicle'
             ]
         );
+        
+        Route::get('/l')->name('wellness-&-spa');
+        Route::get('/ll')->name('host');
+        Route::get('/lll')->name('reservations');
+        Route::get('/llll')->name('security');
+        Route::get('/lllll')->name('events');
+        Route::get('/llllll')->name('nightlife');
+        Route::get('/lllllll')->name('business');
+        Route::get('/llllllll')->name('personel');
+        Route::get('/lllllllll')->name('sightseeing');
+        Route::get('/llllllllll')->name('diamond');
     });
     
 //Route::get('home', 'App\HomeController@index')->name('home');

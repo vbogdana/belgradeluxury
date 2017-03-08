@@ -29,9 +29,11 @@ class VehiclesController extends Controller {
             $type = $request->input('type');
             $type = str_replace("_", " ", $type);
             return Response::json(View::make('vehicles.vehicles', array('vehicles' => $vehicles[$type]))->render());                
+        } else {
+            AppController::loadServices($services, $packages);
         }
 
-        return view('vehicles.allVehicles', ['vehicles' => $vehicles, 'types' => $types]);
+        return view('vehicles.allVehicles', ['vehicles' => $vehicles, 'types' => $types, 'services' => $services, 'packages' => $packages]);
     }
     
      /**
@@ -45,7 +47,8 @@ class VehiclesController extends Controller {
             return view('errors.notfound', ['var' => 'vehicle']);
         }
         
-        return view('vehicles.vehicle', ['vehicle' => $vehicle]);
+        AppController::loadServices($services, $packages);
+        return view('vehicles.vehicle', ['vehicle' => $vehicle, 'services' => $services, 'packages' => $packages]);
     }
     
 }

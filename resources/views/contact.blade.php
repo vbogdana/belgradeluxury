@@ -48,7 +48,7 @@
     <div class="container hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
         <div class="row">
             <div class="col col-sm-4">
-                <a class="hi-icon contact-client"></a>
+                <a class="hi-icon contact-client" data-scroll href="#contact-us"></a>
                 <h2>{{ trans_choice('contact.type', 0) }}</h2>
                 <a class="link" href="mailto:inquiry@belgradeluxury.com">
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -56,7 +56,7 @@
                 </a>
             </div>
             <div class="col col-sm-4">
-                <a class="hi-icon contact-partner"></a>
+                <a class="hi-icon contact-partner" data-scroll href="#contact-us"></a>
                 <h2>{{ trans_choice('contact.type', 1) }}</h2>
                 <a class="link" href="mailto:office@belgradeluxury.com">
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -64,7 +64,7 @@
                 </a>                
             </div>
             <div class="col col-sm-4">
-                <a class="hi-icon contact-career"></a>
+                <a class="hi-icon contact-career" data-scroll href="#contact-us"></a>
                 <h2>{{ trans_choice('contact.type', 2) }}</h2>
                 <a class="link" href="mailto:careers@belgradeluxury.com">
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -76,7 +76,7 @@
         <div style="margin: 50px 0">
             <h5>@lang('contact.general information')</h5>
             <p>
-                <a class="link" href="#">
+                <a class="link" href="http://maps.apple.com/?q=44.8159831,20.4579811">
                     <i class="fa fa-globe" aria-hidden="true"></i>
                     @lang('common.belgrade'), @lang('common.serbia')
                 </a>
@@ -125,7 +125,7 @@
                             <label for="name" class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 control-label">@lang('contact.name'): *</label>
 
                             <div class="col-xs-5 col-sm-6">
-                                <input id="name" type="text" maxlength="255" class="form-control" name="name" required autofocus>
+                                <input id="name" type="text" maxlength="255" class="form-control" name="name" required>
 
                                 <span class="help-block" style="display: none"></span>
                             </div>

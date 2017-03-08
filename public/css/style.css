@@ -1962,6 +1962,26 @@ a.btn:active, .btn:active {
         vertical-align: middle;
     }
 }
+.other-packages-section a img,
+.other-packages-section a img,
+.other-packages-section a img {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition: transform 0.4s;
+    -webkit-transition: transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    -webkit-transition: -webkit-transform 0.4s;
+}
+.other-packages-section a:hover img,
+.other-packages-section a:active img,
+.other-packages-section a:focus img {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transition: transform 0.4s;
+    -webkit-transition: transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    -webkit-transition: -webkit-transform 0.4s;
+}
 
 /*******************************************************************************
  * 

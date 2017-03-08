@@ -10,9 +10,9 @@
 return [
 	'contact' => 'contact',
     'packages' => 'packages',
-	'accommodation' => 'accommodation',
-	'apartment' => 'accommodation/apartment/{accID}',
-	'hotel' => 'accommodation/hotel/{accID}',
-	'vehicles' => 'vehicles',
-	'vehicle' => 'vehicles/{vehID}',
+	'accommodation' => 'services/accommodation',
+	'apartment' => 'services/accommodation/apartment/{accID}',
+	'hotel' => 'services/accommodation/hotel/{accID}',
+	'vehicles' => 'services/vehicles',
+	'vehicle' => 'services/vehicles/{vehID}',
 ];

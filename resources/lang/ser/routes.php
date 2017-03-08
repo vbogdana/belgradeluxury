@@ -10,9 +10,9 @@
 return [
 	'contact' => 'kontakt',
     'packages' => 'paketi',
-	'accommodation' => 'smestaj',
-	'apartment' => 'smestaj/apartman/{accID}',	
-	'hotel' => 'smestaj/hotel/{accID}',
-	'vehicles' => 'vozila',
-	'vehicle' => 'vozila/{vehID}',
+	'accommodation' => 'usluge/smestaj',
+	'apartment' => 'usluge/smestaj/apartman/{accID}',	
+	'hotel' => 'usluge/smestaj/hotel/{accID}',
+	'vehicles' => 'usluge/vozila',
+	'vehicle' => 'usluge/vozila/{vehID}',
 ];

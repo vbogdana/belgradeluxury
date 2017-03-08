@@ -21,9 +21,8 @@ class AppController extends Controller {
      */
     public function loadIndex() {
         $events = Event::all();
-        $services = Service::all();
         $testemonials = Testemonial::all();
-        $packages = Package::where('visible', 1)->orderBy('position', 'asc')->get();
+        self::loadServices($services, $packages);
         
         return view('index', ["events" => $events, 'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);
     }
@@ -56,6 +55,11 @@ class AppController extends Controller {
         
         return Lang::get('contact.success');
         
+    }
+    
+    public static function loadServices(&$services, &$packages) {
+        $services = Service::all();
+        $packages = Package::where('visible', 1)->orderBy('position', 'asc')->get();
     }
   
 }

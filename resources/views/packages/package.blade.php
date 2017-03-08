@@ -154,25 +154,14 @@
     </div>
     <img class="gold-decor" src='{{ url("/") }}/images/decor.svg'>
     <div class="container-fluid">
-        <div class="col-sm-9">
-            
-        </div>
-        <div class="col-sm-offset-0 col-sm-3">
-            <div class="">
-                DRUGI
+        <div class="row">
+            @foreach ($packages as $package)
+            <div class="col-xs-6 col-sm-4 col-lg-2" style='margin: 20px 0 20px'>
+                <a href='#'>
+                    <img class='img-responsive' src='{{ asset('storage/images/'.$package->symbol) }}'>
+                </a>
             </div>
-            <div class="">
-                DRUGI
-            </div>
-            <div class="">
-                DRUGI
-            </div>
-            <div class="">
-                DRUGI
-            </div>
-            <div class="">
-                DRUGI
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

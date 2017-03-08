@@ -31,9 +31,11 @@ class AccommodationController extends Controller {
                 return Response::json(View::make('accommodation.accommodation', array('accommodation' => $hotels))->render());       
             if ($type == "spas")
                 return Response::json(View::make('accommodation.accommodation', array('accommodation' => $spas))->render());      
+        } else {
+            AppController::loadServices($services, $packages);
         }
         
-        return view('accommodation.allAccommodation', ['apartments' => $apartments, 'hotels' => $hotels, 'spas' => $spas]);
+        return view('accommodation.allAccommodation', ['apartments' => $apartments, 'hotels' => $hotels, 'spas' => $spas, 'services' => $services, 'packages' => $packages]);
     }
     
      /**
@@ -47,7 +49,8 @@ class AccommodationController extends Controller {
             return view('errors.notfound', ['var' => 'apartment']);
         }
         
-        return view('accommodation.apartment', ['apartment' => $apartment]);
+        AppController::loadServices($services, $packages);
+        return view('accommodation.apartment', ['apartment' => $apartment, 'services' => $services, 'packages' => $packages]);
     }
     
 }

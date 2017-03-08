@@ -57,7 +57,7 @@
     <div class="text-center text-uppercase">
         @foreach($services as $service)
         <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
-            <a href="{{ /*LaravelLocalization::localizeURL(route(strtolower($service['name_en'])))*/ "#" }}">
+            <a href="{{ route(str_replace(" ", "-", strtolower($service->name_en))) }}">
                 <h3>
                 {{ $service['name_'.$locale] }}
                 </h3>
@@ -174,7 +174,7 @@
         
     <div class="container">
         <div class="description text-center" id="package-info">
-            <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('luxury', 0) }}</span> @lang('common.package') </h4>
+            <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('common.luxury', 0) }}</span> @lang('common.package') </h4>
             <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
             <a id="details" class="btn"> @lang('common.details') </a>
         </div>
@@ -198,88 +198,13 @@
                                 <img id="{{ $package['title_'.$locale] }}" src="{{ asset('storage/images/'.$package->cardFront) }}" class="card" height="227px" width="363.5px" alt="{{ $package['title_'.$locale] }} {{ Lang::get('common.package') }}"/>
                             </div>
                             <div class="back">
-                                <img src="{{ asset('storage/images/'.$package->cardBack) }}" class="card" height="227px" width="363.5px" alt="{{ $package['title_'.$locale] }} {{ Lang::get('common.package') }}" />
+                                <img src="{{ asset('storage/images/'.$package->cardFront) }}" class="card" height="227px" width="363.5px" alt="{{ $package['title_'.$locale] }} {{ Lang::get('common.package') }}" />
                             </div>
                         </div>
                     </div>                  
                 </figure>
                 <?php $i++; ?>
                 @endforeach
-                
-                <!--
-                <figure id="0" class="luxury">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front">
-                                <img id="luxury" src="<?php echo url("") ?>/images/cards/luxury.svg" class="card" height="227px" width="363.5px" alt="Luxury Package"/>
-                            </div>
-                            <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/luxury.svg" class="card" height="227px" width="363.5px" alt="Luxury Package" />
-                            </div>
-                        </div>
-                    </div>                  
-                </figure>
-                <figure id="1" class="diamond">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front floating floating1">
-                                <img id="diamond" src="<?php echo url("") ?>/images/cards/diamond.svg" class="card" height="227px" width="363.5px" alt="Diamond Package"/>
-                            </div>
-                            <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/diamond.svg" class="card" height="227px" width="363.5px" alt="Diamond Package"/>
-                            </div>
-                        </div>
-                    </div> 
-                </figure>
-                <figure id="2" class="bachelor">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front floating floating2">
-                                <img id="bachelor" src="<?php echo url("") ?>/images/cards/bachelor.svg" class="card" height="227px" width="363.5px" alt="Bachelor Package" />
-                            </div>
-                            <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/bachelor.svg" class="card" height="227px" width="363.5px"alt="Bachelor Package" />
-                            </div>
-                        </div>
-                    </div> 
-                </figure>
-                <figure id="3" class="business">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front floating floating3">
-                                <img id="business" src="<?php echo url("") ?>/images/cards/business.svg" class="card" height="227px" width="363.5px" alt="Business Package" />
-                            </div>
-                            <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/business.svg" class="card" height="227px" width="363.5px"alt="Business Package" />
-                            </div>
-                        </div>
-                    </div> 
-                </figure>
-                <figure id="4" class="spa">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front floating floating4">
-                                <img id="spa" src="<?php echo url("") ?>/images/cards/spa.svg" class="card" height="227px" width="363.5px" alt="Spa Package"/>
-                            </div>
-                            <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/spa.svg" class="card" height="227px" width="363.5px" alt="Spa Package"/>
-                            </div>
-                        </div>
-                    </div> 
-                </figure>
-                <figure id="5" class="party">
-                    <div class="flip-container">
-                        <div class="flipper">
-                            <div class="front floating floating5">
-                                <img id="party" src="<?php echo url("") ?>/images/cards/party.svg" class="card" height="227px" width="363.5px" alt="Party Package"/>
-                            </div>
-                            <div class="back">
-                                <img src="<?php echo url("") ?>/images/cards/party.svg" class="card" height="227px" width="363.5px" alt="Party Package" />
-                            </div>
-                        </div>
-                    </div> 
-                </figure>
-                -->
             </div>
         </div>
     </div>
@@ -312,6 +237,7 @@
 <!--    END PACKAGES SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
+<!--
 <section id="belgrade" class="belgrade-section panel fullwidth" data-section-name="belgrade-panel">
     <section class="widescreen background-properties">
         <div class="overlay"></div>
@@ -319,8 +245,7 @@
             <div class="hero-inner">
                 
             </div>
-        </div>
-              
+        </div>              
     </section>
     
     <div id="upcoming-events" class="events-section space-y">
@@ -345,7 +270,7 @@
                                 <div class="header">
                                     <!--
                                         <h3>{{ $event['title_'.$locale] }}<br/>DRUGA LINIJA</h3>
-                                    -->
+                                    
                                         <a href="#"  class="hi-icon fa-{{ strtolower($event->category_en) }}"></a>
                                         <p style='padding: 4px 0 0;'>
                                             {{ $event['category_'.$locale] }}
@@ -374,6 +299,7 @@
         </div>
     </div>
 </section>
+-->
 <!--    END BELGRADE SECTION      -->
 
 <!--    START EVENTS SECTION      
