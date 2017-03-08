@@ -62,7 +62,7 @@
             <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
             </div>
             <div class='col-xs-6 col-sm-3 col-md-2'>
-            <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
+            <a id="inquiry" class="btn" href='{{ route("contact") }}#contact-us'> @lang('common.inquiry') </a>
             </div>
         </div>    
     </div>   
@@ -170,8 +170,6 @@
 @stop
 
 @section('scripts')
-<script src="{{ url("/") }}/js/reflection.js"></script>
-
 <script>
     var type = "<?php 
     if (sizeof($types) > 0) {

@@ -16,5 +16,6 @@ return [
 	'package' => ':Package Paket',
 	'accommodation' => 'Smeštaj',
 	'vehicles' => 'Vozila',
+	'host' => 'Domaćin ',
 	
 ];

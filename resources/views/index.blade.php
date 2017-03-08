@@ -175,7 +175,7 @@
     <div class="container">
         <div class="description text-center" id="package-info">
             <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('common.luxury', 0) }}</span> @lang('common.package') </h4>
-            <a id="inquiry" class="btn"> @lang('common.inquiry') </a>
+            <a id="inquiry" class="btn" href="{{ route("contact") }}#contact-us"> @lang('common.inquiry') </a>
             <a id="details" class="btn"> @lang('common.details') </a>
         </div>
     </div>

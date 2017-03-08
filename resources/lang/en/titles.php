@@ -16,5 +16,6 @@ return [
 	'package' => ':Package package',
 	'accommodation' => 'Accommodation',
 	'vehicles' => 'Vehicles',
+	'host' => 'Host',
 
 ];

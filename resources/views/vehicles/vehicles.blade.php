@@ -32,7 +32,7 @@
                 </h2>                                                               
             </div>
             <div class="content">
-                <a href="#"  class="hi-icon fa-people"></a>
+                <a class="hi-icon fa-people"></a>
                 <p style='padding: 4px 0 0;'>
                     {{ $vehicle['people'] }}
                 </p>

@@ -25,7 +25,7 @@
                 <div class="panel-heading">CMS Dashboard</div>
 
                 <div class="panel-body text-center">
-                    <div class='container'>
+                    <div class='container-fluid'>
                         <?php $i = 0; ?>
                         @foreach($services as $service)
                             @if($i % 3 == 0 && $i != 0)
@@ -34,15 +34,15 @@
                             @if($i % 3 == 0)
                             <div class='row'>
                             @endif
-                            @if($service->name_en == "Accommodation" || $service->name_en == "Vehicles")
+                            @if($service->name_en == "Accommodation" || $service->name_en == "Vehicles"|| $service->name_en == "Host")
                                 <div class="col-sm-4">
                                      <a href="{{ route("cms.".strtolower($service->name_en)) }}">
                                          <h4>{{ $service->name_en }}</h4>
                                          <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg">
                                      </a>
                                  </div>
-                            @endif                            
                             <?php $i++; ?>
+                            @endif  
                         @endforeach
                     </div>                                      
                 </div>

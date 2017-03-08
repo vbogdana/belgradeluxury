@@ -15,4 +15,5 @@ return [
 	'hotel' => 'usluge/smestaj/hotel/{accID}',
 	'vehicles' => 'usluge/vozila',
 	'vehicle' => 'usluge/vozila/{vehID}',
+	'host' => 'usluge/domaćin',
 ];

@@ -93,6 +93,7 @@
                                 <ul class='dropdown-menu'>
                                     <li><a href='{{ route('cms.accommodation') }}'>accommodation</a></li>
                                     <li><a href='{{ route('cms.vehicles') }}'>vehicles</a></li>
+                                    <li><a href='{{ route('cms.host') }}'>host</a></li>
                                 </ul>
                             </li>
                             <li class='dropdown'>

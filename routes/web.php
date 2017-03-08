@@ -26,10 +26,7 @@ Route::group([
         Route::get(LaravelLocalization::transRoute('routes.contact'), 
             [
                 'as' => 'contact', 
-                'uses' => function() {
-                    AppController::loadServices($services, $packages);
-                    return view('contact', ['services' => $services, 'packages' => $packages]);
-                }
+                'uses' => 'App\AppController@loadContact'
             ]
         );
         Route::post(LaravelLocalization::transRoute('routes.contact'),
@@ -54,7 +51,7 @@ Route::group([
         Route::get(LaravelLocalization::transRoute('routes.accommodation'), 
             [
               'as' => 'accommodation', 
-              'uses' => 'App\AccommodationController@loadAccommodation'
+              'uses' => 'App\ServicesController@loadAccommodation'
             ]
         );
         
@@ -62,7 +59,7 @@ Route::group([
         Route::get(LaravelLocalization::transRoute('routes.apartment'), 
             [
               'as' => 'accommodation.apartment', 
-              'uses' => 'App\AccommodationController@loadApartment'
+              'uses' => 'App\ServicesController@loadApartment'
             ]
         );
         
@@ -70,7 +67,7 @@ Route::group([
         Route::get(LaravelLocalization::transRoute('routes.vehicles'), 
             [
               'as' => 'vehicles', 
-              'uses' => 'App\VehiclesController@loadVehicles'
+              'uses' => 'App\ServicesController@loadVehicles'
             ]
         );
         
@@ -78,12 +75,19 @@ Route::group([
         Route::get(LaravelLocalization::transRoute('routes.vehicle'), 
             [
               'as' => 'vehicles.vehicle', 
-              'uses' => 'App\VehiclesController@loadVehicle'
+              'uses' => 'App\ServicesController@loadVehicle'
+            ]
+        );
+        
+        // List host services
+        Route::get(LaravelLocalization::transRoute('routes.host'), 
+            [
+              'as' => 'host', 
+              'uses' => 'App\ServicesController@loadHosts'
             ]
         );
         
         Route::get('/l')->name('wellness-&-spa');
-        Route::get('/ll')->name('host');
         Route::get('/lll')->name('reservations');
         Route::get('/llll')->name('security');
         Route::get('/lllll')->name('events');
@@ -93,9 +97,6 @@ Route::group([
         Route::get('/lllllllll')->name('sightseeing');
         Route::get('/llllllllll')->name('diamond');
     });
-    
-//Route::get('home', 'App\HomeController@index')->name('home');
-
 
 /*
 |
@@ -182,3 +183,16 @@ Route::post('cms/packages/{packID}/show', ['as' => 'cms.packages.show', 'uses' =
 Route::post('cms/packages/{packID}/hide', ['as' => 'cms.packages.hide', 'uses' => 'CMS\PackagesController@hide']);
 Route::get('cms/packages/reorder', ['as' => 'cms.packages.reorder', 'uses' => 'CMS\PackagesController@loadReorderPackages']);
 Route::post('cms/packages/reorder', ['as' => 'cms.packages.reorder', 'uses' => 'CMS\PackagesController@reorderPackages']);
+
+/***
+ * Hosts
+ */
+Route::get('cms/host', ['as' => 'cms.host', 'uses' => 'CMS\HostsController@loadHosts']);
+Route::get('cms/host/create', ['as' => 'cms.host.create', 'uses' => 'CMS\HostsController@loadCreateHost']);
+Route::post('cms/host/create', ['as' => 'cms.host.create', 'uses' => 'CMS\HostsController@createHost']);
+Route::get('cms/host/{hostID}/edit', ['as' => 'cms.host.edit', 'uses' => 'CMS\HostsController@loadEditHost']);
+Route::post('cms/host/{hostID}/edit', ['as' => 'cms.host.edit', 'uses' => 'CMS\HostsController@editHost']);
+Route::get('cms/host/{hostID}/edit/main-photo', ['as' => 'cms.host.edit.main-image', 'uses' => 'CMS\HostsController@loadEditMainImage']);
+Route::post('cms/host/{hostID}/edit/main-photo', ['as' => 'cms.host.edit.main-image', 'uses' => 'CMS\HostsController@editMainImage']);
+Route::delete('cms/host/{hostID}/delete/main-photo', ['as' => 'cms.host.delete.main-image', 'uses' => 'CMS\HostsController@deleteMainImage']);
+Route::delete('cms/host/{hostID}/delete', ['as' => 'cms.host.delete', 'uses' => 'CMS\HostsController@delete']);

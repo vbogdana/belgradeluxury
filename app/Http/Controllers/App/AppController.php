@@ -15,20 +15,29 @@ use Lang;
 class AppController extends Controller {
     
     /**
-     * Show the application dashboard.
+     * Show the index page.
      *
      * @return \Illuminate\Http\Response
      */
     public function loadIndex() {
         $events = Event::all();
         $testemonials = Testemonial::all();
-        self::loadServices($services, $packages);
-        
+        self::loadServices($services, $packages);        
         return view('index', ["events" => $events, 'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);
     }
     
     /**
-     * Handles a post erequest on contact form.
+     * Show the contact page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loadContact() {    
+        AppController::loadServices($services, $packages);
+        return view('/packages/package', ['services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
+     * Handles an AJAX post request on contact form.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -57,6 +66,9 @@ class AppController extends Controller {
         
     }
     
+    /*
+     * Loads from database information relevant for every page.
+     */
     public static function loadServices(&$services, &$packages) {
         $services = Service::all();
         $packages = Package::where('visible', 1)->orderBy('position', 'asc')->get();

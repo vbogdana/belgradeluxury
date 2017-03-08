@@ -15,4 +15,5 @@ return [
 	'hotel' => 'services/accommodation/hotel/{accID}',
 	'vehicles' => 'services/vehicles',
 	'vehicle' => 'services/vehicles/{vehID}',
+	'host' => 'services/host',
 ];
