@@ -44,15 +44,24 @@
 <!--    START ABOUT US SERVICES SECTION      -->
 <section id="services" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services-panel">            
     <div class="container">
-        <div class="description text-center">
+        <div class="description text-center" style='margin-bottom: 40px'>
             <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
-            <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
+            <div class='row'>
+                <div class='col-sm-4'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament3.svg'>
+                </div>
+                <div class='col-sm-4'>
+                    <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
+                </div>
+                <div class='col-sm-4'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament3.svg'>
+                </div>
+            </div>
             <p class="">
                 @lang('index.short about us')
             </p>           
-        </div>    
-    </div>
-    <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
+        </div>       
+    </div>    
     
     <div class="text-center text-uppercase">
         @foreach($services as $service)
@@ -95,20 +104,24 @@
         <div class="description" style="padding: 0 10%; margin-bottom: 25px">
             <h2>@lang('index.business1')</h2>
         </div>
-        <div class="col-sm-4">
-            <a class="btn" href="#">
-                @lang('common.business') @lang('common.package')
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a class="btn" href="{{ route("contact") }}">
-                @lang('common.contact us')
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a class="btn" href="#">
-                {{ trans_choice('common.corporate',1) }} @lang('common.services')
-            </a>
+        <div class='row'>
+            <div class="col-sm-4">
+                <a class="btn" href="#">
+                    @lang('common.business') @lang('common.package')
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\ornament3.svg'>
+                <a class="btn" href="{{ route("contact") }}">
+                    @lang('common.contact us')
+                </a>
+                <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\ornament3.svg'>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn" href="#">
+                    {{ trans_choice('common.corporate',1) }} @lang('common.services')
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -170,7 +183,7 @@
             </p>
         </div>    
     </div>
-    <img class="gold-decor" src='{{ url("/") }}\images\decor.svg'>
+    <img class="gold-decor" src='{{ url("/") }}\images\decor3.svg'>
         
     <div class="container">
         <div class="description text-center" id="package-info">
@@ -209,7 +222,7 @@
         </div>
     </div>
     
-    <div class="custom-package-container">
+    <div class="custom-package-container custom-package-section">
         <div class="container text-center">
             <div class="description">
                 <h2 class="text-uppercase"> custom @lang('common.package') </h2>
@@ -218,20 +231,23 @@
                 </p>                
             </div>
         </div>
-        <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
+        <img class="gold-decor" src='<?php echo url("/")?>\images\decor1.svg'>
         <div class="container text-center">
             <div class="text-uppercase">
-                <div class="col-sm-4">
-                    {{ trans_choice('common.custom step',1) }}
+                <div class="col-sm-4 step">
+                    <img class="img-responsive" src='{{ url("/") }}\images\step1.svg'>
+                    <h4>{{ trans_choice('common.custom step',1) }}</h4>
                 </div>
-                <div class="col-sm-4">
-                    {{ trans_choice('common.custom step',2) }}
+                <div class="col-sm-4 step">
+                    <img class="img-responsive" src='{{ url("/") }}\images\step2.svg'>
+                    <h4>{{ trans_choice('common.custom step',2) }}</h4>
                 </div>
-                <div class="col-sm-4">
-                    {{ trans_choice('common.custom step',3) }}!
+                <div class="col-sm-4 step">
+                    <img class="img-responsive" src='{{ url("/") }}\images\step3.svg'>
+                    <h4>{{ trans_choice('common.custom step',3) }}</h4>
                 </div>
             </div>
-        </div>
+        </div>       
     </div>
 </section>
 <!--    END PACKAGES SECTION      -->
@@ -387,8 +403,6 @@
     </div>
 </section>
 <!--    END TESTEMONIALS SECTION      -->
-
-
 @stop
 
 @section('scripts')

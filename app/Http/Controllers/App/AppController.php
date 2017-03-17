@@ -33,7 +33,7 @@ class AppController extends Controller {
      */
     public function loadContact() {    
         AppController::loadServices($services, $packages);
-        return view('/packages/package', ['services' => $services, 'packages' => $packages]);
+        return view('contact', ['services' => $services, 'packages' => $packages]);
     }
     
     /**
@@ -44,7 +44,7 @@ class AppController extends Controller {
      */
     public function contact(Request $request) {
         $this->validate($request, [
-            'name' => 'required|alpha_num|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email|max:255',
             'message' => 'max:800'
         ]);

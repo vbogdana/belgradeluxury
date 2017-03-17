@@ -67,14 +67,16 @@
                 <div class='toolbar'>
                     <div class="container">
                         <div class="col-xs-12 col-sm-7 col-md-6">
-                            <div class="col-xs-12 col-sm-7">
+                            <div class="col-xs-12 col-sm-6">
                                 <a href="mailto:inquiry@belgradeluxury.com">
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
                                     inquiry@belgradeluxury.com
                                 </a>                               
                             </div>
-                            <div class="col-xs-12 col-sm-5">
+                            <div class="col-xs-12 col-sm-6">
                                 <a href="tel:+381644519017">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                    <i class="fa contact-viber" aria-hidden="true"></i>
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     (+381) 064 4519 017
                                 </a>                                
@@ -178,7 +180,7 @@
             </div>
             
             @yield('content')
-            
+                   
             <section id="quick-links" class="footer-section interstitial fullwidth space-y" data-section-name="quick-links-panel">
                 <div class="container">
                     <div class="col-xs-12">

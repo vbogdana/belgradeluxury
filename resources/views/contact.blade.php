@@ -263,11 +263,9 @@
     
 </section>
 <!--    END SOCIAL SECTION      -->
-
 @stop
 
 @section('scripts')
-
 <script>   
     var validation = true;
     
