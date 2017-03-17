@@ -94,6 +94,8 @@
                                     <li><a href='{{ route('cms.accommodation') }}'>accommodation</a></li>
                                     <li><a href='{{ route('cms.vehicles') }}'>vehicles</a></li>
                                     <li><a href='{{ route('cms.host') }}'>host</a></li>
+                                    <li><a href='{{ route('cms.places') }}'>reservations</a></li>
+                                    <li><a href='{{ route('cms.places') }}'>nightlife</a></li>
                                 </ul>
                             </li>
                             <li class='dropdown'>

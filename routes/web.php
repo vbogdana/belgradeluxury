@@ -196,3 +196,20 @@ Route::get('cms/host/{hostID}/edit/main-photo', ['as' => 'cms.host.edit.main-ima
 Route::post('cms/host/{hostID}/edit/main-photo', ['as' => 'cms.host.edit.main-image', 'uses' => 'CMS\HostsController@editMainImage']);
 Route::delete('cms/host/{hostID}/delete/main-photo', ['as' => 'cms.host.delete.main-image', 'uses' => 'CMS\HostsController@deleteMainImage']);
 Route::delete('cms/host/{hostID}/delete', ['as' => 'cms.host.delete', 'uses' => 'CMS\HostsController@delete']);
+
+/***
+ * Places
+ */
+Route::get('cms/places', ['as' => 'cms.places', 'uses' => 'CMS\PlacesController@loadPlaces']);
+Route::get('cms/places/create', ['as' => 'cms.places.create', 'uses' => 'CMS\PlacesController@loadCreatePlace']);
+Route::post('cms/places/create', ['as' => 'cms.places.create', 'uses' => 'CMS\PlacesController@createPlace']);
+Route::get('cms/places/{placeID}/edit', ['as' => 'cms.places.edit', 'uses' => 'CMS\PlacesController@loadEditPlace']);
+Route::post('cms/places/{placeID}/edit', ['as' => 'cms.places.edit', 'uses' => 'CMS\PlacesController@editPlace']);
+Route::get('cms/places/{placeID}/edit/main-photo', ['as' => 'cms.places.edit.main-image', 'uses' => 'CMS\PlaceImagesController@loadEditMainImage']);
+Route::post('cms/places/{placeID}/edit/main-photo', ['as' => 'cms.places.edit.main-image', 'uses' => 'CMS\PlaceImagesController@editMainImage']);
+Route::get('cms/places/{placeID}/create/photos', ['as' => 'cms.places.create.images', 'uses' => 'CMS\PlaceImagesController@loadCreatePlaceImages']);
+Route::post('cms/places/{placeID}/create/photos', ['as' => 'cms.places.create.images', 'uses' => 'CMS\PlaceImagesController@createPlaceImages']);
+Route::get('cms/places/{placeID}/delete/photos', ['as' => 'cms.places.delete.images', 'uses' => 'CMS\PlaceImagesController@loadDeleteImages']);
+Route::delete('cms/places/{imgID}/delete/photo', ['as' => 'cms.places.delete.image', 'uses' => 'CMS\PlaceImagesController@deleteImage']);
+Route::delete('cms/places/{placeID}/delete/main-photo', ['as' => 'cms.places.delete.main-image', 'uses' => 'CMS\PlaceImagesController@deleteMainImage']);
+Route::delete('cms/places/{placeID}/delete', ['as' => 'cms.places.delete', 'uses' => 'CMS\PlacesController@delete']);

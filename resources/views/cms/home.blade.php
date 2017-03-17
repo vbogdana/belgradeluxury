@@ -34,9 +34,14 @@
                             @if($i % 3 == 0)
                             <div class='row'>
                             @endif
-                            @if($service->name_en == "Accommodation" || $service->name_en == "Vehicles"|| $service->name_en == "Host")
+                            @if($service->name_en == "Accommodation" || $service->name_en == "Vehicles" || $service->name_en == "Host"
+                             || $service->name_en == "Reservations" || $service->name_en == "Nightlife")
                                 <div class="col-sm-4">
-                                     <a href="{{ route("cms.".strtolower($service->name_en)) }}">
+                                    @if($service->name_en == "Reservations" || $service->name_en == "Nightlife")
+                                    <a href="{{ route("cms.places") }}">
+                                    @else
+                                    <a href="{{ route("cms.".strtolower($service->name_en)) }}">
+                                    @endif
                                          <h4>{{ $service->name_en }}</h4>
                                          <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg">
                                      </a>

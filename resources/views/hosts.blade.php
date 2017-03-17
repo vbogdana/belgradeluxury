@@ -41,13 +41,7 @@
                 <div class="description">
                     <h2 class="text-uppercase">@lang('common.host')</h2>
                     <p>
-                        To help our customers, we have prepared a variety of packages that can meet their different needs and preferences. 
-                    </p>
-                    <p>
-                        Belgrade Luxury packages have derived from our many years of experience encompassing all the necessary services for an unforgettable VIP experience of Belgrade. 
-                    </p>
-                    <p>
-                        Depending on your affinity and intent You can choose one of the packages, but also put together a package tailored to fit your needs, because - The Best Luxury Services Are Customized, Not Standardized.
+                        @lang('services.host')
                     </p>
                 </div>
             </div>
