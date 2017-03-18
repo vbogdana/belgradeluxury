@@ -25,7 +25,7 @@
                 <a href="#{{ str_replace(" ", "_", $type) }}" data-toggle="tab">
                     <i class="hi-icon"></i>
                     <br/>
-                    {{ trans_choice('services.'.strtolower($type), 1) }}
+                    <span>{{ trans_choice('services.'.strtolower($type), 1) }}</span>
                 </a>
             </li>
             <?php $first = "" ?>

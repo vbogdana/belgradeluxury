@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-3">
                             <h4>{{ $place->title_en }}</h4> 
-                            <strong class="text-uppercase">{{ $place->type_en }}</strong>
+                            <strong class="text-uppercase">{{ $place->type }}</strong>
                             <br/>
                             {{ $place->address }}
                             @if ($place->link != null)

@@ -64,7 +64,7 @@
                                 <?php 
                                     $type = ['restaurant' => '', 'bar' => '', 'club' => '', 'kafana' => '', 'splav' => ''];
                                     if (isset($place)) {
-                                        $type[$place->type_en] = 'checked';
+                                        $type[$place->type] = 'checked';
                                     } else {
                                         $type['restaurant'] = 'checked';
                                     }

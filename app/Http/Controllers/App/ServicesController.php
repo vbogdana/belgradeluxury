@@ -12,9 +12,6 @@ use Request;
 use Response;
 use View;
 use Illuminate\Support\Facades\DB;
-use Mcamara\LaravelLocalization\LaravelLocalization;
-use App;
-use Lang;
 
 class ServicesController extends Controller {
     
@@ -116,15 +113,14 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadNightlife(\Illuminate\Http\Request $request) {
-        $locale = App::getLocale();
         $places = [];
-        $typesDB = DB::table('places')->distinct()->pluck('type_'.$locale);
+        $typesDB = DB::table('places')->distinct()->pluck('type');
         $types = $typesDB->toArray();
-        if(($key = array_search(trans_choice('services.restaurant', 0), $types)) !== false) {
+        if(($key = array_search('restaurant', $types)) !== false) {
             unset($types[$key]);
         }
         foreach ($types as $type) {
-            $places[$type] = Place::where('type_'.$locale, $type)->paginate(10);
+            $places[$type] = Place::where('type', $type)->paginate(10);
         }
 
         if (Request::ajax()) {
@@ -144,11 +140,10 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadGastronomy(\Illuminate\Http\Request $request) {
-        $locale = App::getLocale();
         $places = [];
-        $types = [trans_choice('services.restaurant', 0)];
+        $types = ['restaurant'];
         foreach ($types as $type) {
-            $places[$type] = Place::where('type_'.$locale, $type)->paginate(10);
+            $places[$type] = Place::where('type', $type)->paginate(10);
         }
 
         if (Request::ajax()) {

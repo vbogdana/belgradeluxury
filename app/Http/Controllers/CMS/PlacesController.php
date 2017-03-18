@@ -125,12 +125,15 @@ class PlacesController extends Controller {
     protected function create(array $data)
     {
         $place = new Place($data);
+        /*
         $place->type_en = $data['type'];
         switch ($data['type']) {
             case 'restaurant': $place->type_ser = 'restoran'; break;
             case 'club': $place->type_ser = 'klub'; break;
             default: $place->type_ser = $place->type_en; break;
         }
+         *
+         */
         $place->save();
 
         if (array_key_exists('image', $data)) {
@@ -161,12 +164,16 @@ class PlacesController extends Controller {
         $place->geoLat = $data['geoLat'];
         $place->geoLong = $data['geoLong'];
         $place->link = $data['link'];
+        $place->type = $data['type'];
+        /*
         $place->type_en = $data['type'];
         switch ($data['type']) {
             case 'restaurant': $place->type_ser = 'restoran'; break;
             case 'club': $place->type_ser = 'klub'; break;
             default: $place->type_ser = $place->type_en; break;
         }
+         * 
+         */
         $place->save();
         
         return $place;
