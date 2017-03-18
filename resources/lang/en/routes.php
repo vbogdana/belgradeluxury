@@ -16,4 +16,7 @@ return [
 	'vehicles' => 'services/vehicles',
 	'vehicle' => 'services/vehicles/{vehID}',
 	'host' => 'services/host',
+	'nightlife' => 'services/nightlife',
+	'gastronomy' => 'services/gastronomy',
+	'place' => 'services/place/{placeID}',
 ];

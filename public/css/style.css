@@ -968,6 +968,12 @@ a.btn:active, .btn:active {
 #host.background-properties {
     background-image: url('../images/services/host-big.jpg');
 }
+#nightlife.background-properties {
+    background-image: url('../images/services/nightlife-big.jpg');
+}
+#gastronomy.background-properties {
+    background-image: url('../images/services/gastronomy-big.jpg');
+}
 #package-description.background-properties {
     background-color: #222222;
 }

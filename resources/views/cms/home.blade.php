@@ -35,9 +35,9 @@
                             <div class='row'>
                             @endif
                             @if($service->name_en == "Accommodation" || $service->name_en == "Vehicles" || $service->name_en == "Host"
-                             || $service->name_en == "Reservations" || $service->name_en == "Nightlife")
+                             || $service->name_en == "Gastronomy" || $service->name_en == "Nightlife")
                                 <div class="col-sm-4">
-                                    @if($service->name_en == "Reservations" || $service->name_en == "Nightlife")
+                                    @if($service->name_en == "Gastronomy" || $service->name_en == "Nightlife")
                                     <a href="{{ route("cms.places") }}">
                                     @else
                                     <a href="{{ route("cms.".strtolower($service->name_en)) }}">

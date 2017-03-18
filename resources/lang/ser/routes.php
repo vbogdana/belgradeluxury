@@ -15,5 +15,8 @@ return [
 	'hotel' => 'usluge/smestaj/hotel/{accID}',
 	'vehicles' => 'usluge/vozila',
 	'vehicle' => 'usluge/vozila/{vehID}',
-	'host' => 'usluge/domaćin',
+	'host' => 'usluge/domacin',
+	'nightlife' => 'usluge/nocni-zivot',
+	'gastronomy' => 'usluge/gastronomija',
+	'place' => 'usluge/objekat/{placeID}',
 ];

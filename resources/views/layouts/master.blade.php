@@ -23,7 +23,7 @@
         <meta property="og:title" content="Belgrade Luxury - VIP Experience Belgrade Nightlife" />
         <meta property="og:description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
         <meta property="og:site_name" content="Belgrade Luxury">        
-        <meta property="og:image" content='{{ route("/") }}/images/DOPUNI' />   
+        <meta property="og:image" content='{{ url("/") }}/images/backgrounds/belgradeluxury.jpg' />   
         @show
         
         <!-- favicons  -->       	      

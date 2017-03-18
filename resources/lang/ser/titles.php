@@ -17,5 +17,7 @@ return [
 	'accommodation' => 'Smeštaj',
 	'vehicles' => 'Vozila',
 	'host' => 'Domaćin ',
+	'nightlife' => 'Noćni Život',
+	'gastronomy' => 'Gastronomija',
 	
 ];

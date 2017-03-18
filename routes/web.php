@@ -87,11 +87,33 @@ Route::group([
             ]
         );
         
+        // List nightlife services
+        Route::get(LaravelLocalization::transRoute('routes.nightlife'), 
+            [
+              'as' => 'nightlife', 
+              'uses' => 'App\ServicesController@loadNightlife'
+            ]
+        );
+        
+        // List gastronomy services
+        Route::get(LaravelLocalization::transRoute('routes.gastronomy'), 
+            [
+              'as' => 'gastronomy', 
+              'uses' => 'App\ServicesController@loadGastronomy'
+            ]
+        );
+        
+        // Single place page
+        Route::get(LaravelLocalization::transRoute('routes.place'), 
+            [
+              'as' => 'places.place', 
+              'uses' => 'App\ServicesController@loadPlace'
+            ]
+        );
+        
         Route::get('/l')->name('wellness-&-spa');
-        Route::get('/lll')->name('reservations');
         Route::get('/llll')->name('security');
         Route::get('/lllll')->name('events');
-        Route::get('/llllll')->name('nightlife');
         Route::get('/lllllll')->name('business');
         Route::get('/llllllll')->name('personel');
         Route::get('/lllllllll')->name('sightseeing');

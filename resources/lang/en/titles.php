@@ -17,5 +17,7 @@ return [
 	'accommodation' => 'Accommodation',
 	'vehicles' => 'Vehicles',
 	'host' => 'Host',
+	'nightlife' => 'Nightlife',
+	'gastronomy' => 'Gastronomy',
 
 ];

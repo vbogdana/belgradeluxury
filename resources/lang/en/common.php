@@ -56,5 +56,6 @@ return [
 	'apartment' => '{0}apartment|{1}apartments',
 	'hotel' => '{0}hotel|{1}hotels',
 	'vehicle' => '{0}vehicle|{1}vehicles',
+	'restaurant' => '{0}restaurant|{1}restaurants',
 	
 ];
