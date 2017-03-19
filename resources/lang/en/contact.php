@@ -30,6 +30,7 @@ return [
 	'youtube' => 'Subscribe to our Youtube channel!',
 	'phone' => 'You can always give us a call!',
 	'success' => 'Your message was sent successfully!',
+	'other' => 'other',
 	
 
 ];

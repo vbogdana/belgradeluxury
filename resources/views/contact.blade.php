@@ -164,6 +164,21 @@
                                     <option value="Crna Gora">Црна Гора</option>
                                     <option value="Hrvatska">Hrvatska</option>
                                     <option value="Makedonija">Македонија</option>
+									<option value="Slovenija">Slovenija</option>
+									<option value="Bugarska">България</option>
+									<option value="Madjarska">Magyarország</option>
+									<option value="Rumunija">România</option>
+									<option value="Rusija">Росси́я</option>
+									<option value="Grcka">Ελλάς</option>
+									<option value="Turska">Türkiye</option>
+									<option value="Austrija">Österreich</option>
+									<option value="USA">USA</option>
+									<option value="Kanada">Canada</option>
+									<option value="Nemacka">Deutschland</option>
+									<option value="Francuska">France</option>
+									<option value="Spanija">España</option>
+									<option value="Velika Britanija">UK</option>
+									<option value="druga zemlja" class="text-uppercase">@lang('contact.other')</option>
                                 </select>
                             </div>
                         </div>
