@@ -51,7 +51,7 @@
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            })(window,document,'script','{{ url("") }}/js/analytics.js','ga');
 
             ga('create', 'UA-92215993-1', 'auto');
             ga('send', 'pageview');
@@ -252,10 +252,10 @@
         
         <!-- scripts -->     
         <script src="{{ url("") }}/js/jquery-3.1.1.min.js"></script>        
-        <script src="{{ url("") }}/js/bootstrap.js"></script>       
+        <script src="{{ url("") }}/js/bootstrap.min.js"></script>       
         <script src="{{ url("") }}/js/animsition.min.js"></script>
         <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>        
-        <script src="{{ url("") }}/js/smooth-scroll.js"></script>
+        <script src="{{ url("") }}/js/smooth-scroll.min.js"></script>
         <script src="{{ url("") }}/js/main.js"></script>
         <script>
             url = "https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js";
