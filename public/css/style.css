@@ -27,7 +27,8 @@ All rights reserved
  * 12. CONTACT PAGE
  *
  * PACKAGE TEMPLATE PAGE
- * SERVICE PAGE
+ * PAGINATION GRID
+ * SIDE LIST
  * FOOTER
  *
  ******************************************************************************/
@@ -683,11 +684,14 @@ section {
     margin-bottom: 40px;
 }
 .gold-ornament {
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
+    //transform: rotate(-90deg);
+    //-webkit-transform: rotate(-90deg);
     max-height: 32px;
     display: inline-block;
     margin: 20px 0;
+}
+.hideIt {
+    visibility: hidden;
 }
 .description p {
     padding: 20px 20%;
@@ -2244,6 +2248,7 @@ a.btn:active, .btn:active {
         height: 450px;
     }
 }
+
 /*******************************************************************************
  * 
  *                  SIDE LIST

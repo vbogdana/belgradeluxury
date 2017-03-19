@@ -21,38 +21,185 @@ $( document ).on( "pageinit", function( event ) {
  *                  ANIMSITION (page loading)
  *  
  ******************************************************************************/
-$(document).ready(function() {
-  $(".animsition").animsition({
-    inClass: 'fade-in-down-sm',
-    outClass: 'fade-out-down-sm',
-    inDuration: 1500,
-    outDuration: 800,
-    linkElement: '.animsition-link',
-    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
-    loading: true,
-    loadingParentElement: 'body', //animsition wrapper element
-    loadingClass: 'animsition-loading',
-    loadingInner: '', // e.g '<img src="loading.svg" />'
-    timeout: false,
-    timeoutCountdown: 5000,
-    onLoadEvent: true,
-    browser: [ 'animation-duration', '-webkit-animation-duration'],
-    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
-    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
-    overlay : false,
-    overlayClass : 'animsition-overlay-slide',
-    overlayParentElement : 'body',
-    transition: function(url){ window.location.href = url; }
-  });
+$(document).ready(function () {
+    $(".animsition").animsition({
+        inClass: 'fade-in-down-sm',
+        outClass: 'fade-out-down-sm',
+        inDuration: 1500,
+        outDuration: 800,
+        linkElement: '.animsition-link',
+        // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+        loading: true,
+        loadingParentElement: 'body', //animsition wrapper element
+        loadingClass: 'animsition-loading',
+        loadingInner: '', // e.g '<img src="loading.svg" />'
+        timeout: false,
+        timeoutCountdown: 5000,
+        onLoadEvent: true,
+        browser: ['animation-duration', '-webkit-animation-duration'],
+        // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+        // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+        overlay: false,
+        overlayClass: 'animsition-overlay-slide',
+        overlayParentElement: 'body',
+        transition: function (url) {
+            window.location.href = url;
+        }
+    });
 });
 
 /*******************************************************************************
  * 
- *                          SMOOTH SCROLL INIT
+ *                          ANIMATIONS INIT
  *  
  ******************************************************************************/
-$(window).on("load", function() {
-    
+$(document).ready(function () {
+    if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+        
+        var topOfWindow = $(window).scrollTop();
+        var bottomOfWindow = topOfWindow + $(window).innerHeight();
+        /*
+         * Initializes elements that are to be animated
+         * 
+         * @param {HTML DOM object} el
+         * @returns {undefined}
+         */
+        function addAnimated(el, animation) {
+            el.addClass('animated');            
+            var imagePos = el.offset().top;
+
+            if (imagePos < bottomOfWindow && imagePos >= topOfWindow) {
+                el.addClass(animation);
+            } else {
+                el.addClass('hideIt');
+            }
+        }
+        /*
+         * Adds animation to element
+         * 
+         * @param {HTML DOM object} el
+         * @param {string} animation
+         * @param {int} offset
+         * @returns {undefined}
+         */
+        function addAnimation(el, animation, offset) {
+            var imagePos = el.offset().top;
+
+            var topOfWindow = $(window).scrollTop();
+            if (imagePos < topOfWindow + offset) {
+                el.removeClass('hideIt');
+                el.addClass(animation);
+            }
+        }
+            
+        $(window).on("load", function () { 
+
+            // add animations to opening elements
+            var i = 700;
+            $('#navbar ul.nav li a.animated').each(function () {
+                $(this).addClass('fadeInDown');
+                $(this).css("animation-delay", i + "ms");
+                i += 200;               
+            });
+            i = 700;
+            $('section:first-of-type .box-left, '
+            + 'section:first-of-type .box-right, '
+            + 'section.contact-section:first-of-type .hero-inner').each(function () {
+                $(this).addClass('animated');
+                $(this).addClass('zoomIn');
+                $(this).css("animation-delay", i + "ms");
+            });
+            
+            // add animations to panels
+            $('.box-right:not(.video-section .box-right, .service-description-section .box-right), '
+            + '.box-left:not(.service-description-section .box-left)').each(function () {
+                addAnimated($(this), 'zoomIn');
+            });
+            
+            // add animations to elements
+            $('.gold-ornament').each(function () {
+                addAnimated($(this), 'fadeInUp');
+            });
+            $('.gold-decor').each(function () {
+                addAnimated($(this), 'fadeIn');
+            });           
+            $('.description h2:not(.hero-holder .description h2)').each(function() {
+                addAnimated($(this), 'fadeInDown');
+            });
+            $('.description p:not(.hero-holder .description p)').each(function () {
+                addAnimated($(this), 'fadeIn');
+            }); 
+            $('.aboutus-section .block').each(function () {
+                addAnimated($(this), 'fadeInUp');
+            });
+            i = 0;
+            $('ul.nav-pills li').each(function () {
+                addAnimated($(this), 'fadeInDown');
+                $(this).css("animation-delay", i + "ms");
+                i += 100;
+            });
+            $('.side-photo').each(function () {
+                addAnimated($(this), 'fadeInDown');
+            });
+            $('.side-content').each(function () {
+                addAnimated($(this), 'fadeIn');
+            });
+            $('.contact-section .hi-icon').each(function () {
+                addAnimated($(this), 'fadeIn');
+            });
+            i = 0;
+            $('.social .hi-icon').each(function () {
+                addAnimated($(this), 'fadeInUp');
+                $(this).css("animation-delay", i + "ms");
+                i += 100;
+            });
+            
+        });
+
+        $(window).on("scroll", function () {
+            var windowHeight = $(window).innerHeight();
+            
+            $('.gold-ornament.animated').each(function() {
+                addAnimation($(this), "fadeInUp", windowHeight - 100);
+            });
+            $('.gold-decor.animated').each(function() {
+                addAnimation($(this), "fadeIn", windowHeight - 100);
+            });
+            $('.description h2.animated').each(function() {
+                addAnimation($(this), "fadeInDown", windowHeight - 100);
+            });
+            $('.description p.animated').each(function() {
+                addAnimation($(this), "fadeIn", windowHeight - 100);
+            });
+            var i = 0;
+            $('.aboutus-section .block.animated').each(function() {
+                addAnimation($(this), "fadeInUp", $('.aboutus-section').height() - 50);
+                $(this).css("animation-delay", i + "ms");
+                i += 100;
+            });
+            i = 0;
+            $('ul.nav-pills li').each(function () {
+                addAnimation($(this), "fadeInDown", windowHeight - 100);
+                $(this).css("animation-delay", i + "ms");
+                i += 100;
+            });
+            $('.side-photo').each(function () {
+                addAnimation($(this), 'fadeInDown', windowHeight - 100);
+            });
+            $('.side-content').each(function () {
+                addAnimation($(this), 'fadeIn', windowHeight - 100);
+            });
+            $('.contact-section .hi-icon').each(function() {
+                addAnimation($(this), "fadeIn", windowHeight - 100);
+            });
+            i = 0;
+            $('.social .hi-icon').each(function () {
+                addAnimation($(this), "fadeInUp", windowHeight - 50);
+                $(this).css("animation-delay", i + "ms");
+                i += 100;
+            });
+        });
+    }
 });
 
 /*******************************************************************************
@@ -75,8 +222,16 @@ $(document).ready(function() {
                     overflowScroll: true,
                     updateHash: false,
                     touchScroll:false,
-                    before:function() {},
-                    after:function() {},
+                    before:function(i, panels) {
+                        $left = panels[i].find('.box-left.animated');
+                        $left.removeClass('hideIt');
+                        $right = panels[i].find('.box-right.animated');
+                        $right.removeClass('hideIt');
+                        $left.addClass("zoomIn");
+                        $right.addClass("zoomIn");
+                    },
+                    after:function(i, panels) {  
+                    },
                     afterResize:function() {},
                     afterRender:function() {}
             });

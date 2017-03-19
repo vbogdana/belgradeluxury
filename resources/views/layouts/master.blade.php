@@ -40,7 +40,8 @@
         <link href="{{ url("") }}/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/style.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">
-        <link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">       
+        <link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">  
+        <link href="{{ url("") }}/css/animate.css" rel="stylesheet" type="text/css">
         @yield('stylesheets')        
     </head>
     
@@ -125,10 +126,10 @@
                         <div id='navbar' class='navbar-collapse collapse'>
                             <ul class='nav navbar-nav '>
                                 <li class="home">
-                                    <a href='{{ route("/") }}'>@lang('common.home')</a>
+                                    <a href='{{ route("/") }}' class="animated">@lang('common.home')</a>
                                 </li>
                                 <li class='dropdown'>
-                                    <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.services') <span class="caret"></span></a>
+                                    <a href='#' class="dropdown-toggle animated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.services') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
                                         @foreach ($services as $service)
                                         <li>
@@ -140,7 +141,7 @@
                                     </ul>
                                 </li>
                                 <li class='dropdown'>
-                                    <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.packages') <span class="caret"></span></a>
+                                    <a href='#' class="dropdown-toggle animated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.packages') <span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
                                         @foreach ($packages as $package)
                                         <li>
@@ -158,7 +159,7 @@
                                 </li>
                                 <!--
                                 <li class='dropdown'>
-                                    <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blog<span class="caret"></span></a>
+                                    <a href='#' class="dropdown-toggle animated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blog<span class="caret"></span></a>
                                     <ul class='dropdown-menu'>
                                         <li><a href='#'>@lang('common.culture')</a></li>
                                         <li><a href='#'>@lang('common.social')</a></li>
@@ -170,7 +171,7 @@
                                 </li> 
                                 -->
                                 <li>
-                                    <a href='{{ route("contact") }}'>@lang('common.contact')</a>
+                                    <a href='{{ route("contact") }}' class="animated">@lang('common.contact')</a>
                                 </li>
                             </ul>
                         </div>
