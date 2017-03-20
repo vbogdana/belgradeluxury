@@ -63,17 +63,17 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('skills_ser') ? ' has-error' : '' }}">
-                            <label for="skills_ser" class="col-md-4 control-label">Skills & languages (ser)*</label>
+                        <div class="form-group{{ $errors->has('skills_sr') ? ' has-error' : '' }}">
+                            <label for="skills_sr" class="col-md-4 control-label">Skills & languages (ser)*</label>
 
                             <div class="col-md-6">
-                                <textarea id="skills_ser" maxlength="400" 
+                                <textarea id="skills_sr" maxlength="400" 
                                           rows="5" cols="70" class="form-control" required 
-                                          name="skills_ser">{{ isset($host) ? $host->skills_ser : old('skills_ser') }}</textarea>
+                                          name="skills_sr">{{ isset($host) ? $host->skills_sr : old('skills_sr') }}</textarea>
                                 
-                                @if ($errors->has('skills_ser'))
+                                @if ($errors->has('skills_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('skills_ser') }}</strong>
+                                        <strong>{{ $errors->first('skills_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -95,17 +95,17 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('hobbies_ser') ? ' has-error' : '' }}">
-                            <label for="hobbies_ser" class="col-md-4 control-label">Hobbies (ser)</label>
+                        <div class="form-group{{ $errors->has('hobbies_sr') ? ' has-error' : '' }}">
+                            <label for="hobbies_sr" class="col-md-4 control-label">Hobbies (ser)</label>
 
                             <div class="col-md-6">
-                                <textarea id="hobbies_ser" maxlength="800" 
+                                <textarea id="hobbies_sr" maxlength="800" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="hobbies_ser">{{ isset($host) ? $host->hobbies_ser : old('hobbies_ser') }}</textarea>
+                                          name="hobbies_sr">{{ isset($host) ? $host->hobbies_sr : old('hobbies_sr') }}</textarea>
                                 
-                                @if ($errors->has('hobbies_ser'))
+                                @if ($errors->has('hobbies_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('hobbies_ser') }}</strong>
+                                        <strong>{{ $errors->first('hobbies_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>

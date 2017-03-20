@@ -48,13 +48,13 @@
             <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
             <div class='row'>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament3.svg'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\square-down.svg'>
                 </div>
                 <div class='col-sm-4'>
                     <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
                 </div>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament3.svg'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\square-down.svg'>
                 </div>
             </div>
             <p class="">
@@ -111,11 +111,11 @@
                 </a>
             </div>
             <div class="col-sm-4">
-                <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\ornament3.svg'>
+                <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\square-down.svg'>
                 <a class="btn" href="{{ route("contact") }}">
                     @lang('common.contact us')
                 </a>
-                <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\ornament3.svg'>
+                <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\square-down.svg'>
             </div>
             <div class="col-sm-4">
                 <a class="btn" href="#">
@@ -183,7 +183,7 @@
             </p>
         </div>    
     </div>
-    <img class="gold-decor" src='{{ url("/") }}\images\decor3.svg'>
+    <img class="gold-decor" src='{{ url("/") }}\images\decor-diamond.svg'>
         
     <div class="container">
         <div class="description text-center" id="package-info">
@@ -231,7 +231,7 @@
                 </p>                
             </div>
         </div>
-        <img class="gold-decor" src='<?php echo url("/")?>\images\decor1.svg'>
+        <img class="gold-decor" src='<?php echo url("/")?>\images\decor-square.svg'>
         <div class="container text-center">
             <div class="text-uppercase">
                 <div class="col-sm-4 step">

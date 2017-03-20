@@ -104,11 +104,11 @@ class ApartmentsController extends Controller {
         return Validator::make($data, [
             
             'title_en' => 'required|max:255',
-            'title_ser' => 'required|max:255',
+            'title_sr' => 'required|max:255',
             'address' => 'required|max:255',
             'price' => 'required|numeric',
             'description_en' => 'max:800',
-            'description_ser' => 'max:800',
+            'description_sr' => 'max:800',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
             'geoLat' => 'required|numeric|between:0,360',
             'geoLong' => 'required|numeric|between:0,360',
@@ -154,11 +154,11 @@ class ApartmentsController extends Controller {
     protected function edit(array $data, $accommodation, $apartment)
     {      
         $accommodation->title_en = $data['title_en'];
-        $accommodation->title_ser = $data['title_ser'];
+        $accommodation->title_sr = $data['title_sr'];
         $accommodation->address = $data['address'];
         $accommodation->price = $data['price'];
         $accommodation->description_en = $data['description_en'];
-        $accommodation->description_ser = $data['description_ser'];
+        $accommodation->description_sr = $data['description_sr'];
         $accommodation->geoLat = $data['geoLat'];
         $accommodation->geoLong = $data['geoLong'];
         $accommodation->link = $data['link'];

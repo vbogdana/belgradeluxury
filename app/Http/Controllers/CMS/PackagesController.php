@@ -225,10 +225,10 @@ class PackagesController extends Controller {
     {
         return Validator::make($data, [ 
             'title_en' => 'required|max:255',
-            'title_ser' => 'required|max:255',
+            'title_sr' => 'required|max:255',
             'price' => 'required|numeric',
             'description_en' => 'max:800',
-            'description_ser' => 'max:800',
+            'description_sr' => 'max:800',
             'symbol' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             'cardFront' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             'cardBack' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
@@ -277,10 +277,10 @@ class PackagesController extends Controller {
     protected function edit(array $data, $package)
     {      
         $package->title_en = $data['title_en'];
-        $package->title_ser = $data['title_ser'];
+        $package->title_sr = $data['title_sr'];
         $package->price = $data['price'];
         $package->description_en = $data['description_en'];
-        $package->description_ser = $data['description_ser'];
+        $package->description_sr = $data['description_sr'];
         $package->save();
         
         return $package;

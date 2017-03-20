@@ -2284,7 +2284,7 @@ a.btn:active, .btn:active {
     height: 15px;
     width: 15px;
     background-size: contain;
-    background-image: url(../images/ornament3.svg);
+    background-image: url(../images/square-down.svg);
     transform: rotate(-90deg);
     -webkit-transform: rotate(-90deg);   
 }
@@ -2319,7 +2319,7 @@ a.btn:active, .btn:active {
         height: 15px;
         width: 15px;
         background-size: contain;
-        background-image: url(../images/ornament3.svg);
+        background-image: url(../images/square-down.svg);
         transform: rotate(-90deg);
         -webkit-transform: rotate(-90deg);
     }

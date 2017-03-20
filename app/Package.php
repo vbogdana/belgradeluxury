@@ -17,8 +17,8 @@ class Package extends Model
      * @var array
      */
     protected $fillable = [
-        'title_en', 'title_ser', 'price', 
-        'description_en', 'description_ser',
+        'title_en', 'title_sr', 'price', 
+        'description_en', 'description_sr',
         'position',
         'cardFront', 'cardBack', 'symbol'
     ];

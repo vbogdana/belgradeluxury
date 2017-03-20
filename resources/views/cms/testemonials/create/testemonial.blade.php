@@ -57,15 +57,15 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('profession_ser') ? ' has-error' : '' }}">
-                            <label for="profession_ser" class="col-md-4 control-label">Profession (ser)*</label>
+                        <div class="form-group{{ $errors->has('profession_sr') ? ' has-error' : '' }}">
+                            <label for="profession_sr" class="col-md-4 control-label">Profession (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="profession_ser" type="text" maxlength="255" class="form-control" name="profession_ser" value="{{ isset($testemonial) ? $testemonial->profession_ser : old('profession_ser') }}" required>
+                                <input id="profession_sr" type="text" maxlength="255" class="form-control" name="profession_sr" value="{{ isset($testemonial) ? $testemonial->profession_sr : old('profession_sr') }}" required>
 
-                                @if ($errors->has('profession_ser'))
+                                @if ($errors->has('profession_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('profession_ser') }}</strong>
+                                        <strong>{{ $errors->first('profession_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -87,17 +87,17 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('content_ser') ? ' has-error' : '' }}">
-                            <label for="content_ser" class="col-md-4 control-label">Testemonial (ser)*</label>
+                        <div class="form-group{{ $errors->has('content_sr') ? ' has-error' : '' }}">
+                            <label for="content_sr" class="col-md-4 control-label">Testemonial (ser)*</label>
 
                             <div class="col-md-6">
-                                <textarea id="content_ser" maxlength="800" 
+                                <textarea id="content_sr" maxlength="800" 
                                           rows="5" cols="70" class="form-control" required 
-                                          name="content_ser">{{ isset($testemonial) ? $testemonial->content_ser : old('content_ser') }}</textarea>
+                                          name="content_sr">{{ isset($testemonial) ? $testemonial->content_sr : old('content_sr') }}</textarea>
                                 
-                                @if ($errors->has('content_ser'))
+                                @if ($errors->has('content_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('content_ser') }}</strong>
+                                        <strong>{{ $errors->first('content_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>

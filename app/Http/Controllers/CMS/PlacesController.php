@@ -103,9 +103,9 @@ class PlacesController extends Controller {
     {
         return Validator::make($data, [           
             'title_en' => 'required|max:255',
-            'title_ser' => 'required|max:255',
+            'title_sr' => 'required|max:255',
             'description_en' => 'max:800',
-            'description_ser' => 'max:800',
+            'description_sr' => 'max:800',
             'address' => 'required|max:255',
             'hours' => 'required|max:255',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
@@ -128,9 +128,9 @@ class PlacesController extends Controller {
         /*
         $place->type_en = $data['type'];
         switch ($data['type']) {
-            case 'restaurant': $place->type_ser = 'restoran'; break;
-            case 'club': $place->type_ser = 'klub'; break;
-            default: $place->type_ser = $place->type_en; break;
+            case 'restaurant': $place->type_sr = 'restoran'; break;
+            case 'club': $place->type_sr = 'klub'; break;
+            default: $place->type_sr = $place->type_en; break;
         }
          *
          */
@@ -155,9 +155,9 @@ class PlacesController extends Controller {
     protected function edit(array $data, $place)
     {      
         $place->title_en = $data['title_en'];
-        $place->title_ser = $data['title_ser'];
+        $place->title_sr = $data['title_sr'];
         $place->description_en = $data['description_en'];
-        $place->description_ser = $data['description_ser'];
+        $place->description_sr = $data['description_sr'];
         $place->address = $data['address'];
         $place->hours = $data['hours'];       
         $place->phone = $data['phone'];
@@ -168,9 +168,9 @@ class PlacesController extends Controller {
         /*
         $place->type_en = $data['type'];
         switch ($data['type']) {
-            case 'restaurant': $place->type_ser = 'restoran'; break;
-            case 'club': $place->type_ser = 'klub'; break;
-            default: $place->type_ser = $place->type_en; break;
+            case 'restaurant': $place->type_sr = 'restoran'; break;
+            case 'club': $place->type_sr = 'klub'; break;
+            default: $place->type_sr = $place->type_en; break;
         }
          * 
          */

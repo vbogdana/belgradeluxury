@@ -16,6 +16,6 @@ class Vehicle extends Model
      * @var array
      */
     protected $fillable = [
-        'brand', 'model', 'type', 'price', 'description_en', 'description_ser', 'people', 'automatic', 'navigation', 'chauffeur', 'link'
+        'brand', 'model', 'type', 'price', 'description_en', 'description_sr', 'people', 'automatic', 'navigation', 'chauffeur', 'link'
     ];
 }

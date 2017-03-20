@@ -141,9 +141,9 @@ class HostsController extends Controller {
         return Validator::make($data, [            
             'name' => 'required|max:255',
             'skills_en' => 'required|max:255',
-            'skills_ser' => 'required|max:255',
+            'skills_sr' => 'required|max:255',
             'hobbies_en' => 'max:800',
-            'hobbies_ser' => 'max:800',
+            'hobbies_sr' => 'max:800',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png'     
         ]);
     }
@@ -179,9 +179,9 @@ class HostsController extends Controller {
     {      
         $host->name = $data['name'];
         $host->skills_en = $data['skills_en'];
-        $host->skills_ser = $data['skills_ser'];        
+        $host->skills_sr = $data['skills_sr'];        
         $host->hobbies_en = $data['hobbies_en'];
-        $host->hobbies_ser = $data['hobbies_ser'];
+        $host->hobbies_sr = $data['hobbies_sr'];
         $host->save();
         
         return $host;

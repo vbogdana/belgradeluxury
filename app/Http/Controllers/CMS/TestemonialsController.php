@@ -138,10 +138,10 @@ class TestemonialsController extends Controller {
     {
         return Validator::make($data, [                       
             'content_en' => 'required|max:800',
-            'content_ser' => 'required|max:800',
+            'content_sr' => 'required|max:800',
             'author' => 'max:255',
             'profession_en' => 'required|max:255',
-            'profession_ser' => 'required|max:255',
+            'profession_sr' => 'required|max:255',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png'     
         ]);
     }
@@ -176,10 +176,10 @@ class TestemonialsController extends Controller {
     protected function edit(array $data, $testemonial)
     {      
         $testemonial->content_en = $data['content_en'];
-        $testemonial->content_ser = $data['content_ser'];
+        $testemonial->content_sr = $data['content_sr'];
         $testemonial->author = $data['author'];
         $testemonial->profession_en = $data['profession_en'];
-        $testemonial->profession_ser = $data['profession_ser'];
+        $testemonial->profession_sr = $data['profession_sr'];
         $testemonial->save();
         
         return $testemonial;

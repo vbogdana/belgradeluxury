@@ -18,7 +18,7 @@ class Host extends Model
      */
     protected $fillable = [
         'name',
-        'skills_en', 'skills_ser',
-        'hobbies_en', 'hobbies_ser', 
+        'skills_en', 'skills_sr',
+        'hobbies_en', 'hobbies_sr', 
     ];
 }

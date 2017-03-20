@@ -43,15 +43,15 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('title_ser') ? ' has-error' : '' }}">
-                            <label for="title_ser" class="col-md-4 control-label">Title (ser)*</label>
+                        <div class="form-group{{ $errors->has('title_sr') ? ' has-error' : '' }}">
+                            <label for="title_sr" class="col-md-4 control-label">Title (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_ser" type="text" maxlength="255" class="form-control" name="title_ser" value="{{ isset($package) ? $package->title_ser : old('title_ser') }}" required>
+                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($package) ? $package->title_sr : old('title_sr') }}" required>
 
-                                @if ($errors->has('title_ser'))
+                                @if ($errors->has('title_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('title_ser') }}</strong>
+                                        <strong>{{ $errors->first('title_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -87,17 +87,17 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('description_ser') ? ' has-error' : '' }}">
-                            <label for="description_ser" class="col-md-4 control-label">Description (ser)</label>
+                        <div class="form-group{{ $errors->has('description_sr') ? ' has-error' : '' }}">
+                            <label for="description_sr" class="col-md-4 control-label">Description (ser)</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_ser" maxlength="800" 
+                                <textarea id="description_sr" maxlength="800" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="description_ser">{{ isset($package) ? $package->description_ser : old('description_ser') }}</textarea>
+                                          name="description_sr">{{ isset($package) ? $package->description_sr : old('description_sr') }}</textarea>
                                 
-                                @if ($errors->has('description_ser'))
+                                @if ($errors->has('description_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('description_ser') }}</strong>
+                                        <strong>{{ $errors->first('description_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>

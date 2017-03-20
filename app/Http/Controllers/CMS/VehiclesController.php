@@ -107,7 +107,7 @@ class VehiclesController extends Controller {
             'type' => 'required|max:255',
             'price' => 'required|numeric',
             'description_en' => 'max:800',
-            'description_ser' => 'max:800',
+            'description_sr' => 'max:800',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
             'people' => 'required|numeric|integer|between:1,20',
             'link' => 'max:255',          
@@ -148,7 +148,7 @@ class VehiclesController extends Controller {
         $vehicle->type = $data['type'];
         $vehicle->price = $data['price'];
         $vehicle->description_en = $data['description_en'];
-        $vehicle->description_ser = $data['description_ser'];       
+        $vehicle->description_sr = $data['description_sr'];       
         $vehicle->people = $data['people'];
         $vehicle->automatic = $data['automatic'];
         $vehicle->navigation = $data['navigation'];

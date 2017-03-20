@@ -45,7 +45,7 @@
             </p>                
         </div>
     </div>
-    <img class="gold-decor" src='{{ url("/") }}/images/decor1.svg'>
+    <img class="gold-decor" src='{{ url("/") }}/images/decor-square.svg'>
     <div class="container text-center">
         <div class="text-uppercase">
             <div class="col-sm-4 step">

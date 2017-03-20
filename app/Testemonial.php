@@ -11,5 +11,5 @@ class Testemonial extends Model
     public $timestamps = false;
     public $primaryKey = 'testID';
     
-    protected $fillable = ['content_en', 'content_ser', 'author', 'profession_en', 'profession_ser'];
+    protected $fillable = ['content_en', 'content_sr', 'author', 'profession_en', 'profession_sr'];
 }

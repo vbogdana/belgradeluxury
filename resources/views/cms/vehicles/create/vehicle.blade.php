@@ -101,17 +101,17 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('description_ser') ? ' has-error' : '' }}">
-                            <label for="description_ser" class="col-md-4 control-label">Description (ser)</label>
+                        <div class="form-group{{ $errors->has('description_sr') ? ' has-error' : '' }}">
+                            <label for="description_sr" class="col-md-4 control-label">Description (ser)</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_ser" maxlength="800" 
+                                <textarea id="description_sr" maxlength="800" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="description_ser">{{ isset($vehicle) ? $vehicle->description_ser : old('description_ser') }}</textarea>
+                                          name="description_sr">{{ isset($vehicle) ? $vehicle->description_sr : old('description_sr') }}</textarea>
                                 
-                                @if ($errors->has('description_ser'))
+                                @if ($errors->has('description_sr'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('description_ser') }}</strong>
+                                        <strong>{{ $errors->first('description_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>
