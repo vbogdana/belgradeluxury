@@ -57,5 +57,12 @@ return [
 	'hotel' => '{0}hotel|{1}hoteli',
 	'vehicle' => '{0}vozilo|{1}vozila',
 	'restaurant' => '{0}restoran|{1}restorani',
+	'monday' => 'ponedeljak',
+	'tuesday' => 'utorak',
+	'wednesday' => 'sreda',
+	'thursday' => 'četvrtak',
+	'friday' => 'petak',
+	'saturday' => 'subota',
+	'sunday' => 'nedelja',
 	
 ];

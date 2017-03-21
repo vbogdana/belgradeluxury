@@ -86,6 +86,11 @@
                                     Testemonials
                                 </a>
                             </li>
+                            <li>
+                                <a href='{{ route('cms.events') }}' role="button">
+                                    Events
+                                </a>
+                            </li>
                             <li class='dropdown'>
                                 <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     Services<span class="caret"></span>

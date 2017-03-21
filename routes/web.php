@@ -235,3 +235,17 @@ Route::get('cms/places/{placeID}/delete/photos', ['as' => 'cms.places.delete.ima
 Route::delete('cms/places/{imgID}/delete/photo', ['as' => 'cms.places.delete.image', 'uses' => 'CMS\PlaceImagesController@deleteImage']);
 Route::delete('cms/places/{placeID}/delete/main-photo', ['as' => 'cms.places.delete.main-image', 'uses' => 'CMS\PlaceImagesController@deleteMainImage']);
 Route::delete('cms/places/{placeID}/delete', ['as' => 'cms.places.delete', 'uses' => 'CMS\PlacesController@delete']);
+
+
+/***
+ * Events
+ */
+Route::get('cms/events', ['as' => 'cms.events', 'uses' => 'CMS\EventsController@loadEvents']);
+Route::get('cms/events/create', ['as' => 'cms.events.create', 'uses' => 'CMS\EventsController@loadCreateEvent']);
+Route::post('cms/events/create', ['as' => 'cms.events.create', 'uses' => 'CMS\EventsController@createEvent']);
+Route::get('cms/events/{evID}/edit', ['as' => 'cms.events.edit', 'uses' => 'CMS\EventsController@loadEditEvent']);
+Route::post('cms/events/{evID}/edit', ['as' => 'cms.events.edit', 'uses' => 'CMS\EventsController@editEvent']);
+Route::get('cms/events/{evID}/edit/main-photo', ['as' => 'cms.events.edit.main-image', 'uses' => 'CMS\EventsController@loadEditMainImage']);
+Route::post('cms/events/{evID}/edit/main-photo', ['as' => 'cms.events.edit.main-image', 'uses' => 'CMS\EventsController@editMainImage']);
+Route::delete('cms/events/{evID}/delete/main-photo', ['as' => 'cms.events.delete.main-image', 'uses' => 'CMS\EventsController@deleteMainImage']);
+Route::delete('cms/events/{evID}/delete', ['as' => 'cms.events.delete', 'uses' => 'CMS\EventsController@delete']);

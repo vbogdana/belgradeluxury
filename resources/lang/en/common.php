@@ -57,5 +57,12 @@ return [
 	'hotel' => '{0}hotel|{1}hotels',
 	'vehicle' => '{0}vehicle|{1}vehicles',
 	'restaurant' => '{0}restaurant|{1}restaurants',
+	'monday' => 'monday',
+	'tuesday' => 'tuesday',
+	'wednesday' => 'wednesday',
+	'thursday' => 'thursday',
+	'friday' => 'friday',
+	'saturday' => 'saturday',
+	'sunday' => 'sunday',
 	
 ];
