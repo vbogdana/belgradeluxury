@@ -100,7 +100,7 @@
 
 <!--    START BUSINESS SECTION      -->
 <section id="business-services" class="business-section interstitial fullwidth space-y" data-section-name="business-services-panel">
-    <div class="container text-center">
+    <div class="container-fluid text-center">
         <div class="description" style="padding: 0 10%; margin-bottom: 25px">
             <h2>@lang('index.business1')</h2>
         </div>
@@ -185,7 +185,7 @@
     </div>
     <img class="gold-decor" src='{{ url("/") }}\images\decor-diamond.svg'>
         
-    <div class="container">
+    <div class="container-fluid">
         <div class="description text-center" id="package-info">
             <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('common.luxury', 0) }}</span> @lang('common.package') </h4>
             <a id="inquiry" class="btn" href="{{ route("contact") }}#contact-us"> @lang('common.inquiry') </a>
@@ -232,7 +232,7 @@
             </div>
         </div>
         <img class="gold-decor" src='<?php echo url("/")?>\images\decor-square.svg'>
-        <div class="container text-center">
+        <div class="container-fluid text-center">
             <div class="text-uppercase">
                 <div class="col-sm-4 step">
                     <img class="img-responsive" src='{{ url("/") }}\images\step1.svg'>

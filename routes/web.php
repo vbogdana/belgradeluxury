@@ -55,11 +55,11 @@ Route::group([
             ]
         );
         
-        // Single apartment page
-        Route::get(LaravelLocalization::transRoute('routes.apartment'), 
+        // Single accommodation page
+        Route::get(LaravelLocalization::transRoute('routes.accommodation.single'), 
             [
-              'as' => 'accommodation.apartment', 
-              'uses' => 'App\ServicesController@loadApartment'
+              'as' => 'accommodation.single', 
+              'uses' => 'App\ServicesController@loadSingleAccommodation'
             ]
         );
         

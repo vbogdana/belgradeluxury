@@ -46,7 +46,7 @@
         </div>
     </div>
     <img class="gold-decor" src='{{ url("/") }}/images/decor-square.svg'>
-    <div class="container text-center">
+    <div class="container-fluid text-center">
         <div class="text-uppercase">
             <div class="col-sm-4 step">
                 <img class="img-responsive" src='{{ url("/") }}\images\step1.svg'>

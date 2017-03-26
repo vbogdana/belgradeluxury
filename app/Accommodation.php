@@ -21,4 +21,12 @@ class Accommodation extends Model
         'description_en', 'description_sr', 'geoLat', 
         'geoLong', 'link', 'spa', 'priority'
     ];
+    
+    public function images() {
+        return $this->hasMany('App\AccommodationImage', 'accID', 'accID');
+    }
+    
+    public function apartment() {
+        return $this->hasOne('App\Apartment', 'accID', 'accID');
+    }
 }

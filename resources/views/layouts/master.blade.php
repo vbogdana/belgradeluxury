@@ -66,7 +66,7 @@
         <div class='animsition'>
             <div class="menu wrapper text-lowercase" expanded="false">
                 <div class='toolbar'>
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="col-xs-12 col-sm-7 col-md-6">
                             <div class="col-xs-12 col-sm-6">
                                 <a href="mailto:inquiry@belgradeluxury.com">
@@ -109,7 +109,7 @@
             <!-- menu se definise ovde jer ce biti isti za sve stranice -->
             @section('sidebar')
                 <nav class='navbar navbar-fixed-top'>
-                    <div class='container'>
+                    <div class='container-fluid'>
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <span class="sr-only">@lang('common.toggle navigation')</span>
@@ -183,7 +183,7 @@
             @yield('content')
                    
             <section id="quick-links" class="footer-section interstitial fullwidth space-y" data-section-name="quick-links-panel">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="col-xs-12">
                         <h4 class="text-uppercase">Belgrade Luxury</h4>
                     </div>
@@ -285,7 +285,7 @@
             });
             maps_protocol = 'http://maps.apple.com/?q=';
              
-            $('.fa-map-marker').each(function() {
+            $('a.fa-map-marker').each(function() {
                 geoLoc = $(this).attr('href');
                 $(this).attr({
                     href: maps_protocol + geoLoc

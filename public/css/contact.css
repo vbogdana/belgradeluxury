@@ -1,6 +1,6 @@
 	/*
   	contact icon font: contact
-  	Creation date: 27/02/2017 23:38
+  	Creation date: 23/03/2017 14:55
   	*/
 
 @font-face {
@@ -17,7 +17,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "contact";
-    src: url("./contact.svg#contact") format("svg");
+    src: url("../fonts/contact.svg#contact") format("svg");
   }
 }
 
@@ -26,8 +26,16 @@
 	font-family: contact;
 }
 
-.contact-viber:before { content: "\f100"; }
-.contact-client:before { content: "\f101"; }
-.contact-career:before { content: "\f102"; }
-.contact-partner:before { content: "\f103"; }
-.contact-partner1:before { content: "\f104"; }
+.contact-nightlife:before { content: "\f100"; }
+.contact-gastronomy:before { content: "\f101"; }
+.contact-vehicles:before { content: "\f102"; }
+.contact-spa:before { content: "\f103"; }
+.contact-hotel:before { content: "\f104"; }
+.contact-apartment:before { content: "\f105"; }
+.contact-five-stars:before { content: "\f106"; }
+.contact-add:before { content: "\f107"; }
+.contact-calendar:before { content: "\f108"; }
+.contact-viber:before { content: "\f109"; }
+.contact-client:before { content: "\f10a"; }
+.contact-career:before { content: "\f10b"; }
+.contact-partner:before { content: "\f10c"; }

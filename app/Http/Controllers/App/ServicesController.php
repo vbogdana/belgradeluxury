@@ -7,6 +7,7 @@ use App\Apartment;
 use App\Vehicle;
 use App\Host;
 use App\Place;
+use App\Event;
 use App\Http\Controllers\Controller;
 use Request;
 use Response;
@@ -42,17 +43,15 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadApartment($accID) { 
-        return view('errors.notfound', ['var' => 'apartment']);
-        /*
-        $apartment = Apartment::find($accID);
-        if ($apartment == null) {
+    function loadSingleAccommodation($accID) { 
+        //return view('errors.notfound', ['var' => 'accommodation']);
+        $accommodation = Accommodation::find($accID);
+        if ($accommodation == null) {
             return view('errors.notfound', ['var' => 'apartment']);
         }
         
         AppController::loadServices($services, $packages);
-        return view('services.single-apartment', ['apartment' => $apartment, 'services' => $services, 'packages' => $packages]);
-         */
+        return view('services.single-element', ['object' => $accommodation, 'type' => 'accommodation', 'services' => $services, 'packages' => $packages]);
     }
     
     /**
@@ -84,16 +83,14 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadVehicle($vehID) {  
-        return view('errors.notfound', ['var' => 'vehicle']);
-        /*
+        //return view('errors.notfound', ['var' => 'vehicle']);
         $vehicle = Vehicle::find($vehID);
         if ($vehicle == null) {
             return view('errors.notfound', ['var' => 'vehicle']);
         }
         
         AppController::loadServices($services, $packages);
-        return view('services.single-vehicle', ['vehicle' => $vehicle, 'services' => $services, 'packages' => $packages]);
-         */
+        return view('services.single-element', ['object' => $vehicle, 'type' => 'vehicles', 'services' => $services, 'packages' => $packages]);
     }
     
     /**
@@ -155,5 +152,22 @@ class ServicesController extends Controller {
         }
 
         return view('services.gastronomy', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
+     * Loads a view for a place page.
+     *
+     * @return view
+     */
+    function loadPlace($placeID) {  
+        //return view('errors.notfound', ['var' => 'place']);
+        $place = Place::find($placeID);
+        if ($place == null) {
+            return view('errors.notfound', ['var' => 'place']);
+        }
+        
+        $events = Event::where('placeID', $place->placeID);
+        AppController::loadServices($services, $packages);
+        return view('services.single-element', ['object' => $place, 'events' => $events, 'type' => 'places', 'services' => $services, 'packages' => $packages]);
     }
 }

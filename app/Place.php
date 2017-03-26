@@ -21,4 +21,12 @@ class Place extends Model
         'address', 'hours', 'phone', 
         'geoLat', 'geoLong', 'link'
     ];
+    
+    public function images() {
+        return $this->hasMany('App\PlaceImage', 'placeID', 'placeID');
+    }
+    
+    public function isRestaurant() {
+        return ($this->type === 'restaurant');
+    }
 }

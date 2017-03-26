@@ -54,46 +54,148 @@ $(document).ready(function () {
  *  
  ******************************************************************************/
 $(document).ready(function () {
+    
+    var topOfWindow = $(window).scrollTop();
+    var bottomOfWindow = topOfWindow + $(window).innerHeight();
+    /*
+     * Initializes elements that are to be animated
+     * 
+     * @param {HTML DOM object} el
+     * @returns {undefined}
+     */
+    function addAnimated(el, animation) {
+        el.addClass('animated');            
+        var imagePos = el.offset().top;
+
+        if (imagePos < bottomOfWindow && imagePos >= topOfWindow) {
+            el.addClass(animation);
+        } else {
+            el.addClass('hideIt');
+        }
+    }
+    /*
+     * Adds animation to element
+     * 
+     * @param {HTML DOM object} el
+     * @param {string} animation
+     * @param {int} offset
+     * @returns {undefined}
+     */
+    function addAnimation(el, animation, offset) {
+        var imagePos = el.offset().top;
+
+        var topOfWindow = $(window).scrollTop();
+        if (imagePos < topOfWindow + offset) {
+            el.removeClass('hideIt');
+            el.addClass(animation);
+        }
+    }
+
+    $(window).on("load", function () { 
+        var i = 700;
+        // add animations to opening elements
+        $('section:first-of-type .description h1, '
+        + 'section:first-of-type .description h2 ').each(function () {
+            $(this).addClass('animated');
+            $(this).addClass('fadeInDown');
+            $(this).css("animation-delay", i + "ms");
+        });
+        i = 0;
+        $('.vertical-tabs ul.nav-pills li').each(function () {
+            $(this).addClass('animated');
+            $(this).addClass('fadeInLeft');
+            $(this).css("animation-delay", i + "ms");
+            i += 100;
+        });
+
+
+        // add animations to elements
+        $('.gold-ornament').each(function () {
+            addAnimated($(this), 'fadeInUp');
+        });
+        $('.gold-decor').each(function () {
+            addAnimated($(this), 'fadeIn');
+        });           
+        $('.description h2:not(.hero-holder .description h2)').each(function() {
+            addAnimated($(this), 'fadeInDown');
+        });
+        $('.description p:not(.hero-holder .description p)').each(function () {
+            addAnimated($(this), 'fadeIn');
+        }); 
+        $('.aboutus-section .block').each(function () {
+            addAnimated($(this), 'fadeInUp');
+        });
+        i = 0;
+        $('ul.nav-pills li').each(function () {
+            addAnimated($(this), 'fadeInDown');
+            $(this).css("animation-delay", i + "ms");
+            i += 100;
+        });        
+        $('.side-photo').each(function () {
+            addAnimated($(this), 'fadeInDown');
+        });
+        $('.side-content').each(function () {
+            addAnimated($(this), 'fadeIn');
+        });
+        $('.contact-section .hi-icon').each(function () {
+            addAnimated($(this), 'fadeIn');
+        });
+        i = 0;
+        $('.social .hi-icon').each(function () {
+            addAnimated($(this), 'fadeInUp');
+            $(this).css("animation-delay", i + "ms");
+            i += 100;
+        });
+
+    });
+
+    $(window).on("scroll", function () {
+        var windowHeight = $(window).innerHeight();
+
+        $('.gold-ornament.animated').each(function() {
+            addAnimation($(this), "fadeInUp", windowHeight - 100);
+        });
+        $('.gold-decor.animated').each(function() {
+            addAnimation($(this), "fadeIn", windowHeight - 100);
+        });
+        $('.description h2.animated').each(function() {
+            addAnimation($(this), "fadeInDown", windowHeight - 100);
+        });
+        $('.description p.animated').each(function() {
+            addAnimation($(this), "fadeIn", windowHeight - 100);
+        });
+        var i = 0;
+        $('.aboutus-section .block.animated').each(function() {
+            addAnimation($(this), "fadeInUp", $('.aboutus-section').height() - 50);
+            $(this).css("animation-delay", i + "ms");
+            i += 100;
+        });
+        i = 0;
+        $('ul.nav-pills li').each(function () {
+            addAnimation($(this), "fadeInDown", windowHeight - 100);
+            $(this).css("animation-delay", i + "ms");
+            i += 100;
+        });
+        $('.side-photo').each(function () {
+            addAnimation($(this), 'fadeInDown', windowHeight - 100);
+        });
+        $('.side-content').each(function () {
+            addAnimation($(this), 'fadeIn', windowHeight - 100);
+        });
+        $('.contact-section .hi-icon').each(function() {
+            addAnimation($(this), "fadeIn", windowHeight - 100);
+        });
+        i = 0;
+        $('.social .hi-icon').each(function () {
+            addAnimation($(this), "fadeInUp", windowHeight - 50);
+            $(this).css("animation-delay", i + "ms");
+            i += 100;
+        });
+    });
+
     if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
         
-        var topOfWindow = $(window).scrollTop();
-        var bottomOfWindow = topOfWindow + $(window).innerHeight();
-        /*
-         * Initializes elements that are to be animated
-         * 
-         * @param {HTML DOM object} el
-         * @returns {undefined}
-         */
-        function addAnimated(el, animation) {
-            el.addClass('animated');            
-            var imagePos = el.offset().top;
-
-            if (imagePos < bottomOfWindow && imagePos >= topOfWindow) {
-                el.addClass(animation);
-            } else {
-                el.addClass('hideIt');
-            }
-        }
-        /*
-         * Adds animation to element
-         * 
-         * @param {HTML DOM object} el
-         * @param {string} animation
-         * @param {int} offset
-         * @returns {undefined}
-         */
-        function addAnimation(el, animation, offset) {
-            var imagePos = el.offset().top;
-
-            var topOfWindow = $(window).scrollTop();
-            if (imagePos < topOfWindow + offset) {
-                el.removeClass('hideIt');
-                el.addClass(animation);
-            }
-        }
-            
         $(window).on("load", function () { 
-
             // add animations to opening elements
             var i = 700;
             $('#navbar ul.nav li a.animated').each(function () {
@@ -109,95 +211,12 @@ $(document).ready(function () {
                 $(this).addClass('zoomIn');
                 $(this).css("animation-delay", i + "ms");
             });
-            
-            // add animations to panels
-            $('.box-right:not(.video-section .box-right, .service-description-section .box-right), '
-            + '.box-left:not(.service-description-section .box-left)').each(function () {
-                addAnimated($(this), 'zoomIn');
-            });
-            
-            // add animations to elements
-            $('.gold-ornament').each(function () {
-                addAnimated($(this), 'fadeInUp');
-            });
-            $('.gold-decor').each(function () {
-                addAnimated($(this), 'fadeIn');
-            });           
-            $('.description h2:not(.hero-holder .description h2)').each(function() {
-                addAnimated($(this), 'fadeInDown');
-            });
-            $('.description p:not(.hero-holder .description p)').each(function () {
-                addAnimated($(this), 'fadeIn');
-            }); 
-            $('.aboutus-section .block').each(function () {
-                addAnimated($(this), 'fadeInUp');
-            });
-            i = 0;
-            $('ul.nav-pills li').each(function () {
-                addAnimated($(this), 'fadeInDown');
-                $(this).css("animation-delay", i + "ms");
-                i += 100;
-            });
-            $('.side-photo').each(function () {
-                addAnimated($(this), 'fadeInDown');
-            });
-            $('.side-content').each(function () {
-                addAnimated($(this), 'fadeIn');
-            });
-            $('.contact-section .hi-icon').each(function () {
-                addAnimated($(this), 'fadeIn');
-            });
-            i = 0;
-            $('.social .hi-icon').each(function () {
-                addAnimated($(this), 'fadeInUp');
-                $(this).css("animation-delay", i + "ms");
-                i += 100;
-            });
-            
         });
 
-        $(window).on("scroll", function () {
-            var windowHeight = $(window).innerHeight();
-            
-            $('.gold-ornament.animated').each(function() {
-                addAnimation($(this), "fadeInUp", windowHeight - 100);
-            });
-            $('.gold-decor.animated').each(function() {
-                addAnimation($(this), "fadeIn", windowHeight - 100);
-            });
-            $('.description h2.animated').each(function() {
-                addAnimation($(this), "fadeInDown", windowHeight - 100);
-            });
-            $('.description p.animated').each(function() {
-                addAnimation($(this), "fadeIn", windowHeight - 100);
-            });
-            var i = 0;
-            $('.aboutus-section .block.animated').each(function() {
-                addAnimation($(this), "fadeInUp", $('.aboutus-section').height() - 50);
-                $(this).css("animation-delay", i + "ms");
-                i += 100;
-            });
-            i = 0;
-            $('ul.nav-pills li').each(function () {
-                addAnimation($(this), "fadeInDown", windowHeight - 100);
-                $(this).css("animation-delay", i + "ms");
-                i += 100;
-            });
-            $('.side-photo').each(function () {
-                addAnimation($(this), 'fadeInDown', windowHeight - 100);
-            });
-            $('.side-content').each(function () {
-                addAnimation($(this), 'fadeIn', windowHeight - 100);
-            });
-            $('.contact-section .hi-icon').each(function() {
-                addAnimation($(this), "fadeIn", windowHeight - 100);
-            });
-            i = 0;
-            $('.social .hi-icon').each(function () {
-                addAnimation($(this), "fadeInUp", windowHeight - 50);
-                $(this).css("animation-delay", i + "ms");
-                i += 100;
-            });
+        // add animations to panels
+        $('.box-right:not(.video-section .box-right, .service-description-section .box-right), '
+        + '.box-left:not(.service-description-section .box-left)').each(function () {
+            addAnimated($(this), 'zoomIn');
         });
     }
 });

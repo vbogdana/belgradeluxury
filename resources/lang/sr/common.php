@@ -64,5 +64,8 @@ return [
 	'friday' => 'petak',
 	'saturday' => 'subota',
 	'sunday' => 'nedelja',
+	'location' => 'lokacija',
+	'description' => 'opis',
+	'photo' => '{0}fotografija|{1}fotografije',
 	
 ];

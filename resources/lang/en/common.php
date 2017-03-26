@@ -64,5 +64,8 @@ return [
 	'friday' => 'friday',
 	'saturday' => 'saturday',
 	'sunday' => 'sunday',
+	'location' => 'location',
+	'description' => 'description',
+	'photo' => '{0}photo|{1}photos',
 	
 ];

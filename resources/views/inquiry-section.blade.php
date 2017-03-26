@@ -11,7 +11,7 @@
 <section id="inquiry" class="service-inquiry-section interstitial ribbon fullwidth space-y text-center" data-section-name="inquiry-panel">            
     <img class="img-responsive" src='<?php echo url("/")?>/images/logo/logo-letters.svg' style='max-width: 130px; display: inline-block; margin-bottom: 30px'>
     <img class="img-responsive" src='<?php echo url("/")?>/images/decor.svg'>    
-    <div class="container">
+    <div class="container-fluid">
         <div class="description text-center">
             <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
             <div class='row'>                

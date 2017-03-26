@@ -128,6 +128,15 @@ All rights reserved
 .fa-whatsapp:before {
   content: "\f232";
 }
+.fa-info:before {
+   content: "\f129"; 
+}
+.fa-info-circle:before {
+   content: "\f05a"; 
+}
+.fa-picture:before {
+    content: "\f03e";
+}
 
 /* Categories icons */
 .fa-nightlife:before {
@@ -455,6 +464,7 @@ section {
     height: 100%;
     width: 100%;
 }
+/*
 .container {
     width: 100%;
 }
@@ -463,6 +473,7 @@ section {
     padding: 0 15px;
   }
 }
+*/
 .ribbon {
    height: auto !important;
    background: black;
@@ -697,15 +708,41 @@ section {
     line-height: 1.3em;
     letter-spacing: 0.125em;
 }
-.description h2 {
+.description h2, .description h1 {
     font-size: 24px;
     text-transform: uppercase;
+}
+.description .tags {
+    font-family: Quicksand, Raleway, sans-serif;
+    text-transform: capitalize;
+    margin-bottom: 80px;
+}
+.description .type {
+    margin-top: 20px;
+}
+.description .type .hi-icon:before {
+    font-size: 30px;
+    color: #CEAB4D;
+}
+.description a.fa span {
+    margin-left: 3px;
+    color: #E5E4E2;
+    font-family: Quicksand, Raleway, sans-serif;
+}
+.description a.fa:hover, .description a.fa:hover span {
+   color: #CEAB4D; 
+}
+.description span {
+    color: #CEAB4D;
+}
+.description a.link {
+    text-transform: capitalize;
 }
 @media screen and (max-width: 1024px) {
     .description p {
         padding: 20px 15%;
     }
-    .description h2 {
+    .description h2, .description h1 {
         font-size: 20px;
     }
 }
@@ -722,8 +759,11 @@ section {
         font-size: 0.8em;
         padding: 10px 15%;
     }
-    .description h2 {
+    .description h2, .description h1 {
         font-size: 16px;
+    }
+    .description .tags {
+        margin-bottom: 50px;
     }
 }
 @media screen and (max-width: 450px) {
@@ -731,7 +771,7 @@ section {
         width: 190%;
         margin-left: -45%;
     }
-    .description h2 {
+    .description h2, .description h1 {
         font-size: 16px;
     } 
 }
@@ -1006,7 +1046,7 @@ a.btn:active, .btn:active {
     z-index: 9999;
     font-family: Quicksand, Raleway, sans-serif;
 }
-.toolbar .container {
+.toolbar .container-fluid {
     padding: 0;
 }
 .toolbar div {
@@ -1099,7 +1139,7 @@ a.btn:active, .btn:active {
     .navbar {
         margin: 0;
     }
-    .navbar .container {
+    .navbar .container-fluid {
         background: black;
     }
     .navbar-header {
@@ -2125,6 +2165,13 @@ a.btn:active, .btn:active {
     font-size: 20px;
     line-height: 40px;
 }
+.pagination-grid.vertical-tabs .nav-pills > li .hi-icon:before {
+    font-family: 'fontawesome';
+}
+.pagination-grid.vertical-tabs .nav-pills > li .hi-icon.contact-calendar:before,
+.pagination-grid.vertical-tabs .nav-pills > li .hi-icon.contact-add:before {
+    font-family: 'contact';
+}
 .pagination-grid .hover-effects figure .img-holder {
     height: 250px;
 }
@@ -2191,6 +2238,19 @@ a.btn:active, .btn:active {
     -moz-transition: top 0.8s;
     transition: top 0.8s;
 }
+.pagination-grid .hover-effects figcaption .link {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    opacity: 0;
+}
+.pagination-grid .hover-effects figure:hover figcaption .link {
+    opacity: 1;
+    -webkit-transition: opacity 1.5s;
+    -moz-transition: opacity 1.5s;
+    transition: opacity 1.5s;
+}
 @media screen and (min-width: 451px) {
     .pagination-grid .hover-effects figure {
         height: 350px;
@@ -2244,6 +2304,33 @@ a.btn:active, .btn:active {
     */
     .pagination-grid .hover-effects figcaption {
         height: 450px;
+    }
+}
+
+/*******************************************************************************
+ * 
+ *                  VERTICAL TABS
+ *  
+ ******************************************************************************/
+.vertical-tabs .tab-pane.info {
+    text-align: center;  
+    border: 1px solid rgba(256,256,256,0.08);
+    padding: 50px 30px;
+}
+.vertical-tabs .tab-pane.info h2 {
+    color: #ceab4d;
+}
+@media screen and (max-width: 767px) {
+    .vertical-tabs .nav.nav-pills {
+        display: none;
+    }
+    .vertical-tabs .tab-pane {
+        display: block;
+    }
+    .vertical-tabs .tab-pane.info {
+        text-align: center;  
+        border: none;
+        padding: 25px 10px;
     }
 }
 

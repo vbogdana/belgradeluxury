@@ -18,4 +18,8 @@ class Vehicle extends Model
     protected $fillable = [
         'brand', 'model', 'type', 'price', 'description_en', 'description_sr', 'people', 'automatic', 'navigation', 'chauffeur', 'link'
     ];
+    
+    public function images() {
+        return $this->hasMany('App\VehicleImage', 'vehID', 'vehID');
+    }
 }

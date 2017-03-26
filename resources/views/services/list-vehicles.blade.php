@@ -36,10 +36,17 @@
                 <p style='padding: 4px 0 0;'>
                     {{ $vehicle['people'] }}
                 </p>
-                <a href="{{ route("vehicles.vehicle", ['vehID' => $vehicle->vehID]) }}" class="btn" style="margin: 10px 0 0; padding: 5px 10px; font-size: 0.8em;">    
-                    @lang('common.more')
+                <a href="{{ route("vehicles.vehicle", ['vehID' => $vehicle->vehID]) }}" class="btn" style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.8em;">    
+                    @lang('common.details')
+                </a>
+                <a href="{{ route("contact") }}" class="btn" style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.8em;">
+                    @lang('common.inquiry')
                 </a>
             </div>
+            <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                (+381) 064 4519 017
+            </a>
         </figcaption>
     </figure>
 </div>

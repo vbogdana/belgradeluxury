@@ -10,7 +10,7 @@
 
 @section('content')
 <section class='fullwidth interstition space-y'>
-    <div class="container">
+    <div class="container-fluid">
         <div class="description text-center">
             <h2 class="text-uppercase"> @lang('common.error') </h2>
             <p>

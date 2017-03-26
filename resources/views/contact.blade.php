@@ -45,7 +45,7 @@
 
 <!--    START CONTACT INFO SECTION      -->
 <section id="contact-information" class="contact-section panel fullwidth space-y" data-section-name="contact-information-panel">
-    <div class="container hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
+    <div class="container-fluid hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
         <div class="row">
             <div class="col col-sm-4">
                 <a class="hi-icon contact-client" data-scroll href="#contact-us"></a>
@@ -111,7 +111,7 @@
             <div>
                 {{ Form::open(['route' => 'contact', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
                 
-                <div class="container" style="font-family: Aspergit, Raleway, sans-serif">
+                <div class="container-fluid" style="font-family: Aspergit, Raleway, sans-serif">
                     <div class="description text-center">
                         <h2 class="text-uppercase"> @lang('contact.form')</h2>
                         <p id="status" style="font-size: 1.2em"></p>           
@@ -235,7 +235,7 @@
 
 <!--    START SOCIAL SECTION      -->
 <section id="social" class="contact-section panel fullwidth space-y-t" data-section-name="social-panel">
-    <div class="container hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
+    <div class="container-fluid hi-icon-effect text-center text-uppercase" style="overflow-x: hidden">
         <div class="description">
             <h2>@lang('contact.social')</h2>
             <p></p>
