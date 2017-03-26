@@ -9,3 +9,8 @@ nbproject/private/private.xml
 nbproject/project.xml
 /nbproject/private/
 nbproject/licenseheader.txt
+HOSTING-env.txt
+HOSTING-htaccess.txt
+.env
+public/storage
+public/storage/.gitignore
