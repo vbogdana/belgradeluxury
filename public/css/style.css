@@ -138,6 +138,20 @@ All rights reserved
     content: "\f03e";
 }
 
+/* services icons */
+.fa-navigation:before {
+    content: "\f124";    
+}
+.fa-air-condition:before {
+    content: "\f2dc";   
+}
+.fa-tv:before {
+    content: "\f26c";   
+}
+.fa-wifi:before {
+    content: "\f1eb";   
+}
+
 /* Categories icons */
 .fa-nightlife:before {
   content: "\f001";
@@ -2140,6 +2154,22 @@ a.btn:active, .btn:active {
     display: table-cell;
     vertical-align: middle;
     height: 100%;
+    font-family: Quicksand, Raleway, sans-serif;
+    letter-spacing: 0.1em;
+}
+@media screen and (min-width: 768px) {
+    .pagination-grid.vertical-tabs .nav-pills li.active:after {
+        content: '';
+        display: block;
+        background: #0a0a0a;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        top: calc(50% - 7px);
+        left: calc(100% - 7px);
+    }
 }
 .pagination-grid .nav-pills li.active > a, 
 .pagination-grid .nav-pills li.active a:hover, 
@@ -2314,11 +2344,33 @@ a.btn:active, .btn:active {
  ******************************************************************************/
 .vertical-tabs .tab-pane.info {
     text-align: center;  
-    border: 1px solid rgba(256,256,256,0.08);
+    border: 1px solid rgba(256, 256, 256, 0.08);
     padding: 50px 30px;
 }
 .vertical-tabs .tab-pane.info h2 {
     color: #ceab4d;
+    padding: 10px;
+    border-bottom: 1px solid rgba(256, 256, 256, 0.08);
+}
+.vertical-tabs .tab-pane.info .header {
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(256, 256, 256, 0.08);
+}
+.vertical-tabs .tab-pane.info .hi-icon {
+    margin-bottom: 5px;
+}
+.vertical-tabs #details.tab-pane.info,
+.vertical-tabs #location.tab-pane.info {
+    font-family: Quicksand, Raleway, sans-serif;
+}
+.vertical-tabs #details.tab-pane.info div[data-enabled='0'],
+.vertical-tabs #details.tab-pane.info div[data-enabled='0'] .hi-icon:before {
+    color: #222222;
+}
+.vertical-tabs #details.tab-pane.info .row div {
+    margin-bottom: 10px;
 }
 @media screen and (max-width: 767px) {
     .vertical-tabs .nav.nav-pills {
@@ -2330,7 +2382,7 @@ a.btn:active, .btn:active {
     .vertical-tabs .tab-pane.info {
         text-align: center;  
         border: none;
-        padding: 25px 10px;
+        padding: 25px 10px 0;
     }
 }
 

@@ -30,4 +30,9 @@ return [
 	'club' => '{0}club|{1}clubs',
 	'splav' => '{0}river club|{1}river clubs',
 	'kafana' => '{0}tavern|{1}taverns',
+	'air condition' => 'air condition',
+	'city center' => 'city center',
+	'automatic' => 'automatic',
+	'chauffeur' => 'chauffeur',
+	'navigation' => 'navigation',
 ];

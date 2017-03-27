@@ -67,5 +67,6 @@ return [
 	'location' => 'location',
 	'description' => 'description',
 	'photo' => '{0}photo|{1}photos',
+	'person' => '{1}person|[2,20]people',
 	
 ];

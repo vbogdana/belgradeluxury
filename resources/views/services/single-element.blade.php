@@ -176,37 +176,41 @@
                 <div class="tab-content clearfix">
                     
                     <div class="tab-pane active" id="photos">
-                        <!-- GALLERY -->         
-                        <div class='carousel-holder'>
-                            <div class='gallery-main'>
-                                <!--
-                                @foreach($object->images as $image)
-                                <div class=''>
-                                    <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
+                        <div class='container-fluid'>
+                            <!-- GALLERY -->         
+                            <div class='carousel-holder'>
+                                <div class='gallery-main'>
+                                    <!--
+                                    <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}'>
+                                    @foreach($object->images as $image)
+                                    <div class=''>
+                                        <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
+                                    </div>
+                                    @endforeach                                       
+                                    -->
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact.jpg'></div>
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact1.jpg'></div>
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/aboutus.jpg'></div>
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/index.jpg'></div>
                                 </div>
-                                @endforeach                                       
-                                -->
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact.jpg'></div>
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact1.jpg'></div>
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/aboutus.jpg'></div>
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/index.jpg'></div>
                             </div>
-                        </div>
-                        <div class='carousel-holder'>
-                            <div class='gallery-nav'>
-                                <!--
-                                @foreach($object->images as $image)
-                                <div class=''>
-                                    <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
+                            <div class='carousel-holder'>
+                                <div class='gallery-nav'>
+                                    <!--
+                                    <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}'>
+                                    @foreach($object->images as $image)
+                                    <div class=''>
+                                        <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
+                                    </div>
+                                    @endforeach 
+                                    -->
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact.jpg'></div>
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact1.jpg'></div>
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/aboutus.jpg'></div>
+                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/index.jpg'></div>
                                 </div>
-                                @endforeach 
-                                -->
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact.jpg'></div>
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact1.jpg'></div>
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/aboutus.jpg'></div>
-                                <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/index.jpg'></div>
-                            </div>
-                        </div>  
+                            </div>     
+                        </div>                         
                     </div>
                     
                     <div class="tab-pane info" id="description">
@@ -224,26 +228,141 @@
                     
                     @if ($type === 'places')
                     <div class="tab-pane info" id="events">
-                        events
+                        <div class='description'>
+                            <h2 class='text-uppercase'>
+                                program
+                            </h2>
+                        </div>
                     </div>
                     @elseif ($type === 'accommodation')
-                    <div class="tab-pane info" id="details">
-                        details
+                    <div class="tab-pane info hi-icon-effect" id="details">
+                        <div class='description'>
+                            @if ($subtype !== 'hotel')
+                            <div class='header'>
+                                <i class="hi-icon fa-people"></i>
+                                <br/>
+                                {{ $object->apartment()->people.' '.trans_choice('common.person',$object->apartment()->people) }}
+                            </div> 
+                            <div class='container-fluid text-lowercase'>
+                                <div class="row">
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->tv }}'>
+                                        <i class="hi-icon fa-tv"></i>
+                                        <br/>
+                                        tv
+                                    </div>
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->hottub }}'>
+                                        <i class="hi-icon contact-hottub"></i>
+                                        <br/>
+                                        jacuzzi
+                                    </div>
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->wifi }}'>
+                                        <i class="hi-icon fa-wifi"></i>
+                                        <br/>
+                                        wifi
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->bar }}'>
+                                        <i class="hi-icon contact-nightlife"></i>
+                                        <br/>
+                                        bar
+                                    </div>
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->airCondition }}'>
+                                        <i class="hi-icon fa-air-condition"></i>
+                                        <br/>
+                                        @lang('services.air condition')
+                                    </div>
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->parking }}'>
+                                        <i class="hi-icon contact-parking"></i>
+                                        <br/>
+                                        parking
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4" data-enabled='{{ $object->apartment()->cityCenter }}'>
+                                        <i class="hi-icon contact-city-center"></i>
+                                        <br/>
+                                        @lang('services.city center')
+                                    </div>
+                                </div>
+                            </div>
+                            @else
+                            @endif
+                        </div>
                     </div>
                     @elseif ($type === 'vehicles')
-                    <div class="tab-pane info" id="details">
-                        details
+                    <div class="tab-pane info hi-icon-effect" id="details">
+                        <div class='description'>
+                            <div class='header'>
+                                <i class="hi-icon fa-people"></i>
+                                <br/>
+                                {{ $object->people.' '.trans_choice('common.person',$object->people) }}
+                            </div>
+                            <div class='container-fluid text-lowercase'>
+                                <div class="row">
+                                    <div class="col-xs-4" data-enabled='{{ $object->automatic }}'>
+                                        <i class="hi-icon contact-automatic"></i>
+                                        <br/>
+                                        @lang('services.automatic')
+                                    </div>
+                                    <div class="col-xs-4" data-enabled='{{ $object->chauffeur }}'>
+                                        <i class="hi-icon contact-chauffeur"></i>
+                                        <br/>
+                                        @lang('services.chauffeur')
+                                    </div>
+                                    <div class="col-xs-4" data-enabled='{{ $object->navigation }}'>
+                                        <i class="hi-icon fa-navigation"></i>
+                                        <br/>
+                                        @lang('services.navigation')
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     @endif
                                        
                     @if ($type !== 'vehicles')
-                    <div class="tab-pane info" id="location">
-                        location
+                    <div class="tab-pane info hi-icon-effect" id="location">
+                        <div class='description'>
+                            <div class='header'>
+                                <a href="{{ $object->geoLat.','.$object->geoLong }}" class="link" data-toggle="tab">
+                                    <i class="hi-icon fa-map-marker"></i>
+                                    <br/>
+                                    {{ $object->address }}
+                                </a>
+                            </div>  
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="">
+                                        <div id="map-canvas" class="google-map" data-lat="{{ $object->geoLat }}" data-long="{{ $object->geoLong }}" data-img="{{ url("") }}/images/map-pin.png" ></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     @endif
                  
                     <div class="tab-pane info" id="contact">
-                        contact
+                        <div class="description">
+                            <h2>
+                                @lang('common.inquiry')
+                            </h2>
+                            <p>
+                                <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    (+381) 064 4519 017
+                                </a>
+                            </p>
+                        </div>
+                        <div class='container-fluid'>
+                            <div class='row'>
+                                <a id="contact" class="btn" href='{{ route("contact") }}' style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.9em;"> 
+                                    @lang('common.contact us') 
+                                </a>                                
+                                <a id="inquiry" class="btn" href='{{ route("contact") }}' style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.9em;"> 
+                                    @lang('common.inquiry') 
+                                </a>      
+                        </div>
                     </div>
                     
                 </div>
@@ -286,5 +405,11 @@
         $($href).css("height", "100");
     });
     */
+</script>
+<script src="{{ url("/") }}/js/map.js"></script>
+<script>
+    $(document).ready(function() {
+        
+    });
 </script>
 @stop

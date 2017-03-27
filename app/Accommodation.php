@@ -27,6 +27,6 @@ class Accommodation extends Model
     }
     
     public function apartment() {
-        return $this->hasOne('App\Apartment', 'accID', 'accID');
+        return Apartment::find($this->accID);
     }
 }

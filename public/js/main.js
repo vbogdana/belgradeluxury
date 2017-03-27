@@ -95,7 +95,7 @@ $(document).ready(function () {
         var i = 700;
         // add animations to opening elements
         $('section:first-of-type .description h1, '
-        + 'section:first-of-type .description h2 ').each(function () {
+        + 'section:first-of-type .description h2:not(.vertical-tabs .tab-content h2) ').each(function () {
             $(this).addClass('animated');
             $(this).addClass('fadeInDown');
             $(this).css("animation-delay", i + "ms");
@@ -116,8 +116,11 @@ $(document).ready(function () {
         $('.gold-decor').each(function () {
             addAnimated($(this), 'fadeIn');
         });           
-        $('.description h2:not(.hero-holder .description h2)').each(function() {
+        $('.description h2:not(.hero-holder .description h2, .vertical-tabs .tab-content h2)').each(function() {
             addAnimated($(this), 'fadeInDown');
+        });
+        $('.vertical-tabs .tab-content h2').each(function() {
+            addAnimated($(this), 'fadeIn');
         });
         $('.description p:not(.hero-holder .description p)').each(function () {
             addAnimated($(this), 'fadeIn');
@@ -140,6 +143,9 @@ $(document).ready(function () {
         $('.contact-section .hi-icon').each(function () {
             addAnimated($(this), 'fadeIn');
         });
+        $('.vertical-tabs .tab-content .hi-icon').each(function() {
+            addAnimated($(this), 'fadeIn');
+        });
         i = 0;
         $('.social .hi-icon').each(function () {
             addAnimated($(this), 'fadeInUp');
@@ -158,8 +164,11 @@ $(document).ready(function () {
         $('.gold-decor.animated').each(function() {
             addAnimation($(this), "fadeIn", windowHeight - 100);
         });
-        $('.description h2.animated').each(function() {
+        $('.description h2.animated:not(.vertical-tabs .tab-content h2)').each(function() {
             addAnimation($(this), "fadeInDown", windowHeight - 100);
+        });
+        $('.vertical-tabs .tab-content h2').each(function() {
+            addAnimation($(this), 'fadeIn', windowHeight - 100);
         });
         $('.description p.animated').each(function() {
             addAnimation($(this), "fadeIn", windowHeight - 100);
@@ -184,6 +193,9 @@ $(document).ready(function () {
         });
         $('.contact-section .hi-icon').each(function() {
             addAnimation($(this), "fadeIn", windowHeight - 100);
+        });
+        $('.vertical-tabs .tab-content .hi-icon').each(function() {
+            addAnimation($(this), 'fadeIn', windowHeight - 100);
         });
         i = 0;
         $('.social .hi-icon').each(function () {

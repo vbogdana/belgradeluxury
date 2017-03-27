@@ -22,7 +22,7 @@ google.maps = google.maps || {};
 	
 	google.maps.Load = function(apiLoad) {
 		delete google.maps.Load;
-		getScript("http://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyDBLrAJAME-lRX8eCBCncsxPjAdyaZeji4");
+		getScript("http://maps.googleapis.com/maps/api/js?key=AIzaSyDBLrAJAME-lRX8eCBCncsxPjAdyaZeji4");
 	};
 
 	var loadScriptTime = (new Date).getTime();
@@ -302,6 +302,7 @@ jQuery(document).ready(function(){
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
+        //$(".nav-pills a[href='#location']").parent().on('click', initialize);
 
 });
 

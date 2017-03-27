@@ -30,4 +30,9 @@ return [
 	'club' => '{0}klub|{1}klubovi',
 	'splav' => '{0}splav|{1}splavovi',
 	'kafana' => '{0}kafana|{1}kafane',
+	'air condition' => 'klima uređaj',
+	'city center' => 'centar grada',
+	'automatic' => 'automatik',
+	'chauffeur' => 'vozač',
+	'navigation' => 'navigacija',
 ];

@@ -26,16 +26,21 @@
 	font-family: contact;
 }
 
-.contact-nightlife:before { content: "\f100"; }
-.contact-gastronomy:before { content: "\f101"; }
-.contact-vehicles:before { content: "\f102"; }
-.contact-spa:before { content: "\f103"; }
-.contact-hotel:before { content: "\f104"; }
-.contact-apartment:before { content: "\f105"; }
-.contact-five-stars:before { content: "\f106"; }
-.contact-add:before { content: "\f107"; }
-.contact-calendar:before { content: "\f108"; }
-.contact-viber:before { content: "\f109"; }
-.contact-client:before { content: "\f10a"; }
-.contact-career:before { content: "\f10b"; }
-.contact-partner:before { content: "\f10c"; }
+.contact-chauffeur:before { content: "\f100"; }
+.contact-automatic:before { content: "\f101"; }
+.contact-city-center:before { content: "\f102"; }
+.contact-parking:before { content: "\f103"; }
+.contact-hottub:before { content: "\f104"; }
+.contact-nightlife:before { content: "\f105"; }
+.contact-gastronomy:before { content: "\f106"; }
+.contact-vehicles:before { content: "\f107"; }
+.contact-spa:before { content: "\f108"; }
+.contact-hotel:before { content: "\f109"; }
+.contact-apartment:before { content: "\f10a"; }
+.contact-five-stars:before { content: "\f10b"; }
+.contact-add:before { content: "\f10c"; }
+.contact-calendar:before { content: "\f10d"; }
+.contact-viber:before { content: "\f10e"; }
+.contact-client:before { content: "\f10f"; }
+.contact-career:before { content: "\f110"; }
+.contact-partner:before { content: "\f111"; }
