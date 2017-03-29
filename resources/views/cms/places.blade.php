@@ -42,6 +42,7 @@
                             <strong class="text-uppercase">{{ $place->type }}</strong>
                             <br/>
                             {{ $place->address }}
+                            <br/><strong>priority: {{ $place->getPriority() }}</strong>
                             @if ($place->link != null)
                             <br/><a href="{{ $place->link }}">{{ $place->link }}</a>
                             @endif

@@ -29,4 +29,14 @@ class Accommodation extends Model
     public function apartment() {
         return Apartment::find($this->accID);
     }
+    
+    public function getPriority() {
+        if ($this->priority == 1) {
+            return 'low';
+        } else if ($this->priority == 2) {
+            return 'medium';
+        } else if ($this->priority == 3) {
+            return 'high';
+        }
+    }
 }

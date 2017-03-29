@@ -22,34 +22,12 @@
                     @endif
                 </div>
                 <div class="panel-body">
-                    <div class="panel-info" style="color: red; padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 20px">
-                        !!! PRILIKOM UBACIVANJA SKILLS - SVAKI JEZIK I SVAKI SKIL RAZDVOJITI ";" (tacka-zarezom) !!!
-                    </div>
                     @if(isset($event))
                     <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.events.edit', ['evID' => $event->evID]) }}">
                     @else
                     <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.events.create') }}">
                     @endif
                         {{ csrf_field() }}
-
-                        <div class="form-group">
-                            <label for="day" class="col-md-4 control-label">Day*</label>
-
-                            <div class="col-md-6">
-                                <?php 
-                                    $days = [ 0 => '', 1 => '', 2 => '', 3 => '', 4 => '', 5 => '', 6 => '' ];
-                                    $strings = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ];
-                                    if (isset($event)) {
-                                        $days[$event->day] = 'checked';
-                                    } else {
-                                        $days[0] = 'checked';
-                                    }
-                                ?>
-                                @foreach($days as $day => $value)
-                                <input type="radio" name="day" value="{{ $day }}" {{ $value }}> {{ $strings[$day] }}
-                                @endforeach
-                            </div>
-                        </div>
                         
                         <div class="form-group{{ $errors->has("date") ? ' has-error' : '' }}">
                             <label for="date" class="col-md-4 control-label">Date *</label>

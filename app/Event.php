@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Lang;
 
 class Event extends Model
 {
@@ -10,6 +12,7 @@ class Event extends Model
     protected $table = 'events';
     public $timestamps = false;
     public $primaryKey = 'evID';
+    private $tmpDate;
     
     /**
      * The attributes that are mass assignable.
@@ -17,12 +20,59 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'day', 'title_en', 'title_sr', 'date', 'reservations'
+        'title_en', 'title_sr', 'date', 'reservations'
     ];
     
+    /**
+     * Returns the day of the week for the event.
+     *
+     */
     public function getDay() {
-        $strings = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ];
-        return $strings[$this->day];
+        $strings = [ 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ];
+        if ($this->tmpDate === null) {
+            $this->tmpDate = Carbon::createFromFormat('Y-m-d', $this->date);
+        }
+        $day = $this->tmpDate->dayOfWeek;
+        return Lang::get('common.'.$strings[$day]);
+    }
+    
+    /**
+     * Returns the day of the month for the event.
+     *
+     */
+    public function getDate() {
+        if ($this->tmpDate === null) {
+            $this->tmpDate = Carbon::createFromFormat('Y-m-d', $this->date);
+        }
+        return $this->tmpDate->day;
+    }
+    
+    /**
+     * Returns the month for the event.
+     *
+     */
+    public function getMonth() {
+        $strings = [ 'january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ];
+        if ($this->tmpDate === null) {
+            $this->tmpDate = Carbon::createFromFormat('Y-m-d', $this->date);
+        }
+        $month = $strings[$this->tmpDate->month];
+        return Lang::get('common.'.$month);
+    }
+    
+    /**
+     * Returns the year for the event.
+     *
+     */
+    public function getYear() {
+        if ($this->tmpDate === null) {
+            $this->tmpDate = Carbon::createFromFormat('Y-m-d', $this->date);
+        }
+        return $this->tmpDate->year;
+    }
+    
+    public function place() {
+        return $this->belongsTo('App\Place', 'placeID', 'placeID');
     }
     
 }

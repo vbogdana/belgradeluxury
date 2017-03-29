@@ -37,8 +37,12 @@
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <h4>{{ $event->title_en }}</h4>
+                            <br/>
+                            @if ($event->place !== null)
+                            <strong>Place: {{ $event->place->title_en }}</strong>
+                            @endif
                             <p>{{ $event->getDay() }}</p>
-                            <p>{{ $event->date }}</p>                            
+                            <p>{{ $event->date }}</p>
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.events.edit', $event->evID], 'method' => 'get']) }}

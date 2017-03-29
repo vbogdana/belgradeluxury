@@ -42,6 +42,7 @@
                             <h4>{{ $acc->title_en }}</h4>                           
                             {{ $acc->address }}
                             <br/><strong>{{ $acc->price }}€</strong>
+                            <br/><strong>priority: {{ $acc->getPriority() }}</strong>
                             @if ($acc->link != null)
                             <br/><a href="{{ $acc->link }}">{{ $acc->link }}</a>
                             @endif

@@ -42,6 +42,7 @@ google.maps = google.maps || {};
 jQuery(document).ready(function(){
 
 	var map;
+        var first = true;
 	
 	var title = jQuery('#map-canvas').data('title');
 	var description = jQuery('#map-canvas').data('description');
@@ -51,6 +52,8 @@ jQuery(document).ready(function(){
 	var myLatLng = new google.maps.LatLng(lat,long);
 
 	function initialize() {
+            if (!first) return;
+            first = false;
 
 		var roadAtlasStyles = [
   {
@@ -300,9 +303,12 @@ jQuery(document).ready(function(){
 		map.setMapTypeId('usroadatlas');
 
 	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-        //$(".nav-pills a[href='#location']").parent().on('click', initialize);
+        
+        $locationTab = $(".nav-pills a[href='#location']").parent();
+        if ($locationTab.length === 0 || window.matchMedia('(max-width: 767px)').matches)
+            google.maps.event.addDomListener(window, 'load', initialize);
+        else
+            $locationTab.on('click', initialize);
 
 });
 

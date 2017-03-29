@@ -180,34 +180,22 @@
                             <!-- GALLERY -->         
                             <div class='carousel-holder'>
                                 <div class='gallery-main'>
-                                    <!--
                                     <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}'>
                                     @foreach($object->images as $image)
                                     <div class=''>
                                         <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
                                     </div>
                                     @endforeach                                       
-                                    -->
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact.jpg'></div>
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact1.jpg'></div>
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/aboutus.jpg'></div>
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/index.jpg'></div>
                                 </div>
                             </div>
                             <div class='carousel-holder'>
                                 <div class='gallery-nav'>
-                                    <!--
                                     <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}'>
                                     @foreach($object->images as $image)
                                     <div class=''>
                                         <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
                                     </div>
                                     @endforeach 
-                                    -->
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact.jpg'></div>
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/contact1.jpg'></div>
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/aboutus.jpg'></div>
-                                    <div class=''><img class='img-responsive' src='{{ url("") }}/images/backgrounds/index.jpg'></div>
                                 </div>
                             </div>     
                         </div>                         
@@ -223,6 +211,9 @@
                                 @endif
                             </h2>
                             <p>{{ $object['description_'.$locale] }}</p>
+                            @if($type === 'places')
+                            <p class='text-capitalize'>@lang('services.hours'): {{ $object->hours }}</p>
+                            @endif
                         </div>
                     </div>
                     
@@ -232,6 +223,21 @@
                             <h2 class='text-uppercase'>
                                 program
                             </h2>
+                            <div class='event text-uppercase'>
+                                @foreach ($events as $event)
+                                <div class='col-sm-4'>
+                                    <img class='img-responsive' src='{{ asset('storage/images/'.$event->image) }}'>
+                                </div>
+                                <div class='col-sm-8'>
+                                    {{ $event->getDate().trans_choice('common.ordinal', $event->getDate()) }}
+                                    {{ $event->getMonth() }}
+                                    {{ $event->getDay() }}
+                                </div>
+                                <div>
+                                    {{ $event['title_'.$locale] }}
+                                </div>                                
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                     @elseif ($type === 'accommodation')

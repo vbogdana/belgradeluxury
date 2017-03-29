@@ -35,4 +35,5 @@ return [
 	'automatic' => 'automatic',
 	'chauffeur' => 'chauffeur',
 	'navigation' => 'navigation',
+	'hours' => 'working hours',
 ];

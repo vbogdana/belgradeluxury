@@ -236,7 +236,7 @@
                                 <div class="hi-icon-wrap hi-icon-effect">					
                                     <a href="http://www.facebook.com/belgradeluxury" target="blank" class="hi-icon fa-facebook"></a>
                                     <a href="http://www.instagram.com/belgradeluxury" target="blank" class="hi-icon fa-instagram"></a>  
-                                    <a href="#" class="hi-icon fa-youtube-play"></a>                                   
+                                    <a href="https://www.youtube.com/channel/UCpIeICs4R7XgqNzQ8fecWHQ" class="hi-icon fa-youtube-play"></a>                                   
                                     <a href="" class="hi-icon fa-whatsapp whatsapp"></a>
                                     <a href="" class="hi-icon contact-viber viber"></a>
                                 </div>

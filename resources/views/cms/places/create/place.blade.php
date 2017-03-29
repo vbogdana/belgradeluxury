@@ -74,6 +74,24 @@
                                 @endforeach
                             </div>
                         </div> 
+                        
+                        <div class="form-group">
+                            <label for="priority" class="col-md-4 control-label">Priority</label>
+
+                            <div class="col-md-6">
+                                <select name="priority">
+                                    <option value="1" 
+                                            <?php if (isset($place) && $place->priority == 1) echo "selected" ?>
+                                            >low</option>
+                                    <option value="2" 
+                                            <?php if (isset($place) && $place->priority == 2) echo "selected" ?>
+                                            >medium</option>
+                                    <option value="3" 
+                                            <?php if (isset($place) && $place->priority == 3) echo "selected" ?>
+                                            >high</option>
+                                </select>
+                            </div>
+                        </div>
     
                         <div class="form-group{{ $errors->has('description_en') ? ' has-error' : '' }}">
                             <label for="description_en" class="col-md-4 control-label">Description (eng)</label>

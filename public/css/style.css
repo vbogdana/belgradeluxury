@@ -154,16 +154,20 @@ All rights reserved
 
 /* Categories icons */
 .fa-nightlife:before {
-  content: "\f001";
+    content: "\f001";
 }
 .fa-gastronomy:before {
-  content: "\f0f5";
+    content: "\f0f5";
 }
 .fa-sites:before {
-  content: "\f278";
+    content: "\f278";
 }
 .fa-social:before {
-  content: "\f0c0";
+    content: "\f0c0";
+}
+.fa-culture:before {
+    font-family: contact;
+    content: "\f100";
 }
 
 /* Pictograms */

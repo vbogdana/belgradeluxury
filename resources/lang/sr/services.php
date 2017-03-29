@@ -35,4 +35,5 @@ return [
 	'automatic' => 'automatik',
 	'chauffeur' => 'vozač',
 	'navigation' => 'navigacija',
+	'hours' => 'radno vreme',
 ];

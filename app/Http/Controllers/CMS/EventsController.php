@@ -146,7 +146,6 @@ class EventsController extends Controller {
     {
         return Validator::make($data, [            
             'date' => 'required|max:255',
-            'day' => 'required|max:255',
             'title_en' => 'required|max:255',
             'title_sr' => 'required|max:255',
             'reservations' => 'max:255',
@@ -186,7 +185,6 @@ class EventsController extends Controller {
     protected function edit(array $data, $event)
     {      
         $event->date = $data['date'];
-        $event->day = $data['day'];
         $event->reservations = $data['reservations'];        
         $event->title_en = $data['title_en'];
         $event->title_sr = $data['title_sr'];

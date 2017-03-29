@@ -113,7 +113,7 @@ Route::group([
         
         Route::get('/l')->name('wellness-&-spa');
         Route::get('/llll')->name('security');
-        Route::get('/lllll')->name('events');
+        Route::get('/lllll')->name('tickets');
         Route::get('/lllllll')->name('business');
         Route::get('/llllllll')->name('personel');
         Route::get('/lllllllll')->name('sightseeing');

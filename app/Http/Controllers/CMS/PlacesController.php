@@ -28,8 +28,7 @@ class PlacesController extends Controller {
      * @return view
      */
     function loadPlaces() {
-        $places = Place::paginate(10);
-        
+        $places = Place::orderBy('priority', 'desc')->paginate(10);       
         return view('cms.places', ['places' => $places]);
     }
     
@@ -165,6 +164,7 @@ class PlacesController extends Controller {
         $place->geoLong = $data['geoLong'];
         $place->link = $data['link'];
         $place->type = $data['type'];
+        $place->priority = $data['priority'];
         /*
         $place->type_en = $data['type'];
         switch ($data['type']) {

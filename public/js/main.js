@@ -199,7 +199,7 @@ $(document).ready(function () {
         });
         i = 0;
         $('.social .hi-icon').each(function () {
-            addAnimation($(this), "fadeInUp", windowHeight - 50);
+            addAnimation($(this), "fadeInUp", windowHeight - 10);
             $(this).css("animation-delay", i + "ms");
             i += 100;
         });

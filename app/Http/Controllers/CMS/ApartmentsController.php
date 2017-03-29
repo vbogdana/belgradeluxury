@@ -27,8 +27,7 @@ class ApartmentsController extends Controller {
      * @return view
      */
     function loadApartments() {
-        $accommodation = Accommodation::where('apartment', '=', '1')->paginate(10);
-        
+        $accommodation = Accommodation::where('apartment', '=', '1')->orderBy('priority', 'desc')->paginate(10);       
         return view('cms.accommodation.apartments', ['accommodation' => $accommodation]);
     }
     

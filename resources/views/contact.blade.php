@@ -250,7 +250,7 @@
                 <h2>@lang('contact.facebook')</h2>                                
             </div>
             <div class="col col-sm-4">
-                <a class="hi-icon fa-youtube-play" href="#"></a>
+                <a class="hi-icon fa-youtube-play" href="https://www.youtube.com/channel/UCpIeICs4R7XgqNzQ8fecWHQ"></a>
                 <h2>@lang('contact.youtube')</h2>                
             </div>
         </div>

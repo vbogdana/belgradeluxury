@@ -25,7 +25,7 @@ class ServicesController extends Controller {
         $accommodation = [];
         $types = [ 'apartment', 'hotel', 'spa' ];
         foreach ($types as $type) {
-            $accommodation[$type] = Accommodation::where($type, '1')->paginate(10);
+            $accommodation[$type] = Accommodation::where($type, '1')->orderBy('priority', 'desc')->paginate(10);
         }
 
         if (Request::ajax()) {
@@ -117,7 +117,7 @@ class ServicesController extends Controller {
             unset($types[$key]);
         }
         foreach ($types as $type) {
-            $places[$type] = Place::where('type', $type)->paginate(10);
+            $places[$type] = Place::where('type', $type)->orderBy('priority', 'desc')->paginate(10);
         }
 
         if (Request::ajax()) {
@@ -140,7 +140,7 @@ class ServicesController extends Controller {
         $places = [];
         $types = ['restaurant'];
         foreach ($types as $type) {
-            $places[$type] = Place::where('type', $type)->paginate(10);
+            $places[$type] = Place::where('type', $type)->orderBy('priority', 'desc')->paginate(10);
         }
 
         if (Request::ajax()) {
@@ -166,7 +166,11 @@ class ServicesController extends Controller {
             return view('errors.notfound', ['var' => 'place']);
         }
         
-        $events = Event::where('placeID', $place->placeID);
+        $events = Event::where('placeID', $place->placeID)
+                ->where('date', '>=', date("Y-m-d"))
+                ->orderBy('date', 'asc')
+                ->take(7)
+                ->get();
         AppController::loadServices($services, $packages);
         return view('services.single-element', ['object' => $place, 'events' => $events, 'type' => 'places', 'services' => $services, 'packages' => $packages]);
     }

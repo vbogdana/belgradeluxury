@@ -19,7 +19,8 @@ class Place extends Model
         'title_en', 'title_sr', 'type',
         'description_en', 'description_sr', 
         'address', 'hours', 'phone', 
-        'geoLat', 'geoLong', 'link'
+        'geoLat', 'geoLong', 'link',
+        'priority'
     ];
     
     public function images() {
@@ -28,5 +29,15 @@ class Place extends Model
     
     public function isRestaurant() {
         return ($this->type === 'restaurant');
+    }
+    
+    public function getPriority() {
+        if ($this->priority == 1) {
+            return 'low';
+        } else if ($this->priority == 2) {
+            return 'medium';
+        } else if ($this->priority == 3) {
+            return 'high';
+        }
     }
 }
