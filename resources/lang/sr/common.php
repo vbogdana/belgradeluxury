@@ -82,5 +82,6 @@ return [
 	'description' => 'opis',
 	'photo' => '{0}fotografija|{1}fotografije',
 	'person' => '{1}osoba|[2,4]osobe|[5,20]osoba',
+	'recommended' => 'Preporučeno za Vas',
 	
 ];

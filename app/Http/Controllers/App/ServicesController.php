@@ -51,7 +51,18 @@ class ServicesController extends Controller {
         }
         
         AppController::loadServices($services, $packages);
-        return view('services.single-element', ['object' => $accommodation, 'type' => 'accommodation', 'services' => $services, 'packages' => $packages]);
+        if ($accommodation->spa) {
+            $similar = Accommodation::where('spa', '1');                    
+        } elseif ($accommodation->hotel) {
+            $similar = Accommodation::where('hotel', '1');
+        } elseif ($accommodation->apartment) {
+            $similar = Accommodation::where('apartment', '1');        
+        }
+        $similar = $similar->where('accID', '!=', $accommodation->accID)
+                           ->orderBy('priority', 'desc')
+                           ->take(4)
+                           ->get();
+        return view('services.single-element', ['object' => $accommodation, 'similar' => $similar, 'type' => 'accommodation', 'services' => $services, 'packages' => $packages]);
     }
     
     /**
@@ -90,7 +101,11 @@ class ServicesController extends Controller {
         }
         
         AppController::loadServices($services, $packages);
-        return view('services.single-element', ['object' => $vehicle, 'type' => 'vehicles', 'services' => $services, 'packages' => $packages]);
+        $similar = Vehicle::where('type', $vehicle->type)
+                           ->where('vehID', '!=', $vehicle->vehID)
+                           ->take(4)
+                           ->get();
+        return view('services.single-element', ['object' => $vehicle, 'type' => 'vehicles', 'similar' => $similar, 'services' => $services, 'packages' => $packages]);
     }
     
     /**
@@ -172,6 +187,11 @@ class ServicesController extends Controller {
                 ->take(7)
                 ->get();
         AppController::loadServices($services, $packages);
-        return view('services.single-element', ['object' => $place, 'events' => $events, 'type' => 'places', 'services' => $services, 'packages' => $packages]);
+        $similar = Place::where('type', $place->type)
+                           ->where('placeID', '!=', $place->placeID)
+                           ->orderBy('priority', 'desc')
+                           ->take(4)
+                           ->get();
+        return view('services.single-element', ['object' => $place, 'events' => $events, 'type' => 'places', 'similar' => $similar, 'services' => $services, 'packages' => $packages]);
     }
 }

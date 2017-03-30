@@ -32,10 +32,10 @@
                 <p style='padding: 4px 0 0;'>
                     {{ $place['address'] }}
                 </p>
-                <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="btn" style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.8em;">    
+                <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
-                <a href="{{ route("contact") }}" class="btn" style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.8em;">
+                <a href="{{ route("contact") }}" class="btn small">
                     @lang('common.inquiry')
                 </a>
             </div>

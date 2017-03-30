@@ -154,10 +154,12 @@ All rights reserved
 
 /* Categories icons */
 .fa-nightlife:before {
-    content: "\f001";
+    font-family: contact;
+    content: "\f106";
 }
 .fa-gastronomy:before {
-    content: "\f0f5";
+    font-family: contact;
+    content: "\f107";
 }
 .fa-sites:before {
     content: "\f278";
@@ -825,6 +827,11 @@ a.btn:active, .btn:active {
     //background: rgba(189, 152, 51, 0.8);
     background: #8A652A;
 }
+a.btn.small, .btn.small {
+    margin: 10px 5px 0; 
+    padding: 5px 10px; 
+    font-size: 0.8em;
+}
 @media screen and (max-width: 767px) {
     a.btn, .btn {
         margin-top: 10px;
@@ -1283,7 +1290,8 @@ a.btn:active, .btn:active {
     width: 100vw;
     height: 56.25vw;   
     overflow: hidden;
-    z-index: 2;
+    //z-index: 2;
+    z-index: 0;
 }
 .video-section .box-right {
     height: 100.1%;
@@ -2389,6 +2397,54 @@ a.btn:active, .btn:active {
         padding: 25px 10px 0;
     }
 }
+.events {
+    padding-top: 30px;    
+}
+.events .row {
+    margin-bottom: 15px;
+}
+.events .date {
+    padding: 10px 15px;
+    background: #0a0a0a;
+}
+.events .date .day-of-week,
+.events .date .month {
+    font-size: 1.3em;
+    letter-spacing: 0.3em;
+    font-family: quicksand;
+    font-weight: 500;
+    color: #888888;
+}
+.events .date .day {
+    font-family: Quicksand, Raleway, sans-serif;
+    font-size: 2em;
+    color: #ceab4d;
+}
+.events .title {
+    padding-bottom: 2px;
+    text-align: left;
+    font-size: 1.3em;
+    letter-spacing: 0.2em;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(256, 256, 256, 0.08);
+    //color: #CEAB4D;
+}
+.events .reservation {
+    text-align: left;
+    font-family: Quicksand, Raleway, sans-serif;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+@media screen and (max-width: 767px) {
+    .events .row {
+        margin-bottom: 35px;
+    }
+    .events .title,
+    .events .reservation {
+        text-align: center;
+    }   
+}
+
 
 /*******************************************************************************
  * 
@@ -2419,6 +2475,7 @@ a.btn:active, .btn:active {
 }
 .side-content ul li {
     list-style-type: none;
+    font-family: Quicksand, Raleway, sans-serif;
 }
 .side-content.text-left ul li:before,
 .side-content.text-right ul li:after {
@@ -2427,9 +2484,7 @@ a.btn:active, .btn:active {
     height: 15px;
     width: 15px;
     background-size: contain;
-    background-image: url(../images/square-down.svg);
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);   
+    background-image: url(../images/square-down.svg);   
 }
 .side-content.text-left ul li:before {
     margin-right: 15px;
@@ -2455,22 +2510,9 @@ a.btn:active, .btn:active {
     .host-section .clearfix {
         padding-bottom: 30px;
     }
-    .side-content.text-right ul li:before,
-    .side-content.text-left ul li:after {
-        content: '';
-        display: inline-block;
-        height: 15px;
-        width: 15px;
-        background-size: contain;
-        background-image: url(../images/square-down.svg);
-        transform: rotate(-90deg);
-        -webkit-transform: rotate(-90deg);
-    }
-    .side-content.text-right ul li:before {
-        margin-right: 15px;
-    }
-    .side-content.text-left ul li:after {
-        margin-left: 15px;
+    .side-content.text-left ul li:before,
+    .side-content.text-right ul li:after {
+        background-image: none;
     }
 }
 

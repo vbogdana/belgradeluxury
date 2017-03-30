@@ -223,19 +223,35 @@
                             <h2 class='text-uppercase'>
                                 program
                             </h2>
-                            <div class='event text-uppercase'>
+                            <div class='events text-uppercase container-fluid'>
                                 @foreach ($events as $event)
-                                <div class='col-sm-4'>
-                                    <img class='img-responsive' src='{{ asset('storage/images/'.$event->image) }}'>
+                                <div class="row">
+                                    <div class="col-sm-12 title">
+                                        @if ($event->category !== null)
+                                        <i class="fa fa-{{ strtolower($event->category->name_en) }}"></i>
+                                        @endif
+                                        {{ $event['title_'.$locale] }}
+                                    </div>
+                                    <div class='date col-sm-3 col-lg-2'>
+                                        <div class="day-of-week">
+                                            {{ substr($event->getDay(), 0, 3) }}
+                                        </div>
+                                        <div class="day">
+                                            {{ $event->getDate().trans_choice('common.ordinal', $event->getDate()) }}
+                                        </div>
+                                        <div class="month">
+                                            {{ substr($event->getMonth(), 0, 3) }} 
+                                        </div>                                                                       
+                                    </div>                                                                       
+                                    <div class="col-sm-5 col-lg-7 reservation">
+                                        @lang('services.reservations'): {{ $event->reservations }}
+                                    </div>
+                                    <div class="col-sm-4 col-lg-3">
+                                        <a href="{{ route('contact') }}" class="btn small">
+                                            @lang('services.reservation')
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class='col-sm-8'>
-                                    {{ $event->getDate().trans_choice('common.ordinal', $event->getDate()) }}
-                                    {{ $event->getMonth() }}
-                                    {{ $event->getDay() }}
-                                </div>
-                                <div>
-                                    {{ $event['title_'.$locale] }}
-                                </div>                                
                                 @endforeach
                             </div>
                         </div>
@@ -377,6 +393,95 @@
     </div>    
 </section>
 <!--   END  PANEL SECTION      -->
+
+<!--    START RECOMMENDED SECTION       -->
+<section id="recommended" class="recommended-section fullwidth panel space-y" data-section-name="recommended-panel">
+    <div class="container">
+        <div class="description text-center">
+            <h2 class="text-uppercase"> @lang('common.recommended')</h2>
+            <p></p>
+        </div>
+    </div>
+    <div class="container-fluid pagination-grid">
+        <div class='carousel-holder col-xs-offset-1 col-xs-10'>
+            <div class='gallery-recommended'>
+                
+            @foreach($similar as $s)
+            <div>
+                <div class="hover-effects">
+                    <figure>
+                        <div class="img-holder">
+                            @if ($s->image != null)
+                            <img src="{{ asset('storage/images/'.$s->image) }}" alt="">
+                            @else
+                            No image
+                            @endif
+                        </div>
+                        <figcaption class="text-center">                               
+                            <div class="header">
+                                <h2 class="text-uppercase">
+                                    @if($type === 'vehicles')
+                                    {{ $s->model }}
+                                    <br/>
+                                    {{ $s->brand }}
+                                    @else
+                                    {{ $s['title_'.$locale] }}
+                                    @endif  
+                                </h2>
+                            </div>
+                            <div class="content">
+                                @if($type === 'vehicles')
+                                <a class="hi-icon fa-people"></a>
+                                <p style='padding: 4px 0 0;'>
+                                    {{ $s['people'] }}
+                                </p>
+                                @else
+                                <a href="{{ $s->geoLat.','.$s->geoLong }}" target="blank" class="hi-icon fa-map-marker"></a>
+                                <p style='padding: 4px 0 0;'>
+                                    {{ $s['address'] }}
+                                </p>
+                                @endif
+
+                                @if($type === 'vehicles')
+                                <a href="{{ route("vehicles.vehicle", ['vehID' => $s->vehID]) }}" class="btn small">    
+                                    @lang('common.details')
+                                </a>
+                                @elseif($type === 'places')
+                                <a href="{{ route("places.place", ['placeID' => $s->placeID]) }}" class="btn small">    
+                                    @lang('common.details')
+                                </a>
+                                @elseif($type === 'accommodation')
+                                    @if ($s->apartment == 1)
+                                <a href="{{ route("accommodation.single", ['accID' => $s->accID]) }}" class="btn small">
+                                    @elseif (($s->hotel == 1))
+                                <a href="#" class="btn small">                
+                                    @elseif (($s->spa == 1))
+                                <a href="#" class="btn small">                
+                                    @endif    
+                                    @lang('common.details')
+                                </a>
+                                @endif
+
+                                <a href="{{ route("contact") }}" class="btn small">
+                                    @lang('common.inquiry')
+                                </a>
+                            </div>
+                            <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                (+381) 064 4519 017
+                            </a>
+                        </figcaption>
+                    </figure>    
+                </div>    
+            </div>            
+            @endforeach
+
+            </div>
+        </div>
+    </div>
+    
+</section>
+<!--    END RECOMMENDED SECTION       -->
 @stop
 
 @section('scripts')
@@ -384,22 +489,38 @@
 
 <script>
     $('.gallery-main').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          fade: true,
-          asNavFor: '.gallery-nav',
-          adaptiveHeight: true
-        });
-        $('.gallery-nav').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          asNavFor: '.gallery-main',
-          dots: true,
-          centerMode: true,
-          focusOnSelect: true,
-          adaptiveHeight: true
-        });
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.gallery-nav',
+        adaptiveHeight: true
+    });
+    $('.gallery-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.gallery-main',
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true,
+        adaptiveHeight: true
+    });
+    $('.gallery-recommended').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        adaptiveHeight: true,
+        responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        ]
+    });
     /*
     $('.nav-pills li').on("click", function () {
         $('.nav-pills li.active').removeClass("active");
