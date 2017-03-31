@@ -59,7 +59,7 @@
             </div>
             <p class="">
                 @lang('index.short about us')
-            </p>           
+            </p>
         </div>       
     </div>    
     
@@ -188,7 +188,7 @@
     <div class="container-fluid">
         <div class="description text-center" id="package-info">
             <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('common.luxury', 0) }}</span> @lang('common.package') </h4>
-            <a id="inquiry" class="btn" href="{{ route("contact") }}#contact-us"> @lang('common.inquiry') </a>
+            <a id="inquiry" class="btn" href="{{ route("contact") }}#contact-us"> @lang('common.send an inquiry') </a>
             <a id="details" class="btn"> @lang('common.details') </a>
         </div>
     </div>

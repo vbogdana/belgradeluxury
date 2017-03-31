@@ -16,7 +16,13 @@ return [
 	'host' => 'All our hosts are kind, charismatic and highly trained guides specialized in different areas. From walking tours around the city center to the noisy clubs along the river, they will familiarize You with Belgrade from the perspective of our agency in six different languages!',
 	'gastronomy' => '',
 	'nightlife' => '',
-	
+	'security' => "{0}Luxury Belgrade team also consists of professionals who care for your own safety. Our mission, which permeates our business strategy is to provide the highest quality and the most demanding services to our customers. |{1}That's why we have reached a high level in the field of personal security in the form of protection of individuals and their movable assets. |{2}Our team consists of highly trained professionals with over a 20 years experience in providing personal security. Also, we possess the certificates in accordance with the quality standards ISO 9001, ISO 14001:2004, ISO 18001:2007 i ISO 27001:2013.",
+	'wellness-&-spa' => '',
+	'sightseeing' => '',
+	'tickets' => '',
+	'business' => '',
+	'personel' => '',
+	'diamond' => '',
 	
 	'apartment' => '{0}apartment|{1}apartments',
 	'hotel' => '{0}hotel|{1}hotels',
@@ -37,6 +43,8 @@ return [
 	'chauffeur' => 'chauffeur',
 	'navigation' => 'navigation',
 	'hours' => 'working hours',
+	'reserve' => 'reserve',
 	'reservation' => 'reservation',
 	'reservations' => 'reservations last until',
+	'free reservations' => 'Reservations are free!',
 ];

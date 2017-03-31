@@ -49,7 +49,7 @@
 </section>
 <!--   END NIGHTLIFE SERVICES DESCRIPTION SECTION      -->
 
-@include('inquiry-section')
+@include('contact-us-section', ['inquiry' => false])
 
 @include('services.list', ['service' => 'nightlife', 'list' => $list, 'types' => $types, 'packages' => $packages])
 

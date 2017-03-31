@@ -83,6 +83,10 @@
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
+                            {{ Form::open(['route' => ['cms.places.events.create', $place->placeID], 'method' => 'get']) }}
+                            {{ Form::submit('Add an event', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
                             {{ Form::open(['route' => ['cms.places.create.images', $place->placeID], 'method' => 'get']) }}
                             {{ Form::submit('Add photos', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}

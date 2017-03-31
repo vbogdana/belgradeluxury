@@ -19,5 +19,11 @@ return [
 	'host' => 'Domaćin ',
 	'nightlife' => 'Noćni Život',
 	'gastronomy' => 'Gastronomija',
-	
+	'security' => 'Obezbeđenje',
+	'sightseeing' => 'Razgledanje',
+	'wellness-&-spa' => 'Wellness i Spa',
+	'tickets' => 'Ulaznice',
+	'business' => 'Biznis',
+	'personel' => 'Osoblje',
+	'diamond' => 'Diamond',
 ];

@@ -19,4 +19,11 @@ return [
 	'nightlife' => 'usluge/nocni-zivot',
 	'gastronomy' => 'usluge/gastronomija',
 	'place' => 'usluge/objekat/{placeID}',
+	'security' => 'usluge/obezbedjenje',
+	'sightseeing' => 'usluge/razgledanje',
+	'wellness-&-spa' => 'usluge/wellness-i-spa',
+	'tickets' => 'usluge/ulaznice',
+	'business' => 'usluge/biznis',
+	'personel' => 'usluge/osoblje',
+	'diamond' => 'usluge/diamond',
 ];

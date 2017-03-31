@@ -46,6 +46,17 @@ class EventsController extends Controller {
     }
     
     /**
+     * Loads a view with a form to create a new event.
+     *
+     * @return view
+     */
+    function loadPlaceCreateEvent($placeID) {   
+        $places = Place::all(['placeID', 'title_en']);
+        $categories = Category::all(['ctgID', 'name_en']);
+        return view('cms.events.create.event', ['places' => $places, 'categories' => $categories, 'placeID' => $placeID]);
+    }
+    
+    /**
      * Loads a view with a form to edit the data of an existing event.
      *
      * @param $evID primary key of Event

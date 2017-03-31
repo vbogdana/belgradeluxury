@@ -14,7 +14,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    @if (isset($placeID))
+                    <a href="{{ route('cms.places') }}">Places ></a>&nbsp;
+                    @else
                     <a href="{{ route('cms.events') }}">Events ></a>&nbsp;
+                    @endif
                     @if(isset($event))
                     Edit Event
                     @else
@@ -135,7 +139,7 @@
                             <div class="col-md-6">
                                 <select id="place" name="place">
                                     <?php
-                                        if (!isset($event)) {
+                                        if (!isset($event) && !isset($placeID)) {
                                             $selected = "selected";
                                         } else {
                                             $selected = "";
@@ -147,7 +151,11 @@
                                         if (isset($event) && ($event->placeID !== null) && ($event->placeID === $place->placeID)) {
                                             $selected = "selected";
                                         } else {
-                                            $selected = "";
+                                            if (isset($placeID) && ($placeID == $place->placeID)) {
+                                                $selected = "selected";
+                                            } else {
+                                                $selected = "";
+                                            }
                                         }
                                         ?>     
                                     <option value="{{ $place->placeID }}" {{ $selected }}>{{ $place->title_en }}</option>

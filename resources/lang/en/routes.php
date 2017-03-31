@@ -19,4 +19,11 @@ return [
 	'nightlife' => 'services/nightlife',
 	'gastronomy' => 'services/gastronomy',
 	'place' => 'services/place/{placeID}',
+	'security' => 'services/security',
+	'sightseeing' => 'services/sightseeing',
+	'wellness-&-spa' => 'services/wellness-&-spa',
+	'tickets' => 'services/tickets',
+	'business' => 'services/business',
+	'personel' => 'services/personel',
+	'diamond' => 'services/diamond',
 ];

@@ -111,13 +111,83 @@ Route::group([
             ]
         );
         
-        Route::get('/l')->name('wellness-&-spa');
-        Route::get('/llll')->name('security');
-        Route::get('/lllll')->name('tickets');
-        Route::get('/lllllll')->name('business');
-        Route::get('/llllllll')->name('personel');
-        Route::get('/lllllllll')->name('sightseeing');
-        Route::get('/llllllllll')->name('diamond');
+        // Security page
+        Route::get(LaravelLocalization::transRoute('routes.security'), 
+            [
+              'as' => 'security', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/security', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+            
+        // Sightseeing page
+        Route::get(LaravelLocalization::transRoute('routes.sightseeing'), 
+            [
+              'as' => 'sightseeing', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/sightseeing', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+        
+        // Wellness & Spa page
+        Route::get(LaravelLocalization::transRoute('routes.wellness-&-spa'), 
+            [
+              'as' => 'wellness-&-spa', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/wellness-&-spa', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+            
+        // Tickets page
+        Route::get(LaravelLocalization::transRoute('routes.tickets'), 
+            [
+              'as' => 'tickets', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/tickets', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+            
+        // Business page
+        Route::get(LaravelLocalization::transRoute('routes.business'), 
+            [
+              'as' => 'business', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/business', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+            
+        // Personel page
+        Route::get(LaravelLocalization::transRoute('routes.personel'), 
+            [
+              'as' => 'personel', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/personel', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+            
+        // Diamond page
+        Route::get(LaravelLocalization::transRoute('routes.diamond'), 
+            [
+              'as' => 'diamond', 
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('/services/diamond', ['services' => $services, 'packages' => $packages]);
+                }
+            ]
+        );
+
     });
 
 /*
@@ -242,6 +312,7 @@ Route::delete('cms/places/{placeID}/delete', ['as' => 'cms.places.delete', 'uses
  */
 Route::get('cms/events', ['as' => 'cms.events', 'uses' => 'CMS\EventsController@loadEvents']);
 Route::get('cms/events/create', ['as' => 'cms.events.create', 'uses' => 'CMS\EventsController@loadCreateEvent']);
+Route::get('cms/events/create/{placeID}', ['as' => 'cms.places.events.create', 'uses' => 'CMS\EventsController@loadPlaceCreateEvent']);
 Route::post('cms/events/create', ['as' => 'cms.events.create', 'uses' => 'CMS\EventsController@createEvent']);
 Route::get('cms/events/{evID}/edit', ['as' => 'cms.events.edit', 'uses' => 'CMS\EventsController@loadEditEvent']);
 Route::post('cms/events/{evID}/edit', ['as' => 'cms.events.edit', 'uses' => 'CMS\EventsController@editEvent']);

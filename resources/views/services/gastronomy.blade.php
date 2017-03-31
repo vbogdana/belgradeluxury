@@ -49,7 +49,7 @@
 </section>
 <!--   END GASTRONOMY SERVICES DESCRIPTION SECTION      -->
 
-@include('inquiry-section')
+@include('contact-us-section', ['inquiry' => false])
 
 @include('services.list', ['service' => 'gastronomy', 'list' => $list, 'types' => $types, 'packages' => $packages])
 

@@ -19,5 +19,12 @@ return [
 	'host' => 'Host',
 	'nightlife' => 'Nightlife',
 	'gastronomy' => 'Gastronomy',
+	'security' => 'Security',
+	'sightseeing' => 'Sightseeing',
+	'wellness-&-spa' => 'Wellness & Spa',
+	'tickets' => 'Tickets',
+	'business' => 'Business',
+	'personel' => 'Personel',
+	'diamond' => 'Diamond',
 
 ];

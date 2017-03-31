@@ -50,7 +50,7 @@
 </section>
 <!--   END HOST SERVICES DESCRIPTION SECTION      -->
 
-@include('inquiry-section')
+@include('contact-us-section', ['inquiry' => true])
 
 <!--   START HOSTS SECTION      -->
 <section id="all-hosts" class="host-section panel fullwidth space-y-t" data-section-name="all-hosts-panel">            
@@ -110,6 +110,8 @@
     </div>     
 </section>
 <!--   END HOSTS SECTION      -->
+
+@include('inquiry-section')
 
 @include('packages-sections', ['packages' => $packages])
 

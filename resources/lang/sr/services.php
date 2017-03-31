@@ -16,7 +16,13 @@ return [
 	'host' => 'Svi Belgrade Luxury hostovi su ljubazni, harizmatični i visoko obučeni vodiči specijalizovani za različite oblasti. Od šetačkih tura po centru grada do bučnih splavova pored reke, oni će Vas upoznati sa Beogradom iz perspektive naše agencije i to na šest različitih jezika!',
 	'gastronomy' => '',
 	'nightlife' => '',
-	
+	'security' => "{0}Belgrade Luxury tim sastoji se i od profesionalaca koji se brinu za vašu ličnu bezbednost. Naša misija, koja prožima i našu poslovnu strategiju, jeste pružanje najkvalitetnijih i najzahtevnijih usluga našim klijentima. |{1}Zato smo i u polju pružanja lične sigurnosti u vidu zaštite fizičkih lica i njihove pokretne imovine dostigli visok nivo. |{2}Naš tim čine visoko obučeni profesionalci sa preko 20 godina iskustva u pruzanju usluga ličnog obezbeđenja. Takođe, posedujemo i sertifikate  u skladu sa standardima kvaliteta ISO 9001, ISO 14001:2004, ISO 18001:2007 i ISO 27001:2013.",
+	'wellness-&-spa' => '',
+	'sightseeing' => '',
+	'tickets' => '',
+	'business' => '',
+	'personel' => '',
+	'diamond' => '',
 	
 	'apartment' => '{0}apartman|{1}apartmani',
 	'hotel' => '{0}hotel|{1}hoteli',
@@ -37,6 +43,8 @@ return [
 	'chauffeur' => 'vozač',
 	'navigation' => 'navigacija',
 	'hours' => 'radno vreme',
+	'reserve' => 'rezerviši',
 	'reservation' => 'rezervacija',
 	'reservations' => 'rezervacije traju do',
+	'free reservations' => 'Rezervacije su besplatne!',
 ];

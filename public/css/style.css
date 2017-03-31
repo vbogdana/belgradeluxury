@@ -254,7 +254,7 @@ All rights reserved
 
 /* Effect */
 .hi-icon-effect .hi-icon {
-    background: rgba(256,256,256,0.06);
+    background: rgba(256,256,256,0.08);
     //border: 0.5px solid #8A652A;
     -webkit-transition: background 0.2s, color 0.2s;
     -moz-transition: background 0.2s, color 0.2s;
@@ -813,7 +813,7 @@ a.btn, .btn {
     color: #E5E4E2;
     text-transform: uppercase;
     //border: 0.5px solid #E5E4E2;
-    background: rgba(256,256,256,0.06);
+    background: rgba(256,256,256,0.08);
     border-radius: 0;
     font-family: Quicksand, Raleway, sans-serif;
     margin-top: 20px;
@@ -880,7 +880,7 @@ a.btn.small, .btn.small {
 }
 .pagination > li > a, 
 .pagination > li > span {
-    background: rgba(256,256,256,0.06);
+    background: rgba(256,256,256,0.08);
     color: #E5E4E2;
     border: 1px solid black;
 }
@@ -1040,6 +1040,27 @@ a.btn.small, .btn.small {
 }
 #gastronomy.background-properties {
     background-image: url('../images/services/gastronomy-big.jpg');
+}
+#security-first.background-properties {
+    background-image: url('../images/services/security-big.jpg');
+}
+#security-second.background-properties {
+    background-image: url('../images/services/security-big.jpg');
+}
+#sightseeing.background-properties {
+    background-image: url('../images/services/sightseeing-big.jpg');
+}
+#wellness.background-properties {
+    background-image: url('../images/services/wellness & spa-big.jpg');
+}
+#tickets.background-properties {
+    background-image: url('../images/services/tickets-big.jpg');
+}
+#personel.background-properties {
+    background-image: url('../images/services/personel-big.jpg');
+}
+#diamond.background-properties {
+    background-image: url('../images/services/diamond-big.jpg');
 }
 #package-description.background-properties {
     background-color: #222222;
@@ -2153,7 +2174,7 @@ a.btn.small, .btn.small {
     margin-bottom: 30px;
 }
 .pagination-grid .nav-pills > li {
-    background: rgba(256,256,256,0.06);
+    background: rgba(256,256,256,0.08);
     margin: 0;
     padding: 0 !important;
     border-bottom: 1px solid black;   
@@ -2497,7 +2518,7 @@ a.btn.small, .btn.small {
 }
 /*
 .host-section .clearfix:nth-child(even) {
-    background: rgba(256,256,256,0.06);
+    background: rgba(256,256,256,0.08);
 }
 */
 @media screen and (max-width: 767px) {

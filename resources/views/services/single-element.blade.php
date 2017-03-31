@@ -161,14 +161,24 @@
                             <span>@lang('common.location')</span>
                         </a>
                     </li>
-                    @endif                    
+                    @endif 
+                    @if ($type === 'places')
                     <li class="" style='width: 100%'>
-                        <a href="#contact" data-toggle="tab">
+                        <a href="#reservation" data-toggle="tab">
                             <i class="hi-icon fa-phone"></i>
                             <br/>
-                            <span>@lang('common.contact us')</span>
+                            <span>@lang('services.reservation')</span>
                         </a>
                     </li>
+                    @else
+                    <li class="" style='width: 100%'>
+                        <a href="#inquiry" data-toggle="tab">
+                            <i class="hi-icon fa-phone"></i>
+                            <br/>
+                            <span>@lang('common.inquiry')</span>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
             
@@ -223,6 +233,17 @@
                             <h2 class='text-uppercase'>
                                 program
                             </h2>
+                            <p>
+                                <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    (+381) 064 4519 017
+                                </a>
+                                <br/>
+                                SMS, WhatsApp & Viber
+                            </p>
+                            <h5 class='text-uppercase'>
+                                @lang('services.free reservations') 
+                            </h5>
                             <div class='events text-uppercase container-fluid'>
                                 @foreach ($events as $event)
                                 <div class="row">
@@ -244,11 +265,13 @@
                                         </div>                                                                       
                                     </div>                                                                       
                                     <div class="col-sm-5 col-lg-7 reservation">
-                                        @lang('services.reservations'): {{ $event->reservations }}
+                                        @lang('services.reservations'): {{ $event->reservations }}                                        
                                     </div>
-                                    <div class="col-sm-4 col-lg-3">
-                                        <a href="{{ route('contact') }}" class="btn small">
-                                            @lang('services.reservation')
+                                    <div class="col-sm-4 col-lg-3">                                        
+                                        <a href="{{ route('contact') }}#contact-us" class="btn small">
+                                            @lang('services.reserve')
+                                            <br />
+                                            online
                                         </a>
                                     </div>
                                 </div>
@@ -364,33 +387,73 @@
                     </div>
                     @endif
                  
-                    <div class="tab-pane info" id="contact">
+                    @if ($type === 'places')
+                    <div class="tab-pane info" id="reservation">
                         <div class="description">
                             <h2>
-                                @lang('common.inquiry')
+                                @lang('services.reservation')
                             </h2>
                             <p>
                                 <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     (+381) 064 4519 017
                                 </a>
+                                <br/>
+                                SMS, WhatsApp & Viber
+                            </p>
+                            <h5 class='text-uppercase'>
+                                @lang('services.free reservations') 
+                            </h5>
+                        </div>
+                        <div class='container-fluid'>
+                            <div class='row'>
+                                <a id="contact" class="btn small" href='{{ route("contact") }}'> 
+                                    @lang('common.contact us') 
+                                </a>                                
+                                <a id="inquiry" class="btn small" href='{{ route("contact") }}#contact-us'> 
+                                    online @lang('services.reservation') 
+                                </a>      
+                            </div>
+                        </div>                    
+                    </div>
+                    @else
+                    <div class="tab-pane info" id="inquiry">
+                        <div class="description">
+                            <h2>
+                                @lang('common.inquiry')
+                            </h2>
+                            <p>
+                                {{ trans_choice('common.booking', 0) }}
+                            </p>
+                            <p>
+                               {{ trans_choice('common.booking', 2) }} 
+                            </p>
+                            <p>
+                                <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    (+381) 064 4519 017
+                                </a>
+                                <br/>
+                                SMS, WhatsApp & Viber
                             </p>
                         </div>
                         <div class='container-fluid'>
                             <div class='row'>
-                                <a id="contact" class="btn" href='{{ route("contact") }}' style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.9em;"> 
+                                <a id="contact" class="btn small" href='{{ route("contact") }}'> 
                                     @lang('common.contact us') 
                                 </a>                                
-                                <a id="inquiry" class="btn" href='{{ route("contact") }}' style="margin: 10px 5px 0; padding: 5px 10px; font-size: 0.9em;"> 
+                                <a id="inquiry" class="btn small" href='{{ route("contact") }}#contact-us'> 
                                     @lang('common.inquiry') 
                                 </a>      
-                        </div>
+                            </div>
+                        </div>                    
                     </div>
-                    
-                </div>
-            </div>                   
-        </div>
-    </div>    
+                    @endif
+                
+                </div>                   
+            </div>
+        </div> 
+    </div>
 </section>
 <!--   END  PANEL SECTION      -->
 

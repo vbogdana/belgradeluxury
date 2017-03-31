@@ -56,7 +56,7 @@ class Event extends Model
         if ($this->tmpDate === null) {
             $this->tmpDate = Carbon::createFromFormat('Y-m-d', $this->date);
         }
-        $month = $strings[$this->tmpDate->month];
+        $month = $strings[$this->tmpDate->month - 1];
         return Lang::get('common.'.$month);
     }
     

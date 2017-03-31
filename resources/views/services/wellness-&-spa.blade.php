@@ -9,54 +9,59 @@
 
 @section('title-meta')
 <!-- page titles and meta tags -->
-<title>Belgrade Luxury - @lang('titles.vehicles') </title>
+<title>Belgrade Luxury - @lang('titles.wellness-&-spa') </title>
 
 <meta name="description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-<meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade vehicles, lounge bars"/>
+<meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
 <meta property="fb:pages" content="belgradeluxury">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{{ route("vehicles") }}">
-<meta property="og:title" content="Belgrade Luxury - {{ Lang::get('titles.vehicles') }}" />
+<meta property="og:url" content="{{ route("wellness-&-spa") }}">
+<meta property="og:title" content="Belgrade Luxury - {{ Lang::get('titles.wellness-&-spa') }}" />
 <meta property="og:description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
 <meta property="og:site_name" content="Belgrade Luxury">        
-<meta property="og:image" content='{{ url("/") }}/images/services/vehicles.jpg' />   
+<meta property="og:image" content='{{ url("/") }}/images/services/wellness-&-spa.jpg' />   
 @stop
 
 @section('stylesheets')
-
 @stop
 
 @section('content')
-<!--   START VEHICLES SERVICES DESCRIPTION PANEL SECTION      -->
-<section id="vehicles" class="service-description-section box panel widescreen background-properties" data-section-name="vehicles-panel">
+<!--   START WELLNESS & SPA SERVICES DESCRIPTION PANEL SECTION      -->
+<section id="wellness" class="service-description-section box panel widescreen background-properties" data-section-name="wellness-&-spa-panel">
     <div class="overlay"></div>
     <div class="box-left">
         <div class="hero-holder">
             <div class="hero-inner">
                 <div class="description">
-                    <h2 class="text-uppercase">@lang('common.vehicles')</h2>
+                    <h2 class="text-uppercase">@lang('common.wellness-&-spa')</h2>
                     <p>
-                        {{ trans_choice('services.vehicles', 0) }}
+                        {{ trans_choice('services.wellness-&-spa', 0) }}
                     </p>
                     <p>
-                        {{ trans_choice('services.vehicles', 1) }}
+                        {{ trans_choice('services.wellness-&-spa', 1) }}
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!--   END VEHICLES SERVICES DESCRIPTION SECTION      -->
+<!--   END WELLNESS & SPA SERVICES DESCRIPTION SECTION      -->
 
-@include('contact-us-section', ['inquiry' => false])
+@include('contact-us-section', ['inquiry' => true])
 
-@include('services.list', ['service' => 'vehicles', 'list' => $list, 'types' => $types, 'packages' => $packages])
+<section id='service-info' class='service-info-section fullwidth panel space-y' data-section-name='service-info-panel'>
+<!--
+    OVDE IDE SADRZAJ SEKCIJE, TJ OPIS USLUGA
+-->    
+</section>
+
+@include('inquiry-section')
 
 @include('packages-sections', ['packages' => $packages])
 
 @stop
 
 @section('scripts')
-@include('services.script', ['types' => $types])
+
 @stop

@@ -39,8 +39,8 @@
                 <a href="{{ route("vehicles.vehicle", ['vehID' => $vehicle->vehID]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
-                <a href="{{ route("contact") }}" class="btn small">
-                    @lang('common.inquiry')
+                <a href="{{ route("contact") }}#contact-us" class="btn small">
+                    @lang('common.quick inquiry')
                 </a>
             </div>
             <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">

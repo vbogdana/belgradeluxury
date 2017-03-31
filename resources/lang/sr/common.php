@@ -25,6 +25,7 @@ return [
 	'services' => 'usluge',
 	'accommodation' => 'smeštaj',
 	'vehicles' => 'vozila',
+	'wellness-&-spa' => 'wellness i spa',
 	'host' => 'domaćin ',
 	'security' => 'obezbeđenje',
 	'reservations' => 'rezervacije',
@@ -45,7 +46,11 @@ return [
 	'partners' => 'partneri',
 	'terms and conditions' => 'uslovi korišćenja',
 	'contact us' => 'kontakt',
+	'call us' => 'pozovite nas',
+	'send an email' => 'pošaljite email',
+	'send an inquiry' => 'pošaljite upit',
 	'inquiry' => 'upit',
+	'quick inquiry' => 'brzi upit',
 	'details' => 'detalji',
 	'more' => 'još',
 	'other' => '{0}drugi|{1}druge|{2}druga',
@@ -83,5 +88,6 @@ return [
 	'photo' => '{0}fotografija|{1}fotografije',
 	'person' => '{1}osoba|[2,4]osobe|[5,20]osoba',
 	'recommended' => 'Preporučeno za Vas',
+	'booking' => '{0}Za bilo koju od naših usluga možete nas kontaktirati pre Vašeg dolaska u Beograd, ali i prilikom boravka. |{1}Kada se odlučite za odgovarajući paket ili uslugu za Vas, sledeći korak je da nas kontaktirate. |{2}Da bismo Vam olakšali i ubrzali proces, bukiranje naših usluga možete obaviti online preko našeg website-a. Odaberite uslugu i datum, pošaljite upit i naš tim će Vam u najkraćem roku poslati najbolju ponudu za Vas. Takođe uvek nas mozete pozvati, poslati nam email ili nas kontaktirati direktno preko online forme. |{3}Naš cilj je da svakom klijentu obezbedimo jedinstven i nezaboravan doživljaj, stoga usluge krojimo prema Vašim željama. ',
 	
 ];
