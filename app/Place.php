@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Event;
 
 class Place extends Model
 {
@@ -39,5 +40,17 @@ class Place extends Model
         } else if ($this->priority == 3) {
             return 'high';
         }
+    }
+    
+    public function getEvents() {
+        $events = Event::where('placeID', $this->placeID)
+                ->whereBetween('date', [ date("Y-m-d"), date("Y-m-d", (time()+15*24*60*60)) ])
+                ->orderBy('date', 'asc')
+                ->get(); 
+        return $events;
+    }
+    
+    public function seatings() {
+        return $this->hasMany('App\PlaceSeating', 'placeID', 'placeID');
     }
 }

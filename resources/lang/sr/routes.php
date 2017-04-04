@@ -26,4 +26,7 @@ return [
 	'business' => 'usluge/biznis',
 	'personel' => 'usluge/osoblje',
 	'diamond' => 'usluge/diamond',
+	'places.reservation' => 'usluge/rezervacija/{placeID}',
+	'events.reservation' => 'usluge/rezervacija/{placeID}/{evID}',
+	'reservation' => 'usluge/rezervacija',
 ];

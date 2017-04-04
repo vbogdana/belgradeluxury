@@ -245,7 +245,7 @@
                                 @lang('services.free reservations') 
                             </h5>
                             <div class='events text-uppercase container-fluid'>
-                                @foreach ($events as $event)
+                                @foreach ($object->getEvents() as $event)
                                 <div class="row">
                                     <div class="col-sm-12 title">
                                         @if ($event->category !== null)
@@ -268,7 +268,7 @@
                                         @lang('services.reservations'): {{ $event->reservations }}                                        
                                     </div>
                                     <div class="col-sm-4 col-lg-3">                                        
-                                        <a href="{{ route('contact') }}#contact-us" class="btn small">
+                                        <a class="btn small" href='{{ route("events.reservation", ['placeID' => $object->placeID, 'evID' => $event->evID]) }}'>
                                             @lang('services.reserve')
                                             <br />
                                             online
@@ -410,7 +410,7 @@
                                 <a id="contact" class="btn small" href='{{ route("contact") }}'> 
                                     @lang('common.contact us') 
                                 </a>                                
-                                <a id="inquiry" class="btn small" href='{{ route("contact") }}#contact-us'> 
+                                <a id="reservation" class="btn small" href='{{ route("places.reservation", ['placeID' => $object->placeID]) }}'> 
                                     online @lang('services.reservation') 
                                 </a>      
                             </div>

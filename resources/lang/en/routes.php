@@ -26,4 +26,7 @@ return [
 	'business' => 'services/business',
 	'personel' => 'services/personel',
 	'diamond' => 'services/diamond',
+	'places.reservation' => 'services/reservation/{placeID}',
+	'events.reservation' => 'services/reservation/{placeID}/{evID}',
+	'reservation' => 'services/reservation',
 ];

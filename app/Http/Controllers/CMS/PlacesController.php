@@ -4,6 +4,8 @@ namespace App\Http\Controllers\CMS;
 
 use App\Place;
 use App\PlaceImage;
+use App\Seating;
+use App\PlaceSeating;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -37,8 +39,9 @@ class PlacesController extends Controller {
      *
      * @return view
      */
-    function loadCreatePlace() {       
-        return view('cms.places.create.place');
+    function loadCreatePlace() {
+        $seatings = Seating::all();
+        return view('cms.places.create.place', ['seatings' => $seatings]);
     }
     
     /**
@@ -52,7 +55,8 @@ class PlacesController extends Controller {
         if ($place == null) {
             return view('cms.error', ['message' => 'Place not found!']);
         }
-        return view('cms.places.create.place', ['place' => $place]);
+        $seatings = Seating::all();
+        return view('cms.places.create.place', ['place' => $place, 'seatings' => $seatings]);
     }    
     
     /**
@@ -110,6 +114,7 @@ class PlacesController extends Controller {
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
             'geoLat' => 'required|numeric|between:0,360',
             'geoLong' => 'required|numeric|between:0,360',
+            'seating' => 'required',
             'phone' => 'max:255',
             'link' => 'max:255',          
         ]);
@@ -134,6 +139,13 @@ class PlacesController extends Controller {
          *
          */
         $place->save();
+        
+        foreach($data['seating'] as $s) {
+            $seating = new PlaceSeating();
+            $seating->seatID = $s;
+            $seating->placeID = $place->placeID;
+            $seating->save();
+        }        
 
         if (array_key_exists('image', $data)) {
             $path = $data['image']->store('services/places/'.$place->placeID, 'images');
@@ -175,6 +187,17 @@ class PlacesController extends Controller {
          * 
          */
         $place->save();
+        
+        // EDIT SEATINGS
+        foreach ($place->seatings as $s) {
+            PlaceSeating::destroy($s->psID);
+        }       
+        foreach($data['seating'] as $s) {
+            $seating = new PlaceSeating();
+            $seating->seatID = $s;
+            $seating->placeID = $place->placeID;
+            $seating->save();
+        }
         
         return $place;
     }

@@ -187,6 +187,27 @@ Route::group([
                 }
             ]
         );
+            
+        // Online place reservation
+        Route::get(LaravelLocalization::transRoute('routes.places.reservation'), 
+            [
+              'as' => 'places.reservation', 
+              'uses' => 'App\ServicesController@loadPlaceReservation'
+            ]
+        );
+        // Online event reservation
+        Route::get(LaravelLocalization::transRoute('routes.events.reservation'), 
+            [
+              'as' => 'events.reservation', 
+              'uses' => 'App\ServicesController@loadEventReservation'
+            ]
+        );
+        Route::post(LaravelLocalization::transRoute('routes.reservation'), 
+            [
+              'as' => 'reservation', 
+              'uses' => 'App\ServicesController@createReservation'
+            ]
+        );
 
     });
 
@@ -197,6 +218,7 @@ Route::group([
 |--------------------------------------------------------------------------
 |
  */
+
 
 Route::get('cms', 'CMS\CMSController@index')->name('cms');
 

@@ -13,6 +13,11 @@ use Request;
 use Response;
 use View;
 use Illuminate\Support\Facades\DB;
+use App\Mail\Reservation;
+use Illuminate\Support\Facades\Mail;
+use Lang;
+use App;
+use Carbon\Carbon;
 
 class ServicesController extends Controller {
     
@@ -44,10 +49,10 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadSingleAccommodation($accID) { 
-        //return view('errors.notfound', ['var' => 'accommodation']);
+        AppController::loadServices($services, $packages);
         $accommodation = Accommodation::find($accID);
         if ($accommodation == null) {
-            return view('errors.notfound', ['var' => 'apartment']);
+            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages]);
         }
         
         AppController::loadServices($services, $packages);
@@ -94,13 +99,12 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadVehicle($vehID) {  
-        //return view('errors.notfound', ['var' => 'vehicle']);
+        AppController::loadServices($services, $packages);
         $vehicle = Vehicle::find($vehID);
         if ($vehicle == null) {
-            return view('errors.notfound', ['var' => 'vehicle']);
+            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages]);
         }
-        
-        AppController::loadServices($services, $packages);
+               
         $similar = Vehicle::where('type', $vehicle->type)
                            ->where('vehID', '!=', $vehicle->vehID)
                            ->take(4)
@@ -175,23 +179,83 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadPlace($placeID) {  
-        //return view('errors.notfound', ['var' => 'place']);
+        AppController::loadServices($services, $packages);
         $place = Place::find($placeID);
         if ($place == null) {
-            return view('errors.notfound', ['var' => 'place']);
+            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages]);
         }
-        
-        $events = Event::where('placeID', $place->placeID)
-                ->where('date', '>=', date("Y-m-d"))
-                ->orderBy('date', 'asc')
-                ->take(7)
-                ->get();
-        AppController::loadServices($services, $packages);
+            
         $similar = Place::where('type', $place->type)
                            ->where('placeID', '!=', $place->placeID)
                            ->orderBy('priority', 'desc')
                            ->take(4)
                            ->get();
-        return view('services.single-element', ['object' => $place, 'events' => $events, 'type' => 'places', 'similar' => $similar, 'services' => $services, 'packages' => $packages]);
+        return view('services.single-element', ['object' => $place, 'type' => 'places', 'similar' => $similar, 'services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
+     * Loads a form for reservations from place.
+     *
+     * @return view
+     */
+    function loadPlaceReservation($placeID) {
+        AppController::loadServices($services, $packages);
+        return $this->loadReservation($services, $packages, $placeID);
+    }
+    
+    /**
+     * Loads a form for reservations from event.
+     *
+     * @return view
+     */
+    function loadEventReservation($placeID, $evID) {
+        AppController::loadServices($services, $packages);
+        $event = Event::find($evID);
+        if ($event == null || ($event->placeID != $placeID)) {
+            return view('errors.notfound', ['var' => 'event', 'services' => $services, 'packages' => $packages]);
+        }       
+        
+        return $this->loadReservation($services, $packages, $event->placeID, $event->evID);
+    }
+    
+    /**
+     * Loads a form for reservations.
+     *
+     * @return view
+     */
+    function loadReservation($services, $packages, $placeID, $evID = null) {
+        $place = Place::find($placeID);
+        if ($place == null) {
+            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages]);
+        }
+        
+        $events = Event::select('placeID')->whereBetween('date', [ date("Y-m-d"), date("Y-m-d", (time()+15*24*60*60)) ])->get();
+        $places = Place::whereIn('placeID', $events)->orderBy('title_'.App::getLocale())->get();
+        if ($evID !== null) {
+            return view('forms.event-reservation', ['places' => $places, 'place' => $place, 'evID' => $evID, 'services' => $services, 'packages' => $packages]);
+        } else {
+            return view('forms.event-reservation', ['places' => $places, 'place' => $place, 'services' => $services, 'packages' => $packages]);
+        }
+    }
+    
+    /**
+     * Creates new reservation.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *
+     * @return string
+     */
+    function createReservation(\Illuminate\Http\Request $request) {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'phone' => 'required|numeric',
+            'people' => 'required|integer|min:1|max:50',
+            'message' => 'max:800'
+        ]);
+        
+        $data = $request->all();
+        Mail::to('inquiry@belgradeluxury.com')->send(new Reservation($data));
+        return Lang::get('forms.success.reservation');
     }
 }

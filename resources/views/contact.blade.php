@@ -341,8 +341,8 @@
             data: {_token:_token, name:name, email:email, subject:subject, country:country, company:company, website:website, message:message}
             
         }).done(function(data) {          
-            $('#status').css('background', 'rgba(0,0,0,0.7)');        
-            $('#status').css('color', 'green');
+            //$('#status').css('background', 'rgba(0,0,0,0.7)');        
+            $('#status').css('color', '#CEAB4D');
             $('#status').html(data);
             
             // RESET FORM
@@ -368,7 +368,7 @@
             
             if (validation) {
                 $('#status').css('color', 'red');
-                $('#status').css('background', 'rgba(0,0,0,0.7)');
+                //$('#status').css('background', 'rgba(0,0,0,0.7)');
                 $('#status').html(msg.responseText);
             }
         });

@@ -35,9 +35,11 @@
                 <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
-                <a href="{{ route("contact") }}#contact-us" class="btn small">
+                @if (sizeof($place->getEvents()) > 0)
+                <a href="{{ route("places.reservation", ['placeID' => $place->placeID]) }}" class="btn small">
                     online @lang('services.reservation')
                 </a>
+                @endif
             </div>
             <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
                 <i class="fa fa-phone" aria-hidden="true"></i>

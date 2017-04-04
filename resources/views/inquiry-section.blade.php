@@ -12,15 +12,15 @@
     <div class="container">
         <div class="description text-center">            
             <h2 class="text-uppercase"> 
-                Odlučili ste se za ovu uslugu?
+                {{ trans_choice('common.booking', 4) }}
             </h2>
             <p></p>
             <h5 class="text-uppercase"> 
-                Naš cilj je da svakom klijentu obezbedimo jedinstven i nezaboravan doživljaj, stoga usluge krojimo prema Vašim željama. 
+                {{ trans_choice('common.booking', 3) }}
             </h5>
             <p></p>
             <h4 class="text-uppercase">
-                Da bismo Vam olakšali i ubrzali proces, bukiranje naših usluga možete obaviti online preko našeg website-a. Odaberite uslugu i datum, pošaljite upit i naš tim će Vam u najkraćem roku poslati najbolju ponudu za vas. Takođe uvek nas mozete pozvati, poslati nam email ili nas kontaktirati direktno preko online forme.
+                {{ trans_choice('common.booking', 2) }}
             </h4>   
             <p></p>
         </div>

@@ -40,8 +40,8 @@ class EventsController extends Controller {
      * @return view
      */
     function loadCreateEvent() {   
-        $places = Place::all(['placeID', 'title_en']);
-        $categories = Category::all(['ctgID', 'name_en']);
+        $places = Place::all(['placeID', 'title_en'])->sortBy('title_en');
+        $categories = Category::all(['ctgID', 'name_en'])->sortBy('name_en');
         return view('cms.events.create.event', ['places' => $places, 'categories' => $categories]);
     }
     
@@ -51,8 +51,8 @@ class EventsController extends Controller {
      * @return view
      */
     function loadPlaceCreateEvent($placeID) {   
-        $places = Place::all(['placeID', 'title_en']);
-        $categories = Category::all(['ctgID', 'name_en']);
+        $places = Place::all(['placeID', 'title_en'])->sortBy('title_en');
+        $categories = Category::all(['ctgID', 'name_en'])->sortBy('name_en');
         return view('cms.events.create.event', ['places' => $places, 'categories' => $categories, 'placeID' => $placeID]);
     }
     

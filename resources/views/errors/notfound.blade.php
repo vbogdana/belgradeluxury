@@ -9,14 +9,14 @@
 @extends('layouts.master')
 
 @section('content')
-<section class='fullwidth interstition space-y'>
+<section class='widescreen panel' style='padding: 30vh 0'>
     <div class="container-fluid">
         <div class="description text-center">
-            <h2 class="text-uppercase"> @lang('common.error') </h2>
+            <h2 class="text-uppercase"> @lang('common.errors.error') </h2>
             <p>
                 <?php
-                    $var = trans_choice('common.'.$var, 0);
-                    echo trans_choice('common.notfound', 0, ['var' => $var]);
+                    $var = trans_choice('common.errors.'.$var, 0);
+                    echo trans_choice('common.errors.notfound', 0, ['var' => $var]);
                 ?>
             </p>
         </div>    

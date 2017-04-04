@@ -197,6 +197,38 @@
                             </div>
                         </div>
                         
+                        <div class="form-group{{ $errors->has('seating') ? ' has-error' : '' }}">
+                            <label for="seating" class="col-md-4 control-label">Types of seating*</label>
+
+                            <div class="col-md-6">
+                                <?php 
+                                $i = 0;
+                                ?>
+                                @foreach($seatings as $seating)                               
+                                <input id="seating[{{ $i }}]" type="checkbox" name="seating[{{ $i }}]" value="{{ $seating->seatID }}"
+                                    <?php
+                                        if (isset($place)) {
+                                            foreach($place->seatings as $s) {
+                                                if ($s->seating->seatID === $seating->seatID) {
+                                                    echo "checked";
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                       >
+                                <label for="seating[{{ $i++ }}]">{{ $seating->type_en }}</label>
+                                &nbsp;&nbsp;
+                                @endforeach 
+                                
+                                @if ($errors->has('seating'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('seating') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
                         <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
                             <label for="link" class="col-md-4 control-label">Website link</label>
 
