@@ -26,7 +26,7 @@ return [
 	'accommodation' => 'smeštaj',
 	'vehicles' => 'vozila',
 	'wellness-&-spa' => 'wellness i spa',
-	'host' => 'domaćin ',
+	'host' => 'host',
 	'security' => 'obezbeđenje',
 	'reservations' => 'rezervacije',
 	'tickets' => 'ulaznice',
@@ -91,6 +91,7 @@ return [
 	'booking' => '{0}Za bilo koju od naših usluga možete nam se obratiti pre Vašeg dolaska u Beograd, ali i prilikom boravka. |{1}Kada se odlučite za odgovarajući paket ili uslugu za Vas, sledeći korak je da nas kontaktirate. |{2}Da bismo Vam olakšali i ubrzali proces, bukiranje naših usluga možete obaviti online preko našeg website-a. Odaberite uslugu i datum, pošaljite upit i naš tim će Vam u najkraćem roku poslati najbolju ponudu za Vas. Takođe uvek nas mozete pozvati, poslati nam email ili nas kontaktirati direktno preko online forme. |{3}Naš cilj je da svakom klijentu obezbedimo jedinstven i nezaboravan doživljaj, stoga usluge krojimo prema Vašim željama. |{4}Odlučili ste se za ovu uslugu',
 	'errors' => [
 		'error' => 'greška',
+		'404' => 'Stranica koju ste tražili ne postoji',
 		'notfound' => '{0}:Var nije pronađen!|{1}:Var nije pronađena!|{2}:Var nije pronađeno!',
 		'accommodation' => '[0,1]smeštaj',
 		'vehicle' => '{0}vozilo|{1}vozila',

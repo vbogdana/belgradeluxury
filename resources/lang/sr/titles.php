@@ -17,7 +17,7 @@ return [
 	'package' => ':Package Paket',
 	'accommodation' => 'Smeštaj',
 	'vehicles' => 'Vozila',
-	'host' => 'Domaćin ',
+	'host' => 'Host',
 	'nightlife' => 'Noćni Život',
 	'gastronomy' => 'Gastronomija',
 	'security' => 'Obezbeđenje',
