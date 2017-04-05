@@ -108,7 +108,7 @@
                             <label for="symbol" class="col-md-4 control-label">Symbol image</label>
 
                             <div class="col-md-6">
-                                <input id="symbol" type="file" name="symbol" value="{{ old('symbol') }}">
+                                <input id="symbol" type="file" class="form-control" name="symbol" value="{{ old('symbol') }}">
                                 
                                 @if ($errors->has('symbol'))
                                     <span class="help-block">
@@ -125,7 +125,7 @@
                             <label for="cardFront" class="col-md-4 control-label">Card front image</label>
 
                             <div class="col-md-6">
-                                <input id="cardFront" type="file" name="cardFront" value="{{ old('cardFront') }}">
+                                <input id="cardFront" type="file" class="form-control" name="cardFront" value="{{ old('cardFront') }}">
                                 
                                 @if ($errors->has('cardFront'))
                                     <span class="help-block">
@@ -141,7 +141,7 @@
                             <label for="cardBack" class="col-md-4 control-label">Card back image</label>
 
                             <div class="col-md-6">
-                                <input id="cardBack" type="file" name="cardBack" value="{{ old('cardBack') }}">
+                                <input id="cardBack" type="file" class="form-control" name="cardBack" value="{{ old('cardBack') }}">
                                 
                                 @if ($errors->has('cardBack'))
                                     <span class="help-block">

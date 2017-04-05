@@ -57,6 +57,14 @@
                             {{ Form::open(['route' => ['cms.packages.edit', $package->packID], 'method' => 'get']) }}
                             {{ Form::submit('Edit data', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
+                            
+                            {{ Form::open(['route' => ['cms.packages.create.service', $package->packID], 'method' => 'get']) }}
+                            {{ Form::submit('Add service', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
+                            {{ Form::open(['route' => ['cms.packages.delete.services', $package->packID], 'method' => 'get']) }}
+                            {{ Form::submit('Delete services', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
                           
                             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$package->packID}}">
                                 Delete package

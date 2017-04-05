@@ -297,6 +297,13 @@ Route::post('cms/packages/{packID}/show', ['as' => 'cms.packages.show', 'uses' =
 Route::post('cms/packages/{packID}/hide', ['as' => 'cms.packages.hide', 'uses' => 'CMS\PackagesController@hide']);
 Route::get('cms/packages/reorder', ['as' => 'cms.packages.reorder', 'uses' => 'CMS\PackagesController@loadReorderPackages']);
 Route::post('cms/packages/reorder', ['as' => 'cms.packages.reorder', 'uses' => 'CMS\PackagesController@reorderPackages']);
+/***
+ * Package services
+ */
+Route::get('cms/packages/{packID}/create/service', ['as' => 'cms.packages.create.service', 'uses' => 'CMS\PackagesController@loadCreateService']);
+Route::post('cms/packages/{packID}/create/service', ['as' => 'cms.packages.create.service', 'uses' => 'CMS\PackagesController@createService']);
+Route::get('cms/packages/{packID}/delete/services', ['as' => 'cms.packages.delete.services', 'uses' => 'CMS\PackagesController@loadDeleteServices']);
+Route::delete('cms/packages/delete/service/{pcksID}', ['as' => 'cms.packages.delete.service', 'uses' => 'CMS\PackagesController@deleteService']);
 
 /***
  * Hosts

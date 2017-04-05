@@ -77,7 +77,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('reservations') ? ' has-error' : '' }}">
-                            <label for="reservations" class="col-md-4 control-label">Reservations (ser)*</label>
+                            <label for="reservations" class="col-md-4 control-label">Reservations last until: * (ex. 21:30h)</label>
 
                             <div class="col-md-6">
                                 <input id="reservations" type="text" maxlength="255" class="form-control" name="reservations" value="{{ isset($event) ? $event->reservations : old('reservations') }}" >
@@ -95,7 +95,7 @@
                             <label for="image" class="col-md-4 control-label">Main image (square dimensions)</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" name="image" value="{{ old('image') }}">
+                                <input id="image" class='form-control' type="file" name="image" value="{{ old('image') }}">
                                 
                                 @if ($errors->has('image'))
                                     <span class="help-block">
@@ -110,7 +110,7 @@
                             <label for="category" class="col-md-4 control-label">Category</label>
 
                             <div class="col-md-6">
-                                <select id="category" name="category">
+                                <select id="category" name="category" class='form-control'>
                                     <?php
                                         if (!isset($event)) {
                                             $selected = "selected";
@@ -137,7 +137,7 @@
                             <label for="place" class="col-md-4 control-label">Place</label>
 
                             <div class="col-md-6">
-                                <select id="place" name="place">
+                                <select id="place" name="place" class='form-control'>
                                     <?php
                                         if (!isset($event) && !isset($placeID)) {
                                             $selected = "selected";

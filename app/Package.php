@@ -22,4 +22,12 @@ class Package extends Model
         'position',
         'cardFront', 'cardBack', 'symbol'
     ];
+    
+    /**
+     * Returns all services included in the package.
+     *
+     */
+    public function services() {
+        return $this->hasMany('App\PackageService', 'packID', 'packID');
+    }
 }

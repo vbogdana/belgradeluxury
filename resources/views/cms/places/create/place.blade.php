@@ -79,7 +79,7 @@
                             <label for="priority" class="col-md-4 control-label">Priority</label>
 
                             <div class="col-md-6">
-                                <select name="priority">
+                                <select name="priority" class='form-control'>
                                     <option value="1" 
                                             <?php if (isset($place) && $place->priority == 1) echo "selected" ?>
                                             >low</option>
@@ -158,7 +158,7 @@
                             <label for="image" class="col-md-4 control-label">Main image</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" name="image" value="{{ old('image') }}">
+                                <input id="image" type="file" name="image" value="{{ old('image') }}" class='form-control'>
                                 
                                 @if ($errors->has('image'))
                                     <span class="help-block">

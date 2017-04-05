@@ -35,7 +35,7 @@
                 <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
-                @if (sizeof($place->getEvents()) > 0)
+                @if (!$place->getEvents()->isEmpty())
                 <a href="{{ route("places.reservation", ['placeID' => $place->placeID]) }}" class="btn small">
                     online @lang('services.reservation')
                 </a>

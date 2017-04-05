@@ -140,6 +140,9 @@ $(document).ready(function () {
         $('.side-content').each(function () {
             addAnimated($(this), 'fadeIn');
         });
+        $('.row-list .content').each(function () {
+            addAnimated($(this), 'fadeIn');
+        });
         $('.contact-section .hi-icon').each(function () {
             addAnimated($(this), 'fadeIn');
         });
@@ -189,6 +192,9 @@ $(document).ready(function () {
             addAnimation($(this), 'fadeInDown', windowHeight - 100);
         });
         $('.side-content').each(function () {
+            addAnimation($(this), 'fadeIn', windowHeight - 100);
+        });
+        $('.row-list .content').each(function () {
             addAnimation($(this), 'fadeIn', windowHeight - 100);
         });
         $('.contact-section .hi-icon').each(function() {

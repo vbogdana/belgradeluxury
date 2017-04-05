@@ -544,6 +544,7 @@ section {
     background: transparent;
     position: relative;
     overflow: hidden;
+    z-index: 2;
 }
 .box-right {
     float: right;
@@ -680,7 +681,7 @@ section {
     background-size: cover;
     background-position: center;
     box-sizing: border-box;
-    margin: 5px;
+    margin: 3px;
 }
 .block a {
     display: table-cell;
@@ -1045,7 +1046,7 @@ a.btn.small, .btn.small {
     background-image: url('../images/services/security-big.jpg');
 }
 #security-second.background-properties {
-    background-image: url('../images/services/security-big.jpg');
+    background-image: url('../images/services/security1.jpg');
 }
 #sightseeing.background-properties {
     background-image: url('../images/services/sightseeing-big.jpg');
@@ -1448,7 +1449,7 @@ a.btn.small, .btn.small {
 }
 .aboutus-section.ribbon .block {
     float: left;
-    width: calc(25% - 10px);
+    width: calc(25% - 6px);
     height: 20vh;
 }
 
@@ -2432,7 +2433,7 @@ a.btn.small, .btn.small {
 .events .date .month {
     font-size: 1.3em;
     letter-spacing: 0.3em;
-    font-family: quicksand;
+    font-family: Quicksand, Raleway, sans-serif;
     font-weight: 500;
     color: #888888;
 }
@@ -2534,6 +2535,32 @@ a.btn.small, .btn.small {
     .side-content.text-left ul li:before,
     .side-content.text-right ul li:after {
         background-image: none;
+    }
+}
+
+/*******************************************************************************
+ * 
+ *                 ROW LIST
+ *  
+ ******************************************************************************/
+.row-list .content {
+    //border: 1px solid rgba(256,256,256,0.1);
+    padding: 20px 15px;
+}
+.row-list .content h6 {
+    font-family: Quicksand, Raleway, sans-serif;
+    color: #CEAB4D;
+}
+.row-list .gold-decor {
+    margin-top: 25px;
+    margin-bottom: 55px;
+}
+@media screen and (max-width: 767px) {
+    .row-list .content {
+        margin-bottom: 30px;
+    }
+    .row-list .gold-decor {
+        display: none;
     }
 }
 

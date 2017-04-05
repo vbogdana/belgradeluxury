@@ -12,7 +12,7 @@
     <div class="container">
         <div class="description text-center">            
             <h2 class="text-uppercase"> 
-                {{ trans_choice('common.booking', 4) }}
+                {{ trans_choice('common.booking', 4) }}?
             </h2>
             <p></p>
             <h5 class="text-uppercase"> 

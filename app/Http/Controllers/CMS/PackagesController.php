@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Package;
+use App\Service;
+use App\PackageService;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -84,6 +86,35 @@ class PackagesController extends Controller {
             return view('cms.error', ['message' => 'Package not found!']);
         }
         return view('cms.packages.edit.image', ['packID' => $packID, 'imgType' => $imgType, 'image' => $package[$imgType], 'package' => $package->title_en]);
+    } 
+    
+     /**
+     * Loads a view with a form to create a new service for an existing package.
+     *
+     * @param $packID primary key of Package
+     * @return view
+     */
+    function loadCreateService($packID) {
+        $package = Package::find($packID);
+        if ($package == null) {
+            return view('cms.error', ['message' => 'Package not found!']);
+        }
+        $services = Service::all();
+        return view('cms.packages.create.service', ['package' => $package, 'services' => $services]);
+    }   
+    
+    /**
+     * Loads a view with a list of all services for an existing package.
+     *
+     * @param $packID primary key of Package
+     * @return view
+     */
+    function loadDeleteServices($packID) {
+        $package = Package::find($packID);
+        if ($package == null) {
+            return view('cms.error', ['message' => 'Package not found!']);
+        }
+        return view('cms.packages.delete.services', ['package' => $package]);
     } 
     
     /**
@@ -362,6 +393,52 @@ class PackagesController extends Controller {
             $package[$imgType] = null;
             $package->save(); 
         }
+        return redirect('/cms/packages');      
+    }
+    
+    
+    /**
+     * Handle a request for creating a new service for an existing package for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param   $packID primary key of Package
+     * @return \Illuminate\Http\Response
+     */
+    public function createService(Request $request, $packID)
+    {
+        $this->validate($request, 
+            [
+                'title_en' => 'required|max:255',
+                'title_sr' => 'required|max:255'
+            ]
+        );
+        
+        $data = $request->all();
+        
+        $package = Package::find($packID);
+        if ($package == null) {
+            return view('cms.error', ['message' => 'Package not found!']);
+        }
+
+        $service = new PackageService($data);
+        $service->packID = $packID;
+        $service->servID = $data['service'];
+        $service->save();
+        
+        return redirect('/cms/packages');
+    }
+    
+    /**
+     * Deletes a service included in the package.
+     *
+     * @param  $pcksID primary key of the service for the Package
+     * @return \Illuminate\Http\Response
+     */
+    protected function deleteService($pcksID)
+    {       
+        // delete existing service
+        PackageService::destroy($pcksID);
+        
         return redirect('/cms/packages');      
     }
    

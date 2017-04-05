@@ -47,7 +47,7 @@ return [
 	'terms and conditions' => 'terms and conditions',
 	'contact us' => 'contact us',
 	'call us' => 'call us',
-	'send an email' => 'send email',
+	'send an email' => 'send an email',
 	'send an inquiry' => 'send an inquiry',
 	'inquiry' => 'inquiry',
 	'quick inquiry' => 'quick inquiry',
