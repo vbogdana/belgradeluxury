@@ -13,6 +13,9 @@
         @section('title-meta')
         <!-- page titles and meta tags -->
         <title>Belgrade Luxury - @lang('titles.index') </title>
+
+
+      <!--  <meta name="google-site-verification" content="tcYC2xw3FLY_H9r6Vse5b41QfC7fcZXkA0cOjvBwBNI" /> !-->
         
         <meta name="description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
         <meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
