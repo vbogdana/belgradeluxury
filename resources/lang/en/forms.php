@@ -15,6 +15,7 @@ return [
 	'phone' => 'Phone Number',
 	'place' => 'Place',
 	'date' => 'Date',
+	'time' => 'Time',
 	'subject' => 'Nature of Enquiry',
 	'country' => 'Country',
 	'company name' => 'Company Name',
@@ -24,11 +25,14 @@ return [
 	'message' => 'Message',
 	'reservation' => '[0,1]reservation',
 	'send' => 'send',
+	'other' => 'other',
 	'success' => [
 		'message' => 'Your message was sent successfully!',
 		'reservation' => 'Your reservation was sent successfully! We will contact You shortly to confirm.'
 	],
-	'other' => 'other',
+	'errors' => [
+		'message' => 'Sorry, an error occurred, please try again!',
+	],
 	
 
 ];

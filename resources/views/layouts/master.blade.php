@@ -145,7 +145,7 @@
                                     <ul class='dropdown-menu'>
                                         @foreach ($packages as $package)
                                         <li>
-                                            <a href='#'>
+                                            <a href='{{ route("package", ['title' => $package['title_'.$locale]])}}'>
                                                 {{ $package['title_'.$locale] }}
                                             </a>
                                         </li>

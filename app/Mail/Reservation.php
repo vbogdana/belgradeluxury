@@ -18,6 +18,7 @@ class Reservation extends Mailable
     public $phone;
     public $place;
     public $date;
+    public $time;
     public $people;
     public $seating;
     public $content;
@@ -31,18 +32,12 @@ class Reservation extends Mailable
     {
         //
         $this->name = $data['name'];
-        $this->phone = $data['phone'];
-        $p = Place::find($data['place']);
-        $this->place = $p->title_sr;
-        $e = Event::find($data['date']);
-        $this->date = $e->date.'  ---  '.$e->title_sr;
+        $this->phone = $data['phone'];        
+        $this->place = $data['place'];                
+        $this->date = $data['date'];
+        $this->time = $data['time'];
         $this->people = $data['people']; 
-        $s = Seating::find($data['seating']);
-        if ($s != null) {
-            $this->seating = $s->type_sr;
-        } else {
-            $this->seating = "neodređeno";
-        }
+        $this->seating = $data['seating'];        
         $this->content = $data['message'];
     }
 

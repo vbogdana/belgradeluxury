@@ -410,7 +410,7 @@
                                 <a id="contact" class="btn small" href='{{ route("contact") }}'> 
                                     @lang('common.contact us') 
                                 </a> 
-                                @if (!$object->getEvents()->isEmpty())
+                                @if ($object->isRestaurant() || !$object->getEvents()->isEmpty())
                                 <a id="reservation" class="btn small" href='{{ route("places.reservation", ['placeID' => $object->placeID]) }}'> 
                                     online @lang('services.reservation') 
                                 </a>

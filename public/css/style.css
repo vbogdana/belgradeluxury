@@ -659,6 +659,7 @@ section {
 @media screen and (max-width: 767px) {
     .box.panel .hero-holder {
         width: 70%;
+		//padding-top: 50px;
     }
     .box.panel .box-left .hero-holder {
         padding-left: 15px;
@@ -811,10 +812,11 @@ a.link:active {
     color: #CEAB4D;
 }
 a.btn, .btn {
+	border: 1px solid rgba(229, 228, 226, 0.5);;
     color: #E5E4E2;
     text-transform: uppercase;
-    //border: 0.5px solid #E5E4E2;
-    background: rgba(256,256,256,0.08);
+	background: transparent;
+    //background: rgba(256,256,256,0.08);
     border-radius: 0;
     font-family: Quicksand, Raleway, sans-serif;
     margin-top: 20px;
@@ -825,7 +827,7 @@ a.btn:hover, .btn:hover,
 a.btn:focus, .btn:focus,
 a.btn:active, .btn:active {
     color: #E5E4E2;
-    //background: rgba(189, 152, 51, 0.8);
+    border: 1px solid #8A652A;
     background: #8A652A;
 }
 a.btn.small, .btn.small {
@@ -1064,10 +1066,10 @@ a.btn.small, .btn.small {
     background-image: url('../images/services/diamond-big.jpg');
 }
 #package-description.background-properties {
-    background-color: #222222;
+    background-image: url('../images/backgrounds/belgradeluxury.jpg');
 }
 #package-details.background-properties {
-    background-color: #0a0a0a;
+    background-image: url('../images/backgrounds/package.jpg');
 }
 
 /*******************************************************************************
@@ -2150,6 +2152,9 @@ a.btn.small, .btn.small {
  ******************************************************************************/
 .package-details-section .container-fluid {
     padding: 0;
+}
+.package-details {
+    z-index: 3;
 }
 @media screen and (min-width: 768px) {
     .package-details {

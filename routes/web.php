@@ -37,13 +37,10 @@ Route::group([
         );
         
         // Template for a single package
-        Route::get(LaravelLocalization::transRoute('routes.packages'), 
+        Route::get(LaravelLocalization::transRoute('routes.package'), 
             [
-              'as' => 'packages', 
-              'uses' => function() {
-                    AppController::loadServices($services, $packages);
-                    return view('/packages/package', ['services' => $services, 'packages' => $packages]);
-                }
+              'as' => 'package', 
+              'uses' => 'App\AppController@loadPackage',
             ]
         );
         

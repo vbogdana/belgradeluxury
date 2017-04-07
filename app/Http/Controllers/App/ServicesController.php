@@ -8,6 +8,7 @@ use App\Vehicle;
 use App\Host;
 use App\Place;
 use App\Event;
+use App\Seating;
 use App\Http\Controllers\Controller;
 use Request;
 use Response;
@@ -255,6 +256,23 @@ class ServicesController extends Controller {
         ]);
         
         $data = $request->all();
+        $p = Place::find($data['place']);
+        if ($p === null) {
+            return response()->json(['error' => Lang::get('forms.errors.message')], 401);
+        } else {
+            $data['place'] = $p->title_sr;
+        }
+        $e = Event::find($data['date']);
+        if ($e !== null) {
+            $data['date'] = $e->date.'  ---  '.$e->title_sr;
+        }
+        $s = Seating::find($data['seating']);
+        if ($s !== null) {
+            $data['seating'] = $s->type_sr;
+        } else {
+            $data['seating'] = "neodređeno";
+        }
+                      
         Mail::to('inquiry@belgradeluxury.com')->send(new Reservation($data));
         return Lang::get('forms.success.reservation');
     }

@@ -88,7 +88,7 @@ return [
 	'photo' => '{0}fotografija|{1}fotografije',
 	'person' => '{1}osoba|[2,4]osobe|[5,20]osoba',
 	'recommended' => 'Preporučeno za Vas',
-	'booking' => '{0}Za bilo koju od naših usluga možete nam se obratiti pre Vašeg dolaska u Beograd, ali i prilikom boravka. |{1}Kada se odlučite za odgovarajući paket ili uslugu za Vas, sledeći korak je da nas kontaktirate. |{2}Da bismo Vam olakšali i ubrzali proces, bukiranje naših usluga možete obaviti online preko našeg website-a. Odaberite uslugu i datum, pošaljite upit i naš tim će Vam u najkraćem roku poslati najbolju ponudu za Vas. Takođe uvek nas mozete pozvati, poslati nam email ili nas kontaktirati direktno preko online forme. |{3}Naš cilj je da svakom klijentu obezbedimo jedinstven i nezaboravan doživljaj, stoga usluge krojimo prema Vašim željama. |{4}Odlučili ste se za ovu uslugu',
+	'booking' => '{0}Za bilo koju od naših usluga možete nam se obratiti pre Vašeg dolaska u Beograd, ali i prilikom boravka. |{1}Kada se odlučite za odgovarajući paket ili uslugu za Vas, sledeći korak je da nas kontaktirate. |{2}Da bismo Vam olakšali i ubrzali proces, bukiranje naših usluga možete obaviti online preko našeg website-a. Odaberite uslugu i datum, pošaljite upit i naš tim će Vam u najkraćem roku poslati najbolju ponudu za Vas. Takođe uvek nas mozete pozvati, poslati nam email ili nas kontaktirati direktno preko online forme. |{3}Naš cilj je da svakom klijentu obezbedimo jedinstven i nezaboravan doživljaj, stoga usluge krojimo prema Vašim željama. |{4}Odlučili ste se za ovu uslugu |{5}Odlučili ste se za ovaj paket',
 	'errors' => [
 		'error' => 'greška',
 		'404' => 'Stranica koju ste tražili ne postoji',

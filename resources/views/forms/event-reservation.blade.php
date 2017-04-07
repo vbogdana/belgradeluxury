@@ -35,10 +35,39 @@
 <section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ asset('storage/images/'.$place->image) }})">
     <div class="overlay"></div>
     <div class="hero-holder">
-        <div class="hero-inner text-center hi-icon-effect">
+        <div class="hero-inner text-center">
    
             <div>
+                
                 {{ Form::open(['route' => 'reservation', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
+                
+                <div class="description">
+                    
+                    
+                    <div class="text-uppercase">
+                        @if($place->isRestaurant())
+                        <i class="hi-icon contact-gastronomy" style="color: #ceab4d"></i>
+                        @else
+                        <i class="hi-icon contact-nightlife" style="color: #ceab4d"></i>
+                        @endif
+                    </div>
+                    
+                    <div class="tags" style="margin-bottom: 0">
+                        @if($place->isRestaurant())
+                        <a href="{{ route('gastronomy')}}" class="link">@lang('common.gastronomy')</a>
+                        @else
+                        <a href="{{ route('nightlife')}}" class="link">@lang('common.nightlife')</a>
+                        @endif
+                        
+                        <span>
+                        &nbsp;/&nbsp;
+                        </span>
+                        
+                        <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="link">    
+                            {{ $place['title_'.$locale] }}
+                        </a>
+                    </div>
+                </div>
                 
                 <div class="container-fluid" style="font-family: Aspergit, Raleway, sans-serif">
                     <div class="description text-center">
@@ -107,6 +136,10 @@
                             <label for="date" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.date'):</label>
 
                             <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
+                            
+                                @if ($place->isRestaurant() && !isset($evID))
+                                <input id="date" type="date" name="date" required="" class="form-control">
+                                @else
                                 <select id="date" class="form-control text-capitalize" name="date">
                                     @foreach($place->getEvents() as $event)
                                     
@@ -123,10 +156,25 @@
                                     </option>
                                     @endforeach
                                 </select>
+                                @endif
 
                             </div>
                         </div>
                     </div>
+                    
+                    @if ($place->isRestaurant())
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="time" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.time'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                                <input id="time" type="time" class="form-control" name="time" placeholder="HH:MM" required>
+                                
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -195,6 +243,11 @@
         i = msg.responseText.search("\"" + field + "\"");            
         var error = msg.responseText.substring(i + offset);
         var message = error.substring(0, error.indexOf("\""));
+        var r = /\\u([\d\w]{4})/gi;
+        message = message.replace(r, function (match, grp) {
+            return String.fromCharCode(parseInt(grp, 16)); 
+        } );
+        message = unescape(message);
         div = $('#' + field).parent().parent();
         div.addClass('has-error');
         block = div.find('.help-block');
@@ -209,6 +262,10 @@
         var phone = $('#phone').val();
         var place = $('#place').val();
         var date = $('#date').val();
+        var time = "";
+        if ($('#time').length > 0) {
+           time = " u " + $('#time').val() + "h";
+        }
         var people = $('#people').val();
         var seating = $('#seating').val();
         var message = $('#message').val();
@@ -225,7 +282,8 @@
         $.ajax({
             url: url,
             type: 'POST',
-            data: {_token:_token, name:name, phone:phone, place:place, date:date, people:people, seating:seating, message:message}
+            dataType: 'json',
+            data: {_token:_token, name:name, phone:phone, place:place, date:date, time:time, people:people, seating:seating, message:message}
             
         }).done(function(data) {          
             //$('#status').css('background', 'rgba(0,0,0,0.7)');        
@@ -233,10 +291,11 @@
             $('#status').html(data);
             
             // RESET FORM
-            $('form').find("input[type=text], input[type=number], textarea").val("");
+            $('form').find("input[type=text], input[type=number], input[type=date], input[type=time], textarea").val("");
             $('option').removeAttr('selected');
             $('option:first-child').attr('selected', '');
         }).fail(function(msg) {
+            
             if (msg.responseText.search("\"name\"") !== -1)
                 checkError(msg, "name", 9); 
             if (msg.responseText.search("\"phone\"") !== -1)
@@ -245,6 +304,20 @@
                 checkError(msg, "people", 11);
             if (msg.responseText.search("\"message\"") !== -1)
                 checkError(msg, "message", 12);
+            
+            i = msg.responseText.search("\"error\"");
+            if (i !== -1) {                            
+                var error = msg.responseText.substring(i + 9);
+                var message = error.substring(0, error.indexOf("\""));
+                var r = /\\u([\d\w]{4})/gi;
+                message = message.replace(r, function (match, grp) {
+                    return String.fromCharCode(parseInt(grp, 16)); 
+                } );
+                message = unescape(message);
+                validation = false;
+                $('#status').css('color', 'red');
+                $('#status').html(message);
+            }
             
             if (validation) {
                 $('#status').css('color', 'red');

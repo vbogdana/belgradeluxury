@@ -16,6 +16,7 @@
             <p> Broj telefona: {{ $phone }} </p>
             <p> Mesto: {{ $place }} </p>
             <p> Datum: {{ $date }} </p>
+            <p> Vreme: {{ $time }} </p>
             <p> Broj ljudi: {{ $people }} </p>
             <p> Tip sedenja: {{ $seating }} </p>
             <p> Poruka:  {{ $content }} </p>

@@ -341,16 +341,13 @@ $(window).on("load", function(ev) {
     checkMedia();
     var $figures = $('#carousel figure');
     
-    $('#inquiry').on('click', function(ev) {
-        ev.preventDefault();
-        window.location.href = "under-construction";
-    });
     
     $('#details').on('click', function(ev) {
         ev.preventDefault();
-        var $package = $('figure#0').attr("class");
-        //window.location.href = "{{ URL::to('packages/" + $package + "') }}";
-        //window.location.href = ;
+        var package = $('figure#0').attr("class");
+        var url = $(this).attr('data-href');
+        var translation = $(this).attr('data-translation');
+        window.location.href = url + package + '-' + translation;
     });
     
     // FOR TABLETS AND MOBILES

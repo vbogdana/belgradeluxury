@@ -9,7 +9,7 @@
 
 return [
 	'contact' => 'contact',
-    'packages' => 'packages',
+    'package' => 'packages/{title}-package',
 	'accommodation' => 'services/accommodation',
 	'accommodation.single' => 'services/accommodation/apartment/{accID}',
 	'hotel' => 'services/accommodation/hotel/{accID}',

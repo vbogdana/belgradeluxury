@@ -26,7 +26,7 @@
             @foreach ($packages as $package)
             <div class="col-xs-6 col-sm-4 col-lg-2" style='margin: 20px 0 20px'>
                 <a href='#'>
-                    <img class='img-responsive' src='{{ asset('storage/images/'.$package->symbol) }}'>
+                    <img class='img-responsive' src='{{ asset('storage/images/'.$package->symbol) }}' style="margin: auto">
                 </a>
             </div>
             @endforeach

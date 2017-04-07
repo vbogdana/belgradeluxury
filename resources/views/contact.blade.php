@@ -310,6 +310,11 @@
         i = msg.responseText.search("\"" + field + "\"");            
         var error = msg.responseText.substring(i + offset);
         var message = error.substring(0, error.indexOf("\""));
+        var r = /\\u([\d\w]{4})/gi;
+        message = message.replace(r, function (match, grp) {
+            return String.fromCharCode(parseInt(grp, 16)); 
+        } );
+        message = unescape(message);
         div = $('#' + field).parent().parent();
         div.addClass('has-error');
         block = div.find('.help-block');

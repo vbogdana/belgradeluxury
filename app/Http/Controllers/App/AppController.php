@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;
 use Lang;
+use App;
 
 class AppController extends Controller {
     
@@ -34,6 +35,20 @@ class AppController extends Controller {
     public function loadContact() {    
         AppController::loadServices($services, $packages);
         return view('contact', ['services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
+     * Show the single package page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loadPackage($title) {    
+        AppController::loadServices($services, $packages);
+        $package = Package::where('title_'.App::getLocale(), $title)->first();
+        if ($package === null) {
+            return view('errors.404', ['services' => $services, 'packages' => $packages]);       
+        }
+        return view('packages.package', ['services' => $services, 'packages' => $packages, 'package' => $package]);
     }
     
     /**
