@@ -14,45 +14,27 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    @if (isset($placeID))
-                    <a href="{{ route('cms.places') }}">Places ></a>&nbsp;
+                    <a href="{{ route("cms.portal") }}">Portal ></a>&nbsp;
+                    <a href="{{ route("cms.portal.articles", ['category' => $category->name_en]) }}">{{ $category->name_en }} ></a>&nbsp
+                    @if(isset($article))
+                    Edit Article
                     @else
-                    <a href="{{ route('cms.events') }}">Events ></a>&nbsp;
-                    @endif
-                    @if(isset($event))
-                    Edit Event
-                    @else
-                    Create Event
+                    Create Article
                     @endif
                 </div>
                 <div class="panel-body">
-                    @if(isset($event))
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.events.edit', ['evID' => $event->evID]) }}">
+                    @if(isset($article))
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.portal.articles.edit', ['category' => $category->name_en, 'artID' => $article->artID]) }}">
                     @else
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.events.create') }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.portal.articles.create', ['category' => $category->name_en]) }}">
                     @endif
-                        {{ csrf_field() }}
-                        
-                        <div class="form-group{{ $errors->has("date") ? ' has-error' : '' }}">
-                            <label for="date" class="col-md-4 control-label">Date *</label>
-
-                            <div class="col-md-6">
-                                <input id="date" type="date" maxlength="255" class="form-control" name="date" value="{{ isset($event) ? $event->date : old('date') }}" required>
-
-                                @if ($errors->has('date'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('date') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
+                        {{ csrf_field() }}                       
                                                                                               
                         <div class="form-group{{ $errors->has("title_en") ? ' has-error' : '' }}">
                             <label for="title_en" class="col-md-4 control-label">Title (eng)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($event) ? $event->article->title_en : old('title_en') }}" required>
+                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($article) ? $article->title_en : old('title_en') }}" required>
 
                                 @if ($errors->has('title_en'))
                                     <span class="help-block">
@@ -66,7 +48,7 @@
                             <label for="title_sr" class="col-md-4 control-label">Title (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($event) ? $event->article->title_sr : old('title_sr') }}" required>
+                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($article) ? $article->title_sr : old('title_sr') }}" required>
 
                                 @if ($errors->has('title_sr'))
                                     <span class="help-block">
@@ -74,23 +56,9 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div>                        
                         
-                        <div class="form-group{{ $errors->has('reservations') ? ' has-error' : '' }}">
-                            <label for="reservations" class="col-md-4 control-label">Reservations last until: * (ex. 21:30h)</label>
-
-                            <div class="col-md-6">
-                                <input id="reservations" type="text" maxlength="255" class="form-control" name="reservations" value="{{ isset($event) ? $event->reservations : old('reservations') }}" >
-
-                                @if ($errors->has('reservations'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('reservations') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div> 
-                        
-                        @if (!isset($event))
+                        @if (!isset($article))
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="image" class="col-md-4 control-label">Main image (square dimensions)</label>
 
@@ -112,52 +80,25 @@
                             <div class="col-md-6">
                                 <select id="category" name="category" class='form-control'>
                                     <?php
-                                        if (!isset($event)) {
-                                            $selected = "selected";
-                                        } else {
-                                            $selected = "";
-                                        }
-                                    ?>                                    
-                                    @foreach($categories as $category)
-                                        <?php 
-                                        if (isset($event) && ($event->article->ctgID !== null) && ($event->article->ctgID === $category->ctgID)) {
-                                            $selected = "selected";
-                                        } else {
-                                            $selected = "";
-                                        }
-                                        ?>     
-                                    <option value="{{ $category->ctgID }}" {{ $selected }}>{{ $category->name_en }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="place" class="col-md-4 control-label">Place</label>
-
-                            <div class="col-md-6">
-                                <select id="place" name="place" class='form-control'>
-                                    <?php
-                                        if (!isset($event) && !isset($placeID)) {
+                                        if (!isset($article)) {
                                             $selected = "selected";
                                         } else {
                                             $selected = "";
                                         }
                                     ?>
-                                    <option value="null" {{ $selected }}>none</option>
-                                    @foreach($places as $place)
+                                    @foreach($categories as $cat)
                                         <?php 
-                                        if (isset($event) && ($event->placeID !== null) && ($event->placeID === $place->placeID)) {
+                                        if (isset($article) && ($article->ctgID !== null) && ($article->ctgID === $cat->ctgID)) {
                                             $selected = "selected";
                                         } else {
-                                            if (isset($placeID) && ($placeID == $place->placeID)) {
+                                            if ($category->ctgID === $cat->ctgID) {
                                                 $selected = "selected";
                                             } else {
                                                 $selected = "";
                                             }
                                         }
                                         ?>     
-                                    <option value="{{ $place->placeID }}" {{ $selected }}>{{ $place->title_en }}</option>
+                                    <option value="{{ $cat->ctgID }}" {{ $selected }}>{{ $cat->name_en }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -169,7 +110,7 @@
                             <div class="col-md-6">
                                 <textarea id="description_en" maxlength="255" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="description_en">{{ isset($event) ? $event->article->description_en : old('description_en') }}</textarea>
+                                          name="description_en">{{ isset($article) ? $article->description_en : old('description_en') }}</textarea>
                                 
                                 @if ($errors->has('description_en'))
                                     <span class="help-block">
@@ -185,7 +126,7 @@
                             <div class="col-md-6">
                                 <textarea id="description_sr" maxlength="255" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="description_sr">{{ isset($event) ? $event->article->description_sr : old('description_sr') }}</textarea>
+                                          name="description_sr">{{ isset($article) ? $article->description_sr : old('description_sr') }}</textarea>
                                 
                                 @if ($errors->has('description_sr'))
                                     <span class="help-block">
@@ -198,13 +139,13 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    @if (isset($event))
+                                    @if (isset($article))
                                     Edit
                                     @else
                                     Create
                                     @endif
                                 </button>
-                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.events') }}">Cancel</a>                                                
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route("cms.portal.articles", ['category' => $category->name_en]) }}">Cancel</a>                                                
                             </div>
                         </div>
                     </form>

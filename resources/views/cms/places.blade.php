@@ -59,7 +59,7 @@
                             {{ Form::submit('Edit main photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$place->placeID}}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$place->placeID}}">
                                 Delete a place
                             </button>
                             <div class="modal fade" id="myModal{{$place->placeID}}" role="dialog">
@@ -73,7 +73,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.places.delete', $place->placeID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete place', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Delete place', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

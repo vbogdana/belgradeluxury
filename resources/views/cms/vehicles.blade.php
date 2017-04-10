@@ -54,7 +54,7 @@
                             {{ Form::submit('Edit main photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$veh->vehID}}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$veh->vehID}}">
                                 Delete a vehicle
                             </button>
                             <div class="modal fade" id="myModal{{$veh->vehID}}" role="dialog">
@@ -68,7 +68,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.vehicles.delete', $veh->vehID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete vehicle', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Delete vehicle', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

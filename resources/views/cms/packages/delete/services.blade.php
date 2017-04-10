@@ -26,7 +26,7 @@
                             <h4>{{ $service->title_en }}</h4>
                         </div>
                         <div class="col-xs-6" style="padding-top: 15px">                           
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{ $service->pcksID }}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{ $service->pcksID }}">
                                 Delete service
                             </button>
                             <div class="modal fade" id="myModal{{ $service->pcksID }}" role="dialog">
@@ -40,7 +40,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.packages.delete.service', $service->pcksID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete service', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Delete service', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

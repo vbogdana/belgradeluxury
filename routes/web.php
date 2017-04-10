@@ -220,6 +220,18 @@ Route::group([
 Route::get('cms', 'CMS\CMSController@index')->name('cms');
 
 /***
+ * Portal
+ */
+Route::get('cms/portal', ['as' => 'cms.portal', 'uses' => 'CMS\CMSController@portal']);
+Route::get('cms/portal/{category}/articles', ['as' => 'cms.portal.articles', 'uses' => 'CMS\ArticlesController@loadArticles']);
+Route::get('cms/portal/{category}/articles/create', ['as' => 'cms.portal.articles.create', 'uses' => 'CMS\ArticlesController@loadCreateArticle']);
+Route::post('cms/portal/{category}/articles/create', ['as' => 'cms.portal.articles.create', 'uses' => 'CMS\ArticlesController@createArticle']);
+Route::get('cms/portal/{category}/articles/{artID}/edit', ['as' => 'cms.portal.articles.edit', 'uses' => 'CMS\ArticlesController@loadEditArticle']);
+Route::post('cms/portal/{category}/articles/{artID}/edit', ['as' => 'cms.portal.articles.edit', 'uses' => 'CMS\ArticlesController@editArticle']);
+Route::get('cms/portal/{category}/articles/{artID}/edit/main-photo', ['as' => 'cms.portal.articles.edit.main-image', 'uses' => 'CMS\ArticlesController@loadEditMainImage']);
+Route::delete('cms/portal/{category}/articles/{artID}/delete', ['as' => 'cms.portal.articles.delete', 'uses' => 'CMS\ArticlesController@delete']);
+
+/***
  * User
  */
 Route::get('login', ['as' => 'cms.login', 'uses' => 'Auth\LoginController@showLoginForm']);

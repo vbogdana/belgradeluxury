@@ -66,7 +66,7 @@
                             {{ Form::submit('Delete services', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                           
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$package->packID}}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$package->packID}}">
                                 Delete package
                             </button>
                             <div class="modal fade" id="myModal{{$package->packID}}" role="dialog">
@@ -80,7 +80,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.packages.delete', $package->packID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete package', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Delete package', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

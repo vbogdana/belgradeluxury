@@ -66,7 +66,7 @@
                     <div class="form-horizontal">
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                                     Remove current image
                                 </button>
                             </div>
@@ -84,7 +84,7 @@
                                     Are you sure?<br/>
                                     <div style="margin-top: 15px">
                                         {{ Form::open(['route' => ['cms.testemonials.delete.main-image', $testID], 'method' => 'delete', 'class' => 'form-horizontal' ]) }}
-                                        {{ Form::submit('Remove current image', array('class' => 'btn btn-primary')) }}
+                                        {{ Form::submit('Remove current image', array('class' => 'btn btn-danger')) }}
                                         <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                         {{ Form::close() }}
                                     </div>

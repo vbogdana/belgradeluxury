@@ -29,7 +29,7 @@
                             @endif
                         </div>
                         <div class="col-xs-6" style="padding-top: 15px">                           
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$accImg->imgID}}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$accImg->imgID}}">
                                 Remove photo
                             </button>
                             <div class="modal fade" id="myModal{{$accImg->imgID}}" role="dialog">
@@ -43,7 +43,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.accommodation.delete.image', $accImg->imgID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Remove photo', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Remove photo', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

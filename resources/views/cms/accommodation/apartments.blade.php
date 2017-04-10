@@ -56,7 +56,7 @@
                             {{ Form::submit('Edit main photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$acc->accID}}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$acc->accID}}">
                                 Delete apartment
                             </button>
                             <div class="modal fade" id="myModal{{$acc->accID}}" role="dialog">
@@ -70,7 +70,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.accommodation.delete', $acc->accID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete apartment', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Delete apartment', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

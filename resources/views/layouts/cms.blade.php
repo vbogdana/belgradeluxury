@@ -71,6 +71,20 @@
                                     Dashboard
                                 </a>
                             </li>
+                            <li>
+                                <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <strong>Portal</strong>
+                                </a>
+                                <ul class='dropdown-menu'>
+                                    <li><a href='{{ route('cms.portal') }}'>Portal</a></li>
+                                    <li><a href='{{ route('cms.portal.articles', ['category' => 'Society']) }}'>Society</a></li>
+                                    <li><a href='{{ route('cms.portal.articles', ['category' => 'Nightlife']) }}'>Nightlife</a></li>
+                                    <li><a href='{{ route('cms.portal.articles', ['category' => 'Culture']) }}'>Culture</a></li>
+                                    <li><a href='{{ route('cms.portal.articles', ['category' => 'Gastronomy']) }}'>Gastronomy</a></li>
+                                    <li><a href='{{ route('cms.portal.articles', ['category' => 'Sites']) }}'>Sites</a></li>
+                                    <li><a href='{{ route('cms.portal.articles', ['category' => 'Other']) }}'>Other</a></li>
+                                </ul>
+                            </li>
                             <li class='dropdown'>
                                 <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     Packages<span class="caret"></span>

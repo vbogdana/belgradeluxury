@@ -36,4 +36,8 @@ class Article extends Model
     public function author() {
         return $this->belongsTo('App\User', 'userID', 'userID');
     }
+    
+    public function event() {
+        return $this->hasOne('App\Event', 'artID', 'artID');
+    }
 }

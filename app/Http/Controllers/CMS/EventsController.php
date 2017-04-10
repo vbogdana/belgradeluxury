@@ -205,8 +205,10 @@ class EventsController extends Controller {
             $article->save();
         }
         
-        $event = new Event($data);        
-        $event->placeID = $data['place'];
+        $event = new Event($data);
+        if ($data['place'] !== 'null') {
+            $event->placeID = $data['place'];
+        }
         $event->artID = $article->artID;
         $event->save();
                 

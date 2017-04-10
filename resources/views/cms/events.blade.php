@@ -61,7 +61,7 @@
                             {{ Form::submit('Edit event photo', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal{{$event->evID}}">
+                            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$event->evID}}">
                                 Delete an event
                             </button>
                             <div class="modal fade" id="myModal{{$event->evID}}" role="dialog">
@@ -75,7 +75,7 @@
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.events.delete', $event->evID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete event', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::submit('Delete event', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>
