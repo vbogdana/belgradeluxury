@@ -3,29 +3,32 @@
     Tutorial za Laravel https://laravel.com/docs/5.3/
 -->
 
+<?php
+$locale = LaravelLocalization::getCurrentLocale();
+?>
+
 <html xmlns:fb="http://ogp.me/ns/fb#">
     <head>
         <!-- common meta tags -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-               
+        
+        <meta name="google-site-verification" content="tcYC2xw3FLY_H9r6Vse5b41QfC7fcZXkA0cOjvBwBNI" />
+        <meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
+        <meta property="fb:pages" content="belgradeluxury">        
+        <meta property="og:type" content="website">        
+        <meta property="og:site_name" content="Belgrade Luxury"> 
+        <meta property="og:locale" content="{{ LaravelLocalization::getCurrentLocaleRegional() }}">
+        <meta property="og:url" content="{{ LaravelLocalization::getLocalizedURL() }}">
+        
         @section('title-meta')
         <!-- page titles and meta tags -->
-        <title>Belgrade Luxury - @lang('titles.index') </title>
-
-
-      <!--  <meta name="google-site-verification" content="tcYC2xw3FLY_H9r6Vse5b41QfC7fcZXkA0cOjvBwBNI" /> !-->
-        
-        <meta name="description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-        <meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
-        <meta property="fb:pages" content="belgradeluxury">
-        <meta property="og:locale" content="en_US">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="http://belgradeluxury.com">
-        <meta property="og:title" content="Belgrade Luxury - VIP Experience Belgrade Nightlife" />
-        <meta property="og:description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-        <meta property="og:site_name" content="Belgrade Luxury">        
+        <title>Belgrade Luxury - @lang('titles.index') </title>               
+        <meta name="description" content="{{ Lang::get('common.meta.description') }}" />        
+        <!-- Facebook share meta tags -->        
+        <meta property="og:title" content="Belgrade Luxury - {{ Lang::get('titles.index') }}" />
+        <meta property="og:description" content="{{ Lang::get('common.meta.description') }}" />       
         <meta property="og:image" content='{{ url("/") }}/images/backgrounds/belgradeluxury.jpg' />   
         @show
         
@@ -59,11 +62,7 @@
             ga('create', 'UA-92215993-1', 'auto');
             ga('send', 'pageview');
 
-        </script> 
-
-        <?php
-        $locale = LaravelLocalization::getCurrentLocale();
-        ?>
+        </script>      
 
         <!-- page content -->
         <div class='animsition'>
@@ -260,9 +259,10 @@
         <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>        
         <script src="{{ url("") }}/js/smooth-scroll.min.js"></script>
         <script src="{{ url("") }}/js/main.js"></script>
-        <script>
+        <script>/*
             url = "https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js";
             $.getScript(url);
+            */
         </script>
         @yield('scripts')
         

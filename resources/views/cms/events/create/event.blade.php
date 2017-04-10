@@ -52,7 +52,7 @@
                             <label for="title_en" class="col-md-4 control-label">Title (eng)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($event) ? $event->title_en : old('title_en') }}" required>
+                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($event) ? $event->article->title_en : old('title_en') }}" required>
 
                                 @if ($errors->has('title_en'))
                                     <span class="help-block">
@@ -66,7 +66,7 @@
                             <label for="title_sr" class="col-md-4 control-label">Title (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($event) ? $event->title_sr : old('title_sr') }}" required>
+                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($event) ? $event->article->title_sr : old('title_sr') }}" required>
 
                                 @if ($errors->has('title_sr'))
                                     <span class="help-block">
@@ -121,7 +121,7 @@
                                     <option value="null" {{ $selected }}>none</option>
                                     @foreach($categories as $category)
                                         <?php 
-                                        if (isset($event) && ($event->ctgID !== null) && ($event->ctgID === $category->ctgID)) {
+                                        if (isset($event) && ($event->article->ctgID !== null) && ($event->article->ctgID === $category->ctgID)) {
                                             $selected = "selected";
                                         } else {
                                             $selected = "";
@@ -161,6 +161,38 @@
                                     <option value="{{ $place->placeID }}" {{ $selected }}>{{ $place->title_en }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('description_en') ? ' has-error' : '' }}">
+                            <label for="description_en" class="col-md-4 control-label">Short Description (eng)</label>
+
+                            <div class="col-md-6">
+                                <textarea id="description_en" maxlength="255" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="description_en">{{ isset($event) ? $event->article->description_en : old('description_en') }}</textarea>
+                                
+                                @if ($errors->has('description_en'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description_en') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('description_sr') ? ' has-error' : '' }}">
+                            <label for="description_sr" class="col-md-4 control-label">Short Description (ser)</label>
+
+                            <div class="col-md-6">
+                                <textarea id="description_sr" maxlength="255" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="description_sr">{{ isset($event) ? $event->article->description_sr : old('description_sr') }}</textarea>
+                                
+                                @if ($errors->has('description_sr'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('description_sr') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         

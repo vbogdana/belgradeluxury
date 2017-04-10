@@ -50,6 +50,10 @@ class Place extends Model
         return $events;
     }
     
+    public function events() {
+        return $this->hasMany('App\Event', 'placeID', 'placeID');
+    }
+    
     public function seatings() {
         return $this->hasMany('App\PlaceSeating', 'placeID', 'placeID');
     }

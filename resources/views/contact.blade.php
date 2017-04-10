@@ -10,17 +10,11 @@
 
 @section('title-meta')
 <!-- page titles and meta tags -->
-<title>Belgrade Luxury - @lang('titles.contact') </title>
-
-<meta name="description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-<meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
-<meta property="fb:pages" content="belgradeluxury">
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ route("contact") }}">
-<meta property="og:title" content="Belgrade Luxury - {{ Lang::get('titles.contact') }}" />
-<meta property="og:description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-<meta property="og:site_name" content="Belgrade Luxury">        
+<title>@lang('titles.contact') - Belgrade Luxury</title>
+<meta name="description" content="{{ Lang::get('common.meta.contact') }}" />
+<!-- Facebook share meta tags -->
+<meta property="og:title" content="{{ Lang::get('titles.contact') }} - Belgrade Luxury" />
+<meta property="og:description" content="{{ Lang::get('common.meta.contact') }}" />     
 <meta property="og:image" content='{{ url("/") }}/images/backgrounds/contact.jpg' />   
 @stop
 
@@ -164,21 +158,21 @@
                                     <option value="Crna Gora">Црна Гора</option>
                                     <option value="Hrvatska">Hrvatska</option>
                                     <option value="Makedonija">Македонија</option>
-									<option value="Slovenija">Slovenija</option>
-									<option value="Bugarska">България</option>
-									<option value="Madjarska">Magyarország</option>
-									<option value="Rumunija">România</option>
-									<option value="Rusija">Росси́я</option>
-									<option value="Grcka">Ελλάς</option>
-									<option value="Turska">Türkiye</option>
-									<option value="Austrija">Österreich</option>
-									<option value="USA">USA</option>
-									<option value="Kanada">Canada</option>
-									<option value="Nemacka">Deutschland</option>
-									<option value="Francuska">France</option>
-									<option value="Spanija">España</option>
-									<option value="Velika Britanija">UK</option>
-									<option value="druga zemlja" class="text-uppercase">@lang('contact.other')</option>
+                                    <option value="Slovenija">Slovenija</option>
+                                    <option value="Bugarska">България</option>
+                                    <option value="Madjarska">Magyarország</option>
+                                    <option value="Rumunija">România</option>
+                                    <option value="Rusija">Росси́я</option>
+                                    <option value="Grcka">Ελλάς</option>
+                                    <option value="Turska">Türkiye</option>
+                                    <option value="Austrija">Österreich</option>
+                                    <option value="USA">USA</option>
+                                    <option value="Kanada">Canada</option>
+                                    <option value="Nemacka">Deutschland</option>
+                                    <option value="Francuska">France</option>
+                                    <option value="Spanija">España</option>
+                                    <option value="Velika Britanija">UK</option>
+                                    <option value="druga zemlja" class="text-uppercase">@lang('contact.other')</option>
                                 </select>
                             </div>
                         </div>
@@ -220,9 +214,8 @@
                         </div>
                     </div>
 
-                        <div class="form-group">
-                            {{ Form::submit(Lang::get('contact.send').' '.trans_choice('contact.message', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
-                        </div>
+                    <div class="form-group">
+                        {{ Form::submit(Lang::get('contact.send').' '.trans_choice('contact.message', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
                     </div>
                 </div>
                 
@@ -340,6 +333,11 @@
         $('.help-block').html("");
         $('.help-block').css('display', 'none');
         
+        $('.animsition').prepend("<div class='request overlay'></div>");
+        $('.animsition').prepend("<div class='animsition-loading'></div>");
+        $('.request.overlay').css('z-index', '100');
+        $('.animsition-loading').css('z-index', '110');
+        
         $.ajax({
             //url: window.location,
             type: 'POST',
@@ -359,6 +357,9 @@
             $("#company").attr('disabled', '');
             $("label[for=website]").attr('disabled', '');
             $("#website").attr('disabled', '');
+            
+            $('.request.overlay').remove();
+            $('.animsition-loading').remove();
         }).fail(function(msg) {
             if (msg.responseText.search("\"name\"") !== -1)
                 checkError(msg, "name", 9); 
@@ -376,6 +377,9 @@
                 //$('#status').css('background', 'rgba(0,0,0,0.7)');
                 $('#status').html(msg.responseText);
             }
+            
+            $('.request.overlay').remove();
+            $('.animsition-loading').remove();
         });
     }
 

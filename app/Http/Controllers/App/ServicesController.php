@@ -9,6 +9,8 @@ use App\Host;
 use App\Place;
 use App\Event;
 use App\Seating;
+use App\PlaceSeating;
+use App\PlaceReservation;
 use App\Http\Controllers\Controller;
 use Request;
 use Response;
@@ -209,7 +211,7 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadEventReservation($placeID, $evID) {
+    function loadEventReservation($placeID, $title, $evID) {
         AppController::loadServices($services, $packages);
         $event = Event::find($evID);
         if ($event == null || ($event->placeID != $placeID)) {
@@ -248,6 +250,7 @@ class ServicesController extends Controller {
      * @return string
      */
     function createReservation(\Illuminate\Http\Request $request) {
+        // validate
         $this->validate($request, [
             'name' => 'required|max:255',
             'phone' => 'required|numeric',
@@ -255,25 +258,62 @@ class ServicesController extends Controller {
             'message' => 'max:800'
         ]);
         
-        $data = $request->all();
+        // mass assign to reservation (name, phone, people, message)
+        $data = $request->all();        
+        $reservation = new PlaceReservation($data);
+        
+        // check place validity
         $p = Place::find($data['place']);
         if ($p === null) {
             return response()->json(['error' => Lang::get('forms.errors.message')], 401);
         } else {
+            $reservation->place = $p->title_en; 
             $data['place'] = $p->title_sr;
         }
+        
+        // check event validity
         $e = Event::find($data['date']);
         if ($e !== null) {
-            $data['date'] = $e->date.'  ---  '.$e->title_sr;
+            if ($e->place->placeID !== $p->placeID) {
+                return response()->json(['error' => Lang::get('forms.errors.message')], 401);
+            }
+            $reservation->event = $e->article->title_en;
+            $reservation->date = $e->date;
+            $data['date'] = $e->getDay().' '.date("d/M/y", strtotime($e->date)).'  ---  '.$e->article->title_sr;
+        } else {
+            // check date validity
+            $this->validate($request, [
+                'date' => 'required|date_format:Y-m-d'
+            ]
+            );           
+            $reservation->date = $data['date'];  
+            $data['date'] = date("d/M/y", strtotime($data['date']));          
         }
-        $s = Seating::find($data['seating']);
-        if ($s !== null) {
-            $data['seating'] = $s->type_sr;
+        
+        // check time validity
+        if ($p->isRestaurant()) {
+            $this->validate($request, [
+                'time' => 'required|date_format:H:i'
+            ]
+            );
+            $reservation->time = $data['time'];
+            $data['time'] = "u " + $data['time'] + "h";
+        }
+        
+        // check seating validity
+        $s = PlaceSeating::where('placeID', $p->placeID)
+                ->where('seatID', $data['seating'])
+                ->get();
+        if (!$s->isEmpty()) {
+            $reservation->seating = $s->first()->seating->type_en;
+            $data['seating'] = $s->first()->seating->type_sr;
         } else {
             $data['seating'] = "neodređeno";
         }
-                      
+        
+        $reservation->save();
         Mail::to('inquiry@belgradeluxury.com')->send(new Reservation($data));
-        return Lang::get('forms.success.reservation');
+        return response()->json(Lang::get('forms.success.reservation'), 200);
+        //return Lang::get('forms.success.reservation');
     }
 }

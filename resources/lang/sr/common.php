@@ -11,7 +11,11 @@ return [
     |
     */
 
-	'' => '',	
+	'' => '',
+	'meta' => [
+		'description' => 'Iskusite Beograd sa stilom! Najekskluzivnije vile i apartmani, VIP tretman u najboljim restoranima, barovima i klubovima u Beogradu, luksuzna vozila, usluge šofera i obezbeđenja, ture grada u pratnji ličnog vodiča i putovanja do najinteresantnijih lokacija u Srbiji. Za naše najzahtevnije klijente pružamo DIAMOND usluge kao što su - iznajmljivanje Penthouse apartmana, luksuznih vila, jahti i još mnogo toga.',
+		'contact' => 'Belgrade Luxury Kontakt Informacije. Korisnička Podrška, Poslovni Upiti, Karijera u BeLux-u. Telefon: (+381) 064 4519 017; Email: inquiry@belgradeluxury.com, office@belgradeluxury.com, careers@belgradeluxury.com.',	
+	],
 	'error' => 'greška',
 	'notfound' => '{0}:Var nije pronađen!|{1}:Var nije pronađena!|{2}:Var nije pronađeno!',
 	'belgrade' => 'Beograd',

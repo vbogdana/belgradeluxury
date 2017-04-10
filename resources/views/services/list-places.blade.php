@@ -18,7 +18,7 @@
     <figure>
         <div class="img-holder">
             @if ($place->image != null)
-            <img src="{{ asset('storage/images/'.$place->image) }}" alt="">
+            <img src="{{ asset('storage/images/'.$place->image) }}" alt="{{ $place['title_'.$locale] }}">
             @else
             No image
             @endif
@@ -32,11 +32,11 @@
                 <p style='padding: 4px 0 0;'>
                     {{ $place['address'] }}
                 </p>
-                <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="btn small">    
+                <a href="{{ route("places.place", ['placeID' => $place->placeID, 'title' => $place['title_'.$locale]]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
                 @if ($place->isRestaurant() || !$place->getEvents()->isEmpty())
-                <a href="{{ route("places.reservation", ['placeID' => $place->placeID]) }}" class="btn small">
+                <a href="{{ route("places.reservation", ['placeID' => $place->placeID, 'title' => $place['title_'.$locale]]) }}" class="btn small">
                     online @lang('services.reservation')
                 </a>
                 @endif

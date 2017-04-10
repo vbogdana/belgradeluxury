@@ -5,10 +5,13 @@ namespace App\Http\Controllers\CMS;
 use App\Event;
 use App\Category;
 use App\Place;
+use App\Article;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller {
     
@@ -32,6 +35,22 @@ class EventsController extends Controller {
         $events = Event::paginate(10);
         
         return view('cms.events', ['events' => $events]);
+    }
+    
+    /**
+     * Loads a view with all events for a place.
+     *
+     * @var $placeID
+     * @return view
+     */
+    function loadPlaceEvents($placeID) {
+        $place = Place::find($placeID);
+        if ($place == null) {
+            return view('cms.error', ['message' => 'Place not found!']);
+        }
+        
+        $events = Event::where('placeID', $placeID)->paginate(10);
+        return view('cms.events', ['events' => $events, 'place' => $place]);
     }
     
     /**
@@ -83,7 +102,7 @@ class EventsController extends Controller {
         if ($event == null) {
             return view('cms.error', ['message' => 'Event not found!']);
         }
-        return view('cms.events.edit.main-image', ['evID' => $evID, 'image' => $event->image]);
+        return view('cms.events.edit.main-image', ['evID' => $evID, 'image' => $event->article->image]);
     } 
     
     /**
@@ -159,6 +178,8 @@ class EventsController extends Controller {
             'date' => 'required|max:255',
             'title_en' => 'required|max:255',
             'title_sr' => 'required|max:255',
+            'description_en' => 'required|max:255',
+            'description_sr' => 'required|max:255',
             'reservations' => 'max:255',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png'     
         ]);
@@ -172,17 +193,23 @@ class EventsController extends Controller {
      */
     protected function create(array $data)
     {
-        $event = new Event($data);
-        $event->ctgID = $data['category'];
-        $event->placeID = $data['place'];
-        $event->save();
+        $user = Auth::user();
+        $article = new Article($data);
+        $article->userID = $user->userID;
+        $article->ctgID = $data['category'];
+        $article->save();
 
         if (array_key_exists('image', $data)) {
-            $path = $data['image']->store('events', 'images');
-            $event->image = $path;
-            $event->save();
+            $path = $data['image']->store('articles/'.$article->artID, 'images');
+            $article->image = $path;
+            $article->save();
         }
         
+        $event = new Event($data);        
+        $event->placeID = $data['place'];
+        $event->artID = $article->artID;
+        $event->save();
+                
         return $event;
     }
     
@@ -194,15 +221,24 @@ class EventsController extends Controller {
      * @return Event
      */
     protected function edit(array $data, $event)
-    {      
+    {   
+        $user = Auth::user();
+        
         $event->date = $data['date'];
         $event->reservations = $data['reservations'];        
-        $event->title_en = $data['title_en'];
-        $event->title_sr = $data['title_sr'];
-        $event->ctgID = $data['category'];
         $event->placeID = $data['place'];
-        $event->save();
         
+        $event->article->title_en = $data['title_en'];
+        $event->article->title_sr = $data['title_sr'];
+        $event->article->description_en = $data['description_en'];
+        $event->article->description_sr = $data['description_sr'];
+        $event->article->updated_at = Carbon::now();
+        $event->article->userID = $user->userID;
+        $event->article->ctgID = $data['category'];
+        
+        $event->article->save();
+        $event->save();
+                
         return $event;
     }
     
@@ -220,12 +256,19 @@ class EventsController extends Controller {
         }
         
         // delete main photo
-        if ($event->image != null) {
-            Storage::delete('public/images/'.$event->image);
+        if ($event->article->image != null) {
+            Storage::delete('public/images/'.$event->article->image);
         }
 
-        // delete entry in events table
+        // delete entry in events and article table
+        $artID = $event->artID;
         Event::destroy($evID);
+        
+        // delete all article content
+        // delete directory
+        Storage::deleteDirectory('public/images/articles/'.$artID);
+        
+        Article::destroy($artID);
         return redirect('/cms/events');
     }
     
@@ -238,14 +281,14 @@ class EventsController extends Controller {
     protected function editImage(array $data, $event)
     {
         // delete existing main photo
-        if ($event->image != null) {
-            Storage::delete('public/images/'.$event->image);
+        if ($event->article->image != null) {
+            Storage::delete('public/images/'.$event->article->image);
         }
         
         if (array_key_exists('image', $data)) {
-            $path = $data['image']->store('events', 'images');
-            $event->image = $path;
-            $event->save();
+            $path = $data['image']->store('articles/'.$event->artID, 'images');
+            $event->article->image = $path;
+            $event->article->save();
         }
     }
     
@@ -263,10 +306,10 @@ class EventsController extends Controller {
         }
         
         // delete existing main photo
-        if ($event->image != null) {
-            Storage::delete('public/images/'.$event->image);
-            $event->image = null;
-            $event->save(); 
+        if ($event->article->image != null) {
+            Storage::delete('public/images/'.$event->article->image);
+            $event->article->image = null;
+            $event->article->save(); 
         }
         return redirect('/cms/events');      
     }

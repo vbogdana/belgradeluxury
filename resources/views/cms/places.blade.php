@@ -87,6 +87,10 @@
                             {{ Form::submit('Add an event', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
+                            {{ Form::open(['route' => ['cms.places.events', $place->placeID], 'method' => 'get']) }}
+                            {{ Form::submit('View all events', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
                             {{ Form::open(['route' => ['cms.places.create.images', $place->placeID], 'method' => 'get']) }}
                             {{ Form::submit('Add photos', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}

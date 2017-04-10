@@ -18,7 +18,7 @@
     <figure>
         <div class="img-holder">
             @if ($acc->image != null)
-            <img src="{{ asset('storage/images/'.$acc->image) }}" alt="">
+            <img src="{{ asset('storage/images/'.$acc->image) }}" alt="{{ $acc['title_'.$locale] }}">
             @else
             No image
             @endif
@@ -33,7 +33,7 @@
                     {{ $acc['address'] }}
                 </p>
                 @if ($acc->apartment == 1)
-                <a href="{{ route("accommodation.single", ['accID' => $acc->accID]) }}" class="btn small">
+                <a href="{{ route("accommodation.single", ['accID' => $acc->accID, 'title' => $acc['title_'.$locale]]) }}" class="btn small">
                 @elseif (($acc->hotel == 1))
                 <a href="#" class="btn small">                
                 @elseif (($acc->spa == 1))

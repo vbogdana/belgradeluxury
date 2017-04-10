@@ -244,15 +244,15 @@
         <div class="container-fluid text-center">
             <div class="text-uppercase">
                 <div class="col-sm-4 step">
-                    <img class="img-responsive" src='{{ url("/") }}\images\step1.svg'>
+                    <img class="img-responsive" src='{{ url("/") }}\images\step1.svg' alt="{{ trans_choice('common.custom step',1) }}">
                     <h4>{{ trans_choice('common.custom step',1) }}</h4>
                 </div>
                 <div class="col-sm-4 step">
-                    <img class="img-responsive" src='{{ url("/") }}\images\step2.svg'>
+                    <img class="img-responsive" src='{{ url("/") }}\images\step2.svg' alt="{{ trans_choice('common.custom step',2) }}">
                     <h4>{{ trans_choice('common.custom step',2) }}</h4>
                 </div>
                 <div class="col-sm-4 step">
-                    <img class="img-responsive" src='{{ url("/") }}\images\step3.svg'>
+                    <img class="img-responsive" src='{{ url("/") }}\images\step3.svg' alt="{{ trans_choice('common.custom step',3) }}">
                     <h4>{{ trans_choice('common.custom step',3) }}</h4>
                 </div>
             </div>
@@ -289,7 +289,7 @@
                     <div class="slide hover-effects hi-icon-effect">
                         <figure>
                             <div class="img-holder">
-                                <img src="<?php echo url('/')."/images/events/".$event->image ?>">
+                                <img src="<?php echo url('/')."/images/events/".$event->image ?>" alt="{{ $event['title_'.$locale] }}">
                             </div>
                             <figcaption>                               
                                 <div class="header">

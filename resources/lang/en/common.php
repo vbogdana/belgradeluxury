@@ -12,6 +12,10 @@ return [
     */
 
 	'' => '',
+	'meta' => [
+		'description' => "Experience Belgrade with Style! The most exclusive villas and suites, VIP treatment in the city's best restaurants, bars and clubs, personal chauffeur service and luxury vehicles, personal security, boat tours of the city, accompanied by a personal guide and trips to the most interesting sites in Serbia. And for our most demanding clients we provide DIAMOND services such as - renting a penthouse, a luxury villa or a yacht and many more.",
+		'contact' => 'Belgrade Luxury Contact Information. Client Support, Business Inquiries and Career Opportunities. Phone number: (+381) 064 4519 017; Email: inquiry@belgradeluxury.com, office@belgradeluxury.com, careers@belgradeluxury.com.',
+	],
 	'error' => 'error',
 	'notfound' => ':Var not found!',
 	'belgrade' => 'Belgrade',

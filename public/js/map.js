@@ -22,7 +22,7 @@ google.maps = google.maps || {};
 	
 	google.maps.Load = function(apiLoad) {
 		delete google.maps.Load;
-		getScript("http://maps.googleapis.com/maps/api/js?key=AIzaSyDBLrAJAME-lRX8eCBCncsxPjAdyaZeji4");
+		getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDBLrAJAME-lRX8eCBCncsxPjAdyaZeji4");
 	};
 
 	var loadScriptTime = (new Date).getTime();

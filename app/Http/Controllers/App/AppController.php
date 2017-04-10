@@ -70,14 +70,14 @@ class AppController extends Controller {
             case 'business': 
                 $this->validate($request, [                   
                     'company' => 'required|max:255',
-                    'website' => 'url',
+                    //'website' => 'url',
                 ]);
                 Mail::to('office@belgradeluxury.com')->send(new Contact($data)); 
                 break;
             case 'careers': Mail::to('careers@belgradeluxury.com')->send(new Contact($data)); break;
         }
         
-        return Lang::get('contact.success');
+        return response()->json(Lang::get('contact.success'), 200);
         
     }
     

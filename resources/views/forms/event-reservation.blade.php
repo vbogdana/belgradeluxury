@@ -8,28 +8,23 @@
 
 @extends('layouts.master')
 
+<?php 
+    $locale = LaravelLocalization::getCurrentLocale();
+?>
+
 @section('title-meta')
 <!-- page titles and meta tags -->
-<title>Belgrade Luxury - Online @lang('titles.reservation') </title>
-
-<meta name="description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-<meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
-<meta property="fb:pages" content="belgradeluxury">
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ route("places.reservation", ['placeID' => $place->placeID]) }}">
-<meta property="og:title" content="Belgrade Luxury - Online {{ Lang::get('titles.reservation') }}" />
-<meta property="og:description" content="Belgrade Luxury offers services for VIP party travelers without hidden costs in Belgrade, Serbia. Five stars apartments, luxury vehicles, VIP entrance and tables in clubs and restaurants, free premium drinks, etc... Full service from arrival to departure." />
-<meta property="og:site_name" content="Belgrade Luxury">        
-<meta property="og:image" content='{{ asset('storage/images/'.$place->image) }}' />   
+<title>{{ $place['title_'.$locale] }} - Online @lang('titles.reservation') - Belgrade Luxury</title>
+<meta name="description" content="{{ $place['description_'.$locale] }}" />
+<!-- Facebook share meta tags -->
+<meta property="og:title" content="{{ $place['title_'.$locale] }} - Online {{ Lang::get('titles.reservation') }} - Belgrade Luxury" />
+<meta property="og:description" content="{{ $place['description_'.$locale] }}" />
+<meta property="og:image" content="{{ asset('storage/images/'.$place->image) }}" />   
 @stop
 
 @section('stylesheets')
 @stop
 
-<?php 
-    $locale = LaravelLocalization::getCurrentLocale();
-?>
 @section('content')
 <!--    START FORM SECTION      -->
 <section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ asset('storage/images/'.$place->image) }})">
@@ -41,9 +36,7 @@
                 
                 {{ Form::open(['route' => 'reservation', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
                 
-                <div class="description">
-                    
-                    
+                <div class="description">                                      
                     <div class="text-uppercase">
                         @if($place->isRestaurant())
                         <i class="hi-icon contact-gastronomy" style="color: #ceab4d"></i>
@@ -63,7 +56,7 @@
                         &nbsp;/&nbsp;
                         </span>
                         
-                        <a href="{{ route("places.place", ['placeID' => $place->placeID]) }}" class="link">    
+                        <a href="{{ route("places.place", ['placeID' => $place->placeID, 'title' => $place['title_'.$locale]]) }}" class="link">    
                             {{ $place['title_'.$locale] }}
                         </a>
                     </div>
@@ -133,12 +126,12 @@
                     
                     <div class="row">
                         <div class="form-group">
-                            <label for="date" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.date'):</label>
+                            <label for="date" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.date'): *</label>
 
                             <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
                             
                                 @if ($place->isRestaurant() && !isset($evID))
-                                <input id="date" type="date" name="date" required="" class="form-control">
+                                <input id="date" type="date" name="date" required="" class="form-control" placeholder="dd.mm.yyyy">
                                 @else
                                 <select id="date" class="form-control text-capitalize" name="date">
                                     @foreach($place->getEvents() as $event)
@@ -152,12 +145,13 @@
                                         }
                                         ?>
                                     >
-                                        {{ $event->getDay().' '.$event->getDate().trans_choice('common.ordinal', $event->getDate()).' '.$event->getMonth().'  -  ' }} {{ $event['title_'.$locale] }}
+                                        {{ $event->getDay().' '.$event->getDate().trans_choice('common.ordinal', $event->getDate()).' '.$event->getMonth().'  -  ' }} {{ $event->article['title_'.$locale] }}
                                     </option>
                                     @endforeach
                                 </select>
                                 @endif
 
+                                <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
                     </div>
@@ -168,7 +162,7 @@
                             <label for="time" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.time'): *</label>
 
                             <div class="col-xs-8 col-sm-6">
-                                <input id="time" type="time" class="form-control" name="time" placeholder="HH:MM" required>
+                                <input id="time" type="time" class="form-control" name="time" placeholder="hh:mm" required>
                                 
                                 <span class="help-block" style="display: none"></span>
                             </div>
@@ -214,9 +208,8 @@
                         </div>
                     </div>
 
-                        <div class="form-group">
-                            {{ Form::submit(Lang::get('forms.send').' '.trans_choice('forms.reservation', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
-                        </div>
+                    <div class="form-group">
+                        {{ Form::submit(Lang::get('forms.send').' '.trans_choice('forms.reservation', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
                     </div>
                 </div>
                 
@@ -264,7 +257,7 @@
         var date = $('#date').val();
         var time = "";
         if ($('#time').length > 0) {
-           time = " u " + $('#time').val() + "h";
+           time = $('#time').val();
         }
         var people = $('#people').val();
         var seating = $('#seating').val();
@@ -272,12 +265,16 @@
         
         var url = $('form').attr('action');
         
-        
         $('#status').css('background', 'transparent');
         $('#status').html('');
         $('.has-error').removeClass('has-error');
         $('.help-block').html("");
-        $('.help-block').css('display', 'none');
+        $('.help-block').css('display', 'none');           
+ 
+        $('.animsition').prepend("<div class='request overlay'></div>");
+        $('.animsition').prepend("<div class='animsition-loading'></div>");
+        $('.request.overlay').css('z-index', '100');
+        $('.animsition-loading').css('z-index', '110');
         
         $.ajax({
             url: url,
@@ -294,12 +291,19 @@
             $('form').find("input[type=text], input[type=number], input[type=date], input[type=time], textarea").val("");
             $('option').removeAttr('selected');
             $('option:first-child').attr('selected', '');
+
+            $('.request.overlay').remove();
+            $('.animsition-loading').remove();
         }).fail(function(msg) {
             
             if (msg.responseText.search("\"name\"") !== -1)
                 checkError(msg, "name", 9); 
             if (msg.responseText.search("\"phone\"") !== -1)
                 checkError(msg, "phone", 10); 
+            if (msg.responseText.search("\"date\"") !== -1)
+                checkError(msg, "date", 9); 
+            if (msg.responseText.search("\"time\"") !== -1)
+                checkError(msg, "time", 9); 
             if (msg.responseText.search("\"people\"") !== -1)
                 checkError(msg, "people", 11);
             if (msg.responseText.search("\"message\"") !== -1)
@@ -324,6 +328,9 @@
                 //$('#status').css('background', 'rgba(0,0,0,0.7)');
                 $('#status').html(msg.responseText);
             }
+            
+            $('.request.overlay').remove();
+            $('.animsition-loading').remove();
         });
     }
 

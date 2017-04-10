@@ -18,7 +18,7 @@
     <figure>
         <div class="img-holder">
             @if ($vehicle->image != null)
-            <img src="{{ asset('storage/images/'.$vehicle->image) }}" alt="">
+            <img src="{{ asset('storage/images/'.$vehicle->image) }}" alt="{{ $vehicle['model'].' '.$vehicle['brand'] }}">
             @else
             No image
             @endif
@@ -36,7 +36,7 @@
                 <p style='padding: 4px 0 0;'>
                     {{ $vehicle['people'] }}
                 </p>
-                <a href="{{ route("vehicles.vehicle", ['vehID' => $vehicle->vehID]) }}" class="btn small">    
+                <a href="{{ route("vehicles.vehicle", ['vehID' => $vehicle->vehID, 'title' => $vehicle->model]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
                 <a href="{{ route("contact") }}#contact-us" class="btn small">

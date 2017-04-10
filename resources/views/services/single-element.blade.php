@@ -41,24 +41,18 @@
 @section('title-meta')
 <!-- page titles and meta tags -->
 @if($type === 'vehicles')
-<title>Belgrade Luxury - {{ $object->model.' '.$object->brand }}</title>
+<title>{{ $object->model.' '.$object->brand }} - Belgrade Luxury</title>
 @else
-<title>Belgrade Luxury - {{ $object['title_'.$locale] }}</title>
+<title>{{ $object['title_'.$locale] }} - Belgrade Luxury</title>
 @endif
-
+<!-- Facebook share meta tags -->
 <meta name="description" content="{{ $object['description_'.$locale] }}" />
-<meta name="keywords" content="belgrade stag, belgrade bachelor, belgrade bachelor party, belgrade nightlife, serbian clubs, serbian nightlife, serbian bachelor, serbian stag, belgrade bars, belgrade restaurants, belgrade vip, party concierge, belgrade accommodation, lounge bars"/>
-<meta property="fb:pages" content="belgradeluxury">
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ LaravelLocalization::getLocalizedURL() }}">
 @if($type === 'vehicles')
-<meta property="og:title" content="Belgrade Luxury - {{ $object->model.' '.$object->brand }}" />
+<meta property="og:title" content="{{ $object->model.' '.$object->brand }} - Belgrade Luxury" />
 @else
-<meta property="og:title" content="Belgrade Luxury - {{ $object['title_'.$locale] }}" />
+<meta property="og:title" content="{{ $object['title_'.$locale] }} - Belgrade Luxury" />
 @endif
-<meta property="og:description" content="{{ $object['description_'.$locale] }}" />
-<meta property="og:site_name" content="Belgrade Luxury">        
+<meta property="og:description" content="{{ $object['description_'.$locale] }}" />       
 <meta property="og:image" content='{{ asset('storage/images/'.$object->image) }}' />   
 @stop
 
@@ -187,23 +181,30 @@
                     
                     <div class="tab-pane active" id="photos">
                         <div class='container-fluid'>
-                            <!-- GALLERY -->         
+                            <!-- GALLERY -->
+                            <?php
+                                if($type === 'vehicles') {
+                                   $alt = $object->model.' '.$object->brand;
+                                } else {
+                                   $alt = $object['title_'.$locale];
+                                }
+                            ?>
                             <div class='carousel-holder'>
                                 <div class='gallery-main'>
-                                    <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}'>
+                                    <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}' alt="{{ $alt }}">
                                     @foreach($object->images as $image)
                                     <div class=''>
-                                        <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
+                                        <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}' alt="{{ $alt }}">
                                     </div>
                                     @endforeach                                       
                                 </div>
                             </div>
                             <div class='carousel-holder'>
                                 <div class='gallery-nav'>
-                                    <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}'>
+                                    <img class='img-responsive' src='{{ asset('storage/images/'.$object->image) }}' alt="{{ $alt }}">
                                     @foreach($object->images as $image)
                                     <div class=''>
-                                        <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}'>
+                                        <img class='img-responsive' src='{{ asset('storage/images/'.$image->image) }}' alt="{{ $alt }}">
                                     </div>
                                     @endforeach 
                                 </div>
@@ -248,10 +249,10 @@
                                 @foreach ($object->getEvents() as $event)
                                 <div class="row">
                                     <div class="col-sm-12 title">
-                                        @if ($event->category !== null)
-                                        <i class="fa fa-{{ strtolower($event->category->name_en) }}"></i>
+                                        @if ($event->article->category !== null)
+                                        <i class="fa fa-{{ strtolower($event->article->category->name_en) }}"></i>
                                         @endif
-                                        {{ $event['title_'.$locale] }}
+                                        {{ $event->article['title_'.$locale] }}
                                     </div>
                                     <div class='date col-sm-3 col-lg-2'>
                                         <div class="day-of-week">
@@ -268,7 +269,7 @@
                                         @lang('services.reservations'): {{ $event->reservations }}                                        
                                     </div>
                                     <div class="col-sm-4 col-lg-3">                                        
-                                        <a class="btn small" href='{{ route("events.reservation", ['placeID' => $object->placeID, 'evID' => $event->evID]) }}'>
+                                        <a class="btn small" href='{{ route("events.reservation", ['placeID' => $object->placeID, 'title' => $object['title_'.$locale], 'evID' => $event->evID]) }}'>
                                             @lang('services.reserve')
                                             <br />
                                             online
@@ -411,7 +412,7 @@
                                     @lang('common.contact us') 
                                 </a> 
                                 @if ($object->isRestaurant() || !$object->getEvents()->isEmpty())
-                                <a id="reservation" class="btn small" href='{{ route("places.reservation", ['placeID' => $object->placeID]) }}'> 
+                                <a id="reservation" class="btn small" href='{{ route("places.reservation", ['placeID' => $object->placeID, 'title' => $object['title_'.$locale]]) }}'> 
                                     online @lang('services.reservation') 
                                 </a>
                                 @endif
@@ -508,16 +509,16 @@
                                 @endif
 
                                 @if($type === 'vehicles')
-                                <a href="{{ route("vehicles.vehicle", ['vehID' => $s->vehID]) }}" class="btn small">    
+                                <a href="{{ route("vehicles.vehicle", ['vehID' => $s->vehID, 'title' => $s->model]) }}" class="btn small">    
                                     @lang('common.details')
                                 </a>
                                 @elseif($type === 'places')
-                                <a href="{{ route("places.place", ['placeID' => $s->placeID]) }}" class="btn small">    
+                                <a href="{{ route("places.place", ['placeID' => $s->placeID, 'title' => $s['title_'.$locale]]) }}" class="btn small">    
                                     @lang('common.details')
                                 </a>
                                 @elseif($type === 'accommodation')
                                     @if ($s->apartment == 1)
-                                <a href="{{ route("accommodation.single", ['accID' => $s->accID]) }}" class="btn small">
+                                <a href="{{ route("accommodation.single", ['accID' => $s->accID, 'title' => $s['title_'.$locale]]) }}" class="btn small">
                                     @elseif (($s->hotel == 1))
                                 <a href="#" class="btn small">                
                                     @elseif (($s->spa == 1))
@@ -527,9 +528,15 @@
                                 </a>
                                 @endif
 
-                                <a href="{{ route("contact") }}" class="btn small">
-                                    @lang('common.inquiry')
+                                @if (($type === 'places') && ($s->isRestaurant() || !$s->getEvents()->isEmpty()))
+                                <a href="{{ route("places.reservation", ['placeID' => $s->placeID, 'title' => $s['title_'.$locale]]) }}" class="btn small">
+                                    online @lang('services.reservation')
                                 </a>
+                                @elseif ($type !== 'places')
+                                <a href="{{ route("contact") }}" class="btn small">
+                                    @lang('common.quick inquiry')
+                                </a>
+                                @endif
                             </div>
                             <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
@@ -598,10 +605,9 @@
     });
     */
 </script>
+
+@if($type !== 'vehicles')
 <script src="{{ url("/") }}/js/map.js"></script>
-<script>
-    $(document).ready(function() {
-        
-    });
-</script>
+@endif
+
 @stop

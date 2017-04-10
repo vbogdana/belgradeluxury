@@ -20,7 +20,7 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'title_en', 'title_sr', 'date', 'reservations'
+        'date', 'reservations'
     ];
     
     /**
@@ -75,8 +75,8 @@ class Event extends Model
         return $this->belongsTo('App\Place', 'placeID', 'placeID');
     }
     
-    public function category() {
-        return $this->belongsTo('App\Category', 'ctgID', 'ctgID');
+    public function article() {
+        return $this->belongsTo('App\Article', 'artID', 'artID');
     }
     
 }

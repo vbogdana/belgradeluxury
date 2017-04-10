@@ -14,10 +14,18 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    @if(isset($place))
+                    <a href="{{ route("cms.places") }}">Places ></a>&nbsp
+                    {{ $place->title_en }} >&nbsp
+                    @endif
                     All events
                 </div>
                 <div class="panel-heading">
+                    @if(isset($place))
+                    <a href="{{ route('cms.places.events.create', ['placeID' => $place->placeID]) }}">New event</a>
+                    @else
                     <a href="{{ route('cms.events.create') }}">New event</a>
+                    @endif
                 </div>
 
                 <div class="panel-body">
@@ -29,14 +37,14 @@
                     @foreach($events as $event)
                     <div class="row text-center" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 15px;">
                         <div class="col-xs-12 col-sm-3">
-                            @if ($event->image != null)
-                            <img class="img-responsive" src="{{ asset('storage/images/'.$event->image) }}">
+                            @if ($event->article->image != null)
+                            <img class="img-responsive" src="{{ asset('storage/images/'.$event->article->image) }}">
                             @else
                             No image
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <h4>{{ $event->title_en }}</h4>
+                            <h4>{{ $event->article->title_en }}</h4>
                             <br/>
                             @if ($event->place !== null)
                             <strong>Place: {{ $event->place->title_en }}</strong>

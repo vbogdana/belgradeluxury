@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PlaceSeating extends Model
 {
     //
-    protected $table = 'places_seatings';
+    protected $table = 'place_seatings';
     public $timestamps = false;
     public $primaryKey = 'psID';
     
