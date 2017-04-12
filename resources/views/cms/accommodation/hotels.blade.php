@@ -39,13 +39,15 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <h4>{{ $acc->title_en }}</h4>                           
-                            {{ $acc->address }}
+                            <a href='{{ route("accommodation.single", ['accID' => $acc->accID, 'title' => $acc->title_sr]) }}' target='_blank'>
+                                <h4>{{ $acc->title_en }}</h4>
+                            </a>                          
+                            <a href='http://maps.apple.com/?q={{ $acc->geoLat.','.$acc->geoLong }}' target='_blank'>{{ $acc->address }}</a>
                             <br/><strong>{{ $acc->hotel()->stars }} stars</strong>
-                            <br/><strong>priority: {{ $acc->getPriority() }}</strong>
                             @if ($acc->link != null)
                             <br/><a href="{{ $acc->link }}">{{ $acc->link }}</a>
                             @endif
+                            <br/><strong>priority: {{ $acc->getPriority() }}</strong>
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.accommodation.hotel.edit', $acc->accID], 'method' => 'get']) }}

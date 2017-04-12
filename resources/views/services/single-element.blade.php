@@ -140,13 +140,18 @@
                             <span>@lang('common.description')</span>
                         </a>
                     </li>
-                    @if ($type !== 'accommodation' || ($type === 'accommodation' && $subtype !== 'hotel'))
                     <li class="" style='width: 100%'>
                         @if ($type === 'places')
                         <a href="#events" data-toggle="tab">
                             <i class="hi-icon contact-calendar"></i>
                             <br/>
                             <span>@lang('common.upcoming') @lang('common.events')</span>
+                        </a>
+                        @elseif ($type === 'accommodation' && $subtype === 'hotel')
+                        <a href="#rooms" data-toggle="tab">
+                            <i class="hi-icon contact-add"></i>
+                            <br/>
+                            <span>{{ trans_choice('common.room', 1) }}</span>
                         </a>
                         @elseif (($type === 'accommodation') || ($type === 'vehicles'))
                         <a href="#details" data-toggle="tab">
@@ -156,7 +161,6 @@
                         </a>
                         @endif                        
                     </li>
-                    @endif
                     @if ($type !== 'vehicles')
                     <li class="" style='width: 100%'>
                         <a href="#location" data-toggle="tab">
@@ -341,6 +345,15 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    @elseif ($type === 'accommodation' && ($subtype === 'hotel'))
+                    <div class="tab-pane info" id="rooms">
+                        <div class="description">
+                            <h2>
+                                @lang('common.room description')
+                            </h2>
+                            <p>{{ $object->hotel()['rooms_'.$locale] }}</p>
                         </div>
                     </div>
                     @elseif ($type === 'vehicles')

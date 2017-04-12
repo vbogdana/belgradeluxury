@@ -8,6 +8,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class VehiclesController extends Controller {
     
@@ -23,12 +24,29 @@ class VehiclesController extends Controller {
     } 
     
     /**
+     * Loads a view with filtered vehicles.
+     *
+     * @return view
+     */
+    function filterVehicles(Request $request) {
+        $people = $request->all()['people'];
+        return redirect('/cms/vehicles?people='.$people);
+    }
+    
+    /**
      * Loads a view with all vehicles.
      *
      * @return view
      */
     function loadVehicles() {
-        $vehicles = Vehicle::paginate(10);
+        $people = Input::get("people");
+        if ($people !== null) {
+           $vehicles = Vehicle::where('people', '<=', $people)
+            ->orderBy('people', 'asc')
+            ->paginate(10);   
+        } else {
+            $vehicles = Vehicle::paginate(10);
+        }
         
         return view('cms.vehicles', ['vehicles' => $vehicles]);
     }

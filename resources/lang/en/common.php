@@ -89,6 +89,8 @@ return [
 	'ordinal' => '{1}st|{21}st|{31}st|{2}nd|{22}nd|{3}rd|{23}rd|[4,20]th|[24,30]th',
 	'location' => 'location',
 	'description' => 'description',
+	'room' => '{0}room|{1}rooms',
+	'room description' => 'room description',
 	'photo' => '{0}photo|{1}photos',
 	'person' => '{1}person|[2,20]people',
 	'recommended' => 'Recommended for You',

@@ -36,7 +36,9 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <h4>{{ $host->name }}</h4>
+                            <a href='{{ route("host") }}' target='_blank'>
+                                <h4>{{ $host->name }}</h4>
+                            </a>
                             <p>{{ $host->skills_en }}</p>
                             <p>{{ $host->hobbies_en }}</p>                            
                         </div>

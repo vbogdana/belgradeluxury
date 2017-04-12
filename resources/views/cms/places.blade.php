@@ -38,17 +38,19 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <h4>{{ $place->title_en }}</h4> 
+                            <a href='{{ route("places.place", ['placeID' => $place->placeID, 'title' => $place->title_sr]) }}' target="_blank">
+                                <h4>{{ $place->title_en }}</h4> 
+                            </a>
                             <strong class="text-uppercase">{{ $place->type }}</strong>
                             <br/>
-                            {{ $place->address }}
-                            <br/><strong>priority: {{ $place->getPriority() }}</strong>
+                            <a href='http://maps.apple.com/?q={{ $place->geoLat.','.$place->geoLong }}' target='_blank'>{{ $place->address }}</a> 
                             @if ($place->link != null)
                             <br/><a href="{{ $place->link }}">{{ $place->link }}</a>
                             @endif
                             @if ($place->phone != null)
                             <br/><a href="tel:{{ $place->phone }}">{{ $place->phone }}</a>
                             @endif
+                            <br/><strong>priority: {{ $place->getPriority() }}</strong>
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.places.edit', $place->placeID], 'method' => 'get']) }}

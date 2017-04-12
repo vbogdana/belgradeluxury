@@ -160,5 +160,8 @@
 
     <!-- Scripts -->
     <script src="{{ url ("") }}/js/app.js"></script>
+    
+    @section('scripts')
+    @show
 </body>
 </html>

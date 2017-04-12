@@ -19,6 +19,30 @@
                 <div class="panel-heading">
                     <a href="{{ route('cms.vehicles.create') }}">New vehicle</a>
                 </div>
+                <div class='panel-heading'>
+                    {{ Form::open(['route' => 'cms.vehicles', 'method' => 'post', 'class' => 'form-horizontal']) }}
+                    <div class="form-group{{ $errors->has('people') ? ' has-error' : '' }}">
+                        <label for="people" class="col-md-3 control-label">Filter By Number of People</label>
+
+                        <div class="col-md-6">
+                            <input id="people" type="range" min="1" max="20" step="1" class="form-control" name="people" value="{{ old('people') }}" onchange="showPeople()">
+
+                            @if ($errors->has('people'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('people') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="col-md-2">
+                            <input id="peopleText" type="text" disabled="">
+                        </div>
+                    </div>
+                    <div class='form-group text-center'>
+                        {{ Form::submit('Filter', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                    </div>
+                    {{ Form::close() }}
+                </div>
 
                 <div class="panel-body">
                     <div class="panel-info" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 20px">
@@ -38,8 +62,11 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <h4>{{ $veh->model }}</h4>                           
+                            <a href='{{ route("vehicles.vehicle", ['vehID' => $veh->vehID, 'title' => $veh->model]) }}' target="_blank">
+                                <h4>{{ $veh->model }}</h4>
+                            </a>                     
                             {{ $veh->brand }}
+                            <br/><strong>{{ $veh->people }} people</strong>
                             <br/><strong>{{ $veh->price }}€</strong>
                             @if ($veh->link != null)
                             <br/><a href="{{ $veh->link }}">{{ $veh->link }}</a>
@@ -96,3 +123,22 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+<script>   
+    function showPeople() {
+        var people = $('#people').val();
+        $('#peopleText').attr('value', people);
+    }
+    
+    showPeople();
+
+    $(document).ready(function() {
+        $(document).on('click', '.pagination a', function (e) {
+            e.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            window.location = window.location.href + '&page=' + page;
+        });
+    });
+</script>
+@stop

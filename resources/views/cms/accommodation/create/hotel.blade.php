@@ -152,6 +152,38 @@
                             </div>
                         </div>
                         
+                        <div class="form-group{{ $errors->has('rooms_en') ? ' has-error' : '' }}">
+                            <label for="rooms_en" class="col-md-4 control-label">Rooms Description (eng) *</label>
+
+                            <div class="col-md-6">
+                                <textarea id="rooms_en" maxlength="1020" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="rooms_en">{{ isset($hotel) ? $hotel->rooms_en : old('rooms_en') }}</textarea>
+                                
+                                @if ($errors->has('rooms_en'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rooms_en') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('rooms_sr') ? ' has-error' : '' }}">
+                            <label for="rooms_sr" class="col-md-4 control-label">Rooms Description (ser) *</label>
+
+                            <div class="col-md-6">
+                                <textarea id="rooms_sr" maxlength="1020" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="rooms_sr">{{ isset($hotel) ? $hotel->rooms_sr : old('rooms_sr') }}</textarea>
+                                
+                                @if ($errors->has('rooms_sr'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rooms_sr') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
                         @if (!isset($accommodation) || !isset($hotel))
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="image" class="col-md-4 control-label">Main image</label>

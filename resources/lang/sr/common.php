@@ -89,6 +89,8 @@ return [
 	'ordinal' => '[1,31].',
 	'location' => 'lokacija',
 	'description' => 'opis',
+	'room' => '{0}soba|{1}sobe',
+	'room description' => 'opis soba',
 	'photo' => '{0}fotografija|{1}fotografije',
 	'person' => '{1}osoba|[2,4]osobe|[5,20]osoba',
 	'recommended' => 'Preporučeno za Vas',

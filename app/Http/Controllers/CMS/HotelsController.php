@@ -112,6 +112,8 @@ class HotelsController extends Controller {
             'geoLat' => 'required|numeric|between:0,360',
             'geoLong' => 'required|numeric|between:0,360',
             'link' => 'max:255',
+            'rooms_en' => 'required|max:1020',
+            'rooms_sr' => 'required|max:1020',
           
         ]);
     }
@@ -164,6 +166,8 @@ class HotelsController extends Controller {
         $accommodation->priority = $data['priority'];
         
         $hotel->stars = $data['stars'];
+        $hotel->rooms_en = $data['rooms_en'];
+        $hotel->rooms_sr = $data['rooms_sr'];
         
         $accommodation->save();
         $hotel->save();

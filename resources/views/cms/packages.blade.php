@@ -39,7 +39,9 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <h4>{{ $package->title_en }}</h4>                           
+                            <a href='{{ route("package", ['title' => $package->title_sr]) }}' target='_blank'>
+                                <h4>{{ $package->title_en }}</h4>  
+                            </a>                         
                             Position on home page: {{ $package->position }}
                             <br/><strong>{{ $package->price }}€</strong>
                             

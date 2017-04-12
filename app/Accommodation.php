@@ -26,6 +26,10 @@ class Accommodation extends Model
         return $this->hasMany('App\AccommodationImage', 'accID', 'accID');
     }
     
+    public function apartments() {
+        return $this->hasMany('App\Apartment', 'accID', 'accID');
+    }
+    
     public function apartment() {
         return Apartment::find($this->accID);
     }

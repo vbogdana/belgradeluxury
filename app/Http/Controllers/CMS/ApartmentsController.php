@@ -7,6 +7,7 @@ use App\Apartment;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ApartmentsController extends Controller {
     
@@ -22,12 +23,32 @@ class ApartmentsController extends Controller {
     } 
     
     /**
+     * Loads a view with filtered apartments.
+     *
+     * @return view
+     */
+    function filterApartments(Request $request) {
+        $people = $request->all()['people'];
+        return redirect('/cms/accommodation/apartments?people='.$people);
+    }
+    
+    /**
      * Loads a view with all apartments.
      *
      * @return view
      */
-    function loadApartments() {
-        $accommodation = Accommodation::where('apartment', '=', '1')->orderBy('priority', 'desc')->paginate(10);       
+    function loadApartments() {        
+        $people = Input::get("people");
+        if ($people !== null) {
+            $accommodation = Accommodation::where('apartment', '=', '1')
+            ->whereHas('apartments', function($q) use ($people) {
+                $q->where('people', '<=', $people);
+            })
+            ->orderBy('priority', 'desc')
+            ->paginate(10);    
+        } else {
+            $accommodation = Accommodation::where('apartment', '=', '1')->orderBy('priority', 'desc')->paginate(10);       
+        } 
         return view('cms.accommodation.apartments', ['accommodation' => $accommodation]);
     }
     

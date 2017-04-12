@@ -16,7 +16,7 @@ class Hotel extends Model
      * @var array
      */
     protected $fillable = [
-        'stars'
+        'stars', 'rooms_en', 'rooms_sr'
     ];
 
 }

@@ -20,6 +20,30 @@
                 <div class="panel-heading">
                     <a href="{{ route('cms.accommodation.apartment.create') }}">New apartment</a>
                 </div>
+                <div class='panel-heading'>
+                    {{ Form::open(['route' => 'cms.accommodation.apartments', 'method' => 'post', 'class' => 'form-horizontal']) }}
+                    <div class="form-group{{ $errors->has('people') ? ' has-error' : '' }}">
+                        <label for="people" class="col-md-3 control-label">Filter By Number of People</label>
+
+                        <div class="col-md-6">
+                            <input id="people" type="range" min="1" max="20" step="1" class="form-control" name="people" value="{{ old('people') }}" onchange="showPeople()">
+
+                            @if ($errors->has('people'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('people') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="col-md-2">
+                            <input id="peopleText" type="text" disabled="">
+                        </div>
+                    </div>
+                    <div class='form-group text-center'>
+                        {{ Form::submit('Filter', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                    </div>
+                    {{ Form::close() }}
+                </div>
 
                 <div class="panel-body">
                     <div class="panel-info" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 20px">
@@ -39,16 +63,19 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <h4>{{ $acc->title_en }}</h4>
+                            <a href='{{ route("accommodation.single", ['accID' => $acc->accID, 'title' => $acc->title_sr]) }}' target='_blank'>
+                                <h4>{{ $acc->title_en }}</h4>
+                            </a>
                             @if ($acc->spa)
                             <h5><strong>SPA</strong></h5>
                             @endif                          
-                            {{ $acc->address }}
+                            <a href='http://maps.apple.com/?q={{ $acc->geoLat.','.$acc->geoLong }}' target='_blank'>{{ $acc->address }}</a>
+                            <br/><strong>{{ $acc->apartment()->people }} people</strong>
                             <br/><strong>{{ $acc->price }}€</strong>
-                            <br/><strong>priority: {{ $acc->getPriority() }}</strong>
                             @if ($acc->link != null)
                             <br/><a href="{{ $acc->link }}">{{ $acc->link }}</a>
                             @endif
+                            <br/><strong>priority: {{ $acc->getPriority() }}</strong>
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.accommodation.apartment.edit', $acc->accID], 'method' => 'get']) }}
@@ -101,3 +128,22 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+<script>   
+    function showPeople() {
+        var people = $('#people').val();
+        $('#peopleText').attr('value', people);
+    }
+    
+    showPeople();
+
+    $(document).ready(function() {
+        $(document).on('click', '.pagination a', function (e) {
+            e.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            window.location = window.location.href + '&page=' + page;
+        });
+    });
+</script>
+@stop
