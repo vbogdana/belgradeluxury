@@ -29,8 +29,9 @@ class VehiclesController extends Controller {
      * @return view
      */
     function filterVehicles(Request $request) {
-        $people = $request->all()['people'];
-        return redirect('/cms/vehicles?people='.$people);
+        $min = $request->all()['min'];
+        $max = $request->all()['max'];
+        return redirect('/cms/vehicles?min='.$min.'&max='.$max);
     }
     
     /**
@@ -39,9 +40,10 @@ class VehiclesController extends Controller {
      * @return view
      */
     function loadVehicles() {
-        $people = Input::get("people");
-        if ($people !== null) {
-           $vehicles = Vehicle::where('people', '<=', $people)
+        $min = Input::get("min");
+        $max = Input::get("max");
+        if ($min !== null && $max !== null) {
+           $vehicles = Vehicle::whereBetween('people', [$min, $max])
             ->orderBy('people', 'asc')
             ->paginate(10);   
         } else {

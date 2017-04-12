@@ -22,23 +22,43 @@
                 </div>
                 <div class='panel-heading'>
                     {{ Form::open(['route' => 'cms.accommodation.apartments', 'method' => 'post', 'class' => 'form-horizontal']) }}
-                    <div class="form-group{{ $errors->has('people') ? ' has-error' : '' }}">
-                        <label for="people" class="col-md-3 control-label">Filter By Number of People</label>
+                    
+                    <div class="form-group{{ $errors->has('min') ? ' has-error' : '' }}">
+                        <label for="min" class="col-md-3 control-label">Minimal Number of People</label>
 
                         <div class="col-md-6">
-                            <input id="people" type="range" min="1" max="20" step="1" class="form-control" name="people" value="{{ old('people') }}" onchange="showPeople()">
+                            <input id="min" type="range" min="1" max="20" step="1" class="form-control" name="min" value="{{ old('min') }}" onchange="showMin()">
 
-                            @if ($errors->has('people'))
+                            @if ($errors->has('min'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('people') }}</strong>
+                                    <strong>{{ $errors->first('min') }}</strong>
                                 </span>
                             @endif
                         </div>
 
                         <div class="col-md-2">
-                            <input id="peopleText" type="text" disabled="">
+                            <input id="minText" type="text" disabled="">
                         </div>
                     </div>
+                    
+                    <div class="form-group{{ $errors->has('max') ? ' has-error' : '' }}">
+                        <label for="max" class="col-md-3 control-label">Maximal Number of People</label>
+
+                        <div class="col-md-6">
+                            <input id="max" type="range" min="1" max="20" step="1" class="form-control" name="max" value="{{ old('max') }}" onchange="showMax()">
+
+                            @if ($errors->has('max'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('max') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="col-md-2">
+                            <input id="maxText" type="text" disabled="">
+                        </div>
+                    </div>
+                    
                     <div class='form-group text-center'>
                         {{ Form::submit('Filter', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                     </div>
@@ -131,18 +151,30 @@
 
 @section('scripts')
 <script>   
-    function showPeople() {
-        var people = $('#people').val();
-        $('#peopleText').attr('value', people);
+    function showMin() {
+        var people = $('#min').val();
+        $('#minText').attr('value', people);
+    }
+    function showMax() {
+        var people = $('#max').val();
+        $('#maxText').attr('value', people);
     }
     
-    showPeople();
+    showMin();
+    showMax();
 
     $(document).ready(function() {
         $(document).on('click', '.pagination a', function (e) {
             e.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-            window.location = window.location.href + '&page=' + page;
+            var min = window.location.href.split('min=')[1];
+            if (typeof min != 'undefined')
+                min = min.split('&')[0];
+            var max = window.location.href.split('max=')[1];
+            if (min && max) {
+                window.location = $(this).attr('href') + '&min=' + min + '&max=' + max;
+            } else {
+                window.location = $(this).attr('href');
+            }            
         });
     });
 </script>

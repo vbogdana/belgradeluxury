@@ -28,8 +28,9 @@ class ApartmentsController extends Controller {
      * @return view
      */
     function filterApartments(Request $request) {
-        $people = $request->all()['people'];
-        return redirect('/cms/accommodation/apartments?people='.$people);
+        $min = $request->all()['min'];
+        $max = $request->all()['max'];
+        return redirect('/cms/accommodation/apartments?min='.$min.'&max='.$max);
     }
     
     /**
@@ -38,11 +39,12 @@ class ApartmentsController extends Controller {
      * @return view
      */
     function loadApartments() {        
-        $people = Input::get("people");
-        if ($people !== null) {
+        $min = Input::get("min");
+        $max = Input::get("max");
+        if ($min !== null && $max !== null) {
             $accommodation = Accommodation::where('apartment', '=', '1')
-            ->whereHas('apartments', function($q) use ($people) {
-                $q->where('people', '<=', $people);
+            ->whereHas('apartments', function($q) use ($min, $max) {
+                $q->whereBetween('people', [$min, $max]);
             })
             ->orderBy('priority', 'desc')
             ->paginate(10);    
