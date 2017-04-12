@@ -30,6 +30,10 @@ class Accommodation extends Model
         return Apartment::find($this->accID);
     }
     
+    public function hotel() {
+        return Hotel::find($this->accID);
+    }
+    
     public function getPriority() {
         if ($this->priority == 1) {
             return 'low';

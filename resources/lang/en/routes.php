@@ -11,7 +11,7 @@ return [
 	'contact' => 'contact',
     'package' => 'packages/{title}-package',
 	'accommodation' => 'services/accommodation',
-	'accommodation.single' => 'services/accommodation/apartment/{accID}-{title}',
+	'accommodation.single' => 'services/accommodation/{accID}-{title}',
 	'hotel' => 'services/accommodation/hotel/{accID}-{title}',
 	'vehicles' => 'services/vehicles',
 	'vehicle' => 'services/vehicles/{vehID}-{title}',

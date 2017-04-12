@@ -253,12 +253,20 @@ Route::get('cms/accommodation/{accID}/delete/photos', ['as' => 'cms.accommodatio
 Route::delete('cms/accommodation/{imgID}/delete/photo', ['as' => 'cms.accommodation.delete.image', 'uses' => 'CMS\AccommodationController@deleteImage']);
 Route::delete('cms/accommodation/{accID}/delete/main-photo', ['as' => 'cms.accommodation.delete.main-image', 'uses' => 'CMS\AccommodationController@deleteMainImage']);
 Route::delete('cms/accommodation/{accID}/delete', ['as' => 'cms.accommodation.delete', 'uses' => 'CMS\AccommodationController@delete']);
-
+// Apartments
 Route::get('cms/accommodation/apartments', ['as' => 'cms.accommodation.apartments', 'uses' => 'CMS\ApartmentsController@loadApartments']);
 Route::get('cms/accommodation/apartment/create', ['as' => 'cms.accommodation.apartment.create', 'uses' => 'CMS\ApartmentsController@loadCreateApartment']);
 Route::post('cms/accommodation/apartment/create', ['as' => 'cms.accommodation.apartment.create', 'uses' => 'CMS\ApartmentsController@createApartment']);
 Route::get('cms/accommodation/{accID}/apartment/edit', ['as' => 'cms.accommodation.apartment.edit', 'uses' => 'CMS\ApartmentsController@loadEditApartment']);
 Route::post('cms/accommodation/{accID}/apartment/edit', ['as' => 'cms.accommodation.apartment.edit', 'uses' => 'CMS\ApartmentsController@editApartment']);
+// Hotels
+Route::get('cms/accommodation/hotels', ['as' => 'cms.accommodation.hotels', 'uses' => 'CMS\HotelsController@loadHotels']);
+Route::get('cms/accommodation/hotel/create', ['as' => 'cms.accommodation.hotel.create', 'uses' => 'CMS\HotelsController@loadCreateHotel']);
+Route::post('cms/accommodation/hotel/create', ['as' => 'cms.accommodation.hotel.create', 'uses' => 'CMS\HotelsController@createHotel']);
+Route::get('cms/accommodation/{accID}/hotel/edit', ['as' => 'cms.accommodation.hotel.edit', 'uses' => 'CMS\HotelsController@loadEditHotel']);
+Route::post('cms/accommodation/{accID}/hotel/edit', ['as' => 'cms.accommodation.hotel.edit', 'uses' => 'CMS\HotelsController@editHotel']);
+// Spas
+Route::get('cms/accommodation/spas', ['as' => 'cms.accommodation.spas', 'uses' => 'CMS\ApartmentsController@loadSpas']);
 
 /***
  * Vehicles
@@ -358,3 +366,18 @@ Route::get('cms/events/{evID}/edit/main-photo', ['as' => 'cms.events.edit.main-i
 Route::post('cms/events/{evID}/edit/main-photo', ['as' => 'cms.events.edit.main-image', 'uses' => 'CMS\EventsController@editMainImage']);
 Route::delete('cms/events/{evID}/delete/main-photo', ['as' => 'cms.events.delete.main-image', 'uses' => 'CMS\EventsController@deleteMainImage']);
 Route::delete('cms/events/{evID}/delete', ['as' => 'cms.events.delete', 'uses' => 'CMS\EventsController@delete']);
+
+/***
+ * Partners
+ */
+Route::get('cms/partners', ['as' => 'cms.partners', 'uses' => 'CMS\PartnersController@loadPartners']);
+Route::get('cms/partners/create', ['as' => 'cms.partners.create', 'uses' => 'CMS\PartnersController@loadCreatePartner']);
+Route::post('cms/partners/create', ['as' => 'cms.partners.create', 'uses' => 'CMS\PartnersController@createPartner']);
+Route::get('cms/partners/{partID}/edit', ['as' => 'cms.partners.edit', 'uses' => 'CMS\PartnersController@loadEditPartner']);
+Route::post('cms/partners/{partID}/edit', ['as' => 'cms.partners.edit', 'uses' => 'CMS\PartnersController@editPartner']);
+Route::get('cms/partners/{partID}/edit/main-photo', ['as' => 'cms.partners.edit.main-image', 'uses' => 'CMS\PartnersController@loadEditMainImage']);
+Route::post('cms/partners/{partID}/edit/main-photo', ['as' => 'cms.partners.edit.main-image', 'uses' => 'CMS\PartnersController@editMainImage']);
+Route::delete('cms/partners/{partID}/delete/main-photo', ['as' => 'cms.partners.delete.main-image', 'uses' => 'CMS\PartnersController@deleteMainImage']);
+Route::delete('cms/partners/{partID}/delete', ['as' => 'cms.partners.delete', 'uses' => 'CMS\PartnersController@delete']);
+Route::post('cms/partners/{packID}/show', ['as' => 'cms.partners.show', 'uses' => 'CMS\PartnersController@show']);
+Route::post('cms/partners/{packID}/hide', ['as' => 'cms.partners.hide', 'uses' => 'CMS\PartnersController@hide']);

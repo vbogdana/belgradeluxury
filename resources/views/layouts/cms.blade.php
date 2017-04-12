@@ -117,6 +117,11 @@
                                     <li><a href='{{ route('cms.places') }}'>nightlife</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href='{{ route('cms.partners') }}' role="button">
+                                    Partners
+                                </a>
+                            </li>
                             <li class='dropdown'>
                                 <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     Users<span class="caret"></span>

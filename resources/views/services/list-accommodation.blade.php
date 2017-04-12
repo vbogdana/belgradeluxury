@@ -32,13 +32,7 @@
                 <p style='padding: 4px 0 0;'>
                     {{ $acc['address'] }}
                 </p>
-                @if ($acc->apartment == 1)
                 <a href="{{ route("accommodation.single", ['accID' => $acc->accID, 'title' => $acc['title_'.$locale]]) }}" class="btn small">
-                @elseif (($acc->hotel == 1))
-                <a href="#" class="btn small">                
-                @elseif (($acc->spa == 1))
-                <a href="#" class="btn small">                
-                @endif    
                     @lang('common.details')
                 </a>
                 <a href="{{ route("contact") }}#contact-us" class="btn small">

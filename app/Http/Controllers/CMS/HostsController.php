@@ -142,8 +142,8 @@ class HostsController extends Controller {
             'name' => 'required|max:255',
             'skills_en' => 'required|max:255',
             'skills_sr' => 'required|max:255',
-            'hobbies_en' => 'max:800',
-            'hobbies_sr' => 'max:800',
+            'hobbies_en' => 'max:1020',
+            'hobbies_sr' => 'max:1020',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png'     
         ]);
     }
@@ -160,7 +160,7 @@ class HostsController extends Controller {
         $host->save();
 
         if (array_key_exists('image', $data)) {
-            $path = $data['image']->store('host', 'images');
+            $path = $data['image']->store('services/host', 'images');
             $host->image = $path;
             $host->save();
         }
@@ -224,7 +224,7 @@ class HostsController extends Controller {
         }
         
         if (array_key_exists('image', $data)) {
-            $path = $data['image']->store('host', 'images');
+            $path = $data['image']->store('services/host', 'images');
             $host->image = $path;
             $host->save();
         }

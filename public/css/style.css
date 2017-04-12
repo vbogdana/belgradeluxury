@@ -151,6 +151,15 @@ All rights reserved
 .fa-wifi:before {
     content: "\f1eb";   
 }
+.fa-people:before {
+    content: "\f0c0";
+}
+.fa-car:before {
+    content: "\f1b9";
+}
+.fa-star:before {
+    content: "\f005";
+}
 
 /* Categories icons */
 .fa-nightlife:before {
@@ -170,14 +179,6 @@ All rights reserved
 .fa-culture:before {
     font-family: contact;
     content: "\f100";
-}
-
-/* Pictograms */
-.fa-people:before {
-  content: "\f0c0";
-}
-.fa-car:before {
-  content: "\f1b9";
 }
 
 /* Service tabs */
@@ -733,6 +734,8 @@ section {
 .description h2, .description h1 {
     font-size: 24px;
     text-transform: uppercase;
+}
+.description .stars  {
 }
 .description .tags {
     font-family: Quicksand, Raleway, sans-serif;

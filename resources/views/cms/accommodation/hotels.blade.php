@@ -15,19 +15,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a href="{{ route('cms.accommodation') }}">Accommodation ></a>&nbsp;
-                    All apartments
+                    All hotels
                 </div>
                 <div class="panel-heading">
-                    <a href="{{ route('cms.accommodation.apartment.create') }}">New apartment</a>
+                    <a href="{{ route('cms.accommodation.hotel.create') }}">New hotel</a>
                 </div>
 
                 <div class="panel-body">
                     <div class="panel-info" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 20px">
-                        To delete an apartment select 'Delete apartment'.<br/>
-                        To edit info about an apartment select 'Edit data'.<br/>
-                        To edit main photo of an apartment select 'Edit main photo'.<br/>
-                        To add additional photos to an apartment select 'Add photos'.<br/>
-                        To remove photos from an apartment select 'Remove photos'.
+                        To delete a hotel select 'Delete hotel'.<br/>
+                        To edit info about a hotel select 'Edit data'.<br/>
+                        To edit main photo of a hotel select 'Edit main photo'.<br/>
+                        To add additional photos to a hotel select 'Add photos'.<br/>
+                        To remove photos from a hotel select 'Remove photos'.
                     </div>
                     @foreach($accommodation as $acc)
                     <div class="row text-center" style="padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 15px;">
@@ -39,19 +39,16 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <h4>{{ $acc->title_en }}</h4>
-                            @if ($acc->spa)
-                            <h5><strong>SPA</strong></h5>
-                            @endif                          
+                            <h4>{{ $acc->title_en }}</h4>                           
                             {{ $acc->address }}
-                            <br/><strong>{{ $acc->price }}€</strong>
+                            <br/><strong>{{ $acc->hotel()->stars }} stars</strong>
                             <br/><strong>priority: {{ $acc->getPriority() }}</strong>
                             @if ($acc->link != null)
                             <br/><a href="{{ $acc->link }}">{{ $acc->link }}</a>
                             @endif
                         </div>
                         <div class="col-xs-6 col-sm-3" style="padding-top: 15px">
-                            {{ Form::open(['route' => ['cms.accommodation.apartment.edit', $acc->accID], 'method' => 'get']) }}
+                            {{ Form::open(['route' => ['cms.accommodation.hotel.edit', $acc->accID], 'method' => 'get']) }}
                             {{ Form::submit('Edit data', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
@@ -60,20 +57,20 @@
                             {{ Form::close() }}
                             
                             <button class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$acc->accID}}">
-                                Delete apartment
+                                Delete hotel
                             </button>
                             <div class="modal fade" id="myModal{{$acc->accID}}" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Delete an apartment</h4>
+                                            <h4 class="modal-title">Delete a hotel</h4>
                                         </div>
 
                                         <div class="modal-body">
                                             Are you sure?<br/>
                                             <div style="margin-top: 15px">
                                                 {{ Form::open(['route' => ['cms.accommodation.delete', $acc->accID], 'method' => 'delete']) }}                      
-                                                {{ Form::submit('Delete apartment', array('class' => 'btn btn-danger')) }}
+                                                {{ Form::submit('Delete hotel', array('class' => 'btn btn-danger')) }}
                                                 <button type="button" class="btn btn-default" style="margin-left: 15px" data-dismiss="modal">Cancel</button>
                                                 {{ Form::close() }}
                                             </div>

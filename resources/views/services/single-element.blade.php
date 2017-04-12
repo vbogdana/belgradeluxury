@@ -66,6 +66,14 @@
 <section id='information' class='element-information-section fullwidth panel space-y' data-section-name='information-panel'>
     <div class='container'>
         <div class="description text-center" style='margin-bottom: 40px'>
+            @if($type === 'accommodation' && $subtype === 'hotel')
+            <div class='stars'>
+            @for($j = 1; $j <= $object->hotel()->stars; $j++)
+            <i class="fa fa-star"></i>
+            @endfor
+            </div>
+            @endif
+            
             <h1 class="text-uppercase"> 
                 @if($type === 'vehicles')
                 {{ $object->model }}
@@ -132,6 +140,7 @@
                             <span>@lang('common.description')</span>
                         </a>
                     </li>
+                    @if ($type !== 'accommodation' || ($type === 'accommodation' && $subtype !== 'hotel'))
                     <li class="" style='width: 100%'>
                         @if ($type === 'places')
                         <a href="#events" data-toggle="tab">
@@ -147,6 +156,7 @@
                         </a>
                         @endif                        
                     </li>
+                    @endif
                     @if ($type !== 'vehicles')
                     <li class="" style='width: 100%'>
                         <a href="#location" data-toggle="tab">
@@ -280,10 +290,9 @@
                             </div>
                         </div>
                     </div>
-                    @elseif ($type === 'accommodation')
+                    @elseif ($type === 'accommodation' && ($subtype !== 'hotel'))
                     <div class="tab-pane info hi-icon-effect" id="details">
                         <div class='description'>
-                            @if ($subtype !== 'hotel')
                             <div class='header'>
                                 <i class="hi-icon fa-people"></i>
                                 <br/>
@@ -332,8 +341,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @else
-                            @endif
                         </div>
                     </div>
                     @elseif ($type === 'vehicles')
@@ -517,13 +524,7 @@
                                     @lang('common.details')
                                 </a>
                                 @elseif($type === 'accommodation')
-                                    @if ($s->apartment == 1)
                                 <a href="{{ route("accommodation.single", ['accID' => $s->accID, 'title' => $s['title_'.$locale]]) }}" class="btn small">
-                                    @elseif (($s->hotel == 1))
-                                <a href="#" class="btn small">                
-                                    @elseif (($s->spa == 1))
-                                <a href="#" class="btn small">                
-                                    @endif    
                                     @lang('common.details')
                                 </a>
                                 @endif

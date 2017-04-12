@@ -11,7 +11,7 @@ return [
 	'contact' => 'kontakt',
     'package' => 'paketi/{title}-paket',
 	'accommodation' => 'usluge/smestaj',
-	'accommodation.single' => 'usluge/smestaj/apartman/{accID}-{title}',	
+	'accommodation.single' => 'usluge/smestaj/{accID}-{title}',	
 	'hotel' => 'usluge/smestaj/hotel/{accID}-{title}',
 	'vehicles' => 'usluge/vozila',
 	'vehicle' => 'usluge/vozila/{vehID}-{title}',

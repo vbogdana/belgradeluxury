@@ -107,8 +107,8 @@ class PlacesController extends Controller {
         return Validator::make($data, [           
             'title_en' => 'required|max:255',
             'title_sr' => 'required|max:255',
-            'description_en' => 'max:800',
-            'description_sr' => 'max:800',
+            'description_en' => 'max:1020',
+            'description_sr' => 'max:1020',
             'address' => 'required|max:255',
             'hours' => 'required|max:255',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',

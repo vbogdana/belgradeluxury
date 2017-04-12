@@ -122,7 +122,7 @@
                             <label for="description_en" class="col-md-4 control-label">Description (eng)</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_en" maxlength="800" 
+                                <textarea id="description_en" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" 
                                           name="description_en">{{ isset($accommodation) ? $accommodation->description_en : old('description_en') }}</textarea>
                                 
@@ -138,7 +138,7 @@
                             <label for="description_sr" class="col-md-4 control-label">Description (ser)</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_sr" maxlength="800" 
+                                <textarea id="description_sr" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" 
                                           name="description_sr">{{ isset($accommodation) ? $accommodation->description_sr : old('description_sr') }}</textarea>
                                 

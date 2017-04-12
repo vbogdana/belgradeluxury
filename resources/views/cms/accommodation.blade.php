@@ -32,13 +32,13 @@
                         </a>
                     </div>
                     <div class="col-sm-4 col-sm-offset-0">
-                        <a href="{{ route("/") }}}">
+                        <a href="{{ route("cms.accommodation.hotels") }}">
                             <h4>Hotels</h4>
                             <img class="img-responsive" src="{{ url("") }}/images/services/hotels.jpg">
                         </a>
                     </div>
                     <div class="col-sm-4 col-sm-offset-0">
-                        <a href="{{ route("/") }}">
+                        <a href="{{ route("cms.accommodation.spas") }}">
                             <h4>Spas</h4>
                             <img class="img-responsive" src="{{ url("") }}/images/services/spas.jpg">
                         </a>

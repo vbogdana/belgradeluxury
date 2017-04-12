@@ -83,7 +83,7 @@
                             <label for="hobbies_en" class="col-md-4 control-label">Hobbies (eng)</label>
 
                             <div class="col-md-6">
-                                <textarea id="hobbies_en" maxlength="800" 
+                                <textarea id="hobbies_en" maxlength="1020" 
                                           rows="5" cols="70" class="form-control"
                                           name="hobbies_en">{{ isset($host) ? $host->hobbies_en : old('hobbies_en') }}</textarea>
                                 
@@ -99,7 +99,7 @@
                             <label for="hobbies_sr" class="col-md-4 control-label">Hobbies (ser)</label>
 
                             <div class="col-md-6">
-                                <textarea id="hobbies_sr" maxlength="800" 
+                                <textarea id="hobbies_sr" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" 
                                           name="hobbies_sr">{{ isset($host) ? $host->hobbies_sr : old('hobbies_sr') }}</textarea>
                                 

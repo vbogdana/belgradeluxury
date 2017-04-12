@@ -75,7 +75,7 @@
                             <label for="content_en" class="col-md-4 control-label">Testemonial (eng)*</label>
 
                             <div class="col-md-6">
-                                <textarea id="content_en" maxlength="800" 
+                                <textarea id="content_en" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" required
                                           name="content_en">{{ isset($testemonial) ? $testemonial->content_en : old('content_en') }}</textarea>
                                 
@@ -91,7 +91,7 @@
                             <label for="content_sr" class="col-md-4 control-label">Testemonial (ser)*</label>
 
                             <div class="col-md-6">
-                                <textarea id="content_sr" maxlength="800" 
+                                <textarea id="content_sr" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" required 
                                           name="content_sr">{{ isset($testemonial) ? $testemonial->content_sr : old('content_sr') }}</textarea>
                                 

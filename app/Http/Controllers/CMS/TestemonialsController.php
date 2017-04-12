@@ -137,8 +137,8 @@ class TestemonialsController extends Controller {
     protected function validator(array $data)
     {
         return Validator::make($data, [                       
-            'content_en' => 'required|max:800',
-            'content_sr' => 'required|max:800',
+            'content_en' => 'required|max:1020',
+            'content_sr' => 'required|max:1020',
             'author' => 'max:255',
             'profession_en' => 'required|max:255',
             'profession_sr' => 'required|max:255',

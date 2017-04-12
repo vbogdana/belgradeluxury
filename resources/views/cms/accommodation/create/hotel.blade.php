@@ -14,18 +14,19 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="{{ route('cms.places') }}">Places ></a>&nbsp;
-                    @if(isset($place))
-                    Edit Place
+                    <a href="{{ route('cms.accommodation') }}">Accommodation ></a>&nbsp;
+                    <a href="{{ route('cms.accommodation.hotels') }}">Hotels ></a>&nbsp;
+                    @if(isset($accommodation))
+                    Edit Hotel
                     @else
-                    Create Place
+                    Create Hotel
                     @endif
                 </div>
                 <div class="panel-body">
-                    @if(isset($place))
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.places.edit', ['placeID' => $place->placeID]) }}">
+                    @if(isset($accommodation))
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.hotel.edit', ['accID' => $accommodation->accID]) }}">
                     @else
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.places.create') }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.accommodation.hotel.create') }}">
                     @endif
                         {{ csrf_field() }}
 
@@ -33,7 +34,7 @@
                             <label for="title_en" class="col-md-4 control-label">Title (eng)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($place) ? $place->title_en : old('title_en') }}" required autofocus>
+                                <input id="title_en" type="text" maxlength="255" class="form-control" name="title_en" value="{{ isset($accommodation) ? $accommodation->title_en : old('title_en') }}" required autofocus>
 
                                 @if ($errors->has('title_en'))
                                     <span class="help-block">
@@ -47,7 +48,7 @@
                             <label for="title_sr" class="col-md-4 control-label">Title (ser)*</label>
 
                             <div class="col-md-6">
-                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($place) ? $place->title_sr : old('title_sr') }}" required>
+                                <input id="title_sr" type="text" maxlength="255" class="form-control" name="title_sr" value="{{ isset($accommodation) ? $accommodation->title_sr : old('title_sr') }}" required>
 
                                 @if ($errors->has('title_sr'))
                                     <span class="help-block">
@@ -55,25 +56,51 @@
                                     </span>
                                 @endif
                             </div>
-                        </div> 
+                        </div>
                         
-                        <div class="form-group">
-                            <label for="type" class="col-md-4 control-label">Type*</label>
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="address" class="col-md-4 control-label">Address*</label>
 
                             <div class="col-md-6">
-                                <?php 
-                                    $type = ['restaurant' => '', 'bar' => '', 'club' => '', 'kafana' => '', 'splav' => ''];
-                                    if (isset($place)) {
-                                        $type[$place->type] = 'checked';
-                                    } else {
-                                        $type['restaurant'] = 'checked';
-                                    }
-                                ?>
-                                @foreach($type as $t => $value)
-                                <input type="radio" name="type" value="{{ $t }}" {{ $value }}> {{ $t }}
-                                @endforeach
+                                <input id="address" type="text" maxlength="255" class="form-control" name="address" value="{{ isset($accommodation) ? $accommodation->address : old('address') }}" required>
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <!--
+                        <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
+                            <label for="price" class="col-md-4 control-label">Price in €*</label>
+
+                            <div class="col-md-6">
+                                <input id="price" type="number" step="1" class="form-control" name="price" value="{{ isset($accommodation) ? $accommodation->price : old('price') }}" required>
+
+                                @if ($errors->has('price'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('price') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div> 
+                        -->
+                        
+                        <div class="form-group">
+                            <label for="stars" class="col-md-4 control-label">Stars *</label>
+
+                            <div class="col-md-6">
+                                <select name="stars" class='form-control'>
+                                    @for($i = 1; $i <= 5; $i++)
+                                    <option value="{{ $i }}" 
+                                            <?php if (isset($hotel) && $hotel->stars == $i) echo "selected" ?>
+                                            >{{ $i }} star</option>
+                                    @endfor
+                                </select>
+                            </div>
+                        </div>
                         
                         <div class="form-group">
                             <label for="priority" class="col-md-4 control-label">Priority</label>
@@ -81,25 +108,25 @@
                             <div class="col-md-6">
                                 <select name="priority" class='form-control'>
                                     <option value="1" 
-                                            <?php if (isset($place) && $place->priority == 1) echo "selected" ?>
+                                            <?php if (isset($accommodation) && $accommodation->priority == 1) echo "selected" ?>
                                             >low</option>
                                     <option value="2" 
-                                            <?php if (isset($place) && $place->priority == 2) echo "selected" ?>
+                                            <?php if (isset($accommodation) && $accommodation->priority == 2) echo "selected" ?>
                                             >medium</option>
                                     <option value="3" 
-                                            <?php if (isset($place) && $place->priority == 3) echo "selected" ?>
+                                            <?php if (isset($accommodation) && $accommodation->priority == 3) echo "selected" ?>
                                             >high</option>
                                 </select>
                             </div>
                         </div>
-    
+                        
                         <div class="form-group{{ $errors->has('description_en') ? ' has-error' : '' }}">
                             <label for="description_en" class="col-md-4 control-label">Description (eng)</label>
 
                             <div class="col-md-6">
                                 <textarea id="description_en" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="description_en">{{ isset($place) ? $place->description_en : old('description_en') }}</textarea>
+                                          name="description_en">{{ isset($accommodation) ? $accommodation->description_en : old('description_en') }}</textarea>
                                 
                                 @if ($errors->has('description_en'))
                                     <span class="help-block">
@@ -115,7 +142,7 @@
                             <div class="col-md-6">
                                 <textarea id="description_sr" maxlength="1020" 
                                           rows="5" cols="70" class="form-control" 
-                                          name="description_sr">{{ isset($place) ? $place->description_sr : old('description_sr') }}</textarea>
+                                          name="description_sr">{{ isset($accommodation) ? $accommodation->description_sr : old('description_sr') }}</textarea>
                                 
                                 @if ($errors->has('description_sr'))
                                     <span class="help-block">
@@ -125,35 +152,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                            <label for="address" class="col-md-4 control-label">Address*</label>
-
-                            <div class="col-md-6">
-                                <input id="address" type="text" maxlength="255" class="form-control" name="address" value="{{ isset($place) ? $place->address : old('address') }}" required>
-
-                                @if ($errors->has('address'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('hours') ? ' has-error' : '' }}">
-                            <label for="hours" class="col-md-4 control-label">Hours*</label>
-
-                            <div class="col-md-6">
-                                <input id="hours" type="text" maxlength="255" class="form-control" name="hours" value="{{ isset($place) ? $place->hours : old('hours') }}" required>
-
-                                @if ($errors->has('hours'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('hours') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-                        @if (!isset($place))
+                        @if (!isset($accommodation) || !isset($hotel))
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="image" class="col-md-4 control-label">Main image</label>
 
@@ -167,13 +166,13 @@
                                 @endif
                             </div>
                         </div>
-                        @endif   
+                        @endif
                         
                         <div class="form-group{{ $errors->has('geoLat') ? ' has-error' : '' }}">
                             <label for="geoLat" class="col-md-4 control-label">Geographic latitude*</label>
 
                             <div class="col-md-6">
-                                <input id="geoLat" type="text" maxlength="255" class="form-control" name="geoLat" value="{{ isset($place) ? $place->geoLat : old('geoLat') }}" required>
+                                <input id="geoLat" type="text" maxlength="255" class="form-control" name="geoLat" value="{{ isset($accommodation) ? $accommodation->geoLat : old('geoLat') }}" required>
 
                                 @if ($errors->has('geoLat'))
                                     <span class="help-block">
@@ -187,7 +186,7 @@
                             <label for="geoLong" class="col-md-4 control-label">Geographic longitude*</label>
 
                             <div class="col-md-6">
-                                <input id="geoLong" type="text" maxlength="255" class="form-control" name="geoLong" value="{{ isset($place) ? $place->geoLong : old('geoLong') }}" required>
+                                <input id="geoLong" type="text" maxlength="255" class="form-control" name="geoLong" value="{{ isset($accommodation) ? $accommodation->geoLong : old('geoLong') }}" required>
 
                                 @if ($errors->has('geoLong'))
                                     <span class="help-block">
@@ -197,43 +196,11 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('seating') ? ' has-error' : '' }}">
-                            <label for="seating" class="col-md-4 control-label">Types of seating*</label>
-
-                            <div class="col-md-6">
-                                <?php 
-                                $i = 0;
-                                ?>
-                                @foreach($seatings as $seating)                               
-                                <input id="seating[{{ $i }}]" type="checkbox" name="seating[{{ $i }}]" value="{{ $seating->seatID }}"
-                                    <?php
-                                        if (isset($place)) {
-                                            foreach($place->seatings as $s) {
-                                                if ($s->seating->seatID === $seating->seatID) {
-                                                    echo "checked";
-                                                    break;
-                                                }
-                                            }
-                                        }
-                                    ?>
-                                       >
-                                <label for="seating[{{ $i++ }}]">{{ $seating->type_en }}</label>
-                                &nbsp;&nbsp;
-                                @endforeach 
-                                
-                                @if ($errors->has('seating'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('seating') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
                         <div class="form-group{{ $errors->has('link') ? ' has-error' : '' }}">
                             <label for="link" class="col-md-4 control-label">Website link</label>
 
                             <div class="col-md-6">
-                                <input id="link" type="text" maxlength="255" class="form-control" name="link" value="{{ isset($place) ? $place->link : old('link') }}">
+                                <input id="link" type="text" maxlength="255" class="form-control" name="link" value="{{ isset($accommodation) ? $accommodation->link : old('link') }}">
                                 
                                 @if ($errors->has('link'))
                                     <span class="help-block">
@@ -241,32 +208,18 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>   
-                        
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">Contact phone</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="text" maxlength="255" class="form-control" name="phone" value="{{ isset($place) ? $place->phone : old('phone') }}">
-                                
-                                @if ($errors->has('phone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
                         </div>
-                                              
+                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    @if (isset($place))
+                                    @if (isset($accommodation) && isset($hotel))
                                     Edit
                                     @else
                                     Create
                                     @endif
                                 </button>
-                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.places') }}">Cancel</a>                                                
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.accommodation.hotels') }}">Cancel</a>                                                
                             </div>
                         </div>
                     </form>

@@ -32,6 +32,16 @@ class ApartmentsController extends Controller {
     }
     
     /**
+     * Loads a view with all spa apartments.
+     *
+     * @return view
+     */
+    function loadSpas() {
+        $accommodation = Accommodation::where('spa', '=', '1')->orderBy('priority', 'desc')->paginate(10);       
+        return view('cms.accommodation.apartments', ['accommodation' => $accommodation]);
+    }
+    
+    /**
      * Loads a view with a form to create a new apartment.
      *
      * @return view
@@ -67,7 +77,11 @@ class ApartmentsController extends Controller {
 
         $apartment = $this->create($request->all());
         
-        return redirect('/cms/accommodation/apartments');
+        if ($apartment->spa) {
+            return redirect('/cms/accommodation/spas');
+        } else {
+            return redirect('/cms/accommodation/apartments');
+        }
     }
     
     /**
@@ -88,7 +102,11 @@ class ApartmentsController extends Controller {
 
         $apartment = $this->edit($request->all(), $accommodation, $apartment);
         
-        return redirect('/cms/accommodation/apartments');
+        if ($apartment->spa) {
+            return redirect('/cms/accommodation/spas');
+        } else {
+            return redirect('/cms/accommodation/apartments');
+        }
     }
     
     /**
@@ -106,8 +124,8 @@ class ApartmentsController extends Controller {
             'title_sr' => 'required|max:255',
             'address' => 'required|max:255',
             'price' => 'required|numeric',
-            'description_en' => 'max:800',
-            'description_sr' => 'max:800',
+            'description_en' => 'max:1020',
+            'description_sr' => 'max:1020',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
             'geoLat' => 'required|numeric|between:0,360',
             'geoLong' => 'required|numeric|between:0,360',

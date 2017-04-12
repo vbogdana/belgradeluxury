@@ -93,12 +93,12 @@ class AccommodationController extends Controller {
 
         $this->createImages($request->all(), $accommodation);
         
-        if ($accommodation->apartment) {
-            return redirect('/cms/accommodation/apartments');
+        if ($accommodation->spa) {
+            return redirect('/cms/accommodation/spas');
         } else if ($accommodation->hotel) {
             return redirect('/cms/accommodation/hotels');
-        } else if ($accommodation->spa) {
-            return redirect('/cms/accommodation/spas');
+        } else if ($accommodation->apartment) {
+            return redirect('/cms/accommodation/apartments');
         }
     }
     
@@ -120,12 +120,12 @@ class AccommodationController extends Controller {
 
         $this->editImage($request->all(), $accommodation);
         
-        if ($accommodation->apartment) {
-            return redirect('/cms/accommodation/apartments');
+        if ($accommodation->spa) {
+            return redirect('/cms/accommodation/spas');
         } else if ($accommodation->hotel) {
             return redirect('/cms/accommodation/hotels');
-        } else if ($accommodation->spa) {
-            return redirect('/cms/accommodation/spas');
+        } else if ($accommodation->apartment) {
+            return redirect('/cms/accommodation/apartments');
         }
     }
     
@@ -156,7 +156,11 @@ class AccommodationController extends Controller {
     {
         for ($i = 0; $i < 5; $i++) {
             if (array_key_exists('photo'.$i, $data)) {
-                $path = $data['photo'.$i]->store('services/apartments/'.$accommodation->accID, 'images');
+                if ($accommodation->apartment) {
+                    $path = $data['photo'.$i]->store('services/apartments/'.$accommodation->accID, 'images');
+                } else {
+                    $path = $data['photo'.$i]->store('services/hotels/'.$accommodation->accID, 'images');
+                }
                 $accImg = new AccommodationImage();
                 $accImg->accID = $accommodation->accID;
                 $accImg->image = $path;
@@ -178,7 +182,11 @@ class AccommodationController extends Controller {
             Storage::delete('public/images/'.$accommodation->image);
         }
         
-        $path = $data['photo0']->store('services/apartments/'.$accommodation->accID, 'images');
+        if ($accommodation->apartment) {
+            $path = $data['photo0']->store('services/apartments/'.$accommodation->accID, 'images');
+        } else {
+            $path = $data['photo0']->store('services/hotels/'.$accommodation->accID, 'images');
+        }
         $accommodation->image = $path;
         $accommodation->save();  
     }
@@ -214,17 +222,20 @@ class AccommodationController extends Controller {
         }
         
         // delete directory
-        Storage::deleteDirectory('public/images/services/apartments/'.$accID);
+        if ($apartment) {
+            Storage::deleteDirectory('public/images/services/apartments/'.$accID);
+        } else {
+            Storage::deleteDirectory('public/images/services/hotels/'.$accID);
+        }        
         
         // delete entry in accomodation table
         Accommodation::destroy($accID);
-        
-        if ($apartment) {
-            return redirect('/cms/accommodation/apartments');
+        if ($spa) {
+            return redirect('/cms/accommodation/spas');
         } else if ($hotel) {
             return redirect('/cms/accommodation/hotels');
-        } else if ($spa) {
-            return redirect('/cms/accommodation/spas');
+        } else if ($apartment) {
+            return redirect('/cms/accommodation/apartments');
         }
     }
     
@@ -248,12 +259,12 @@ class AccommodationController extends Controller {
             $accommodation->save(); 
         }
         
-        if ($accommodation->apartment) {
-            return redirect('/cms/accommodation/apartments');
+        if ($accommodation->spa) {
+            return redirect('/cms/accommodation/spas');
         } else if ($accommodation->hotel) {
             return redirect('/cms/accommodation/hotels');
-        } else if ($accommodation->spa) {
-            return redirect('/cms/accommodation/spas');
+        } else if ($accommodation->apartment) {
+            return redirect('/cms/accommodation/apartments');
         }
     }
     
@@ -282,12 +293,12 @@ class AccommodationController extends Controller {
         
         AccommodationImage::destroy($imgID);
                
-        if ($accommodation->apartment) {
-            return redirect('/cms/accommodation/apartments');
+        if ($accommodation->spa) {
+            return redirect('/cms/accommodation/spas');
         } else if ($accommodation->hotel) {
             return redirect('/cms/accommodation/hotels');
-        } else if ($accommodation->spa) {
-            return redirect('/cms/accommodation/spas');
+        } else if ($accommodation->apartment) {
+            return redirect('/cms/accommodation/apartments');
         }
     }
  
