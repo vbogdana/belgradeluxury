@@ -98,13 +98,15 @@ class ApartmentsController extends Controller {
     {
         $this->validator($request->all())->validate();
 
-        $apartment = $this->create($request->all());
-        
+        $apartment = $this->create($request->all());       
+
         if ($apartment->spa) {
-            return redirect('/cms/accommodation/spas');
+            $route = 'cms.accommodation.spas';
         } else {
-            return redirect('/cms/accommodation/apartments');
+            $route = 'cms.accommodation.apartments';
         }
+
+        return view('cms.single', [ 'object' => $apartment, 'route' => $route, 'method' => 'CREATED' ]);
     }
     
     /**
@@ -126,10 +128,12 @@ class ApartmentsController extends Controller {
         $apartment = $this->edit($request->all(), $accommodation, $apartment);
         
         if ($apartment->spa) {
-            return redirect('/cms/accommodation/spas');
+            $route = 'cms.accommodation.spas';
         } else {
-            return redirect('/cms/accommodation/apartments');
+            $route = 'cms.accommodation.apartments';
         }
+
+        return view('cms.single', [ 'object' => $apartment, 'route' => $route, 'method' => 'EDITED' ]);
     }
     
     /**
@@ -180,7 +184,7 @@ class ApartmentsController extends Controller {
         $apartment->accID = $accommodation->accID;
         $apartment->save();
         
-        return $apartment;
+        return $accommodation;
     }
     
     /**
@@ -217,7 +221,7 @@ class ApartmentsController extends Controller {
         $accommodation->save();
         $apartment->save();
         
-        return $apartment;
+        return $accommodation;
     }
    
 }

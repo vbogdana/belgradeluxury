@@ -345,6 +345,7 @@ $(window).on("load", function(ev) {
     $('#details').on('click', function(ev) {
         ev.preventDefault();
         var package = $('figure#0').attr("class");
+        package = package.replace(' ', '-');
         var url = $(this).attr('data-href');
         var translation = $(this).attr('data-translation');
         window.location.href = url + package + '-' + translation;

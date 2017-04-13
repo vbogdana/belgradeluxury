@@ -83,7 +83,7 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <a href='{{ route("accommodation.single", ['accID' => $acc->accID, 'title' => $acc->title_sr]) }}' target='_blank'>
+                            <a href='{{ route("accommodation.single", [ 'accID' => $acc->accID, 'title' => str_replace(' ', '-', $acc->title_sr) ]) }}' target='_blank'>
                                 <h4>{{ $acc->title_en }}</h4>
                             </a>
                             @if ($acc->spa)

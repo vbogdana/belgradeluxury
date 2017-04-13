@@ -28,11 +28,22 @@
                 <h2 class="text-uppercase">{{ $acc['title_'.$locale] }}</h2>                                                               
             </div>
             <div class="content">
-                <a href="{{ $acc->geoLat.','.$acc->geoLong }}" target="blank" class="hi-icon fa-map-marker"></a>
-                <p style='padding: 4px 0 0;'>
-                    {{ $acc['address'] }}
-                </p>
-                <a href="{{ route("accommodation.single", ['accID' => $acc->accID, 'title' => $acc['title_'.$locale]]) }}" class="btn small">
+                <div class='icons'>
+                    <a href="{{ $acc->geoLat.','.$acc->geoLong }}" target="blank" class="hi-icon fa-map-marker"></a>
+                    <p style='padding: 4px 0 0;'>
+                        {{ $acc['address'] }}
+                    </p>
+                </div>
+                @if($acc->apartment)
+                <div class='icons'>
+                    <a href="" target="blank" class="hi-icon fa-people"></a>
+                    <p style='padding: 4px 0 0;'>
+                        {{ $acc->apartment()->people.' '.trans_choice('common.person',$acc->apartment()->people) }} 
+                    </p>
+                </div>
+                @endif
+                <br/>
+                <a href="{{ route("accommodation.single", [ 'accID' => $acc->accID, 'title' => str_replace(" ", "-", $acc['title_'.$locale]) ]) }}" class="btn small">
                     @lang('common.details')
                 </a>
                 <a href="{{ route("contact") }}#contact-us" class="btn small">

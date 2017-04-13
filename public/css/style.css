@@ -2356,6 +2356,12 @@ a.btn.small, .btn.small {
         transition: margin-top 0.8s;
     }
 }
+@media screen and (max-width: 767px) {
+    .pagination-grid .hover-effects figcaption .content .icons {
+        display: inline-block;
+        margin: 0 7px;
+    }
+}
 @media screen and (min-width: 768px) {
     .pagination-grid .nav-pills > li {
         border-right: 1px solid black;

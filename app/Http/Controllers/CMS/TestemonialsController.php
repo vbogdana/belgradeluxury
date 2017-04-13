@@ -81,7 +81,7 @@ class TestemonialsController extends Controller {
 
         $testemonial = $this->create($request->all());
         
-        return redirect('/cms/testemonials');
+        return view('cms.single', [ 'object' => $testemonial, 'route' => 'cms.testemonials', 'method' => 'CREATED' ]);
     }
     
     /**
@@ -102,7 +102,7 @@ class TestemonialsController extends Controller {
 
         $testemonial = $this->edit($request->all(), $testemonial);
         
-        return redirect('/cms/testemonials');
+        return view('cms.single', [ 'object' => $testemonial, 'route' => 'cms.testemonials', 'method' => 'EDITED' ]);
     }
     
     /**

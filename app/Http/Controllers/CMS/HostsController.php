@@ -81,7 +81,7 @@ class HostsController extends Controller {
 
         $host = $this->create($request->all());
         
-        return redirect('/cms/host');
+        return view('cms.single', [ 'object' => $host, 'route' => 'cms.host', 'method' => 'CREATED' ]);
     }
     
     /**
@@ -102,7 +102,7 @@ class HostsController extends Controller {
 
         $host = $this->edit($request->all(), $host);
         
-        return redirect('/cms/host');
+        return view('cms.single', [ 'object' => $host, 'route' => 'cms.host', 'method' => 'EDITED' ]);
     }
     
     /**

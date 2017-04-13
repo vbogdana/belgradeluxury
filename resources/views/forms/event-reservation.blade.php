@@ -25,6 +25,27 @@
 @section('stylesheets')
 @stop
 
+@section('language-toolbar')
+@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+<li>
+    <a rel="alternate" hreflang="{{ $localeCode }}" 
+       href="
+        <?php 
+            $url = LaravelLocalization::getLocalizedURL($localeCode);
+            $titleStart = strpos($url, "-");
+            $url = substr($url, 0, $titleStart + 1).str_replace(' ', '-', $place['title_'.$localeCode]);
+            if (isset($evID)) {
+                $url = $url.'/'.$evID;
+            }
+            echo $url;
+        ?>
+       ">
+        {{ $properties['native'] }}
+    </a>
+</li>
+@endforeach
+@stop
+
 @section('content')
 <!--    START FORM SECTION      -->
 <section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ asset('storage/images/'.$place->image) }})">
@@ -56,7 +77,7 @@
                         &nbsp;/&nbsp;
                         </span>
                         
-                        <a href="{{ route("places.place", ['placeID' => $place->placeID, 'title' => $place['title_'.$locale]]) }}" class="link">    
+                        <a href="{{ route("places.place", [ 'placeID' => $place->placeID, 'title' => str_replace(" ", "-", $place['title_'.$locale]) ]) }}" class="link">    
                             {{ $place['title_'.$locale] }}
                         </a>
                     </div>

@@ -197,7 +197,7 @@ class PackagesController extends Controller {
 
         $package = $this->create($request->all());
         
-        return redirect('/cms/packages');
+        return view('cms.single', [ 'object' => $package, 'route' => 'cms.packages', 'method' => 'CREATED' ]);
     }
     
     /**
@@ -218,7 +218,7 @@ class PackagesController extends Controller {
 
         $package = $this->edit($request->all(), $package);
         
-        return redirect('/cms/packages');
+        return view('cms.single', [ 'object' => $package, 'route' => 'cms.packages', 'method' => 'EDITED' ]);
     }
     
     /**

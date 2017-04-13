@@ -82,6 +82,24 @@ class ArticlesController extends Controller
         return view('/cms/portal/create/article', ['article' => $article, 'categories' => $categories, 'category' => $c]);
     }
     
+    /**
+     * Loads a view with a form to edit the data of an existing article.
+     *
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return view
+     */
+    function loadEditMainImage($category, $artID) {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        return view('/cms/portal/edit/main-image', ['article' => $article, 'category' => $c]);
+    }
+    
      /**
      * Handle a request for loading a view for creating a content of the article.
      *
@@ -101,9 +119,9 @@ class ArticlesController extends Controller
         if (\Request::ajax()) {
             $type = $request->input('typeOfContent');
             if ($type === 'paragraph') {
-                return Response::json(View::make('cms.portal.create.paragraph', ['article' => $article])->render()); 
+                return Response::json(View::make('cms.portal.create.paragraph-content', ['article' => $article])->render()); 
             } else if ($type === 'image') {
-                return Response::json(View::make('cms.portal.create.image', ['article' => $article])->render());
+                return Response::json(View::make('cms.portal.create.image-content', ['article' => $article])->render());
             }         
         } else {
             return view('/cms/portal/create/article-content', ['article' => $article]);
@@ -170,6 +188,33 @@ class ArticlesController extends Controller
         return redirect('/cms/portal/'.$c->name_en.'/articles');
     }
     
+    /**
+     * Handle an edit image request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param   $artID primary key of Article
+     * @return \Illuminate\Http\Response
+     */
+    public function editMainImage(Request $request, $category, $artID)
+    {
+        $c = $this->checkCategory($category);        
+        
+        $this->validate($request, [
+                'image' => 'required|max:15000|mimes:jpeg,jpg,bmp,png,JPG'
+            ]
+        );
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+
+        $this->editImage($request->all(), $article);
+        
+        return redirect('/cms/portal/'.$c->name_en.'/articles');
+    }
+   
     /**
      * Create a new article instance.
      *
@@ -280,7 +325,7 @@ class ArticlesController extends Controller
         $paragraph->artID = $artID;
         $paragraph->save();
         
-        return 'localhost/belgradeluxury/public/cms/portal/'.$c->name_en.'/articles';
+        return 'success';
         
     }
     
@@ -317,8 +362,55 @@ class ArticlesController extends Controller
         }
         $image->save();
         
-        return 'localhost/belgradeluxury/public/cms/portal/'.$c->name_en.'/articles';
+        return 'success';
         
+    }
+    
+    /**
+     * Edits main article image.
+     *
+     * @param  array  $data
+     * @param  $article instance of Article
+     */
+    protected function editImage(array $data, $article)
+    {
+        // delete existing main photo
+        if ($article->image != null) {
+            Storage::delete('public/images/'.$article->image);
+        }
+        
+        if (array_key_exists('image', $data)) {
+            $path = $data['image']->store('articles/'.$article->artID, 'images');
+            $article->image = $path;
+            $article->save();
+        }
+    }
+    
+     /**
+     * Handle a request for creating a new image for the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of the Article
+     * @return \Illuminate\Http\Response
+     */
+    protected function deleteMainImage($category, $artID)
+    {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        // delete existing main photo
+        if ($article->image != null) {
+            Storage::delete('public/images/'.$article->image);
+            $article->image = null;
+            $article->save(); 
+        }
+        
+        return redirect('/cms/portal/'.$c->name_en.'/articles');      
     }
     
    

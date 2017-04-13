@@ -71,7 +71,7 @@ class PlacesController extends Controller {
 
         $place = $this->create($request->all());
         
-        return redirect('/cms/places');
+        return view('cms.single', [ 'object' => $place, 'route' => 'cms.places', 'method' => 'CREATED' ]);
     }
     
     /**
@@ -92,7 +92,7 @@ class PlacesController extends Controller {
 
         $place = $this->edit($request->all(), $place);
         
-        return redirect('/cms/places');
+        return view('cms.single', [ 'object' => $place, 'route' => 'cms.places', 'method' => 'EDITED' ]);
     }
     
     /**

@@ -44,6 +44,7 @@ class AppController extends Controller {
      */
     public function loadPackage($title) {    
         AppController::loadServices($services, $packages);
+        $title = str_replace("-", " ", $title);
         $package = Package::where('title_'.App::getLocale(), $title)->first();
         if ($package === null) {
             return view('errors.404', ['services' => $services, 'packages' => $packages]);       

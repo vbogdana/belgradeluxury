@@ -82,7 +82,7 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <a href='{{ route("vehicles.vehicle", ['vehID' => $veh->vehID, 'title' => $veh->model]) }}' target="_blank">
+                            <a href='{{ route("vehicles.vehicle", [ 'vehID' => $veh->vehID, 'title' => str_replace(' ', '-', $veh->model) ]) }}' target="_blank">
                                 <h4>{{ $veh->model }}</h4>
                             </a>                     
                             {{ $veh->brand }}

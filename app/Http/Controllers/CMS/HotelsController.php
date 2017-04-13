@@ -67,7 +67,7 @@ class HotelsController extends Controller {
 
         $hotel = $this->create($request->all());
         
-        return redirect('/cms/accommodation/hotels');
+        return view('cms.single', [ 'object' => $hotel, 'route' => 'cms.accommodation.hotels', 'method' => 'CREATED' ]);
     }
     
     /**
@@ -88,7 +88,7 @@ class HotelsController extends Controller {
 
         $hotel = $this->edit($request->all(), $accommodation, $hotel);
         
-        return redirect('/cms/accommodation/hotels');
+        return view('cms.single', [ 'object' => $hotel, 'route' => 'cms.accommodation.hotels', 'method' => 'EDITED' ]);
     }
     
     /**
@@ -141,7 +141,7 @@ class HotelsController extends Controller {
         $hotel->accID = $accommodation->accID;
         $hotel->save();
         
-        return $hotel;
+        return $accommodation;
     }
     
     /**
@@ -172,7 +172,7 @@ class HotelsController extends Controller {
         $accommodation->save();
         $hotel->save();
         
-        return $hotel;
+        return $accommodation;
     }
    
 }

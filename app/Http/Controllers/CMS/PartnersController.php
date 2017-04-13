@@ -124,7 +124,7 @@ class PartnersController extends Controller {
 
         $partner = $this->create($request->all());
         
-        return redirect('/cms/partners');
+        return view('cms.single', [ 'object' => $partner, 'route' => 'cms.partners', 'method' => 'CREATED' ]);
     }
     
     /**
@@ -145,7 +145,7 @@ class PartnersController extends Controller {
 
         $partner = $this->edit($request->all(), $partner);
         
-        return redirect('/cms/partners');
+        return view('cms.single', [ 'object' => $partner, 'route' => 'cms.partners', 'method' => 'EDITED' ]);
     }
     
     /**

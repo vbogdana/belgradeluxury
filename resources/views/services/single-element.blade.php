@@ -61,6 +61,26 @@
 <link href="{{ url("") }}/css/slick-theme.css" rel="stylesheet" type="text/css">
 @stop
 
+@section('language-toolbar')
+@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+<li>
+    <a rel="alternate" hreflang="{{ $localeCode }}" 
+       href="
+        <?php 
+            $url = LaravelLocalization::getLocalizedURL($localeCode);
+            if ($type === 'accommodation' || $type === 'places') {
+                $titleStart = strpos($url, "-");
+                $url = substr($url, 0, $titleStart + 1).str_replace(' ', '-', $object['title_'.$localeCode]);
+            }
+            echo $url;
+        ?>
+       ">
+        {{ $properties['native'] }}
+    </a>
+</li>
+@endforeach
+@stop
+
 @section('content')
 <!--   START  PANEL SECTION      -->
 <section id='information' class='element-information-section fullwidth panel space-y' data-section-name='information-panel'>
@@ -283,7 +303,7 @@
                                         @lang('services.reservations'): {{ $event->reservations }}                                        
                                     </div>
                                     <div class="col-sm-4 col-lg-3">                                        
-                                        <a class="btn small" href='{{ route("events.reservation", ['placeID' => $object->placeID, 'title' => $object['title_'.$locale], 'evID' => $event->evID]) }}'>
+                                        <a class="btn small" href='{{ route("events.reservation", ['placeID' => $object->placeID, 'title' => str_replace(" ", "-", $object['title_'.$locale]), 'evID' => $event->evID]) }}'>
                                             @lang('services.reserve')
                                             <br />
                                             online
@@ -432,7 +452,7 @@
                                     @lang('common.contact us') 
                                 </a> 
                                 @if ($object->isRestaurant() || !$object->getEvents()->isEmpty())
-                                <a id="reservation" class="btn small" href='{{ route("places.reservation", ['placeID' => $object->placeID, 'title' => $object['title_'.$locale]]) }}'> 
+                                <a id="reservation" class="btn small" href='{{ route("places.reservation", [ 'placeID' => $object->placeID, 'title' => str_replace(" ", "-", $object['title_'.$locale]) ]) }}'> 
                                     online @lang('services.reservation') 
                                 </a>
                                 @endif
@@ -494,7 +514,7 @@
                 
             @foreach($similar as $s)
             <div>
-                <div class="hover-effects">
+                <div class="hover-effects hi-icon-effect">
                     <figure>
                         <div class="img-holder">
                             @if ($s->image != null)
@@ -519,31 +539,47 @@
                                 @if($type === 'vehicles')
                                 <a class="hi-icon fa-people"></a>
                                 <p style='padding: 4px 0 0;'>
-                                    {{ $s['people'] }}
+                                    {{ $s['people'].' '.trans_choice('common.person',$s->people) }}
                                 </p>
-                                @else
+                                @elseif($type === 'places')
                                 <a href="{{ $s->geoLat.','.$s->geoLong }}" target="blank" class="hi-icon fa-map-marker"></a>
                                 <p style='padding: 4px 0 0;'>
                                     {{ $s['address'] }}
                                 </p>
+                                @elseif($type === 'accommodation')
+                                <div class='icons'>
+                                    <a href="{{ $s->geoLat.','.$s->geoLong }}" target="blank" class="hi-icon fa-map-marker"></a>
+                                    <p style='padding: 4px 0 0;'>
+                                        {{ $s['address'] }}
+                                    </p>
+                                </div>
+                                @if($s->apartment)
+                                <div class='icons'>
+                                    <a href="" target="blank" class="hi-icon fa-people"></a>
+                                    <p style='padding: 4px 0 0;'>
+                                        {{ $s->apartment()->people.' '.trans_choice('common.person',$s->apartment()->people) }} 
+                                    </p>
+                                </div>
+                                @endif
+                                <br/>
                                 @endif
 
                                 @if($type === 'vehicles')
-                                <a href="{{ route("vehicles.vehicle", ['vehID' => $s->vehID, 'title' => $s->model]) }}" class="btn small">    
+                                <a href="{{ route("vehicles.vehicle", [ 'vehID' => $s->vehID, 'title' => str_replace(" ", "-", $s->model) ]) }}" class="btn small">    
                                     @lang('common.details')
                                 </a>
                                 @elseif($type === 'places')
-                                <a href="{{ route("places.place", ['placeID' => $s->placeID, 'title' => $s['title_'.$locale]]) }}" class="btn small">    
+                                <a href="{{ route("places.place", [ 'placeID' => $s->placeID, 'title' => str_replace(" ", "-", $s['title_'.$locale]) ]) }}" class="btn small">    
                                     @lang('common.details')
                                 </a>
                                 @elseif($type === 'accommodation')
-                                <a href="{{ route("accommodation.single", ['accID' => $s->accID, 'title' => $s['title_'.$locale]]) }}" class="btn small">
+                                <a href="{{ route("accommodation.single", [ 'accID' => $s->accID, 'title' => str_replace(" ", "-", $s['title_'.$locale]) ]) }}" class="btn small">
                                     @lang('common.details')
                                 </a>
                                 @endif
 
                                 @if (($type === 'places') && ($s->isRestaurant() || !$s->getEvents()->isEmpty()))
-                                <a href="{{ route("places.reservation", ['placeID' => $s->placeID, 'title' => $s['title_'.$locale]]) }}" class="btn small">
+                                <a href="{{ route("places.reservation", [ 'placeID' => $s->placeID, 'title' => str_replace(" ", "-", $s['title_'.$locale]) ]) }}" class="btn small">
                                     online @lang('services.reservation')
                                 </a>
                                 @elseif ($type !== 'places')

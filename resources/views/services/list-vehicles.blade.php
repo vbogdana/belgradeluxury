@@ -34,9 +34,9 @@
             <div class="content">
                 <a class="hi-icon fa-people"></a>
                 <p style='padding: 4px 0 0;'>
-                    {{ $vehicle['people'] }}
+                    {{ $vehicle['people'].' '.trans_choice('common.person', $vehicle->people) }}
                 </p>
-                <a href="{{ route("vehicles.vehicle", ['vehID' => $vehicle->vehID, 'title' => $vehicle->model]) }}" class="btn small">    
+                <a href="{{ route("vehicles.vehicle", [ 'vehID' => $vehicle->vehID, 'title' => str_replace(" ", "-", $vehicle->model) ]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
                 <a href="{{ route("contact") }}#contact-us" class="btn small">

@@ -38,7 +38,7 @@
                             @endif
                         </div>
                         <div class="col-xs-12 col-sm-3">
-                            <a href='{{ route("places.place", ['placeID' => $place->placeID, 'title' => $place->title_sr]) }}' target="_blank">
+                            <a href='{{ route("places.place", [ 'placeID' => $place->placeID, 'title' => str_replace(' ', '-', $place->title_sr) ]) }}' target="_blank">
                                 <h4>{{ $place->title_en }}</h4> 
                             </a>
                             <strong class="text-uppercase">{{ $place->type }}</strong>

@@ -88,7 +88,8 @@ class VehiclesController extends Controller {
 
         $vehicle = $this->create($request->all());
         
-        return redirect('/cms/vehicles');
+        return view('cms.single', [ 'object' => $vehicle, 'route' => 'cms.vehicles', 'method' => 'CREATED' ]);
+
     }
     
     /**
@@ -109,7 +110,7 @@ class VehiclesController extends Controller {
 
         $vehicle = $this->edit($request->all(), $vehicle);
         
-        return redirect('/cms/vehicles');
+        return view('cms.single', [ 'object' => $vehicle, 'route' => 'cms.vehicles', 'method' => 'EDITED' ]);
     }
     
     /**

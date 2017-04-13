@@ -94,7 +94,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                                     @section('language-toolbar')
                                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                     <li>
-                                        <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                        <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode, Request::url()) }}">
                                             {{ $properties['native'] }}
                                         </a>
                                     </li>
@@ -147,7 +147,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                                     <ul class='dropdown-menu'>
                                         @foreach ($packages as $package)
                                         <li>
-                                            <a href='{{ route("package", ['title' => $package['title_'.$locale]])}}'>
+                                            <a href='{{ route("package", [ 'title' => str_replace(" ", "-", $package['title_'.$locale]) ]) }}'>
                                                 {{ $package['title_'.$locale] }}
                                             </a>
                                         </li>

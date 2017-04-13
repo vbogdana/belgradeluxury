@@ -6,6 +6,9 @@
   -
   -->
 
+<?php 
+    $locale = LaravelLocalization::getCurrentLocale();
+?>
 
 <!--   START PACKAGES SECTION      -->
 <section id="packages" class="other-packages-section interstitial ribbon fullwidth space-y" data-section-name="packages-panel">            
@@ -25,7 +28,7 @@
         <div class="row">
             @foreach ($packages as $package)
             <div class="col-xs-6 col-sm-4 col-lg-2" style='margin: 20px 0 20px'>
-                <a href='#'>
+                <a href='{{ route("package", [ 'title' => str_replace(" ", "-", $package['title_'.$locale]) ]) }}'>
                     <img class='img-responsive' src='{{ asset('storage/images/'.$package->symbol) }}' style="margin: auto">
                 </a>
             </div>
