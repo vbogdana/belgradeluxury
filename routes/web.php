@@ -230,6 +230,10 @@ Route::get('cms/portal/{category}/articles/{artID}/edit', ['as' => 'cms.portal.a
 Route::post('cms/portal/{category}/articles/{artID}/edit', ['as' => 'cms.portal.articles.edit', 'uses' => 'CMS\ArticlesController@editArticle']);
 Route::get('cms/portal/{category}/articles/{artID}/edit/main-photo', ['as' => 'cms.portal.articles.edit.main-image', 'uses' => 'CMS\ArticlesController@loadEditMainImage']);
 Route::delete('cms/portal/{category}/articles/{artID}/delete', ['as' => 'cms.portal.articles.delete', 'uses' => 'CMS\ArticlesController@delete']);
+// Article content
+Route::get('cms/portal/{category}/articles/{artID}/create', ['as' => 'cms.portal.articles.create.content', 'uses' => 'CMS\ArticlesController@loadCreateContent']);
+Route::post('cms/portal/{category}/articles/{artID}/create/paragraph', ['as' => 'cms.portal.articles.create.paragraph', 'uses' => 'CMS\ArticlesController@createParagraph']);
+Route::post('cms/portal/{category}/articles/{artID}/create/image', ['as' => 'cms.portal.articles.create.image', 'uses' => 'CMS\ArticlesController@createImage']);
 
 /***
  * User

@@ -4,12 +4,16 @@ namespace App\Http\Controllers\CMS;
 
 use App\Category;
 use App\Article;
+use App\ArticleParagraph;
+use App\ArticleImage;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Response;
+use View;
 
 class ArticlesController extends Controller
 {
@@ -76,6 +80,34 @@ class ArticlesController extends Controller
         
         $categories = Category::all(['ctgID', 'name_en']);
         return view('/cms/portal/create/article', ['article' => $article, 'categories' => $categories, 'category' => $c]);
+    }
+    
+     /**
+     * Handle a request for loading a view for creating a content of the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of the Article
+     * @return \Illuminate\Http\Response or a View
+     */
+    function loadCreateContent(Request $request, $category, $artID) { 
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        if (\Request::ajax()) {
+            $type = $request->input('typeOfContent');
+            if ($type === 'paragraph') {
+                return Response::json(View::make('cms.portal.create.paragraph', ['article' => $article])->render()); 
+            } else if ($type === 'image') {
+                return Response::json(View::make('cms.portal.create.image', ['article' => $article])->render());
+            }         
+        } else {
+            return view('/cms/portal/create/article-content', ['article' => $article]);
+        }
     }
     
     /**
@@ -219,6 +251,74 @@ class ArticlesController extends Controller
         Article::destroy($artID);
         
         return redirect('/cms/portal/'.$c->name_en.'/articles');
+    }
+    
+     /**
+     * Handle a request for creating a new paragraph for the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of the Article
+     * @return \Illuminate\Http\Response or a View
+     */
+    public function createParagraph(Request $request, $category, $artID) {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $this->validate($request, [
+            'content_en' => 'required|max:510',
+            'content_sr' => 'required|max:510',            
+            'position' => 'integer'
+        ]);
+               
+        $data = $request->all();
+        $paragraph = new ArticleParagraph($data);
+        $paragraph->artID = $artID;
+        $paragraph->save();
+        
+        return 'localhost/belgradeluxury/public/cms/portal/'.$c->name_en.'/articles';
+        
+    }
+    
+     /**
+     * Handle a request for creating a new image for the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of the Article
+     * @return \Illuminate\Http\Response or a View
+     */
+    public function createImage(Request $request, $category, $artID) {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $this->validate($request, [
+            'caption_en' => 'max:255',
+            'caption_sr' => 'max:255',
+            'credit' => 'max:255',
+            'image' => 'required|max:15000|mimes:jpeg,jpg,bmp,png', 
+            'position' => 'integer'
+        ]);
+               
+        $data = $request->all();
+        $image = new ArticleImage($data);
+        $image->artID = $artID;
+        if (array_key_exists('image', $data)) {
+            $path = $data['image']->store('articles/'.$article->artID, 'images');
+            $image->image = $path;
+        }
+        $image->save();
+        
+        return 'localhost/belgradeluxury/public/cms/portal/'.$c->name_en.'/articles';
+        
     }
     
    

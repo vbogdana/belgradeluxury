@@ -52,6 +52,9 @@
                             </p>
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
+                            {{ Form::open(['route' => ['cms.portal.articles.create.content', $category->name_en, $article->artID], 'method' => 'get']) }}
+                            {{ Form::submit('Create content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
                             
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
