@@ -1,4 +1,7 @@
-{{ Form::open(['route' => ['cms.portal.articles.create.paragraph', $article->category->name_en, $article->artID], 'method' => 'post', 'enctype' => "multipart/form-data"]) }}
+{{ Form::open(['route' => ['cms.portal.articles.create.paragraph', $article->category->name_en, $article->artID], 
+               'method' => 'post', 
+               'data-validate' => route("cms.portal.articles.validate.paragraph"),
+               'data-type' => 'paragraph']) }}
 
 <div class='form-group'>
     <label for='content_en' class='col-md-4 control-label'>Content (eng)</label>

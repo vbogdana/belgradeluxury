@@ -21,7 +21,6 @@
     
     .panel-group {
         cursor: move;
-        margin: 60px 40px;
         padding: 20px;
         border: 1px solid #d3e0e9;
         box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
@@ -35,38 +34,62 @@
                     <a href="{{ route("cms.portal") }}">Portal ></a>&nbsp;
                     <a id="articles" href="{{ route("cms.portal.articles", ['category' => $article->category->name_en]) }}">{{ $article->category->name_en }} ></a>&nbsp
                     {{ $article->title_en }} >&nbsp;
-                    Create Article Content
+                    Reorder Article Content
                 </div>
                 
-                <div class="panel-body">
-                    <div id='mainForm' class="form-horizontal">
-
-                        <div id='content-container'>
-                           
-                        </div>
-                        
-                        <div class='panel-heading' style='background: #c5d9e4; padding: 30px 10px'>                   
-                            <div class="text-center">
-                                <input type="button" id='addParagraph'
-                                       class='btn btn-primary'
-                                       value='Add paragraph'/>  
-
-                                <input type="button" id='addImage'
-                                       class='btn btn-primary' style='margin-left: 15px' 
-                                       value='Add image'/> 
+                <div class="panel-body">                    
+                    <div class='container-fluid'>
+                            <?php 
+                                $images = $article->images->toArray();
+                                $paragraphs = $article->paragraphs->toArray();
+                                $i = $j = $k = 0;
+                                $n = sizeof($images);
+                                $m = sizeof($paragraphs);
+                            ?>
+                    
+                            @for($i = $j = $k = 0; $i < $n || $j < $m; $k++)
+                            @if($k % 3 === 0 && $k !== 0)
                             </div>
-                        </div>
-       
-                        <div class="panel-heading text-center">
-                            <div class="form-group ">
-                                <h3 class="text-center">WHEN YOU ARE FINISHED</h3>
-                                <button id='submit' type="button" class="btn btn-success">
-                                    CREATE ARTICLE
-                                </button>
-                                <a class="btn btn-danger" style="margin-left: 15px" href="{{ route("cms.portal.articles", ['category' => $article->category->name_en]) }}">Cancel</a>                                                
+                            @endif
+                            @if($k % 3 === 0 || $k === 0)
+                            <div class='row'>
+                            @endif
+                            <div class='col-sm-4'>
+                                <div id="content{{ $k }}" 
+                                     class='panel-group' 
+                                     draggable="true"
+                                     ondragstart="dragStart(event,{{ $k }})"
+                                     ondragover="allowDrop(event)"
+                                     ondrop="drop(event,{{ $k }})">
+                                    <h4 class='text-center'>SECTION {{ $k }}</h4>
+                                    
+                                    <div id="{{ $k }}" class='content'>
+                                        @if($j >= $m)
+                                        <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive'>
+                                        <?php $i++; ?>
+                                        @elseif($i >= $n)
+                                        <p>
+                                            {{ $paragraphs[$j]['content_en'] }}
+                                        </p>
+                                        <?php $j++; ?>
+                                        @elseif ($images[$i]['position'] < $paragraphs[$j]['position'])
+                                        <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive'>
+                                        <?php $i++; ?>
+                                        @elseif ($images[$i]['position'] > $paragraphs[$j]['position'])
+                                        <p>
+                                            {{ $paragraphs[$j]['content_en'] }}
+                                        </p>
+                                        <?php $j++; ?>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
+                            @endfor
+                            
+                        @if(($k === 1) || ((($k - 1) > 0) && ((($k - 1) % 3) !== 0)))
                         </div>
-                    </div>
+                        @endif
+                    </div>                               
                 </div>
             </div>
         </div>
@@ -93,15 +116,15 @@
         if (dragged === droppedOn)
             return;
         
-        tmp = $('#content' + dragged + ' form').detach();
+        tmp = $('#content' + dragged + ' .content').detach();
         if (dragged > droppedOn) {
             for (var k = dragged - 1; k >= droppedOn; k--) {               
-                form = $('#content' + k + ' form').detach();
+                form = $('#content' + k + ' .content').detach();
                 $('#content' + (k+1)).append(form);
             }
         } else if (dragged < droppedOn) {
             for (var k = dragged + 1; k <= droppedOn; k++) {               
-                form = $('#content' + k + ' form').detach();
+                form = $('#content' + k + '  .content').detach();
                 $('#content' + (k-1)).append(form);
             }
         }
@@ -110,37 +133,6 @@
     
     function allowDrop(ev) {
         ev.preventDefault();
-    }
-    
-    $('#addParagraph').on('click', function() {
-        $('#content-container').append("<div id='content" + i + "' class='panel-group' style='border-bottom: 1px solid #d3e0e9' draggable='true' ondragstart='dragStart(event," + i + ")' ondrop='drop(event," + i + ")' ondragover='allowDrop(event)'></div>");
-        var typeOfContent = "paragraph";
-        addContent(typeOfContent);
-    });
-    
-    $('#addImage').on('click', function() {
-        $('#content-container').append("<div id='content" + i + "' class='panel-group' style='border-bottom: 1px solid #d3e0e9' draggable='true' ondragstart='dragStart(event," + i + ")' ondrop='drop(event," + i + ")' ondragover='allowDrop(event)'></div>");
-        var typeOfContent = "image";
-        addContent(typeOfContent);
-    });
-    
-    function addContent(typeOfContent) {
-        $('body').append("<div class='overlay'></div>");
-        $('#content' + i).append("<h4 class='text-center'>SECTION " + i + "</h4>");
-        $('#content' + i + ' h4').append("&nbsp;&nbsp;&nbsp;<a class='btn btn-danger'>X</a>");
-        $.ajax({
-            data: {typeOfContent: typeOfContent},
-            type: 'GET'
-        }).done(function(data) {
-            $('#content' + i).append(data);
-            $('#content' + i + ' form').append("<input name='position' type='hidden' value='" + i + "'>");
-            i++;
-            $('.overlay').remove();
-        }).fail(function() {
-            window.alert('AJAX ERROR: Could not render data.');
-            i++;
-            $('.overlay').remove();
-        });       
     }
     
     // Submit na CREATE article    

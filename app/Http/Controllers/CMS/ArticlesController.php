@@ -129,6 +129,24 @@ class ArticlesController extends Controller
     }
     
     /**
+     * Loads a view to reorder content sections of the article.
+     *
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return view
+     */
+    function loadReorder($category, $artID) {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        return view('/cms/portal/edit/article-content', ['article' => $article, 'category' => $c]);
+    }
+    
+    /**
      * Get a validator for an incoming request for creating a new article 
      * or editing an existing one for the application.
      *
@@ -299,6 +317,22 @@ class ArticlesController extends Controller
     }
     
      /**
+     * Handle a request for validating form info when creating a new paragraph for the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of the Article
+     * @return \Illuminate\Http\Response or a View
+     */
+    public function validateParagraph(Request $request) {
+        $this->validate($request, [
+            'content_en' => 'required|max:510',
+            'content_sr' => 'required|max:510',            
+            'position' => 'integer'
+        ]);
+    }
+    
+     /**
      * Handle a request for creating a new paragraph for the article.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -314,11 +348,14 @@ class ArticlesController extends Controller
             return view('cms.error', ['message' => 'Article not found!']);
         }
         
+        /*
         $this->validate($request, [
             'content_en' => 'required|max:510',
             'content_sr' => 'required|max:510',            
             'position' => 'integer'
         ]);
+         * 
+         */
                
         $data = $request->all();
         $paragraph = new ArticleParagraph($data);
@@ -327,6 +364,24 @@ class ArticlesController extends Controller
         
         return 'success';
         
+    }
+    
+     /**
+     * Handle a request for validating form info when creating a new image for the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of the Article
+     * @return \Illuminate\Http\Response or a View
+     */
+    public function validateImage(Request $request) {
+        $this->validate($request, [
+            'caption_en' => 'max:255',
+            'caption_sr' => 'max:255',
+            'credit' => 'max:255',
+            'image' => 'required|max:15000|mimes:jpeg,jpg,bmp,png', 
+            'position' => 'integer'
+        ]);
     }
     
      /**
@@ -345,6 +400,7 @@ class ArticlesController extends Controller
             return view('cms.error', ['message' => 'Article not found!']);
         }
         
+        /*
         $this->validate($request, [
             'caption_en' => 'max:255',
             'caption_sr' => 'max:255',
@@ -352,6 +408,8 @@ class ArticlesController extends Controller
             'image' => 'required|max:15000|mimes:jpeg,jpg,bmp,png', 
             'position' => 'integer'
         ]);
+         * 
+         */
                
         $data = $request->all();
         $image = new ArticleImage($data);

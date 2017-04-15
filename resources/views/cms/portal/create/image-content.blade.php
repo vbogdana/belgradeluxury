@@ -1,4 +1,7 @@
-{{ Form::open(['route' => ['cms.portal.articles.create.image', $article->category->name_en, $article->artID], 'method' => 'post', 'enctype' => "multipart/form-data"]) }}
+{{ Form::open(['route' => ['cms.portal.articles.create.image', $article->category->name_en, $article->artID], 
+               'method' => 'post', 
+               'data-validate' => route("cms.portal.articles.validate.image"),
+               'data-type' => 'image']) }}
 
 <div class='form-group'>
     <label for='image' class='col-md-4 control-label'>Image</label>

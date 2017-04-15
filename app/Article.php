@@ -40,4 +40,12 @@ class Article extends Model
     public function event() {
         return $this->hasOne('App\Event', 'artID', 'artID');
     }
+    
+    public function paragraphs() {
+        return $this->hasMany('App\ArticleParagraph', 'artID', 'artID');
+    }
+    
+    public function images() {
+        return $this->hasMany('App\ArticleImage', 'artID', 'artID');
+    }
 }

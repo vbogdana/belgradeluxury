@@ -56,6 +56,10 @@
                             {{ Form::submit('Create content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
+                            {{ Form::open(['route' => ['cms.portal.articles.reorder', $category->name_en, $article->artID], 'method' => 'get']) }}
+                            {{ Form::submit('Edit content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.portal.articles.edit', $category->name_en, $article->artID], 'method' => 'get']) }}
