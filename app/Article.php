@@ -42,10 +42,10 @@ class Article extends Model
     }
     
     public function paragraphs() {
-        return $this->hasMany('App\ArticleParagraph', 'artID', 'artID');
+        return $this->hasMany('App\ArticleParagraph', 'artID', 'artID')->orderBy('position', 'asc');
     }
     
     public function images() {
-        return $this->hasMany('App\ArticleImage', 'artID', 'artID');
+        return $this->hasMany('App\ArticleImage', 'artID', 'artID')->orderBy('position', 'asc');
     }
 }

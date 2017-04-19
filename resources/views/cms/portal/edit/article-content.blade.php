@@ -89,7 +89,19 @@
                         @if(($k === 1) || ((($k - 1) > 0) && ((($k - 1) % 3) !== 0)))
                         </div>
                         @endif
-                    </div>                               
+                    </div> 
+                
+                    <div class="panel-heading text-center">
+                        <div class="form-group ">
+                            <h3 class="text-center">WHEN YOU ARE FINISHED</h3>
+                            {{ Form::open(['route' => ['cms.portal.articles.reorder', $category->name_en, $article->artID], 'method' => 'post']) }}                           
+                            <button id='submit' type="button" class="btn btn-success">
+                                SAVE ARTICLE
+                            </button>
+                            <a id="back" class="btn btn-danger" style="margin-left: 15px" href="{{ route("cms.portal.articles", ['category' => $article->category->name_en]) }}">Cancel</a>                                                
+                            {{ Form::close() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,108 +150,40 @@
     // Submit na CREATE article    
     $('#submit').on('click', function(ev) {
         ev.preventDefault();
-        max = i - 1;
-        
-        // reset errors
-        $('.has-error').removeClass('has-error');
-        $('.help-block').html("");
-        $('.help-block').css('display', 'none');
-        
-        validated = true;
         $('body').append("<div class='overlay'></div>");
-        validateForm(0);        
-    });
-    
-    function validateForm(i) {
-        $form = $('#mainForm #content' + i + ' form');
-        if ($form.length === 0) {
+
+        var array = [];
+        var _token = $('input[name=_token]').val();
+        var j = 0;
+        while (1) {           
+            var section = $('#content' + j);
+            if (section.length === 0) {
+                 break;
+            }
+            var oldId = section.find('.content').attr("id");
+            array[oldId + ""] = j;
+            j++;
+        }
+        if (j === 0) {
             $('.overlay').remove();
+            window.location = $('#back').attr('href');
             return;
         }
-        var url = $form.attr('data-validate');
-        var data = new FormData($form[0]);
+       
         $.ajax({
-            url: url,
-            type: 'POST',           
-            contentType: false,
-            processData: false,
-            data: data
-        }).done(function() {            
-            if (i === max) {                
-                if (validated)
-                    submitForm(0);
-                $('.overlay').remove();
-                return;
-            }           
-            validateForm(i+1);            
-        }).fail(function(msg) {           
-            validated = false;           
-            if ($form.attr('data-type') === 'paragraph') {
-                if (msg.responseText.search("\"content_en\"") !== -1)
-                    checkError($form, msg, "content_en", 15); 
-                if (msg.responseText.search("\"content_sr\"") !== -1)
-                    checkError($form, msg, "content_sr", 15); 
-            } else if ($form.attr('data-type') === 'image') {
-                if (msg.responseText.search("\"caption_en\"") !== -1)
-                    checkError($form, msg, "caption_en", 15); 
-                if (msg.responseText.search("\"caption_sr\"") !== -1)
-                    checkError($form, msg, "caption_sr", 15); 
-                if (msg.responseText.search("\"credit\"") !== -1)
-                    checkError($form, msg, "credit", 11);
-                if (msg.responseText.search("\"image\"") !== -1)
-                    checkError($form, msg, "image", 10);
-            }     
-            if (i === max) {
-                $('.overlay').remove();
-                return;  
-            }
-            validateForm(i+1);            
-        });
-    }
-    
-    function checkError(form, msg, field, offset) {
-        var i = msg.responseText.search("\"" + field + "\"");            
-        var error = msg.responseText.substring(i + offset);
-        var message = error.substring(0, error.indexOf("\""));
-        var r = /\\u([\d\w]{4})/gi;
-        message = message.replace(r, function (match, grp) {
-            return String.fromCharCode(parseInt(grp, 16)); 
-        } );
-        message = unescape(message);
-        div = form.find('#' + field).parent().parent();
-        div.addClass('has-error');
-        block = div.find('.help-block');
-        block.css('display', 'block');
-        block.html("<strong>" + message + "</strong>");
-    }
-    
-    function submitForm(i) {
-        $form = $('#mainForm #content' + i + ' form');
-        if ($form.length === 0) {
+            //url: url,
+            type: 'POST',
+            data: {_token:_token, positions:array}
+        }).done(function(data) {   
             $('.overlay').remove();
-            return;
-        }
-        var url = $form.attr('action');
-        var data = new FormData($form[0]);
-        $.ajax({
-            url: url,
-            type: 'POST',           
-            contentType: false,
-            processData: false,
-            data: data
-        }).done(function(data) {
-            if (i === max) {
-                window.location = $('#articles').attr('href');
-                $('.overlay').remove();
-                return;
-            }
-            submitForm(i+1);
+            window.location = $('#back').attr('href');
         }).fail(function(msg) {
             $('.overlay').remove();
             window.alert("NEPREDVIDJENA GRESKA: " + msg.responseText);
             return;
         });
-    }
+        
+    });
 
 </script>
 @stop

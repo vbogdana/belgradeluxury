@@ -77,7 +77,9 @@
 @section('scripts')
 <script>
     
-    var i = 0, max = 0;
+    var i = <?php echo $max; ?>, 
+        max = <?php echo $max; ?>,
+        min = <?php echo $max; ?>;
     var validated = true;
     
     function dragStart(ev, i) {
@@ -126,8 +128,9 @@
     
     function addContent(typeOfContent) {
         $('body').append("<div class='overlay'></div>");
-        $('#content' + i).append("<h4 class='text-center'>SECTION " + i + "</h4>");
-        $('#content' + i + ' h4').append("&nbsp;&nbsp;&nbsp;<a class='btn btn-danger'>X</a>");
+        $('#content' + i).append("<div class='row' style='margin-bottom: 30px'></div>");
+        $('#content' + i + ' .row').append("<h4 class='col-xs-10 text-center'>SECTION " + i + "</h4>"); 
+        $('#content' + i + ' .row').append("<a class='remove-section col-xs-2 btn btn-danger' onclick='removeSection(" + i + ")'>Remove section</a>");
         $.ajax({
             data: {typeOfContent: typeOfContent},
             type: 'GET'
@@ -143,6 +146,29 @@
         });       
     }
     
+    function removeSection(s) {
+        $('body').append("<div class='overlay'></div>");
+        $('#content' + s).remove();
+        j = s + 1;
+        while(1) {
+            var section = $('#content' + j);
+            if (section.length === 0) {
+                i--;
+                $('.overlay').remove();
+                return;
+            }
+            section.attr("id", "content" + (j-1));
+            section.attr("ondragstart", "dragStart(event," + (j-1) + ")");
+            section.attr("ondrop", "drop(event," + (j-1) + ")");
+            section.find("h4").html("SECTION " + (j-1));
+            section.find('.remove-section').attr('onclick', "removeSection(" + (j-1) + ")");
+            section.find('input[name=position]').attr('value', (j-1));
+            j++;
+        }
+        i--;
+        $('.overlay').remove();
+    }
+    
     // Submit na CREATE article    
     $('#submit').on('click', function(ev) {
         ev.preventDefault();
@@ -155,7 +181,7 @@
         
         validated = true;
         $('body').append("<div class='overlay'></div>");
-        validateForm(0);        
+        validateForm(min);        
     });
     
     function validateForm(i) {
@@ -175,7 +201,7 @@
         }).done(function() {            
             if (i === max) {                
                 if (validated)
-                    submitForm(0);
+                    submitForm(min);
                 $('.overlay').remove();
                 return;
             }           

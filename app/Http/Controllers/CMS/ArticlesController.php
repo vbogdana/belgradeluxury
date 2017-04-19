@@ -124,7 +124,19 @@ class ArticlesController extends Controller
                 return Response::json(View::make('cms.portal.create.image-content', ['article' => $article])->render());
             }         
         } else {
-            return view('/cms/portal/create/article-content', ['article' => $article]);
+            $maxPar = $maxImg = $max = -1;
+            if ($article->paragraphs !== null) {
+                $maxPar = $article->paragraphs->max('position');
+            }
+            if ($article->images !== null) {
+                $maxImg = $article->images->max('position');
+            }
+            if ($maxImg !== -1 || $maxPar !== -1) {
+                $max = ($maxPar > $maxImg ? $maxPar : $maxImg) + 1;  
+            } else {
+                $max = 0;
+            }
+            return view('/cms/portal/create/article-content', ['article' => $article, 'max' => $max]);
         }
     }
     
@@ -204,6 +216,44 @@ class ArticlesController extends Controller
         $article = $this->edit($request->all(), $article);
         
         return redirect('/cms/portal/'.$c->name_en.'/articles');
+    }
+    
+    /**
+     * Handle a reorder sections of the article post request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param   $artID primary key of Article
+     * @return \Illuminate\Http\Response
+     */
+    public function reorder(Request $request, $category, $artID)
+    {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $data = $request->all();
+        $positions = $data['positions'];
+        
+        foreach($article->paragraphs as $paragraph) {
+            $newPos = $positions[$paragraph->position];
+            $paragraph->position = $newPos;
+            $paragraph->save();
+        }
+        foreach($article->images as $image) {
+            $newPos = $positions[$image->position];
+            $image->position = $newPos;
+            $image->save();
+        }
+        return;
+        /*
+        foreach($positions as $key => $value) {
+        echo "Key: ".$key." Value: ".$value.", ";
+        }
+        */
     }
     
     /**

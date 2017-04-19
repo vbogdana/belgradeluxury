@@ -43,14 +43,28 @@
                             No image
                             @endif
                         </div>
-                        <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-3">
                             <h4>{{ $event->article->title_en }}</h4>
-                            <br/>
                             @if ($event->place !== null)
                             <strong>Place: {{ $event->place->title_en }}</strong>
+                            <br/>
+                            @endif
+                            @if ($event->article->category !== null)
+                            <strong>Category: {{ $event->article->category->name_en }}</strong>
+                            <br/>
                             @endif
                             <p>{{ $event->getDay() }}</p>
                             <p>{{ $event->date }}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
+                            {{ Form::open(['route' => ['cms.portal.articles.create.content', $event->article->category->name_en, $event->article->artID], 'method' => 'get']) }}
+                            {{ Form::submit('Create content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
+                            {{ Form::open(['route' => ['cms.portal.articles.reorder', $event->article->category->name_en, $event->article->artID], 'method' => 'get']) }}
+                            {{ Form::submit('Edit content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
+                            
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.events.edit', $event->evID], 'method' => 'get']) }}

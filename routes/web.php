@@ -239,6 +239,7 @@ Route::post('cms/portal/{category}/articles/{artID}/create/image', ['as' => 'cms
 Route::post('cms/portal/articles/validate/paragraph', ['as' => 'cms.portal.articles.validate.paragraph', 'uses' => 'CMS\ArticlesController@validateParagraph']);
 Route::post('cms/portal/articles/validate/image', ['as' => 'cms.portal.articles.validate.image', 'uses' => 'CMS\ArticlesController@validateImage']);
 Route::get('cms/portal/{category}/articles/{artID}/reorder', ['as' => 'cms.portal.articles.reorder', 'uses' => 'CMS\ArticlesController@loadReorder']);
+Route::post('cms/portal/{category}/articles/{artID}/reorder', ['as' => 'cms.portal.articles.reorder', 'uses' => 'CMS\ArticlesController@reorder']);
 
 /***
  * User
