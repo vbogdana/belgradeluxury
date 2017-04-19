@@ -48,7 +48,7 @@
                         
                                                                                               
                         <div class="form-group{{ $errors->has('skills_en') ? ' has-error' : '' }}">
-                            <label for="skills_en" class="col-md-4 control-label">Skills & languages (eng)*</label>
+                            <label for="skills_en" class="col-md-4 control-label">Skills & languages (eng) (separate each with ;) *</label>
 
                             <div class="col-md-6">
                                 <textarea id="skills_en" maxlength="400" 
@@ -64,7 +64,7 @@
                         </div>
                         
                         <div class="form-group{{ $errors->has('skills_sr') ? ' has-error' : '' }}">
-                            <label for="skills_sr" class="col-md-4 control-label">Skills & languages (ser)*</label>
+                            <label for="skills_sr" class="col-md-4 control-label">Skills & languages (ser) (separate each with ;) *</label>
 
                             <div class="col-md-6">
                                 <textarea id="skills_sr" maxlength="400" 

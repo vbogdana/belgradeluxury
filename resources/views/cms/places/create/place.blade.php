@@ -22,6 +22,9 @@
                     @endif
                 </div>
                 <div class="panel-body">
+                    <div class="panel-info" style="color: red; padding-bottom: 15px; border-bottom: 1px solid rgba(37, 81, 119, 0.2); margin-bottom: 20px">
+                        !!! PRILIKOM UBACIVANJA WORKING HOURS - SVAKI DAN RAZDVOJITI ";" (tacka-zarezom) !!!
+                    </div>
                     @if(isset($place))
                     <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.places.edit', ['placeID' => $place->placeID]) }}">
                     @else
@@ -139,15 +142,29 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('hours') ? ' has-error' : '' }}">
-                            <label for="hours" class="col-md-4 control-label">Hours*</label>
+                        <div class="form-group{{ $errors->has('hours_en') ? ' has-error' : '' }}">
+                            <label for="hours_en" class="col-md-4 control-label">Hours (eng) * (separate each with ;)</label>
 
                             <div class="col-md-6">
-                                <input id="hours" type="text" maxlength="255" class="form-control" name="hours" value="{{ isset($place) ? $place->hours : old('hours') }}" required>
+                                <input id="hours_en" type="text" maxlength="255" class="form-control" name="hours_en" value="{{ isset($place) ? $place->hours_en : old('hours_en') }}" required>
 
-                                @if ($errors->has('hours'))
+                                @if ($errors->has('hours_en'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('hours') }}</strong>
+                                        <strong>{{ $errors->first('hours_en') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('hours_sr') ? ' has-error' : '' }}">
+                            <label for="hours_sr" class="col-md-4 control-label">Hours (ser) * (separate each with ;)</label>
+
+                            <div class="col-md-6">
+                                <input id="hours_sr" type="text" maxlength="255" class="form-control" name="hours_sr" value="{{ isset($place) ? $place->hours_sr : old('hours_sr') }}" required>
+
+                                @if ($errors->has('hours_sr'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('hours_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>

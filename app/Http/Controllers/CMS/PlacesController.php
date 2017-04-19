@@ -110,7 +110,8 @@ class PlacesController extends Controller {
             'description_en' => 'max:1020',
             'description_sr' => 'max:1020',
             'address' => 'required|max:255',
-            'hours' => 'required|max:255',
+            'hours_en' => 'required|max:255',
+            'hours_sr' => 'required|max:255',
             'image' => 'max:15000|mimes:jpeg,jpg,bmp,png',
             'geoLat' => 'required|numeric|between:0,360',
             'geoLong' => 'required|numeric|between:0,360',
@@ -170,7 +171,8 @@ class PlacesController extends Controller {
         $place->description_en = $data['description_en'];
         $place->description_sr = $data['description_sr'];
         $place->address = $data['address'];
-        $place->hours = $data['hours'];       
+        $place->hours_en = $data['hours_en']; 
+        $place->hours_sr = $data['hours_sr']; 
         $place->phone = $data['phone'];
         $place->geoLat = $data['geoLat'];
         $place->geoLong = $data['geoLong'];

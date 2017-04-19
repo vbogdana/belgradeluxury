@@ -4,7 +4,7 @@
                'data-type' => 'image']) }}
 
 <div class='form-group'>
-    <label for='image' class='col-md-4 control-label'>Image</label>
+    <label for='image' class='col-md-4 control-label'>Image *</label>
     
     <div class='col-md-6'>
         <input type='file' id='image' class='form-control' name='image'>

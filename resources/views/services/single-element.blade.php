@@ -257,7 +257,17 @@
                             </h2>
                             <p>{{ $object['description_'.$locale] }}</p>
                             @if($type === 'places')
-                            <p class='text-capitalize'>@lang('services.hours'): {{ $object->hours }}</p>
+                            <p class='text-capitalize'>
+                                @lang('services.hours'): <br/>
+                                @if ($object['hours_'.$locale] !== null)
+                                <?php
+                                    $hours = explode(";", $object['hours_'.$locale]);
+                                ?>
+                                @foreach ($hours as $hour)
+                                    {{ $hour }}<br/>
+                                @endforeach
+                                @endif
+                            </p>
                             @endif
                         </div>
                     </div>

@@ -19,9 +19,9 @@ class Place extends Model
     protected $fillable = [
         'title_en', 'title_sr', 'type',
         'description_en', 'description_sr', 
-        'address', 'hours', 'phone', 
-        'geoLat', 'geoLong', 'link',
-        'priority'
+        'address', 'hours_en', 'hours_sr', 
+        'phone', 'geoLat', 'geoLong', 
+        'link', 'priority'
     ];
     
     public function images() {

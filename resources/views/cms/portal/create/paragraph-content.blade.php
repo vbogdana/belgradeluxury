@@ -4,7 +4,7 @@
                'data-type' => 'paragraph']) }}
 
 <div class='form-group'>
-    <label for='content_en' class='col-md-4 control-label'>Content (eng)</label>
+    <label for='content_en' class='col-md-4 control-label'>Content (eng) *</label>
     
     <div class='col-md-6'>
         <textarea id='content_en' maxlength='510' rows='5' cols='70' class='form-control' name='content_en'></textarea>
@@ -13,7 +13,7 @@
 </div>
 
 <div class='form-group'>
-    <label for='content_sr' class='col-md-4 control-label'>Content (ser)</label>
+    <label for='content_sr' class='col-md-4 control-label'>Content (ser) *</label>
     
     <div class='col-md-6'>
         <textarea id='content_sr' maxlength='510' rows='5' cols='70' class='form-control' name='content_sr'></textarea>
