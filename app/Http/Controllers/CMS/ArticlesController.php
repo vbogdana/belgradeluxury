@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Response;
 use View;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesController extends Controller
 {
@@ -155,7 +156,66 @@ class ArticlesController extends Controller
             return view('cms.error', ['message' => 'Article not found!']);
         }
         
+        return view('/cms/portal/edit/reorder-article-content', ['article' => $article, 'category' => $c]);
+    }
+    
+    /**
+     * Loads a view to edit content sections of the article.
+     *
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return view
+     */
+    function loadEditSections($category, $artID) {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
         return view('/cms/portal/edit/article-content', ['article' => $article, 'category' => $c]);
+    }
+    
+    /**
+     * Loads a view to edit content sections of the article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return view
+     */
+    function loadEditSection(Request $request, $category, $artID) {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $this->validate($request, [
+            'type' => 'required',
+            'id' => 'required|integer'
+        ]);
+        
+        $data = $request->all();       
+        $id = $data['id'];
+        $type = $data['type'];     
+        
+        switch ($type) {
+            case "paragraph": 
+                $section = ArticleParagraph::find($id);
+                break;
+            case "image": 
+                $section = ArticleImage::find($id);
+                break;
+        }
+        
+        if ($section == null) {
+            return view('cms.error', ['message' => 'Section not found!']);
+        }
+               
+        return view('/cms/portal/edit/'.$type.'-content', ['article' => $article, 'section' => $section]);
     }
     
     /**
@@ -216,45 +276,7 @@ class ArticlesController extends Controller
         $article = $this->edit($request->all(), $article);
         
         return redirect('/cms/portal/'.$c->name_en.'/articles');
-    }
-    
-    /**
-     * Handle a reorder sections of the article post request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param $category name of the Category
-     * @param   $artID primary key of Article
-     * @return \Illuminate\Http\Response
-     */
-    public function reorder(Request $request, $category, $artID)
-    {
-        $c = $this->checkCategory($category);
-        
-        $article = Article::find($artID);
-        if ($article == null) {
-            return view('cms.error', ['message' => 'Article not found!']);
-        }
-        
-        $data = $request->all();
-        $positions = $data['positions'];
-        
-        foreach($article->paragraphs as $paragraph) {
-            $newPos = $positions[$paragraph->position];
-            $paragraph->position = $newPos;
-            $paragraph->save();
-        }
-        foreach($article->images as $image) {
-            $newPos = $positions[$image->position];
-            $image->position = $newPos;
-            $image->save();
-        }
-        return;
-        /*
-        foreach($positions as $key => $value) {
-        echo "Key: ".$key." Value: ".$value.", ";
-        }
-        */
-    }
+    }   
     
     /**
      * Handle an edit image request for the application.
@@ -412,6 +434,9 @@ class ArticlesController extends Controller
         $paragraph->artID = $artID;
         $paragraph->save();
         
+        $article->updated_at = Carbon::now();
+        $article->save();
+        
         return 'success';
         
     }
@@ -470,6 +495,9 @@ class ArticlesController extends Controller
         }
         $image->save();
         
+        $article->updated_at = Carbon::now();
+        $article->save();
+        
         return 'success';
         
     }
@@ -490,6 +518,7 @@ class ArticlesController extends Controller
         if (array_key_exists('image', $data)) {
             $path = $data['image']->store('articles/'.$article->artID, 'images');
             $article->image = $path;
+            $article->updated_at = Carbon::now();
             $article->save();
         }
     }
@@ -515,6 +544,7 @@ class ArticlesController extends Controller
         if ($article->image != null) {
             Storage::delete('public/images/'.$article->image);
             $article->image = null;
+            $article->updated_at = Carbon::now();
             $article->save(); 
         }
         
@@ -522,4 +552,197 @@ class ArticlesController extends Controller
     }
     
    
+    /**
+     * Handle a reorder sections of the article post request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param   $artID primary key of Article
+     * @return \Illuminate\Http\Response
+     */
+    public function reorder(Request $request, $category, $artID)
+    {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $data = $request->all();
+        $positions = $data['positions'];
+        
+        foreach($article->paragraphs as $paragraph) {
+            $newPos = $positions[$paragraph->position];
+            $paragraph->position = $newPos;
+            $paragraph->save();
+        }
+        foreach($article->images as $image) {
+            $newPos = $positions[$image->position];
+            $image->position = $newPos;
+            $image->save();
+        }
+        
+        $article->updated_at = Carbon::now();
+        $article->save();
+        return;
+        /*
+        foreach($positions as $key => $value) {
+        echo "Key: ".$key." Value: ".$value.", ";
+        }
+        */
+    }
+    
+    /**
+     * Handle a request for editing a paragraph inside an article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return \Illuminate\Http\Response
+     */
+    public function editParagraphSection(Request $request, $category, $artID)
+    {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $this->validate($request, [
+            'content_en' => 'required|max:510',
+            'content_sr' => 'required|max:510'
+        ]);
+               
+        $data = $request->all();
+        $parID = $data['parID'];
+        $paragraph = ArticleParagraph::find($parID);
+        if ($paragraph == null) {
+            return view('cms.error', ['message' => 'Paragraph not found!']);
+        }
+        
+        $paragraph->content_en = $data['content_en'];
+        $paragraph->content_sr = $data['content_sr'];
+        $paragraph->save();
+        
+        $article->updated_at = Carbon::now();
+        $article->save();
+        
+        // go back to edit sections
+        return redirect('/cms/portal/'.$c->name_en.'/articles/'.$article->artID.'/edit/sections');
+    }
+    
+    /**
+     * Handle a request for editing an image inside an article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return \Illuminate\Http\Response
+     */
+    public function editImageSection(Request $request, $category, $artID)
+    {
+               
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+  
+        $this->validate($request, [
+            'caption_en' => 'max:255',
+            'caption_sr' => 'max:255',
+            'credit' => 'max:255',
+            'image' => 'max:15000|mimes:jpeg,jpg,bmp,png'
+        ]);
+               
+        $data = $request->all();
+        $imgID = $data['imgID'];
+        $image = ArticleImage::find($imgID);
+        if ($image == null) {
+            return view('cms.error', ['message' => 'Image not found!']);
+        }
+
+        $image->caption_en = $data['caption_en'];
+        $image->caption_sr = $data['caption_sr'];
+        $image->credit = $data['credit'];
+        if (array_key_exists('image', $data)) {
+            Storage::delete('public/images/'.$image->image);
+            $path = $data['image']->store('articles/'.$article->artID, 'images');
+            $image->image = $path;
+        }
+        $image->save();
+        
+        $article->updated_at = Carbon::now();
+        $article->save();
+        
+        // go back to edit sections
+        return redirect('/cms/portal/'.$c->name_en.'/articles/'.$article->artID.'/edit/sections');
+    }
+    
+    /**
+     * Handle a request for deleting a section inside an article.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param $category name of the Category
+     * @param $artID primary key of Article
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteSection(Request $request, $category, $artID)
+    {
+        $c = $this->checkCategory($category);
+        
+        $article = Article::find($artID);
+        if ($article == null) {
+            return view('cms.error', ['message' => 'Article not found!']);
+        }
+        
+        $this->validate($request, [
+            'type' => 'required',
+            'id' => 'required|integer'
+        ]);
+        
+        $data = $request->all();       
+        $id = $data['id'];
+        $type = $data['type'];     
+        
+        switch ($type) {
+            case "paragraph": 
+                $section = ArticleParagraph::find($id);
+                break;
+            case "image": 
+                $section = ArticleImage::find($id);
+                break;
+        }
+        
+        if ($section == null) {
+            return view('cms.error', ['message' => 'Section not found!']);
+        }
+        
+        $position = $section->position;
+        
+        // delete the section
+        // article paragraph links cascade
+        switch ($type) {
+            case "paragraph": 
+                ArticleParagraph::destroy($id); 
+                break;
+            case "image": 
+                Storage::delete('public/images/'.$section->image);
+                ArticleImage::destroy($id);
+        }
+ 
+        // update positions
+        DB::table('article_paragraphs')->where('position', '>', $position)->decrement('position');
+        DB::table('article_images')->where('position', '>', $position)->decrement('position');
+        
+        $article->updated_at = Carbon::now();
+        $article->save();
+        
+        // go back to edit sections
+        return redirect('/cms/portal/'.$c->name_en.'/articles/'.$article->artID.'/edit/sections');
+        
+     }
 }

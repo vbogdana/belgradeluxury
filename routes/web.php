@@ -240,6 +240,11 @@ Route::post('cms/portal/articles/validate/paragraph', ['as' => 'cms.portal.artic
 Route::post('cms/portal/articles/validate/image', ['as' => 'cms.portal.articles.validate.image', 'uses' => 'CMS\ArticlesController@validateImage']);
 Route::get('cms/portal/{category}/articles/{artID}/reorder', ['as' => 'cms.portal.articles.reorder', 'uses' => 'CMS\ArticlesController@loadReorder']);
 Route::post('cms/portal/{category}/articles/{artID}/reorder', ['as' => 'cms.portal.articles.reorder', 'uses' => 'CMS\ArticlesController@reorder']);
+Route::get('cms/portal/{category}/articles/{artID}/edit/sections', ['as' => 'cms.portal.articles.edit.sections', 'uses' => 'CMS\ArticlesController@loadEditSections']);
+Route::get('cms/portal/{category}/articles/{artID}/edit/section', ['as' => 'cms.portal.articles.edit.section', 'uses' => 'CMS\ArticlesController@loadEditSection']);
+Route::post('cms/portal/{category}/articles/{artID}/edit/paragraph', ['as' => 'cms.portal.articles.edit.paragraph', 'uses' => 'CMS\ArticlesController@editParagraphSection']);
+Route::post('cms/portal/{category}/articles/{artID}/edit/image', ['as' => 'cms.portal.articles.edit.image', 'uses' => 'CMS\ArticlesController@editImageSection']);
+Route::post('cms/portal/{category}/articles/{artID}/delete/section', ['as' => 'cms.portal.articles.delete.section', 'uses' => 'CMS\ArticlesController@deleteSection']);
 
 /***
  * User

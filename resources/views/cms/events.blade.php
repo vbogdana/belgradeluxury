@@ -58,13 +58,16 @@
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.portal.articles.create.content', $event->article->category->name_en, $event->article->artID], 'method' => 'get']) }}
-                            {{ Form::submit('Create content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::submit('Create sections', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
                             {{ Form::open(['route' => ['cms.portal.articles.reorder', $event->article->category->name_en, $event->article->artID], 'method' => 'get']) }}
-                            {{ Form::submit('Edit content', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::submit('Reorder sections', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
                             {{ Form::close() }}
                             
+                            {{ Form::open(['route' => ['cms.portal.articles.edit.sections', $event->article->category->name_en, $event->article->artID], 'method' => 'get']) }}
+                            {{ Form::submit('Edit & Remove sections', array('class' => 'btn btn-primary', 'style' => 'margin-bottom: 5px')) }}
+                            {{ Form::close() }}
                         </div>
                         <div class="col-xs-12 col-sm-3" style="padding-top: 15px">
                             {{ Form::open(['route' => ['cms.events.edit', $event->evID], 'method' => 'get']) }}

@@ -34,7 +34,7 @@
                     <a href="{{ route("cms.portal") }}">Portal ></a>&nbsp;
                     <a id="articles" href="{{ route("cms.portal.articles", ['category' => $article->category->name_en]) }}">{{ $article->category->name_en }} ></a>&nbsp
                     {{ $article->title_en }} >&nbsp;
-                    Edit Article Sections
+                    Reorder Article Content
                 </div>
                 
                 <div class="panel-body">                    
@@ -56,12 +56,16 @@
                             @endif
                             <div class='col-sm-4'>
                                 <div id="content{{ $k }}" 
-                                     class='panel-group'>
+                                     class='panel-group' 
+                                     draggable="true"
+                                     ondragstart="dragStart(event,{{ $k }})"
+                                     ondragover="allowDrop(event)"
+                                     ondrop="drop(event,{{ $k }})">
                                     <h4 class='text-center'>SECTION {{ $k }}</h4>
                                     
                                     <div id="{{ $k }}" class='content'>
                                         @if($j >= $m)
-                                        <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive' />
+                                        <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive'/>
                                         <br/>
                                         <p>
                                             Caption (eng): {{ $images[$i]['caption_en'] }} <br/>
@@ -83,7 +87,7 @@
                                             $j++; 
                                         ?>
                                         @elseif ($images[$i]['position'] < $paragraphs[$j]['position'])
-                                        <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive' />
+                                        <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive'/>
                                         <br/>
                                         <p>
                                             Caption (eng): {{ $images[$i]['caption_en'] }} <br/>
@@ -105,26 +109,7 @@
                                             $j++; 
                                         ?>
                                         @endif
-                                        
-                                        <div class="text-center" style='margin-top: 30px'>
-                                            {{ Form::open(['route' => ['cms.portal.articles.edit.section', $category->name_en, $article->artID], 'method' => 'get']) }}
-                                            <input type="hidden" name="type" value="{{ $type }}" />
-                                            <input type='hidden' name='id' value='{{ $id }}'/>
-                                            <button id='submit' type="submit" class="btn btn-default">
-                                                EDIT SECTION
-                                            </button>
-                                            {{ Form::close() }}
-                                            
-                                            <br/>
-                                            
-                                            {{ Form::open(['route' => ['cms.portal.articles.delete.section', $category->name_en, $article->artID], 'method' => 'post']) }}
-                                            <input type="hidden" name="type" value="{{ $type }}" />
-                                            <input type='hidden' name='id' value='{{ $id }}'/>
-                                            <button id='submit' type="submit" class="btn btn-danger">
-                                                DELETE SECTION
-                                            </button>
-                                            {{ Form::close() }}
-                                        </div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -135,6 +120,17 @@
                         @endif
                     </div> 
                 
+                    <div class="panel-heading text-center">
+                        <div class="form-group ">
+                            <h3 class="text-center">WHEN YOU ARE FINISHED REORDERING</h3>
+                            {{ Form::open(['route' => ['cms.portal.articles.reorder', $category->name_en, $article->artID], 'method' => 'post']) }}                           
+                            <button id='submit' type="button" class="btn btn-success">
+                                SAVE ARTICLE
+                            </button>
+                            <a id="back" class="btn btn-danger" style="margin-left: 15px" href="{{ route("cms.portal.articles", ['category' => $article->category->name_en]) }}">Cancel</a>                                                
+                            {{ Form::close() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,7 +141,78 @@
 @section('scripts')
 <script>
     
+    var i = 0, max = 0;
+    var validated = true;
     
+    function dragStart(ev, i) {
+        ev.dataTransfer.setData("id", i);
+    }
+    
+    function drop(ev, i) {
+        ev.preventDefault();
+        var droppedOn = i;
+        var dragged = parseInt(ev.dataTransfer.getData("id"));
+        var tmp, form;
+        
+        if (dragged === droppedOn)
+            return;
+        
+        tmp = $('#content' + dragged + ' .content').detach();
+        if (dragged > droppedOn) {
+            for (var k = dragged - 1; k >= droppedOn; k--) {               
+                form = $('#content' + k + ' .content').detach();
+                $('#content' + (k+1)).append(form);
+            }
+        } else if (dragged < droppedOn) {
+            for (var k = dragged + 1; k <= droppedOn; k++) {               
+                form = $('#content' + k + '  .content').detach();
+                $('#content' + (k-1)).append(form);
+            }
+        }
+        $('#content' + droppedOn).append(tmp);        
+    }
+    
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    
+    // Submit na CREATE article    
+    $('#submit').on('click', function(ev) {
+        ev.preventDefault();
+        $('body').append("<div class='overlay'></div>");
+
+        var array = [];
+        var _token = $('input[name=_token]').val();
+        var j = 0;
+        while (1) {           
+            var section = $('#content' + j);
+            if (section.length === 0) {
+                 break;
+            }
+            var oldId = section.find('.content').attr("id");
+            array[oldId + ""] = j;
+            j++;
+        }
+        if (j === 0) {
+            $('.overlay').remove();
+            window.location = $('#back').attr('href');
+            return;
+        }
+       
+        $.ajax({
+            //url: url,
+            type: 'POST',
+            data: {_token:_token, positions:array}
+        }).done(function(data) {   
+            $('.overlay').remove();
+            window.location = $('#back').attr('href');
+        }).fail(function(msg) {
+            $('.overlay').remove();
+            window.alert("NEPREDVIDJENA GRESKA: " + msg.responseText);
+            return;
+        });
+        
+    });
 
 </script>
 @stop
