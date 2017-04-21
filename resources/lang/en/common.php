@@ -96,6 +96,7 @@ return [
 	'person' => '{1}person|[2,20]people',
 	'recommended' => 'Recommended for You',
 	'booking' => '{0}For any of our services You can contact us before your arrival to Belgrade, but also during Your stay. |{1}When you have chosen the most suitable package or service for You, the next step is to contact us. |{2}To simplify and speed up the process, booking of our services can be done online through our website. Select the service and the date, send an inquiry and our team will shortly respond with the best offer for You. You can always call us, send us an email or contact us directly via the online form. |{3}Our goal is to provide each client a unique and unforgettable experience, so we tailor our services according to Your wishes. |{4}You have decided for this service |{5}You have decided for this package',
+	'package details' => 'package details',
 	'errors' => [
 		'error' => 'error',
 		'404' => "We can't seem to find the page You are looking for!",

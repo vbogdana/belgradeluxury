@@ -47,7 +47,7 @@
 <section id='service-info' class='service-info-section fullwidth panel space-y' data-section-name='service-info-panel'>
 <!--
     OVDE IDE SADRZAJ SEKCIJE, TJ OPIS USLUGA
-    SAV TEKST SE MORA CITATI POMOCU @lang i {{ trans_choice() }} IZ resources/lang FAJLOVA
+    SAV TEKST SE MORA CITATI POMOCU lang i trans_choice() IZ resources/lang FAJLOVA
     PROCITATI O TOME
 
 <div class="container text-center row-list">
@@ -137,7 +137,7 @@
         </div>
     </div>
 </div>
---> 
+ -->
 </section>
 
 @include('inquiry-section')

@@ -15,9 +15,15 @@
             <div class="panel panel-default">
                 <div class="alert alert-success text-center text-uppercase">
                     <h3>Successfully {{ $method }}!</h3>
+                    @if (isset($parameter))
+                    <a href='{{ route($route, ['service' => $parameter]) }}' class='btn btn-success'>
+                        GO BACK TO VIEW ALL
+                    </a>
+                    @else
                     <a href='{{ route($route) }}' class='btn btn-success'>
                         GO BACK TO VIEW ALL
                     </a>
+                    @endif
                 </div>
 
                 <div class="panel-body">
@@ -67,9 +73,15 @@
                 </div>
                 
                 <div class='panel-heading text-center'>
+                    @if (isset($parameter))
+                    <a href='{{ route($route, ['service' => $parameter]) }}' class='btn btn-success'>
+                        GO BACK TO VIEW ALL
+                    </a>
+                    @else
                     <a href='{{ route($route) }}' class='btn btn-success'>
                         GO BACK TO VIEW ALL
                     </a>
+                    @endif
                 </div>
                 
             </div>

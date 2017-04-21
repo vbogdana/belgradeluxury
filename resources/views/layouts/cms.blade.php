@@ -115,6 +115,12 @@
                                     <li><a href='{{ route('cms.host') }}'>host</a></li>
                                     <li><a href='{{ route('cms.places') }}'>gastronomy</a></li>
                                     <li><a href='{{ route('cms.places') }}'>nightlife</a></li>
+                                    <li><a href='{{ route('cms.services.texts', ['service' => 'Wellness & Spa']) }}'>wellness & spa</a></li>
+                                    <li><a href='{{ route('cms.services.texts', ['service' => 'Sightseeing']) }}'>sightseeing</a></li>
+                                    <li><a href='{{ route('cms.services.texts', ['service' => 'Personel']) }}'>personel</a></li>
+                                    <li><a href='{{ route('cms.services.texts', ['service' => 'Diamond']) }}'>diamond</a></li>
+                                    <li><a href='{{ route('cms.services.texts', ['service' => 'Tickets']) }}'>tickets</a></li>
+                                    <li><a href='{{ route('cms.services.texts', ['service' => 'Business']) }}'>business</a></li>
                                 </ul>
                             </li>
                             <li>

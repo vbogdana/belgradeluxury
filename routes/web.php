@@ -398,3 +398,17 @@ Route::delete('cms/partners/{partID}/delete/main-photo', ['as' => 'cms.partners.
 Route::delete('cms/partners/{partID}/delete', ['as' => 'cms.partners.delete', 'uses' => 'CMS\PartnersController@delete']);
 Route::post('cms/partners/{packID}/show', ['as' => 'cms.partners.show', 'uses' => 'CMS\PartnersController@show']);
 Route::post('cms/partners/{packID}/hide', ['as' => 'cms.partners.hide', 'uses' => 'CMS\PartnersController@hide']);
+
+/*
+ * Other services - wellness & spa, sightseeing, personel, diamond, tickets
+ */
+Route::get('cms/{service}', ['as' => 'cms.services.texts', 'uses' => 'CMS\ServiceTextsController@loadServiceTexts']);
+Route::get('cms/{service}/create', ['as' => 'cms.services.texts.create', 'uses' => 'CMS\ServiceTextsController@loadCreateServiceText']);
+Route::post('cms/{service}/create', ['as' => 'cms.services.texts.create', 'uses' => 'CMS\ServiceTextsController@createServiceText']);
+Route::get('cms/{service}/edit/{textID}', ['as' => 'cms.services.texts.edit', 'uses' => 'CMS\ServiceTextsController@loadEditServiceText']);
+Route::post('cms/{service}/edit/{textID}', ['as' => 'cms.services.texts.edit', 'uses' => 'CMS\ServiceTextsController@editServiceText']);
+Route::get('cms/{service}/edit/{textID}/main-photo', ['as' => 'cms.services.texts.edit.main-image', 'uses' => 'CMS\ServiceTextsController@loadEditMainImage']);
+Route::post('cms/{service}/edit/{textID}/main-photo', ['as' => 'cms.services.texts.edit.main-image', 'uses' => 'CMS\ServiceTextsController@editMainImage']);
+Route::delete('cms/{service}/delete/{textID}/main-photo', ['as' => 'cms.services.texts.delete.main-image', 'uses' => 'CMS\ServiceTextsController@deleteMainImage']);
+Route::delete('cms/{service}/delete/{textID}', ['as' => 'cms.services.texts.delete', 'uses' => 'CMS\ServiceTextsController@delete']);
+
