@@ -32,9 +32,9 @@
                     <a id="call" class="btn" href='{{ route("contact") }}#contact-information'> @lang('common.call us') </a>                    
                 </div>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\square-down.svg'>                
+                    <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>                
                     <a id="email" class="btn" href='{{ route("contact") }}#contact-information'> @lang('common.send an email') </a>
-                    <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\square-down.svg'>            
+                    <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>            
                 </div>
                 <div class='col-sm-4'>
                     <a id="inquiry" class="btn" href='{{ route("contact") }}#contact-us'> @lang('common.send an inquiry') </a>                    

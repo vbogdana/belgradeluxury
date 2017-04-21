@@ -21,9 +21,9 @@
                 <div class='col-sm-4'>
                 </div>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\square-down.svg'>                                    
+                    <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>                                    
                     <a id="inquiry" class="btn" href='{{ route('contact') }}#contact-us'> @lang('common.send an inquiry') </a>                    
-                    <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\square-down.svg'>            
+                    <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>            
                 </div>
                 <div class='col-sm-4'>
                 </div>

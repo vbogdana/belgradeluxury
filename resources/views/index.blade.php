@@ -48,13 +48,13 @@
             <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
             <div class='row'>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\square-down.svg'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament.svg'>
                 </div>
                 <div class='col-sm-4'>
                     <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
                 </div>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\square-down.svg'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament.svg'>
                 </div>
             </div>
             <p class="">
@@ -111,11 +111,11 @@
                 </a>
             </div>
             <div class="col-sm-4">
-                <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\square-down.svg'>
+                <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>
                 <a class="btn" href="{{ route("contact") }}">
                     @lang('common.contact us')
                 </a>
-                <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\square-down.svg'>
+                <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>
             </div>
             <div class="col-sm-4">
                 <a class="btn" href="#">
@@ -183,10 +183,11 @@
             </p>
         </div>    
     </div>
-    <img class="gold-decor" src='{{ url("/") }}\images\decor-diamond.svg'>
+    <img class="gold-decor" src='{{ url("/") }}\images\decor.svg'>
         
     <div class="container-fluid">
         <div class="description text-center" id="package-info">
+            <h6 class="text-uppercase">{{ trans_choice('common.current', 0) }} @lang('common.package')</h6>
             <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('common.luxury', 0) }}</span> @lang('common.package') </h4>
             <a id="inquiry" 
                class="btn" 
@@ -240,7 +241,7 @@
                 </p>                
             </div>
         </div>
-        <img class="gold-decor" src='<?php echo url("/")?>\images\decor-square.svg'>
+        <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
         <div class="container-fluid text-center">
             <div class="text-uppercase">
                 <div class="col-sm-4 step">

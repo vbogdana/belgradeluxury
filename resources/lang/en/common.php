@@ -58,6 +58,7 @@ return [
 	'details' => 'details',
 	'more' => 'more',
 	'other' => 'other',
+	'current' => 'current',
 	'events' => 'events',
 	'other packages' => '{0}These are our special packages that we have prepared for You. Each one has been carefully selected by |{1}BELGRADE LUXURY |{2}team to meet all of Your needs. Choose Your favorite, or |{3}create one|{4} according to Your taste.',
 	'custom package' => '{0}If You would prefer something a little bit different than services included in our packages You can always create Your own ‘custom made’ package, thus achieving a truly unique experience. Add services to any of our existing packages or put together a new package tailored to fit Your needs, because - |{1}The Best Luxury Services Are Customized, Not Standardized.',

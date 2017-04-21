@@ -25,13 +25,13 @@
                 <div class='col-sm-4'>
                 </div>
                 <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" style='position: absolute; left:0' src='<?php echo url("/")?>\images\square-down.svg'>                                    
+                    <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>                                    
                     @if ($inquiry)
                     <a id="contact" class="btn" data-scroll href='#send-inquiry'> @lang('common.contact us') </a>                    
                     @else
                     <a id="contact" class="btn" href='{{ route("contact") }}#contact-information'> @lang('common.contact us') </a>
                     @endif
-                    <img class="img-responsive gold-ornament" style='position: absolute; right:0' src='<?php echo url("/")?>\images\square-down.svg'>            
+                    <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>            
                 </div>
                 <div class='col-sm-4'>
                 </div>

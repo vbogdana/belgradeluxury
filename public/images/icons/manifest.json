@@ -12,8 +12,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ceab4d",
-    "background_color": "#ceab4d",
+    "theme_color": "#C5B358",
+    "background_color": "#C5B358",
     "start_url": "http://belgradeluxury.com",
     "display": "standalone"
 }

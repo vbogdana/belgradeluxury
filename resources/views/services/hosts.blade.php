@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class='col-xs-12'>
-                <img class="" src='<?php echo url("/")?>/images/decor-side.svg' style='width: 100%; {{ $rotate }}'>    
+                <img class="" src='<?php echo url("/")?>/images/decor.svg' style='width: 100%; {{ $rotate }}'>    
             </div>
             <div class="clearfix"></div>           
         @endforeach

@@ -345,7 +345,7 @@
             
         }).done(function(data) {          
             //$('#status').css('background', 'rgba(0,0,0,0.7)');        
-            $('#status').css('color', '#CEAB4D');
+            $('#status').css('color', '#C5B358');
             $('#status').html(data);
             
             // RESET FORM

@@ -58,7 +58,7 @@
         </p>               
         <p></p>
     </div>
-    <img class="gold-decor" src='<?php echo url("/")?>\images\decor-square.svg'>
+    <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
     <div class="row">
         <div class="col-sm-4">
             <img class="img-responsive" src="{{ url("") }}/images/services/wellness-&-spa/test1.jpg">
@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    <img class="gold-decor" src='<?php echo url("/")?>\images\decor-square.svg'>
+    <img class="gold-decor" src='<?php echo url("/")?>\images\decor.svg'>
     <div class="row">
         <div class="col-sm-4">
             <img class="img-responsive" src="{{ url("") }}/images/services/wellness-&-spa/test1.jpg">

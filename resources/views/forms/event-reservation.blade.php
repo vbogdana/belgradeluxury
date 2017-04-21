@@ -60,9 +60,9 @@
                 <div class="description">                                      
                     <div class="text-uppercase">
                         @if($place->isRestaurant())
-                        <i class="hi-icon contact-gastronomy" style="color: #ceab4d"></i>
+                        <i class="hi-icon contact-gastronomy" style="color: #C5B358"></i>
                         @else
-                        <i class="hi-icon contact-nightlife" style="color: #ceab4d"></i>
+                        <i class="hi-icon contact-nightlife" style="color: #C5B358"></i>
                         @endif
                     </div>
                     
@@ -305,7 +305,7 @@
             
         }).done(function(data) {          
             //$('#status').css('background', 'rgba(0,0,0,0.7)');        
-            $('#status').css('color', '#CEAB4D');
+            $('#status').css('color', '#C5B358');
             $('#status').html(data);
             
             // RESET FORM
