@@ -118,7 +118,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="content_en" maxlength="1020" 
-                                          rows="5" cols="70" class="form-control" required
+                                          rows="5" cols="70" class="form-control"
                                           name="content_en">{{ isset($text) ? $text->content_en : old('content_en') }}</textarea>
                                 
                                 @if ($errors->has('content_en'))
@@ -134,7 +134,7 @@
 
                             <div class="col-md-6">
                                 <textarea id="content_sr" maxlength="1020" 
-                                          rows="5" cols="70" class="form-control" required 
+                                          rows="5" cols="70" class="form-control" 
                                           name="content_sr">{{ isset($text) ? $text->content_sr : old('content_sr') }}</textarea>
                                 
                                 @if ($errors->has('content_sr'))

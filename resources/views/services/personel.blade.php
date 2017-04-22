@@ -45,9 +45,17 @@
 @include('contact-us-section', ['inquiry' => true])
 
 <section id='service-info' class='service-info-section fullwidth panel space-y' data-section-name='service-info-panel'>
-<!--
-    OVDE IDE SADRZAJ SEKCIJE, TJ OPIS USLUGA
--->    
+    <div class="container text-center row-list">
+        <div class='description'>
+            <h1 class='text-uppercase'>@lang('common.personel')</h1>
+            <p>
+
+            </p>               
+            <p></p>
+        </div>
+
+        @include('services.list-service-texts', ['texts' => $texts])
+    </div> 
 </section>
 
 @include('inquiry-section')

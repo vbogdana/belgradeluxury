@@ -12,6 +12,7 @@
 
 // Contact us
 use App\Http\Controllers\App\AppController;
+use App\Http\Controllers\App\ServicesController;
 
 Route::group([
         'prefix' => LaravelLocalization::setLocale(),
@@ -21,6 +22,14 @@ Route::group([
     
         // Index page
         Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
+        
+        //Contact page
+        Route::get(LaravelLocalization::transRoute('routes.partners'), 
+            [
+                'as' => 'partners', 
+                'uses' => 'App\AppController@loadPartners'
+            ]
+        );
         
         //Contact page
         Route::get(LaravelLocalization::transRoute('routes.contact'), 
@@ -125,7 +134,8 @@ Route::group([
               'as' => 'sightseeing', 
               'uses' => function() {
                     AppController::loadServices($services, $packages);
-                    return view('/services/sightseeing', ['services' => $services, 'packages' => $packages]);
+                    $texts = ServicesController::loadServiceTexts('Sightseeing');
+                    return view('/services/sightseeing', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
                 }
             ]
         );
@@ -136,7 +146,8 @@ Route::group([
               'as' => 'wellness-&-spa', 
               'uses' => function() {
                     AppController::loadServices($services, $packages);
-                    return view('/services/wellness-&-spa', ['services' => $services, 'packages' => $packages]);
+                    $texts = ServicesController::loadServiceTexts('Wellness & Spa');
+                    return view('/services/wellness-&-spa', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
                 }
             ]
         );
@@ -147,7 +158,8 @@ Route::group([
               'as' => 'tickets', 
               'uses' => function() {
                     AppController::loadServices($services, $packages);
-                    return view('/services/tickets', ['services' => $services, 'packages' => $packages]);
+                    $texts = ServicesController::loadServiceTexts('Tickets');
+                    return view('/services/tickets', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
                 }
             ]
         );
@@ -158,7 +170,8 @@ Route::group([
               'as' => 'business', 
               'uses' => function() {
                     AppController::loadServices($services, $packages);
-                    return view('/services/business', ['services' => $services, 'packages' => $packages]);
+                    $texts = ServicesController::loadServiceTexts('Business');
+                    return view('/services/business', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
                 }
             ]
         );
@@ -169,7 +182,8 @@ Route::group([
               'as' => 'personel', 
               'uses' => function() {
                     AppController::loadServices($services, $packages);
-                    return view('/services/personel', ['services' => $services, 'packages' => $packages]);
+                    $texts = ServicesController::loadServiceTexts('Personel');
+                    return view('/services/personel', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
                 }
             ]
         );
@@ -180,7 +194,8 @@ Route::group([
               'as' => 'diamond', 
               'uses' => function() {
                     AppController::loadServices($services, $packages);
-                    return view('/services/diamond', ['services' => $services, 'packages' => $packages]);
+                    $texts = ServicesController::loadServiceTexts('Diamond');
+                    return view('/services/diamond', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
                 }
             ]
         );

@@ -2154,6 +2154,33 @@ a.btn.small, .btn.small {
     }
 }
 
+/*******************************************************************************
+ * 
+ *                  PARTNERS PAGE
+ *  
+ ******************************************************************************/
+.partner {
+    padding: 3px;
+}
+.partner a {
+    //color: black;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.3);
+}
+.partner a:hover {
+    background: rgba(0,0,0,0.7);
+}
+.partner a h4 {
+    margin: 0;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
 
 /*******************************************************************************
  * 

@@ -8,6 +8,7 @@
   - */
 
 return [
+	'partners' => 'partneri',
 	'contact' => 'kontakt',
     'package' => 'paketi/{title}-paket',
 	'accommodation' => 'usluge/smestaj',

@@ -12,6 +12,7 @@ return [
     */
 
 	'index' => 'VIP Experience Belgrade Nightlife',
+	'partners' => 'Partners',
 	'contact' => 'Get in Touch',
 	'reservation' => 'Reservation',
 	'package' => ':Package package',

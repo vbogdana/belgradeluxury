@@ -7,6 +7,7 @@ use App\Event;
 use App\Service;
 use App\Testemonial;
 use App\Package;
+use App\Partner;
 use Illuminate\Http\Request;
 use App\Mail\Contact;
 use Illuminate\Support\Facades\Mail;
@@ -25,6 +26,17 @@ class AppController extends Controller {
         $testemonials = Testemonial::all();
         self::loadServices($services, $packages);        
         return view('index', ["events" => $events, 'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);
+    }
+    
+    /**
+     * Show the partners page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loadPartners() {    
+        AppController::loadServices($services, $packages);
+        $partners = Partner::where('visible', 1)->get();
+        return view('partners', ['services' => $services, 'packages' => $packages, 'partners' => $partners]);
     }
     
     /**

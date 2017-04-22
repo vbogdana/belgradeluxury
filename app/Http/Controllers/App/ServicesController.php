@@ -9,6 +9,8 @@ use App\Host;
 use App\Place;
 use App\Event;
 use App\Seating;
+use App\Service;
+use App\ServiceText;
 use App\PlaceSeating;
 use App\PlaceReservation;
 use App\Http\Controllers\Controller;
@@ -23,6 +25,19 @@ use App;
 use Carbon\Carbon;
 
 class ServicesController extends Controller {
+    
+    /*
+     * Loads texts for a service
+     * 
+     * @return array
+     */
+    public static function loadServiceTexts($service) {
+        $s = Service::where('name_en', $service)->get();
+        
+        $texts = ServiceText::where('servID', $s->first()->servID)->get();
+        
+        return $texts;
+    }
     
     /**
      * Loads a view with list of all accommodation.
@@ -316,4 +331,5 @@ class ServicesController extends Controller {
         return response()->json(Lang::get('forms.success.reservation'), 200);
         //return Lang::get('forms.success.reservation');
     }
+
 }

@@ -12,6 +12,7 @@ return [
     */
 
 	'index' => 'VIP iskustvo - Noćni Život Beograda',
+	'partners' => 'Partneri',
 	'contact' => 'Kontaktirajte Nas',
 	'reservation' => 'Rezervacija',
 	'package' => ':Package Paket',

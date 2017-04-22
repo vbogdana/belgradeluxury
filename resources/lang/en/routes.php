@@ -8,6 +8,7 @@
   - */
 
 return [
+	'partners' => 'partners',
 	'contact' => 'contact',
     'package' => 'packages/{title}-package',
 	'accommodation' => 'services/accommodation',

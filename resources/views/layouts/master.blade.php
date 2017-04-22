@@ -204,7 +204,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                                 <p>
                                     <a class="link" data-scroll href="{{ route("/") }}#about-us">@lang('common.about us')</a>
                                     <a class="link" href="{{ route("contact") }}">@lang('common.contact')</a>
-                                    <a class="link" href="#">@lang('common.partners')</a>                       
+                                    <a class="link" href="{{ route('partners') }}">@lang('common.partners')</a>                       
                                     <a class="link" href="#">@lang('common.terms and conditions')</a>
                                 </p>
                             </div>                    
