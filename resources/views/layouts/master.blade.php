@@ -44,7 +44,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                
         <!-- scripts -->
         <link href="{{ url("") }}/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="{{ url("") }}/css/style.css" rel="stylesheet" type="text/css">
+        <link href="{{ url("") }}/css/style.min.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">  
         <link href="{{ url("") }}/css/animate.css" rel="stylesheet" type="text/css">
@@ -258,7 +258,7 @@ $locale = LaravelLocalization::getCurrentLocale();
         <script src="{{ url("") }}/js/animsition.min.js"></script>
         <script src="{{ url("") }}/js/jquery.scrollify.min.js"></script>        
         <script src="{{ url("") }}/js/smooth-scroll.min.js"></script>
-        <script src="{{ url("") }}/js/main.js"></script>
+        <script src="{{ url("") }}/js/main.min.js"></script>
         <script>/*
             url = "https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js";
             $.getScript(url);

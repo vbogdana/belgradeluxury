@@ -46,8 +46,15 @@
                                          <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg">
                                      </a>
                                  </div>
+                            @else
+                            <div class="col-sm-4">
+                                <a href="{{ route('cms.services.texts', ['service' => $service->name_en]) }}">
+                                    <h4>{{ $service->name_en }}</h4>
+                                    <img class="img-responsive" src="{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg">
+                                </a>
+                            </div>
+                            @endif 
                             <?php $i++; ?>
-                            @endif  
                         @endforeach
                     </div>                                      
                 </div>
