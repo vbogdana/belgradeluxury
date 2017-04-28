@@ -30,4 +30,7 @@ return [
 	'places.reservation' => 'services/reservation/{placeID}-{title}',
 	'events.reservation' => 'services/reservation/{placeID}-{title}/{evID}',
 	'reservation' => 'services/reservation',
+	'accommodation.inquiry' => 'services/accommodation/inquiry/{accID}-{title}',
+	'vehicles.inquiry' => 'services/vehicles/inquiry/{vehID}-{title}',
+	'inquiry' => 'services/inquiry',
 ];

@@ -31,6 +31,7 @@ return [
 	'accommodation' => 'accommodation',
 	'vehicles' => 'vehicles',
 	'wellness-&-spa' => 'wellness & spa',
+	'wellness & spa' => 'wellness & spa',
 	'host' => 'host',
 	'security' => 'security',
 	'reservations' => 'reservations',

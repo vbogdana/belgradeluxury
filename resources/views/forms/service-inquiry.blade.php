@@ -1,0 +1,377 @@
+
+<!--
+  -
+  - * © Belgrade Luxury 2017
+  - * All rights reserved
+  -
+  -->
+
+@extends('layouts.master')
+
+<?php 
+    $locale = LaravelLocalization::getCurrentLocale();
+    if ($type === 'accommodation') 
+    {
+        if ($object->spa)
+        { 
+            $subtype = "spa";
+        }
+        else if ($object->hotel)
+        { 
+            $subtype = "hotel";
+        }
+        else
+        { 
+            $subtype = "apartment";
+        } 
+    } else if ($type === 'vehicles')
+    { 
+        $subtype = 'vehicles';
+    }
+?>
+
+@section('title-meta')
+<!-- page titles and meta tags -->
+@if($type === 'accommodation')
+<title>{{ $object['title_'.$locale] }} - Online @lang('titles.inquiry') - Belgrade Luxury</title>
+@elseif($type === 'vehicles')
+<title>{{ $object['model'] }} - Online @lang('titles.inquiry') - Belgrade Luxury</title>
+@endif
+<meta name="description" content="{{ $object['description_'.$locale] }}" />
+<!-- Facebook share meta tags -->
+@if($type === 'accommodation')
+<meta property="og:title" content="{{ $object['title_'.$locale] }} - Online {{ Lang::get('titles.inquiry') }} - Belgrade Luxury" />
+@elseif($type === 'vehicles')
+<meta property="og:title" content="{{ $object['model'] }} - Online {{ Lang::get('titles.inquiry') }} - Belgrade Luxury" />
+@endif
+<meta property="og:title" content="{{ $object['title_'.$locale] }} - Online {{ Lang::get('titles.inquiry') }} - Belgrade Luxury" />
+<meta property="og:description" content="{{ $object['description_'.$locale] }}" />
+<meta property="og:image" content="{{ asset('storage/images/'.$object->image) }}" />   
+@stop
+
+@section('stylesheets')
+@stop
+
+@section('language-toolbar')
+@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+<li>
+    <a rel="alternate" hreflang="{{ $localeCode }}" 
+       href="
+        <?php 
+            $url = LaravelLocalization::getLocalizedURL($localeCode);
+            if ($type === 'accommodation') {
+                $titleStart = strpos($url, "-");
+                $url = substr($url, 0, $titleStart + 1).str_replace(' ', '-', $object['title_'.$localeCode]);
+            }
+            echo $url;
+        ?>
+       ">
+        {{ $properties['native'] }}
+    </a>
+</li>
+@endforeach
+@stop
+
+@section('content')
+<!--    START FORM SECTION      -->
+<section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ asset('storage/images/'.$object->image) }})">
+    <div class="overlay"></div>
+    <div class="hero-holder">
+        <div class="hero-inner text-center">
+   
+            <div>
+                
+                {{ Form::open(['route' => 'inquiry', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
+                
+                <input type='hidden' id='service' name='service' value='{{ $type }}' />
+                
+                <div class="description">                                      
+                    <div class="text-uppercase">
+                        <i class="hi-icon contact-{{ $subtype }}" style="color: #C5B358"></i>
+                    </div>
+                    
+                    <div class="tags" style="margin-bottom: 0">
+                        <a href="{{ route($type)}}" class="link">@lang('common.'.$type)</a>
+                        
+                        <span>
+                        &nbsp;/&nbsp;
+                        </span>
+                        
+                        @if ($type === 'accommodation')
+                        <a href="{{ route("accommodation.single", [ 'accID' => $object->accID, 'title' => str_replace(" ", "-", $object['title_'.$locale]) ]) }}" class="link">    
+                            {{ $object['title_'.$locale] }}
+                        </a>    
+                        @elseif ($type === 'vehicles')
+                        <a href="{{ route("vehicles.vehicle", [ 'vehID' => $object->vehID, 'title' => str_replace(" ", "-", $object->model) ]) }}" class="link">    
+                            {{ $object->model }}
+                        </a>   
+                        @endif
+                    </div>
+                </div>
+                
+                <div class="container-fluid" style="font-family: Aspergit, Raleway, sans-serif">
+                    <div class="description text-center">
+                        <h2 class="text-uppercase"> Online @lang('services.inquiry')</h2>
+                        <p id="status" style="font-size: 1.2em"></p>           
+                    </div>    
+                </div>
+                
+                <div class="container-fluid">
+                    
+                    <div class="row">                       
+                        <div class="form-group">
+                            <label for="name" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.name'): *</label>
+
+                            <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
+                                <input id="name" type="text" maxlength="255" class="form-control" name="name" required>
+
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">                       
+                        <div class="form-group col-sm-6">
+                            <label for="email" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.email'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                                <input id="email" type="text" maxlength="255" class="form-control" name="email" required>
+
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="phone" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.phone'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                                <input id="phone" type="text" maxlength="255" class="form-control" name="phone" required>
+
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="object" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.'.$type):</label>
+
+                            <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
+                                <select id="object" class="form-control text-capitalize" name="object">
+                                    
+                                    @foreach($objects as $o)  
+                                    @if ($type === 'accommodation')
+                                    <option value="{{ $o->accID }}"
+                                            <?php
+                                        if (isset($object)) {
+                                            if ($object->accID === $o->accID) {
+                                                echo "selected";
+                                            }
+                                        } 
+                                        ?>
+                                    >
+                                        {{ $o['title_'.$locale] }}
+                                    </option>
+                                    @elseif($type === 'vehicles')
+                                    <option value="{{ $o->vehID }}"
+                                            <?php
+                                        if (isset($object)) {
+                                            if ($object->vehID === $o->vehID) {
+                                                echo "selected";
+                                            }
+                                        } 
+                                        ?>
+                                    >
+                                        {{ $o->model }}, {{ $o->brand }}
+                                    </option>
+                                    @endif
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="date_start" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.date.start'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                            
+                                <input id="date_start" type="date" name="date_start" required="" class="form-control" placeholder="dd.mm.yyyy">
+                                
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-sm-6">
+                            <label for="date_end" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.date.end'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                            
+                                <input id="date_end" type="date" name="date_end" required="" class="form-control" placeholder="dd.mm.yyyy">
+                                
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="people" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.people'): *</label>
+
+                            <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
+                                <input id="people" type="number" max="50" min="1" step="1" class="form-control" name="people" required>
+                                
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>   
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="message" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">{{ trans_choice('forms.message', 0) }}:</label>
+
+                            <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
+                                <textarea id="message" maxlength="800" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="message"></textarea>
+
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::submit(Lang::get('forms.send').' '.trans_choice('forms.inquiry', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
+                    </div>
+                </div>
+                
+                {{ Form::close() }}
+            </div>
+        </div>
+    </div>    
+</section>
+<!--    END FORM SECTION      -->
+@stop
+
+@section('scripts')
+<script>   
+    var validation = true;
+    
+    $(window).on('load', function() {
+        $('input[type=submit]').on('click', function(ev) {
+            ev.preventDefault();
+            sendMessage();
+        });
+    });
+
+    function checkError(msg, field, offset) {
+        i = msg.responseText.search("\"" + field + "\"");            
+        var error = msg.responseText.substring(i + offset);
+        var message = error.substring(0, error.indexOf("\""));
+        var r = /\\u([\d\w]{4})/gi;
+        message = message.replace(r, function (match, grp) {
+            return String.fromCharCode(parseInt(grp, 16)); 
+        } );
+        message = unescape(message);
+        div = $('#' + field).parent().parent();
+        div.addClass('has-error');
+        block = div.find('.help-block');
+        block.css('display', 'block');
+        block.html("<strong>" + message + "</strong>");
+        validation = false;
+    }
+    
+    function sendMessage() {
+        /*
+        var _token = $('input[name=_token]').val();
+        var name = $('#name').val();
+        var phone = $('#phone').val();
+        var place = $('#place').val();
+        var date = $('#date').val();
+        var people = $('#people').val();
+        var seating = $('#seating').val();
+        var message = $('#message').val();
+        */
+        
+        var url = $('form').attr('action');
+        $form = $('form');
+        var data = new FormData($form[0]);
+        
+        $('#status').css('background', 'transparent');
+        $('#status').html('');
+        $('.has-error').removeClass('has-error');
+        $('.help-block').html("");
+        $('.help-block').css('display', 'none');           
+ 
+        $('.animsition').prepend("<div class='request overlay'></div>");
+        $('.animsition').prepend("<div class='animsition-loading'></div>");
+        $('.request.overlay').css('z-index', '100');
+        $('.animsition-loading').css('z-index', '110');
+        
+        $.ajax({
+            url: url,
+            type: 'POST',
+            //dataType: 'json',
+            contentType: false,
+            processData: false,
+            data: data
+            //data: {_token:_token, name:name, phone:phone, place:place, date:date, time:time, people:people, seating:seating, message:message}
+            
+        }).done(function(data) {          
+            //$('#status').css('background', 'rgba(0,0,0,0.7)');        
+            $('#status').css('color', '#C5B358');
+            $('#status').html(data);
+            
+            // RESET FORM
+            $('form').find("input[type=text], input[type=number], input[type=date], textarea").val("");
+            //$('option').removeAttr('selected');
+            //$('option:first-child').attr('selected', '');
+
+            $('.request.overlay').remove();
+            $('.animsition-loading').remove();
+        }).fail(function(msg) {
+            
+            if (msg.responseText.search("\"name\"") !== -1)
+                checkError(msg, "name", 9); 
+            if (msg.responseText.search("\"phone\"") !== -1)
+                checkError(msg, "phone", 10);
+            if (msg.responseText.search("\"email\"") !== -1)
+                checkError(msg, "email", 10);
+            if (msg.responseText.search("\"date_start\"") !== -1)
+                checkError(msg, "date_start", 15); 
+            if (msg.responseText.search("\"date_end\"") !== -1)
+                checkError(msg, "date_end", 13);
+            if (msg.responseText.search("\"people\"") !== -1)
+                checkError(msg, "people", 11);
+            if (msg.responseText.search("\"message\"") !== -1)
+                checkError(msg, "message", 12);
+            
+            i = msg.responseText.search("\"error\"");
+            if (i !== -1) {                            
+                var error = msg.responseText.substring(i + 9);
+                var message = error.substring(0, error.indexOf("\""));
+                var r = /\\u([\d\w]{4})/gi;
+                message = message.replace(r, function (match, grp) {
+                    return String.fromCharCode(parseInt(grp, 16)); 
+                } );
+                message = unescape(message);
+                validation = false;
+                $('#status').css('color', 'red');
+                $('#status').html(message);
+            }
+            
+            if (validation) {
+                $('#status').css('color', 'red');
+                //$('#status').css('background', 'rgba(0,0,0,0.7)');
+                $('#status').html(msg.responseText);
+            }
+            
+            $('.request.overlay').remove();
+            $('.animsition-loading').remove();
+        });
+    }
+
+</script>
+@stop

@@ -494,10 +494,20 @@
                             <div class='row'>
                                 <a id="contact" class="btn small" href='{{ route("contact") }}'> 
                                     @lang('common.contact us') 
-                                </a>                                
+                                </a>
+                                @if($type === 'accommodation')
+                                <a id="inquiry" class="btn small" href='{{ route("accommodation.inquiry", [ 'accID' => $object->accID, 'title' => str_replace(" ", "-", $object['title_'.$locale]) ]) }}'> 
+                                    @lang('common.inquiry') 
+                                </a> 
+                                @elseif($type === 'vehicles')
+                                <a id="inquiry" class="btn small" href='{{ route("vehicles.inquiry", [ 'vehID' => $object->vehID, 'title' => str_replace(" ", "-", $object->model) ]) }}'> 
+                                    @lang('common.inquiry') 
+                                </a> 
+                                @else
                                 <a id="inquiry" class="btn small" href='{{ route("contact") }}#contact-us'> 
                                     @lang('common.inquiry') 
-                                </a>      
+                                </a> 
+                                @endif
                             </div>
                         </div>                    
                     </div>
@@ -592,7 +602,15 @@
                                 <a href="{{ route("places.reservation", [ 'placeID' => $s->placeID, 'title' => str_replace(" ", "-", $s['title_'.$locale]) ]) }}" class="btn small">
                                     online @lang('services.reservation')
                                 </a>
-                                @elseif ($type !== 'places')
+                                @elseif($type === 'accommodation')
+                                <a id="inquiry" class="btn small" href='{{ route("accommodation.inquiry", [ 'accID' => $s->accID, 'title' => str_replace(" ", "-", $s['title_'.$locale]) ]) }}'> 
+                                    @lang('common.inquiry') 
+                                </a> 
+                                @elseif($type === 'vehicles')
+                                <a id="inquiry" class="btn small" href='{{ route("vehicles.inquiry", [ 'vehID' => $s->vehID, 'title' => str_replace(" ", "-", $s->model) ]) }}'> 
+                                    @lang('common.inquiry') 
+                                </a> 
+                                @elseif ($type !== 'places' && $type !== 'vehicles' && $type !== 'accommodation')
                                 <a href="{{ route("contact") }}" class="btn small">
                                     @lang('common.quick inquiry')
                                 </a>

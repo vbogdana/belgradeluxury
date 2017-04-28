@@ -46,7 +46,7 @@
                 <a href="{{ route("accommodation.single", [ 'accID' => $acc->accID, 'title' => str_replace(" ", "-", $acc['title_'.$locale]) ]) }}" class="btn small">
                     @lang('common.details')
                 </a>
-                <a href="{{ route("contact") }}#contact-us" class="btn small">
+                <a href="{{ route("accommodation.inquiry", [ 'accID' => $acc->accID, 'title' => str_replace(" ", "-", $acc['title_'.$locale]) ]) }}" class="btn small">
                     @lang('common.quick inquiry')
                 </a>
             </div>

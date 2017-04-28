@@ -15,6 +15,7 @@ return [
 	'partners' => 'Partners',
 	'contact' => 'Get in Touch',
 	'reservation' => 'Reservation',
+	'inquiry' => 'Inquiry',
 	'package' => ':Package package',
 	'accommodation' => 'Accommodation',
 	'vehicles' => 'Vehicles',

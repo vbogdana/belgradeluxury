@@ -220,6 +220,28 @@ Route::group([
               'uses' => 'App\ServicesController@createReservation'
             ]
         );
+        
+        //Online accommodation inquiry
+        Route::get(LaravelLocalization::transRoute('routes.accommodation.inquiry'), 
+            [
+              'as' => 'accommodation.inquiry', 
+              'uses' => 'App\ServicesController@loadAccommodationInquiry'
+            ]
+        );        
+        //Online vehicles inquiry
+        Route::get(LaravelLocalization::transRoute('routes.vehicles.inquiry'), 
+            [
+              'as' => 'vehicles.inquiry', 
+              'uses' => 'App\ServicesController@loadVehicleInquiry'
+            ]
+        );
+        // Post inquiry
+        Route::post(LaravelLocalization::transRoute('routes.inquiry'), 
+            [
+              'as' => 'inquiry', 
+              'uses' => 'App\ServicesController@createInquiry'
+            ]
+        );
 
     });
 

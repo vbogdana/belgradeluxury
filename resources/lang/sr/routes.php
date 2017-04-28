@@ -30,4 +30,7 @@ return [
 	'places.reservation' => 'usluge/rezervacija/{placeID}-{title}',
 	'events.reservation' => 'usluge/rezervacija/{placeID}-{title}/{evID}',
 	'reservation' => 'usluge/rezervacija',
+	'accommodation.inquiry' => 'usluge/smestaj/upit/{accID}-{title}',
+	'vehicles.inquiry' => 'usluge/vozila/upit/{vehID}-{title}',
+	'inquiry' => 'usluge/upit',
 ];

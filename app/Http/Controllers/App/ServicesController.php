@@ -13,12 +13,13 @@ use App\Service;
 use App\ServiceText;
 use App\PlaceSeating;
 use App\PlaceReservation;
+use App\ServiceInquiry;
 use App\Http\Controllers\Controller;
 use Request;
 use Response;
 use View;
 use Illuminate\Support\Facades\DB;
-use App\Mail\Reservation;
+use App\Mail\Inquiry;
 use Illuminate\Support\Facades\Mail;
 use Lang;
 use App;
@@ -332,4 +333,97 @@ class ServicesController extends Controller {
         //return Lang::get('forms.success.reservation');
     }
 
+    /**
+     * Loads a form for inquiry for accommodation.
+     *
+     * @return view
+     */
+    function loadAccommodationInquiry($accID) {
+        AppController::loadServices($services, $packages);
+        
+        $object = Accommodation::find($accID);
+        if ($object == null) {
+            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages]);
+        }
+        
+        if ($object->apartment) {
+            $objects = Accommodation::where('apartment', '1')->get();        
+        } elseif ($object->hotel) {
+            $objects = Accommodation::where('hotel', '1')->get();
+        }
+        return view('forms.service-inquiry', ['type' => 'accommodation', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
+     * Loads a form for inquiry for vehicle.
+     *
+     * @return view
+     */
+    function loadVehicleInquiry($vehID) {
+        AppController::loadServices($services, $packages);
+        $object = Vehicle::find($vehID);
+        if ($object == null) {
+            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages]);
+        }
+        
+        $objects = Vehicle::all();
+        return view('forms.service-inquiry', ['type' => 'vehicles', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
+     * Creates new inquiry.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *
+     * @return string
+     */
+    function createInquiry(\Illuminate\Http\Request $request) {
+        // validate
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|max:255|email',
+            'phone' => 'required|numeric',
+            'people' => 'required|integer|min:1|max:50',
+            'message' => 'max:800',
+            'date_start' => 'required|date_format:Y-m-d',
+            'date_end' => 'required|date_format:Y-m-d'
+        ]);
+        
+        // mass assign to inquiry (name, phone, email, service, people, message)
+        $data = $request->all(); 
+        $locale = App::getLocale();
+        $data['route'] = 'undefined';
+        $inquiry = new ServiceInquiry($data);
+        
+        // check service validity
+        if ($data['service'] === 'accommodation') {
+            $o = Accommodation::find($data['object']);
+        } else if ($data['service'] === 'vehicles') {
+            $o = Vehicle::find($data['object']);
+        } else {
+           return response()->json(['error' => Lang::get('forms.errors.message')], 401);
+        }
+        if ($o === null) {
+            return response()->json(['error' => Lang::get('forms.errors.message')], 401);
+        } else {
+            if ($data['service'] === 'accommodation') {
+                $inquiry->object = $o->title_en; 
+                $data['object'] = $o->title_sr;
+                $data['route'] = route('accommodation.single', [ 'accID' => $o->accID, 'title' => str_replace(" ", "-", $o['title_'.$locale]) ]);
+            } elseif ($data['service'] === 'vehicles') {
+                $inquiry->object = $o->model.', '.$o->brand; 
+                $data['object'] = $o->model.', '.$o->brand;
+                $data['route'] = route('vehicles.vehicle', [ 'vehID' => $o->vehID, 'title' => str_replace(" ", "-", $o->model) ]);
+            }
+        }
+        
+        $inquiry->save();
+        $data['date_start'] = date("d/M/y", strtotime($data['date_start'])); 
+        $data['date_end'] = date("d/M/y", strtotime($data['date_end']));         
+        Mail::to('inquiry@belgradeluxury.com')->send(new Inquiry($data));
+        return response()->json(Lang::get('forms.success.inquiry'), 200);
+        //return Lang::get('forms.success.inquiry');
+    }
+    
 }

@@ -47,4 +47,5 @@ return [
 	'reservation' => 'rezervacija',
 	'reservations' => 'rezervacije traju do',
 	'free reservations' => 'Rezervacije su besplatne!',
+	'inquiry' => 'upit',
 ];

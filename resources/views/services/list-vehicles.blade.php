@@ -39,7 +39,7 @@
                 <a href="{{ route("vehicles.vehicle", [ 'vehID' => $vehicle->vehID, 'title' => str_replace(" ", "-", $vehicle->model) ]) }}" class="btn small">    
                     @lang('common.details')
                 </a>
-                <a href="{{ route("contact") }}#contact-us" class="btn small">
+                <a href="{{ route("vehicles.inquiry", [ 'vehID' => $vehicle->vehID, 'title' => str_replace(" ", "-", $vehicle->model) ]) }}" class="btn small">
                     @lang('common.quick inquiry')
                 </a>
             </div>

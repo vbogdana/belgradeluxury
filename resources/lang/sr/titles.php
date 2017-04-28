@@ -15,6 +15,7 @@ return [
 	'partners' => 'Partneri',
 	'contact' => 'Kontaktirajte Nas',
 	'reservation' => 'Rezervacija',
+	'inquiry' => 'Upit',
 	'package' => ':Package Paket',
 	'accommodation' => 'Smeštaj',
 	'vehicles' => 'Vozila',

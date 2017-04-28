@@ -47,4 +47,5 @@ return [
 	'reservation' => 'reservation',
 	'reservations' => 'reservations last until',
 	'free reservations' => 'Reservations are free!',
+	'inquiry' => 'inquiry',
 ];
