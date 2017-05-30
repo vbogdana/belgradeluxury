@@ -1,0 +1,40 @@
+	/*
+  	services icon font: Services
+  	Creation date: 31/05/2017 00:02
+  	*/
+
+@font-face {
+  font-family: "services";
+  src: url("../fonts/services.eot");
+  src: url("../fonts/services.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/services.woff") format("woff"),
+       url("../fonts/services.ttf") format("truetype"),
+       url("../fonts/services.svg#services") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "services";
+    src: url("./services.svg#services") format("svg");
+  }
+}
+
+[class^="services-"]:before, [class*=" services-"]:before,
+[class^="services-"]:after, [class*=" services-"]:after {   
+  font-family: services;
+}
+
+.services-diamond:before { content: "\f100"; }
+.services-sightseeing:before { content: "\f101"; }
+.services-nightlife:before { content: "\f102"; }
+.services-personel:before { content: "\f103"; }
+.services-business:before { content: "\f104"; }
+.services-tickets:before { content: "\f105"; }
+.services-gastronomy:before { content: "\f106"; }
+.services-security:before { content: "\f107"; }
+.services-host:before { content: "\f108"; }
+.services-wellness-spa:before { content: "\f109"; }
+.services-vehicles:before { content: "\f10a"; }
+.services-accommodation:before { content: "\f10b"; }

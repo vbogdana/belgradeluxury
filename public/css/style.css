@@ -2266,8 +2266,12 @@ a.btn.small, .btn.small {
 }
 .package-details {
     z-index: 3;
+    font-family: Quicksand, Raleway, sans-serif;
 }
 @media screen and (min-width: 768px) {
+    .package-details-section .overlay:after {
+        background: rgba(0,0,0,0.7);
+    }
     .package-details {
         position: absolute;
         left: 0;
@@ -2279,6 +2283,19 @@ a.btn.small, .btn.small {
     .package-details .row {
         display: table-cell;
         vertical-align: middle;
+    }
+}
+.package-details h5 {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+.package-details h6 {
+    color: #c5b358;
+    margin-bottom: 5px;
+}
+@media screen and (max-width: 767px) {
+    .package-details .col-sm-4 {
+        margin-bottom: 20px;
     }
 }
 

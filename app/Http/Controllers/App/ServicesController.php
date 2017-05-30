@@ -58,9 +58,10 @@ class ServicesController extends Controller {
             return Response::json(View::make('services.list-accommodation', array('accommodation' => $accommodation[$type]))->render());                
         } else {
             AppController::loadServices($services, $packages);
+            $toppicks = Accommodation::where('apartment', '1')->orderBy('priority', 'desc')->take(10)->get();
         }
 
-        return view('services.accommodation', ['list' => $accommodation, 'types' => $types, 'services' => $services, 'packages' => $packages]);
+        return view('services.accommodation', ['list' => $accommodation, 'types' => $types, 'services' => $services, 'packages' => $packages, 'toppicks' => $toppicks]);
     }
      /**
      * Loads a view for an apartment page.
@@ -154,6 +155,12 @@ class ServicesController extends Controller {
         if(($key = array_search('restaurant', $types)) !== false) {
             unset($types[$key]);
         }
+        // STAVI DA SPLAVOVI BUDU PRVI
+        if(($key = array_search('splav', $types)) !== false) {
+            $value = $types[$key];
+            $types[$key] = $types[0];
+            $types[0] = $value;
+        }
         foreach ($types as $type) {
             $places[$type] = Place::where('type', $type)->orderBy('priority', 'desc')->paginate(10);
         }
@@ -164,9 +171,10 @@ class ServicesController extends Controller {
             return Response::json(View::make('services.list-places', array('places' => $places[$type]))->render());                
         } else {
             AppController::loadServices($services, $packages);
+            $events = Event::getTopPicks();
         }
 
-        return view('services.nightlife', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages]);
+        return view('services.nightlife', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages, 'events' => $events]);
     }
     
     /**

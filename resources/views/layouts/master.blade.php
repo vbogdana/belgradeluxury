@@ -47,7 +47,7 @@ $locale = LaravelLocalization::getCurrentLocale();
         <link href="{{ url("") }}/css/style.min.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">  
-        <link href="{{ url("") }}/css/animate.css" rel="stylesheet" type="text/css">
+        <link href="{{ url("") }}/css/animate.min.css" rel="stylesheet" type="text/css">
         @yield('stylesheets')        
     </head>
     

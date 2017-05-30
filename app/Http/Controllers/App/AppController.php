@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Event;
+use App\Accommodation;
 use App\Service;
 use App\Testemonial;
 use App\Package;
@@ -23,9 +24,10 @@ class AppController extends Controller {
      */
     public function loadIndex() {
         $events = Event::getTopPicks();
+        $apartments = Accommodation::where('apartment', '1')->orderBy('priority', 'desc')->take(10)->get();
         $testemonials = Testemonial::all();
         self::loadServices($services, $packages);        
-        return view('index', ["events" => $events, 'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);
+        return view('index', ["events" => $events, 'apartments' => $apartments,'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);
     }
     
     /**
