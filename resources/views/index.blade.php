@@ -41,6 +41,66 @@
 </section>
 <!--    END VIDEO SECTION      -->
 
+<!--    START TOP PICKS SECTION      -->
+<section id="top-picks" class="top-picks-section interstitial fullwidth space-y" data-section-name="top-picks-panel">
+    <div id="upcoming-events" class="container-fluid"> 
+        <div class="side-tab text-center">
+            <i class="fa contact-calendar"></i>
+        </div>
+        <div class="side-carousel">
+            <div class="carousel-holder text-center">
+                <div class="top-picks-carousel">
+                    @foreach($events as $event)
+                    <div class="slide hover-effects hi-icon-effect">
+                        <div class="events text-uppercase">
+                            <div class='date'>
+                                <div class="day-of-week">
+                                    {{ substr($event->getDay(), 0, 3) }}
+                                </div>
+                                <div class="day">
+                                    {{ $event->getDate().trans_choice('common.ordinal', $event->getDate()) }}
+                                </div>
+                                <div class="month">
+                                    {{ substr($event->getMonth(), 0, 3) }} 
+                                </div>                                                                       
+                            </div>   
+                        </div>
+                        <div class="block" style="background-image: url({{ asset('storage/images/'.$event->article->image) }})">
+                            <div class="hover text-uppercase"> 
+                                <div class="events">
+                                    <div class="title">
+                                        <a href="{{ route("events.reservation", ['placeID' => $event->placeID, 'title' => str_replace(" ", "-", $event->place['title_'.$locale]), 'evID' => $event->evID]) }}">
+                                            <h5>{{ $event->article['title_'.$locale] }}</h5>
+                                        </a>
+                                        &nbsp;&nbsp;@
+                                        <a href="{{ route("places.place", [ 'placeID' => $event->place->placeID, 'title' => str_replace(" ", "-", $event->place['title_'.$locale]) ]) }}" >
+                                            <h5>{{ $event->place['title_'.$locale] }}</h5>
+                                        </a>
+                                        <br/>
+                                        <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+                                            <h6><i class="fa fa-phone" aria-hidden="true"></i>
+                                            (+381) 064 4519 017
+                                            </h6>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover" style="height: 50px">
+                                <a class="btn small" href='{{ route("events.reservation", ['placeID' => $event->placeID, 'title' => str_replace(" ", "-", $event->place['title_'.$locale]), 'evID' => $event->evID]) }}'>
+                                    @lang('services.reserve') online
+                                </a>
+                            </div> 
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>                  
+        </div>
+    </div>
+</section>
+<!--    END TOP PICKS SECTION      -->
+
 <!--    START ABOUT US SERVICES SECTION      -->
 <section id="services" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services-panel">            
     <div class="container">
@@ -274,56 +334,7 @@
         </div>              
     </section>
     
-    <div id="upcoming-events" class="events-section space-y">
-        <div class="container text-center">
-            <div class="description">
-                <h2 class="text-uppercase"> @lang('common.upcoming') @lang('common.events') </h2>
-                <p>
-                </p>                
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="carousel-holder text-center">
-                <div class="events-carousel">
-                    @foreach($events as $event)
-                    @for($i = 0; $i < 10; $i++)
-                    <div class="slide hover-effects hi-icon-effect">
-                        <figure>
-                            <div class="img-holder">
-                                <img src="<?php echo url('/')."/images/events/".$event->image ?>" alt="{{ $event['title_'.$locale] }}">
-                            </div>
-                            <figcaption>                               
-                                <div class="header">
-                                    <!--
-                                        <h3>{{ $event['title_'.$locale] }}<br/>DRUGA LINIJA</h3>
-                                    
-                                        <a href="#"  class="hi-icon fa-{{ strtolower($event->category_en) }}"></a>
-                                        <p style='padding: 4px 0 0;'>
-                                            {{ $event['category_'.$locale] }}
-                                        </p>
-                                        <h2>{{ $event['day_'.$locale] }}</h2>
-                                        <h3>{{ $event->date }}</h3>                          
-                                </div>
-                                <div class="content">
-                                    <a href="#" class="hi-icon fa-map-marker"></a>                               
-                                    <h2>{{ $event['place_'.$locale] }}</h2>
-                                    <a class="btn" style="margin: 0; padding: 5px 10px; font-size: 0.8em;">
-                                        @lang('common.more')
-                                    </a>
-                                    <a class="telephone" href="tel:+381644519017">
-                                        <i class="fa fa-phone" aria-hidden="true"></i>
-                                        (+381) 064 4519 017
-                                    </a>
-                                </div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    @endfor
-                    @endforeach
-                </div>
-            </div>        
-        </div>
-    </div>
+    
 </section>
 -->
 <!--    END BELGRADE SECTION      -->

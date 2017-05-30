@@ -30,57 +30,29 @@ $(window).on("load", function() {
  *  
  ******************************************************************************/
 $(window).on("load", function() {
-  $('.events-carousel').slick({
-      arrows: true,
+  $('.top-picks-carousel').slick({
+      arrows: false,
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 7,
-      slidesToScroll: 1,
+      slidesToShow: 3,
+      slidesToScroll: 3,
       autoplay: true,
       autoplaySpeed: 2000,
       adaptiveHeight: false,
       responsive: [
         {
-          breakpoint: 1490,
+          breakpoint: 900,
           settings: {
-            slidesToShow: 6
-          }
-        },
-        {
-          breakpoint: 1290,
-          settings: {
-            slidesToShow: 5
-          }
-        },
-        {
-          breakpoint: 1090,
-          settings: {
-            slidesToShow: 4,            
+            slidesToShow: 2,
             slidesToScroll: 2
           }
         },
         {
-          breakpoint: 890,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
-          }
-        },
-        {
-          breakpoint: 640,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            dots: false
-          }
-        },
-        {
-          breakpoint: 440,
+          breakpoint: 550,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: false
+            slidesToScroll: 1
           }
         }
         // You can unslick at a given breakpoint now by adding:

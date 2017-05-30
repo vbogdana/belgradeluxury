@@ -23,6 +23,19 @@ class Event extends Model
         'date', 'reservations'
     ];
     
+    
+    public static function getTopPicks() {
+        $events = Event::whereBetween('date', [ date("Y-m-d"), date("Y-m-d", (time()+15*24*60*60)) ])
+                ->orderBy('date', 'asc')
+                ->get(); 
+        
+        $events = $events->reject(function ($event) {
+            return $event->article->category->name_en !== "Nightlife";
+        });
+
+        return $events;
+    }
+    
     /**
      * Returns the day of the week for the event.
      *

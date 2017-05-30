@@ -668,7 +668,7 @@ section {
     box-sizing: border-box;
     margin: 3px;
 }
-.block a {
+.aboutus-section .block a {
     display: table-cell;
     vertical-align: middle;
     word-break: break-all;
@@ -678,18 +678,21 @@ section {
     background: rgba(0,0,0,0.3);
     color: #E5E4E2;
 }
-.block a:hover,
-.block a:focus {
-    /*background: #c5b358;*/
+.aboutus-section .block a:hover,
+.aboutus-section .block a:focus {
     background: rgba(0,0,0,0.7);
 }
-.block a h3 {
+.aboutus-section .block a:hover h3,
+.aboutus-section .block a:focus h3 {
+    color: #c5b358;
+}
+.aboutus-section .block a h3 {
     margin-top: auto;
     margin-bottom: auto;
     font-size: 18px;
 }
 @media screen and (max-width: 767px) {
-    .block a h3 {
+    .aboutus-section .block a h3 {
         font-size: 14px;   
     }
 }
@@ -1838,6 +1841,95 @@ a.btn.small, .btn.small {
  *                  BELGRADE EVENTS
  *  
  ******************************************************************************/
+.top-picks-section .side-tab {
+    margin: 3px 0px;
+    width: 100px;
+    float: left;
+    background: #0a0a0a;
+    height: 335px;
+    position: relative;
+}
+.top-picks-section .side-tab i {
+    top: calc(50% - 12.5px);
+    font-size: 25px;
+    position: relative;
+}
+.top-picks-section .side-tab:after {
+    content: '';
+    display: block;
+    background: #0a0a0a;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    top: calc(50% - 7px);
+    left: calc(100% - 7px);
+    z-index:5;
+}
+.top-picks-section .side-carousel {
+    position: relative;
+    float: left;
+    width: calc(100% - 100px);
+    /*padding-left: 15px;*/
+}
+.top-picks-section .carousel-holder {
+    width: 100%;
+    margin: auto;
+}
+@media screen and (max-width: 767px) {
+    .top-picks-section .side-tab {
+        width: 40px;
+    }
+    .top-picks-section .side-tab i {
+        font-size: 16px;
+    }
+    .top-picks-section .side-carousel {       
+        width: calc(100% - 40px);
+    }
+}
+.top-picks-carousel .slide {
+    margin: 3px;
+}
+.top-picks-carousel .events  {
+    padding: 0;
+}
+.top-picks-carousel .events .date {
+    margin: 0px;
+    width: 100%;
+}
+.top-picks-carousel .block {
+    width: 100%;
+    min-height: 250px;
+    margin: 0px;
+}
+.top-picks-carousel .block .hover {
+    display: table-row;
+    vertical-align: bottom;
+    word-break: break-all;
+    position: relative;
+    color: #E5E4E2;
+}
+.top-picks-carousel .block a.btn.small {
+    background: rgba(0,0,0,0.8);
+}
+.top-picks-carousel .block a.btn.small:hover {
+    background: #C5B358;
+}
+.top-picks-carousel .block .hover a {
+   font-family: Quicksand;
+}
+.top-picks-carousel .block .hover .events .title {
+    font-family: Quicksand;
+    background: rgba(0,0,0,0.8);
+    padding: 3px;
+    text-align: center;
+    /*display: table-cell;*/
+}
+.top-picks-carousel .block .hover .events .title h5 {
+    display: inline;
+}
+/*
 .events-section {
     overflow: hidden;
 }
@@ -1894,7 +1986,6 @@ a.btn.small, .btn.small {
 }
 .events-section .hover-effects figcaption .header {   
     padding: 0.8em 0.5em;
-    /*height: 100px;*/
 }
 .events-section .hover-effects figcaption .header p {
     margin-bottom: 5px;
@@ -1930,7 +2021,7 @@ a.btn.small, .btn.small {
 .events-section .hover-effects figcaption .content a.telephone:hover {
     color: #C5B358;
 }
-
+*/
 
 /*******************************************************************************
  * 

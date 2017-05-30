@@ -22,7 +22,7 @@ class AppController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function loadIndex() {
-        $events = Event::all();
+        $events = Event::getTopPicks();
         $testemonials = Testemonial::all();
         self::loadServices($services, $packages);        
         return view('index', ["events" => $events, 'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);

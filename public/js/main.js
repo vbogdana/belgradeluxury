@@ -236,6 +236,15 @@ $(document).ready(function () {
         + '.box-left:not(.service-description-section .box-left)').each(function () {
             addAnimated($(this), 'zoomIn');
         });
+        
+        $(window).on("scroll", function () {
+            var windowHeight = $(window).innerHeight();
+            // add animations to panels
+            $('.box-right:not(.video-section .box-right, .service-description-section .box-right), '
+            + '.box-left:not(.service-description-section .box-left)').each(function () {
+                addAnimation($(this), 'zoomIn', windowHeight - 100);
+            });
+        });
     }
 });
 
@@ -244,6 +253,7 @@ $(document).ready(function () {
  *                         SCROLLIFY INIT
  *  
  ******************************************************************************/
+/*
 $(document).ready(function() {
     if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
         $(function() {
@@ -273,27 +283,12 @@ $(document).ready(function() {
                     afterRender:function() {}
             });
         });
-        /*
-        $('a[data-scroll]').each(function () {           
-            $(this).on('click', function(ev) {
-                ev.preventDefault();                
-                href = $(this).attr('href');
-                page = href.substr(0, href.indexOf('#'));
-                anchor = href.substr(href.indexOf('#'));
-                if (page == "" || window.location == page) {
-                    anchor += '-panel';
-                    $.scrollify.move(anchor);
-                } else {                   
-                    window.location = page + anchor;
-                }
-            });
-        });
-         */
+        
     } else {       
              
     }
 });
-
+*/
 /*******************************************************************************
  * 
  *                  SMOOTH SCROLL INIT
