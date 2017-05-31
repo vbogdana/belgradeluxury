@@ -16,6 +16,7 @@ return [
 	'place' => 'Place',
 	'accommodation' => 'Accommodation',
 	'vehicles' => 'Vehicle',
+	'package' => 'Package',
 	'date' => 'Date',
 	'date.start' => 'Date of arrival',
 	'date.end' => 'Date of departure',

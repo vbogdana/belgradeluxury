@@ -203,7 +203,8 @@
             <h4 id="package-title" class="text-uppercase"> <span>{{ @trans_choice('common.luxury', 0) }}</span> @lang('common.package') </h4>
             <a id="inquiry" 
                class="btn" 
-               href="{{ route("contact") }}#contact-us"> 
+               data-href="{{ route("/").'/'.Lang::get('common.packages').'/'.Lang::get('common.inquiry').'/' }}"
+               data-translation="{{ Lang::get('common.package') }}"> 
                 @lang('common.send an inquiry') 
             </a>
             <a id="details" 

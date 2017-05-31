@@ -16,6 +16,7 @@ return [
 	'place' => 'Mesto',
 	'accommodation' => 'Smeštaj',
 	'vehicles' => 'Vozilo',
+	'package' => 'Paket',
 	'date' => 'Datum',
 	'date.start' => 'Datum dolaska',
 	'date.end' => 'Datum odlaska',

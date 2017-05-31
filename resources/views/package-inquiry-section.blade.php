@@ -22,7 +22,7 @@
                 </div>
                 <div class='col-sm-4'>
                     <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>                                    
-                    <a id="inquiry" class="btn" href='{{ route('contact') }}#contact-us'> @lang('common.send an inquiry') </a>                    
+                    <a id="inquiry" class="btn" href='{{ route("packages.inquiry", [ 'title' => str_replace(" ", "-", $package['title_'.$locale]) ]) }}'> @lang('common.send an inquiry') </a>                    
                     <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>            
                 </div>
                 <div class='col-sm-4'>

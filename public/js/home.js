@@ -315,14 +315,21 @@ $(window).on("load", function(ev) {
     checkMedia();
     var $figures = $('#carousel figure');
     
-    
-    $('#details').on('click', function(ev) {
-        ev.preventDefault();
+    // HANDLE MOUSE CLICK
+    function handleClick($t) {
         var package = $('figure#0').attr("class");
         package = package.replace(' ', '-');
-        var url = $(this).attr('data-href');
-        var translation = $(this).attr('data-translation');
+        var url = $t.attr('data-href');
+        var translation = $t.attr('data-translation');
         window.location.href = url + package + '-' + translation;
+    }
+    $('#details').on('click', function(ev) {
+        ev.preventDefault();
+        handleClick($(this));
+    });
+    $('#inquiry').on('click', function(ev) {
+        ev.preventDefault();
+        handleClick($(this));
     });
     
     // FOR TABLETS AND MOBILES

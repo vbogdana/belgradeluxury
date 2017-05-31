@@ -235,6 +235,13 @@ Route::group([
               'uses' => 'App\ServicesController@loadVehicleInquiry'
             ]
         );
+        //Online packages inquiry
+        Route::get(LaravelLocalization::transRoute('routes.packages.inquiry'), 
+            [
+              'as' => 'packages.inquiry', 
+              'uses' => 'App\ServicesController@loadPackageInquiry'
+            ]
+        );
         // Post inquiry
         Route::post(LaravelLocalization::transRoute('routes.inquiry'), 
             [

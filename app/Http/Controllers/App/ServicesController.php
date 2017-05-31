@@ -8,7 +8,7 @@ use App\Vehicle;
 use App\Host;
 use App\Place;
 use App\Event;
-use App\Seating;
+use App\Package;
 use App\Service;
 use App\ServiceText;
 use App\PlaceSeating;
@@ -379,6 +379,23 @@ class ServicesController extends Controller {
     }
     
     /**
+     * Loads a form for inquiry for a package.
+     *
+     * @return view
+     */
+    function loadPackageInquiry($title) {
+        AppController::loadServices($services, $packages);
+        $title = str_replace("-", " ", $title);
+        $object = Package::where('title_'.App::getLocale(), $title)->first();
+        if ($object === null) {
+            return view('errors.404', ['services' => $services, 'packages' => $packages]);       
+        }
+        
+        //$objects = Package::all();
+        return view('forms.package-inquiry', ['type' => 'packages', 'object' => $object, 'objects' => $packages, 'services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
      * Creates new inquiry.
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -409,9 +426,12 @@ class ServicesController extends Controller {
             $o = Accommodation::find($data['object']);
         } else if ($data['service'] === 'vehicles') {
             $o = Vehicle::find($data['object']);
+        } else if ($data['service'] === 'packages') {
+            $o = Package::find($data['object']);
         } else {
            return response()->json(['error' => Lang::get('forms.errors.message')], 401);
         }
+        
         if ($o === null) {
             return response()->json(['error' => Lang::get('forms.errors.message')], 401);
         } else {
@@ -419,10 +439,14 @@ class ServicesController extends Controller {
                 $inquiry->object = $o->title_en; 
                 $data['object'] = $o->title_sr;
                 $data['route'] = route('accommodation.single', [ 'accID' => $o->accID, 'title' => str_replace(" ", "-", $o['title_'.$locale]) ]);
-            } elseif ($data['service'] === 'vehicles') {
+            } else if ($data['service'] === 'vehicles') {
                 $inquiry->object = $o->model.', '.$o->brand; 
                 $data['object'] = $o->model.', '.$o->brand;
                 $data['route'] = route('vehicles.vehicle', [ 'vehID' => $o->vehID, 'title' => str_replace(" ", "-", $o->model) ]);
+            } else if ($data['service'] === 'packages') {
+                $inquiry->object = $o->title_en.' package'; 
+                $data['object'] = $o->title_sr.' paket';
+                $data['route'] = route('package', [ 'title' => str_replace(" ", "-", $o['title_'.$locale]) ]);
             }
         }
         
