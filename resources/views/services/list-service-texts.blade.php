@@ -27,7 +27,7 @@ $locale = LaravelLocalization::getCurrentLocale();
             <p class='text-justify'>
                 {{ $text['content_'.$locale] }}
             </p>
-            <a id="inquiry" class="btn" href="{{ route("contact") }}#contact-us">@lang('common.send an inquiry')</a>                   
+            <a id="inquiry" class="btn" href="{{ route("inquiry") }}">@lang('common.send an inquiry')</a>                   
         </div>
     </div>
     <?php $i++; ?>
