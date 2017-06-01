@@ -153,7 +153,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                                         </li>
                                         @endforeach
                                         <li>
-                                            <a href='#'>
+                                            <a href='{{ route("inquiry") }}'>
                                                 custom @lang('common.package')
                                             </a>
                                         </li>

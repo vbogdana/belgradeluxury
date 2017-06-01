@@ -396,6 +396,17 @@ class ServicesController extends Controller {
     }
     
     /**
+     * Loads a form for inquiry.
+     *
+     * @return view
+     */
+    function loadInquiry() {
+        AppController::loadServices($services, $packages);
+
+        return view('forms.inquiry', ['type' => 'inquiry', 'services' => $services, 'packages' => $packages]);
+    }
+    
+    /**
      * Creates new inquiry.
      * 
      * @param  \Illuminate\Http\Request  $request
@@ -428,6 +439,11 @@ class ServicesController extends Controller {
             $o = Vehicle::find($data['object']);
         } else if ($data['service'] === 'packages') {
             $o = Package::find($data['object']);
+        } else if ($data['service'] === 'inquiry') {
+            $inquiry->object = "Service Inquiry"; 
+            $data['object'] = "Service Inquiry";
+            $data['route'] = "#";  
+            $o = true;
         } else {
            return response()->json(['error' => Lang::get('forms.errors.message')], 401);
         }

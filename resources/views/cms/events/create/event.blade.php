@@ -120,7 +120,7 @@
                                     ?>                                    
                                     @foreach($categories as $category)
                                         <?php 
-                                        if (isset($event) && ($event->article->ctgID !== null) && ($event->article->ctgID === $category->ctgID)) {
+                                        if (isset($event) && ($event->article->ctgID !== null) && ($event->article->ctgID == $category->ctgID)) {
                                             $selected = "selected";
                                         } else {
                                             $selected = "";
@@ -147,7 +147,7 @@
                                     <option value="null" {{ $selected }}>none</option>
                                     @foreach($places as $place)
                                         <?php 
-                                        if (isset($event) && ($event->placeID !== null) && ($event->placeID === $place->placeID)) {
+                                        if (isset($event) && ($event->placeID !== null) && ($event->placeID == $place->placeID)) {
                                             $selected = "selected";
                                         } else {
                                             if (isset($placeID) && ($placeID == $place->placeID)) {
@@ -183,8 +183,9 @@
                             <label for="description_sr" class="col-md-4 control-label">Short Description (ser) *</label>
 
                             <div class="col-md-6">
-                                <textarea id="description_sr" maxlength="255" 
-                                          rows="5" cols="70" class="form-control" 
+                                <textarea id="description_sr" maxlength="255"  
+                                          rows="5" cols="70" 
+                                          class="form-control" 
                                           name="description_sr">{{ isset($event) ? $event->article->description_sr : old('description_sr') }}</textarea>
                                 
                                 @if ($errors->has('description_sr'))

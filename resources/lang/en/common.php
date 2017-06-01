@@ -24,6 +24,7 @@ return [
 	'serbia' => 'Serbia',
 	'slogan' => 'Simply Be Lux.',
 	'language' => 'language',
+	'top picks' => 'Top Picks',
 	'toggle navigation' => 'Toggle navigation',	
 	'luxury vip services' => 'luxury vip services',
 	'home' => 'home',

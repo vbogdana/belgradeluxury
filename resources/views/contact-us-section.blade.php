@@ -29,7 +29,7 @@
                     @if ($inquiry)
                     <a id="contact" class="btn" data-scroll href='#send-inquiry'> @lang('common.contact us') </a>                    
                     @else
-                    <a id="contact" class="btn" href='{{ route("contact") }}#contact-information'> @lang('common.contact us') </a>
+                    
                     @endif
                     <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>            
                 </div>

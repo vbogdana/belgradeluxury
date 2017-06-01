@@ -43,6 +43,13 @@
 
 <!--    START TOP PICKS SECTION      -->
 <section id="top-picks" class="top-picks-section interstitial fullwidth space-y" data-section-name="top-picks-panel">
+    <div class="container">
+        <div class="description text-center">
+            <h2 class="text-uppercase"> @lang('common.top picks') </h2>
+            <p></p>
+        </div>    
+    </div>
+    
     <div id="upcoming-events" class="container-fluid"> 
         @include('top-picks-events', $events)
     </div>
@@ -190,7 +197,7 @@
                 {{ trans_choice('common.other packages', 0) }}
                 <a href="{{ route("/") }}" class="">{{ trans_choice('common.other packages', 1) }}</a> 
                 {{ trans_choice('common.other packages', 2) }}
-                <a class="" href="#">{{ trans_choice('common.other packages', 3) }}</a>
+                <a class="" href="{{ route("inquiry") }}">{{ trans_choice('common.other packages', 3) }}</a>
                 {{ trans_choice('common.other packages', 4) }}
             </p>
         </div>    

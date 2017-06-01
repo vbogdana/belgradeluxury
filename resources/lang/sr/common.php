@@ -24,6 +24,7 @@ return [
 	'serbia' => 'Srbija',
 	'slogan' => 'Simply Be Lux.',
 	'language' => 'jezik',
+	'top picks' => 'Top Izbor',
 	'toggle navigation' => 'Navigacija',
 	'luxury vip services' => 'luksuzne vip usluge',
 	'home' => 'početna',
