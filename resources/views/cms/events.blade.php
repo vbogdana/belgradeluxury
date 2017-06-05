@@ -46,7 +46,7 @@
                         <div class="col-xs-12 col-sm-3">
                             <h4>{{ $event->article->title_en }}</h4>
                             @if ($event->place !== null)
-                            <strong>Place: {{ $event->place->title_en }}</strong>
+                            <strong>Place: <a href="{{ route('cms.places.events', ['placeID' => $event->place->placeID]) }}">{{ $event->place->title_en }}</a></strong>
                             <br/>
                             @endif
                             @if ($event->article->category !== null)

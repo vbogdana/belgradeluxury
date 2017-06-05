@@ -32,7 +32,7 @@ class EventsController extends Controller {
      * @return view
      */
     function loadEvents() {
-        $events = Event::paginate(10);
+        $events = Event::orderBy('date', 'desc')->paginate(10);
         
         return view('cms.events', ['events' => $events]);
     }
@@ -49,7 +49,7 @@ class EventsController extends Controller {
             return view('cms.error', ['message' => 'Place not found!']);
         }
         
-        $events = Event::where('placeID', $placeID)->paginate(10);
+        $events = Event::where('placeID', $placeID)->orderBy('date', 'desc')->paginate(10);
         return view('cms.events', ['events' => $events, 'place' => $place]);
     }
     
