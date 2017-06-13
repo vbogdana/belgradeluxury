@@ -10,6 +10,7 @@
 return [
 	'partners' => 'partners',
 	'contact' => 'contact',
+	'promotion' => 'special-offers/{promotion}',
     'package' => 'packages/{title}-package',
 	'accommodation' => 'services/accommodation',
 	'accommodation.single' => 'services/accommodation/{accID}-{title}',

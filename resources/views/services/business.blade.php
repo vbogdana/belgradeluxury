@@ -48,10 +48,6 @@
     <div class="container text-center row-list">
         <div class='description'>
             <h1 class='text-uppercase'>@lang('common.business')</h1>
-            <p>
-
-            </p>               
-            <p></p>
         </div>
 
         @include('services.list-service-texts', ['texts' => $texts])

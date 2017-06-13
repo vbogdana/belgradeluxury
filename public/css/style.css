@@ -1,4 +1,4 @@
-/*
+﻿/*
 © Belgrade Luxury 2017
 All rights reserved
 */
@@ -2134,14 +2134,17 @@ a.btn.small, .btn.small {
  *                  CONTACT PAGE
  *  
  ******************************************************************************/
-#get-in-touch .hero-inner {
+#get-in-touch .hero-inner, 
+#intro .hero-inner {
     vertical-align: bottom;
 }
-#get-in-touch .description {
+#get-in-touch .description, 
+#intro .description {
     background: rgba(0,0,0,0.45);
     padding: 20px 0;
 }
-#get-in-touch a.btn {
+#get-in-touch a.btn, 
+#intro a.btn {
     margin: 0;
 }
 .contact-section .col {
@@ -2192,12 +2195,14 @@ a.btn.small, .btn.small {
     }
 }
 @media screen and (min-width: 768px) {
-    #get-in-touch .hero-holder {
+    #get-in-touch .hero-holder,
+	#intro .hero-holder {
         width: 80%;
         margin-right: auto;
         margin-left: auto;
     }    
-    #get-in-touch .description {
+    #get-in-touch .description,
+	#intro .description {
         margin-bottom: 20px;
     }
     .contact-section .hi-icon {

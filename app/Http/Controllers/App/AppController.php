@@ -50,6 +50,17 @@ class AppController extends Controller {
         AppController::loadServices($services, $packages);
         return view('contact', ['services' => $services, 'packages' => $packages]);
     }
+	
+	/**
+     * Show the promotion page.
+     *
+	 * @param  $promotion promotion name string
+     * @return \Illuminate\Http\Response
+     */
+    public function loadPromotion($promotion) {    
+        AppController::loadServices($services, $packages);
+        return view('promotions.'.$promotion, ['services' => $services, 'packages' => $packages]);
+    }
     
     /**
      * Show the single package page.

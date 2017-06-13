@@ -44,6 +44,14 @@ Route::group([
                 'uses' => 'App\AppController@contact'
             ]
         );
+		
+		// Promotions
+		Route::get(LaravelLocalization::transRoute('routes.promotion'),
+			[
+				'as' => 'promotion',
+				'uses' => 'App\AppController@loadPromotion'
+			]
+		);
         
         // Template for a single package
         Route::get(LaravelLocalization::transRoute('routes.package'), 
