@@ -44,6 +44,8 @@
 
 @include('contact-us-section', ['inquiry' => true])
 
+@include('promotions.exit-banner')
+
 <section id='service-info' class='service-info-section fullwidth panel space-y' data-section-name='service-info-panel'>
     <div class="container text-center row-list">
         <div class='description'>

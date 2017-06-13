@@ -2279,7 +2279,8 @@ a.btn.small, .btn.small {
 .package-details-section .container-fluid {
     padding: 0;
 }
-.package-details {
+.package-details,
+.offer-details {
     z-index: 3;
     font-family: Quicksand, Raleway, sans-serif;
 }
@@ -2300,16 +2301,21 @@ a.btn.small, .btn.small {
         vertical-align: middle;
     }
 }
-.package-details h5 {
+.package-details h5,
+.offer-details h5 {
+    color: #cccccc;
+    font-weight: 100;
     margin-bottom: 20px;
     margin-top: 0;
 }
-.package-details h6 {
+.package-details h6,
+.offer-details h6 {
     color: #c5b358;
     margin-bottom: 5px;
 }
 @media screen and (max-width: 767px) {
-    .package-details .col-sm-4 {
+    .package-details .col-sm-4,
+    .offer-details .col-sm-4 {
         margin-bottom: 20px;
     }
 }
