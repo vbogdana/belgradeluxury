@@ -2246,7 +2246,7 @@ a.btn.small, .btn.small {
     background: rgba(0,0,0,0.3);
 }
 .partner a:hover {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.85);
 }
 .partner a h4 {
     margin: 0;
@@ -2254,6 +2254,16 @@ a.btn.small, .btn.small {
     position: relative;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+    opacity: 0;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+.partner a:hover h4 {
+    opacity: 1;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    transition: opacity 0.2s;
 }
 
 /*******************************************************************************

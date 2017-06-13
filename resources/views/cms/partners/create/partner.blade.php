@@ -59,7 +59,7 @@
                         
                         @if (!isset($partner))
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">Image (square dimensions)</label>
+                            <label for="image" class="col-md-4 control-label">Image (640x480px transparent png, logo white max width 500px)</label>
 
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}">
