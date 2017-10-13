@@ -77,11 +77,11 @@ $locale = LaravelLocalization::getCurrentLocale();
                                 </a>                               
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                                <a href="tel:+381644519017">
+                                <a href="tel:+381600154431">
                                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
                                     <i class="fa contact-viber" aria-hidden="true"></i>
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    (+381) 064 4519 017
+                                    (+381) 060 0154 431
                                 </a>                                
                             </div>
                         </div>
@@ -219,9 +219,9 @@ $locale = LaravelLocalization::getCurrentLocale();
                                         <i class="fa fa-globe" aria-hidden="true"></i>
                                         @lang('common.belgrade'), @lang('common.serbia')
                                     </a>
-                                    <a class="link" href="tel:+381644519017">
+                                    <a class="link" href="tel:+381600154431">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
-                                        (+381) 064 4519 017
+                                        (+381) 060 0154 431
                                     </a>
                                     <a class="link" href="mailto:office@belgradeluxury.com">
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -272,13 +272,13 @@ $locale = LaravelLocalization::getCurrentLocale();
             var android = /Android/.test(navigator.userAgent) && !window.MSStream;
             var url_wa, url_vib;
             if (android) {
-                url_wa = "intent://send/+381644519017#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
-                url_vib = "intent://send/+381644519017#Intent;scheme=smsto;package=com.viber;action=android.intent.action.SENDTO;end"; 
+                url_wa = "intent://send/+381600154431#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
+                url_vib = "intent://send/+381600154431#Intent;scheme=smsto;package=com.viber;action=android.intent.action.SENDTO;end"; 
             } else if (iOS) {
                 url_wa = "whatsapp://send";
                 url_vib = "viber://send";
             } else {
-                url_wa = url_vib = "tel:+381644519017";
+                url_wa = url_vib = "tel:+381600154431";
             }
             $('.whatsapp').attr({
                 href: url_wa

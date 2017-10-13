@@ -75,9 +75,9 @@
                     @lang('common.belgrade'), @lang('common.serbia')
                 </a>
                 <br/>
-                <a class="link" href="tel:+381644519017">
+                <a class="link" href="tel:+381600154431">
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    (+381) 064 4519 017
+                    (+381) 060 0154 431
                 </a>
                 <br/>
                 SMS, WhatsApp & Viber                                        

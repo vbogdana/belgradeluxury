@@ -43,9 +43,9 @@
                     @lang('common.quick inquiry')
                 </a>
             </div>
-            <a class="link" href="tel:+381644519017" style="margin: 20px 0 0;">
+            <a class="link" href="tel:+381600154431" style="margin: 20px 0 0;">
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                (+381) 064 4519 017
+                (+381) 060 0154 431
             </a>
         </figcaption>
     </figure>

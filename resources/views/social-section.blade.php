@@ -23,19 +23,19 @@
         <div style="margin: 50px 0">
             <h5>@lang('contact.phone')</h5>
             <p>
-                <a class="link" href="tel:+381644519017">
+                <a class="link" href="tel:+381600154431">
                     <i class="fa fa-phone" aria-hidden="true"></i>
-                    (+381) 064 4519 017
+                    (+381) 060 0154 431
                 </a>
                 <br/>
                 <a class="link whatsapp" href="#">
                     <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                    (+381) 064 4519 017
+                    (+381) 060 0154 431
                 </a>
                 <br/>
                 <a class="link viber" href="#">
                     <i class="fa contact-viber" aria-hidden="true"></i>
-                    (+381) 064 4519 017
+                    (+381) 060 0154 431
                 </a>
             </p>
         </div>     
