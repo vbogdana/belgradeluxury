@@ -211,13 +211,14 @@ class LaravelLocalization
      * @param string|bool  $locale     Locale to adapt, false to remove locale
      * @param string|false $url        URL to adapt in the current language. If not passed, the current url would be taken.
      * @param array        $attributes Attributes to add to the route, if empty, the system would try to extract them from the url.
+     * @param bool         $forceDefaultLocation Force to show default location even hideDefaultLocaleInURL set as TRUE	
      *
      * @throws SupportedLocalesNotDefined
      * @throws UnsupportedLocaleException
      *
      * @return string|false URL translated, False if url does not exist
      */
-    public function getLocalizedURL($locale = null, $url = null, $attributes = [])
+    public function getLocalizedURL($locale = null, $url = null, $attributes = [], $forceDefaultLocation = false)
     {
         if ($locale === null) {
             $locale = $this->getCurrentLocale();
@@ -233,7 +234,7 @@ class LaravelLocalization
 
         if (empty($url)) {
             if (!empty($this->routeName)) {
-                return $this->getURLFromRouteNameTranslated($locale, $this->routeName, $attributes);
+                return $this->getURLFromRouteNameTranslated($locale, $this->routeName, $attributes, $forceDefaultLocation);
             }
 
             $url = $this->request->fullUrl();
@@ -242,7 +243,7 @@ class LaravelLocalization
         }
 
         if ($locale && $translatedRoute = $this->findTranslatedRouteByUrl($url, $attributes, $this->currentLocale)) {
-            return $this->getURLFromRouteNameTranslated($locale, $translatedRoute, $attributes);
+            return $this->getURLFromRouteNameTranslated($locale, $translatedRoute, $attributes, $forceDefaultLocation);
         }
 
         $base_path = $this->request->getBaseUrl();
@@ -272,11 +273,13 @@ class LaravelLocalization
         $parsed_url['path'] = ltrim($parsed_url['path'], '/');
 
         if ($translatedRoute = $this->findTranslatedRouteByPath($parsed_url['path'], $url_locale)) {
-            return $this->getURLFromRouteNameTranslated($locale, $translatedRoute, $attributes);
+            return $this->getURLFromRouteNameTranslated($locale, $translatedRoute, $attributes, $forceDefaultLocation);
         }
 
-        if (!empty($locale) && ($locale != $this->defaultLocale || !$this->hideDefaultLocaleInURL())) {
-            $parsed_url['path'] = $locale.'/'.ltrim($parsed_url['path'], '/');
+	if (!empty($locale)) {
+            if ($locale != $this->getDefaultLocale() || !$this->hideDefaultLocaleInURL() || $forceDefaultLocation) {
+                $parsed_url['path'] = $locale.'/'.ltrim($parsed_url['path'], '/');
+            }
         }
         $parsed_url['path'] = ltrim(ltrim($base_path, '/').'/'.$parsed_url['path'], '/');
 
@@ -302,13 +305,14 @@ class LaravelLocalization
      * @param string|bool $locale       Locale to adapt
      * @param string      $transKeyName Translation key name of the url to adapt
      * @param array       $attributes   Attributes for the route (only needed if transKeyName needs them)
+     * @param bool        $forceDefaultLocation Force to show default location even hideDefaultLocaleInURL set as TRUE
      *
      * @throws SupportedLocalesNotDefined
      * @throws UnsupportedLocaleException
      *
      * @return string|false URL translated
      */
-    public function getURLFromRouteNameTranslated($locale, $transKeyName, $attributes = [])
+    public function getURLFromRouteNameTranslated($locale, $transKeyName, $attributes = [], $forceDefaultLocation = false)
     {
         if (!$this->checkLocaleInSupportedLocales($locale)) {
             throw new UnsupportedLocaleException('Locale \''.$locale.'\' is not in the list of supported locales.');
@@ -320,13 +324,13 @@ class LaravelLocalization
 
         $route = '';
 
-        if (!($locale === $this->defaultLocale && $this->hideDefaultLocaleInURL())) {
+        if ($forceDefaultLocation || !($locale === $this->defaultLocale && $this->hideDefaultLocaleInURL())) {
             $route = '/'.$locale;
         }
         if (is_string($locale) && $this->translator->has($transKeyName, $locale)) {
             $translation = $this->translator->trans($transKeyName, [], '', $locale);
-			$route .= '/'.$translation;
-			
+            $route .= '/'.$translation;
+
             $route = $this->substituteAttributesInRoute($attributes, $route);
         }
 
@@ -386,6 +390,27 @@ class LaravelLocalization
     }
 
     /**
+     * Return an array of all supported Locales but in the order the user
+     * has specified in the config file. Useful for the language selector.
+     *
+     * @return array
+     */
+    public function getLocalesOrder()
+    {
+        $locales = $this->getSupportedLocales();
+
+        $order = $this->configRepository->get('laravellocalization.localesOrder');
+
+        uksort($locales, function ($a, $b) use ($order) {
+            $pos_a = array_search($a, $order);
+            $pos_b = array_search($b, $order);
+            return $pos_a - $pos_b;
+        });
+
+        return $locales;
+    }
+
+    /**
      * Returns current locale name.
      *
      * @return string current locale name
@@ -423,9 +448,9 @@ class LaravelLocalization
             case 'Mong':
             case 'Tfng':
             case 'Thaa':
-                return 'rtl';
+            return 'rtl';
             default:
-                return 'ltr';
+            return 'ltr';
         }
     }
 

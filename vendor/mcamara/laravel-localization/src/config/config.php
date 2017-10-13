@@ -230,7 +230,7 @@ return [
         //'cv'          => ['name' => 'Chuvash',                'script' => 'Cyrl', 'native' => 'чӑваш чӗлхи', 'regional' => 'cv_RU'],
         //'cu'          => ['name' => 'Church Slavic',          'script' => 'Cyrl', 'native' => 'ѩзыкъ словѣньскъ', 'regional' => ''],
         //'kk'          => ['name' => 'Kazakh',                 'script' => 'Cyrl', 'native' => 'қазақ тілі', 'regional' => 'kk_KZ'],
-        //'hy'          => ['name' => 'Armenian',               'script' => 'Armn', 'native' => 'Հայերէն', 'regional' => 'hy_AM'],
+        //'hy'          => ['name' => 'Armenian',               'script' => 'Armn', 'native' => 'Հայերեն', 'regional' => 'hy_AM'],
         //'yi'          => ['name' => 'Yiddish',                'script' => 'Hebr', 'native' => 'ייִדיש', 'regional' => 'yi_US'],
         //'he'          => ['name' => 'Hebrew',                 'script' => 'Hebr', 'native' => 'עברית', 'regional' => 'he_IL'],
         //'ug'          => ['name' => 'Uyghur',                 'script' => 'Arab', 'native' => 'ئۇيغۇرچە', 'regional' => 'ug_CN'],
@@ -308,5 +308,10 @@ return [
     // Because of this language negotiation using the Accept-Language header will NEVER occur when hideDefaultLocaleInURL is true.
     //
     'hideDefaultLocaleInURL' => false,
+
+    // If you want to display the locales in particular order in the language selector you should write the order here. 
+    //CAUTION: Please consider using the appropriate locale code otherwise it will not work
+    //Example: 'localesOrder' => ['es','en'],
+    'localesOrder' => [],
 
 ];

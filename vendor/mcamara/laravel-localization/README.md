@@ -15,7 +15,6 @@ Easy i18n localization for Laravel, an useful tool to combine with Laravel local
     - <a href="#laravel">Laravel</a>
 - <a href="#usage">Usage</a>
     - <a href="#middleware">Middleware</a>
-    - <a href="#sessions">Sessions</a>
 - <a href="#helpers">Helpers</a>
 - <a href="#translated-routes">Translated Routes</a>
 - <a href="#config">Config</a>
@@ -38,36 +37,24 @@ Laravel 5 is released!!
 
 ## Installation
 
-### Composer
+Install the package via composer: `composer require mcamara/laravel-localization`
 
-Add Laravel Localization to your `composer.json` file.
-
-    "mcamara/laravel-localization": "1.1.*"
-
-Run `composer install` to get the latest version of the package.
-
-### Manually
-
-It's recommended that you use Composer, however you can download and install from this repository.
-
-### Laravel
-
-Laravel Localization comes with a service provider for Laravel. You'll need to add it to your `composer.json` as mentioned in the above steps, then register the service provider with your application.
-
-Open `config/app.php` and find the `providers` key. Add `LaravelLocalizationServiceProvider` to the array.
+Register the ServiceProvider in `config/app.php`
 
 ```php
-	...
-	Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class
-	...
+        'providers' => [
+		// [...]
+                Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        ],
 ```
 
-You can also add an alias to the list of class aliases in the same file.
+You may also register the `LaravelLocalization` Facade:
 
 ```php
-	...
-	'LaravelLocalization'	=> Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
-	...
+        'aliases' => [
+		// [...]
+                'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        ],
 ```
 
 ## Usage
@@ -75,31 +62,31 @@ You can also add an alias to the list of class aliases in the same file.
 Laravel Localization uses the URL given for the request. In order to achieve this purpose, a route group should be added into the `routes.php` file. It will filter all pages that must be localized.
 
 ```php
-	// app/Http/routes.php
+// app/Http/routes.php
 
-	Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+	Route::get('/', function()
 	{
-		/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-		Route::get('/', function()
-		{
-			return View::make('hello');
-		});
-
-		Route::get('test',function(){
-			return View::make('test');
-		});
+		return View::make('hello');
 	});
 
-	/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
+	Route::get('test',function(){
+		return View::make('test');
+	});
+});
+
+/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
 
 ```
 
 Once this route group is added to the routes file, a user can access all locales added into `supportedLocales` ('en' and 'es' by default, look at the config section to change that option). For example, a user can now access two different locales, using the following addresses:
 
 ```
-	http://url-to-laravel/en
-	http://url-to-laravel/es
-	http://url-to-laravel
+http://url-to-laravel/en
+http://url-to-laravel/es
+http://url-to-laravel
 ```
 
 If the locale is not present in the url or it is not defined in `supportedLocales`, the system will use the application default locale or the user's browser default locale (if defined in config file).
@@ -117,50 +104,50 @@ So, if a user navigates to http://url-to-laravel/test and the system has this mi
 To do so, you have to register the middleware in the `app/Http/Kernel.php` file like this:
 
 ```php
-	<?php namespace App\Http;
+<?php namespace App\Http;
 
-	use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-	class Kernel extends HttpKernel {
-		/**
-		 * The application's route middleware.
-		 *
-		 * @var array
-		 */
-		protected $routeMiddleware = [
-			/**** OTHER MIDDLEWARE ****/
-			'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-			'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-			'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class
-			// REDIRECTION MIDDLEWARE
-		];
-
-	}
+class Kernel extends HttpKernel {
+	/**
+	 * The application's route middleware.
+	 *
+	 * @var array
+	 */
+	protected $routeMiddleware = [
+		/**** OTHER MIDDLEWARE ****/
+		'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+		'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+		'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+                'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+		// REDIRECTION MIDDLEWARE
+	];
+}
 ```
 
 
 ```php
-	// app/Http/routes.php
+// app/Http/routes.php
 
-	Route::group(
-	[
-		'prefix' => LaravelLocalization::setLocale(),
-		'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-	],
-	function()
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+],
+function()
+{
+	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+	Route::get('/', function()
 	{
-		/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-		Route::get('/', function()
-		{
-			return View::make('hello');
-		});
-
-		Route::get('test',function(){
-			return View::make('test');
-		});
+		return View::make('hello');
 	});
 
-	/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
+	Route::get('test',function(){
+		return View::make('test');
+	});
+});
+
+/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
 
 ```
 
@@ -170,6 +157,15 @@ If you want to hide the default locale but always show other locales in the url,
 
 **IMPORTANT** - When `hideDefaultLocaleInURL` is set to true, the unlocalized root is treated as the applications default locale `app.locale`.  Because of this language negotiation using the Accept-Language header will **NEVER** occur when `hideDefaultLocaleInURL` is true.
 
+### Set current locale as view-base-path
+
+To set the current locale as view-base-path, simply register the localeViewPath-middlware in your Kernel.php, like it is descriped above.
+
+Now you can wrap your views in language-based folders like the translation files.
+
+`resources/views/en/`, `resources/vies/fr`, ...
+
+
 ## Helpers
 
 This package comes with some useful functions, like:
@@ -177,21 +173,21 @@ This package comes with some useful functions, like:
 ### Get URL for an specific locale
 
 ```php
-	/**
-	 * Returns an URL adapted to $locale
-	 *
-	 * @param  string|boolean 	$locale	   	Locale to adapt, false to remove locale
-	 * @param  string|false		$url		URL to adapt in the current language. If not passed, the current url would be taken.
-	 * @param  array 			$attributes	Attributes to add to the route, if empty, the system would try to extract them from the url.
-	 *
-	 * @throws UnsupportedLocaleException
-	 *
-	 * @return string|false				URL translated, False if url does not exist
-	 */
-	public function getLocalizedURL($locale = null, $url = null, $attributes = array())
+/**
+ * Returns an URL adapted to $locale
+ *
+ * @param  string|boolean 	$locale	   	Locale to adapt, false to remove locale
+ * @param  string|false		$url		URL to adapt in the current language. If not passed, the current url would be taken.
+ * @param  array 		$attributes	Attributes to add to the route, if empty, the system would try to extract them from the url.
+ *
+ * @throws UnsupportedLocaleException
+ *
+ * @return string|false				URL translated, False if url does not exist
+ */
+public function getLocalizedURL($locale = null, $url = null, $attributes = array())
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getLocalizedURL(optional string $locale, optional string $url, optional array $attributes) }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getLocalizedURL(optional string $locale, optional string $url, optional array $attributes) }}
 ```
 
 It returns a URL localized to the desired locale.
@@ -199,41 +195,40 @@ It returns a URL localized to the desired locale.
 ### Get Clean routes
 
 ```php
-	/**
-	 * It returns an URL without locale (if it has it)
-	 * Convenience function wrapping getLocalizedURL(false)
-	 *
-	 * @param  string|false 	$url	  URL to clean, if false, current url would be taken
-	 *
-	 * @return string		   URL with no locale in path
-	 */
-	public function getNonLocalizedURL($url = null)
+/**
+ * It returns an URL without locale (if it has it)
+ * Convenience function wrapping getLocalizedURL(false)
+ *
+ * @param  string|false 	$url	  URL to clean, if false, current url would be taken
+ *
+ * @return stringURL 			  with no locale in path
+ */
+public function getNonLocalizedURL($url = null)
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getNonLocalizedURL(optional string $url) }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getNonLocalizedURL(optional string $url) }}
 ```
 
 It returns a URL clean of any localization.
 
-
 ### Get URL for an specific translation key
 
 ```php
-	/**
-	 * Returns an URL adapted to the route name and the locale given
-	 *
-     * @throws UnsupportedLocaleException
-     *
-	 * @param  string|boolean 	$locale 			Locale to adapt
-	 * @param  string 			$transKeyName  		Translation key name of the url to adapt
-	 * @param  array 			$attributes  		Attributes for the route (only needed if transKeyName needs them)
-	 *
-	 * @return string|false 	URL translated
-	 */
-	public function getURLFromRouteNameTranslated($locale, $transKeyName, $attributes = array())
+/**
+ * Returns an URL adapted to the route name and the locale given
+ *
+ * @throws UnsupportedLocaleException
+ *
+ * @param  string|boolean 		$locale 		Locale to adapt
+ * @param  string 			$transKeyName  		Translation key name of the url to adapt
+ * @param  array 			$attributes  		Attributes for the route (only needed if transKeyName needs them)
+ *
+ * @return string|false 					URL translated
+ */
+public function getURLFromRouteNameTranslated($locale, $transKeyName, $attributes = array())
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getURLFromRouteNameTranslated(string $locale, optional array $transKeyNames, optional array $attributes) }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getURLFromRouteNameTranslated(string $locale, optional array $transKeyNames, optional array $attributes) }}
 ```
 
 It returns a route, localized to the desired locale using the locale passed. If the translation key does not exist in the locale given, this function will return false.
@@ -241,31 +236,48 @@ It returns a route, localized to the desired locale using the locale passed. If 
 ### Get Supported Locales
 
 ```php
-	/**
-     * Return an array of all supported Locales
-     *
-     * @return array
-     */
-     public function getSupportedLocales()
+/**
+ * Return an array of all supported Locales
+ *
+ * @return array
+ */
+public function getSupportedLocales()
 
-	//Should be called like this:
-	{{ LaravelLocalization::getSupportedLocales() }}
+//Should be called like this:
+{{ LaravelLocalization::getSupportedLocales() }}
 ```
 
 This function will return all supported locales and their properties as an array.
 
+### Get Supported Locales Custom Order
+
+```php
+/**
+ * Return an array of all supported Locales but in the order the user
+ * has specified in the config file. Useful for the language selector.
+ *
+ * @return array
+ */
+public function getLocalesOrder()
+
+//Should be called like this:
+{{ LaravelLocalization::getLocalesOrder() }}
+```
+
+This function will return all supported locales but in the order specified in the configuration file. You can use this function to print locales in the language selector.
+
 ### Get Supported Locales Keys
 
 ```php
-	/**
-	 * Returns supported languages language key
-	 *
-	 * @return array 	keys of supported languages
-	 */
-	public function getSupportedLanguagesKeys()
+/**
+ * Returns supported languages language key
+ *
+ * @return array 	keys of supported languages
+ */
+public function getSupportedLanguagesKeys()
 
-	//Should be called like this:
-	{{ LaravelLocalization::getSupportedLanguagesKeys() }}
+//Should be called like this:
+{{ LaravelLocalization::getSupportedLanguagesKeys() }}
 ```
 
 This function will return an array with all the keys for the supported locales.
@@ -273,17 +285,17 @@ This function will return an array with all the keys for the supported locales.
 ### Set Locale
 
 ```php
-	/**
-     * Set and return current locale
-     *
-     * @param  string $locale	        Locale to set the App to (optional)
-     *
-     * @return string 			        Returns locale (if route has any) or null (if route does not have a locale)
-     */
-    public function setLocale($locale = null)
+/**
+ * Set and return current locale
+ *
+ * @param  string $locale	        Locale to set the App to (optional)
+ *
+ * @return string 			Returns locale (if route has any) or null (if route does not have a locale)
+ */
+public function setLocale($locale = null)
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::setLocale(optional string $locale) }}
+//Should be called in a view like this:
+{{ LaravelLocalization::setLocale(optional string $locale) }}
 ```
 
 This function will change the application's current locale.
@@ -294,15 +306,15 @@ The function has to be called in the prefix of any route that should be translat
 ### Get Current Locale
 
 ```php
-    /**
-     * Returns current language
-     *
-     * @return string current language
-     */
-    public function getCurrentLocale()
+/**
+ * Returns current language
+ *
+ * @return string current language
+ */
+public function getCurrentLocale()
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getCurrentLocale() }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getCurrentLocale() }}
 ```
 
 This function will return the key of the current locale.
@@ -310,70 +322,67 @@ This function will return the key of the current locale.
 ### Get Current Locale Name
 
 ```php
-	/**
-	 * Returns current locale name
-	 *
-	 * @return string current locale name
-	 */
-	public function getCurrentLocaleName()
+/**
+ * Returns current locale name
+ *
+ * @return string current locale name
+ */
+public function getCurrentLocaleName()
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getCurrentLocaleName() }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getCurrentLocaleName() }}
 ```
 
 This function will return current locale's name as string (English/Spanish/Arabic/ ..etc).
 
-
 ### Get Current Locale Direction
 
 ```php
-	/**
-	 * Returns current locale direction
-	 *
-	 * @return string current locale direction
-	 */
-	public function getCurrentLocaleDirection()
+/**
+ * Returns current locale direction
+ *
+ * @return string current locale direction
+ */
+public function getCurrentLocaleDirection()
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getCurrentLocaleDirection() }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getCurrentLocaleDirection() }}
 ```
 
 This function will return current locale's direction as string (ltr/rtl).
 
-
 ### Get Current Locale Script
 
 ```php
-	/**
-	 * Returns current locale script
-	 *
-	 * @return string current locale script
-	 */
-	public function getCurrentLocaleScript()
+/**
+ * Returns current locale script
+ *
+ * @return string current locale script
+ */
+public function getCurrentLocaleScript()
 
-	//Should be called in a view like this:
-	{{ LaravelLocalization::getCurrentLocaleScript() }}
+//Should be called in a view like this:
+{{ LaravelLocalization::getCurrentLocaleScript() }}
 ```
 
 This function will return the [ISO 15924](http://www.unicode.org/iso15924) code for the current locale script as a string; "Latn", "Cyrl", "Arab", etc.
-
 
 ## Creating a language selector
 
 If you're supporting multiple locales in your project you will probably want to provide the users with a way to change language. Below is a simple example of blade template code you can use to create your own language selector.
 
 ```
-<ul class="language_bar_chooser">
-	@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+<ul>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
         <li>
-            <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                 {{ $properties['native'] }}
             </a>
         </li>
-	@endforeach
+    @endforeach
 </ul>
 ```
-
+Here default language will be forced in getLocalizedURL() to be present in the URL even `hideDefaultLocaleInURL = true`.
 
 ## Translated Routes
 
@@ -381,72 +390,69 @@ You can adapt your URLs depending on the language you want to show them. For exa
 
 As it is a middleware, first you have to register in on your `app/Http/Kernel.php` file like this:
 
-
 ```php
-	<?php namespace App\Http;
+<?php namespace App\Http;
 
-	use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-	class Kernel extends HttpKernel {
-		/**
-		 * The application's route middleware.
-		 *
-		 * @var array
-		 */
-		protected $routeMiddleware = [
-			/**** OTHER MIDDLEWARE ****/
-			'localize' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
-			// TRANSLATE ROUTES MIDDLEWARE
-		];
-
-	}
+class Kernel extends HttpKernel {
+	/**
+	 * The application's route middleware.
+	 *
+	 * @var array
+	 */
+	protected $routeMiddleware = [
+		/**** OTHER MIDDLEWARE ****/
+		'localize' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
+		// TRANSLATE ROUTES MIDDLEWARE
+	];
+}
 ```
 
 ```php
-	// app/Http/routes.php
+// app/Http/routes.php
 
-	Route::group(
-	[
-		'prefix' => LaravelLocalization::setLocale(),
-		'middleware' => [ 'localize' ] // Route translate middleware
-	],
-	function()
-	{
-      /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-      Route::get('/', function()
-      {
-      	// This routes is useless to translate
-      	return View::make('hello');
-      });
-
-      Route::get(LaravelLocalization::transRoute('routes.about'),function(){
-          return View::make('about');
-      });
-      Route::get(LaravelLocalization::transRoute('routes.view'),function($id){
-          return View::make('view',['id'=>$id]);
-      });
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localize' ] // Route translate middleware
+],
+function() {
+	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+	Route::get('/', function() {
+		// This routes is useless to translate
+		return View::make('hello');
 	});
 
-	/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
+	Route::get(LaravelLocalization::transRoute('routes.about'), function() {
+		return View::make('about');
+	});
+
+	Route::get(LaravelLocalization::transRoute('routes.view'), function($id) {
+		return View::make('view',['id'=>$id]);
+	});
+});
+
+/** OTHER PAGES THAT SHOULD NOT BE LOCALIZED **/
 ```
 In the routes file you just have to add the `LaravelLocalizationRoutes` filter and the `LaravelLocalization::transRoute` function to every route you want to translate using the translation key.
 
 Then you have to create the translation files and add there every key you want to translate. I suggest to create a routes.php file inside your resources/lang/language_abbreviation folder. For the previous example, I have created two translations files, these two files would look like:
 ```php
-	// resources/lang/en/routes.php
-    return [
-      "about" 		=> 	"about",
-      "view" 		=> 	"view/{id}", //we add a route parameter
-      // other translated routes
-	];
+// resources/lang/en/routes.php
+return [
+	"about" 	=> 	"about",
+	"view" 		=> 	"view/{id}", //we add a route parameter
+	// other translated routes
+];
 ```
 ```php
-	// resources/lang/es/routes.php
-    return [
-      "about" 		=> 	"acerca",
-      "view" 		=> 	"ver/{id}", //we add a route parameter
-      // other translated routes
-	];
+// resources/lang/es/routes.php
+return [
+	"about" 	=> 	"acerca",
+	"view" 		=> 	"ver/{id}", //we add a route parameter
+	// other translated routes
+];
 ```
 
 Once files are saved, you can access to http://url/en/about , http://url/es/acerca , http://url/en/view/5 and http://url/es/ver/5 without any problem. The `getLanguageBar` function would work as desired and it will translate the routes to all translated languages (don't forget to add any new route to the translation file).
@@ -460,7 +466,7 @@ Event::listen('routes.translation', function($locale, $attributes)
 {
 	// Do your magic
 
-    return $attributes;
+	return $attributes;
 });
 ```
 
@@ -485,27 +491,27 @@ Otherwise, you can use `ConfigServiceProviders` (check <a href="https://raw.gith
 For example, editing the default config service provider that Laravel loads when it's installed. This file is placed in `app/providers/ConfigServicePovider.php` and would look like this:
 
 ```php
-	<?php namespace App\Providers;
+<?php namespace App\Providers;
 
-	use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-	class ConfigServiceProvider extends ServiceProvider {
-		public function register()
-		{
-			config([
-				'laravellocalization.supportedLocales' => [
-					'ace' => array( 'name' => 'Achinese', 'script' => 'Latn', 'native' => 'Aceh' ),
-					'ca'  => array( 'name' => 'Catalan', 'script' => 'Latn', 'native' => 'català' ),
-					'en'  => array( 'name' => 'English', 'script' => 'Latn', 'native' => 'English' ),
-				],
+class ConfigServiceProvider extends ServiceProvider {
+	public function register()
+	{
+		config([
+			'laravellocalization.supportedLocales' => [
+				'ace' => array( 'name' => 'Achinese', 'script' => 'Latn', 'native' => 'Aceh' ),
+				'ca'  => array( 'name' => 'Catalan', 'script' => 'Latn', 'native' => 'català' ),
+				'en'  => array( 'name' => 'English', 'script' => 'Latn', 'native' => 'English' ),
+			],
 
-				'laravellocalization.useAcceptLanguageHeader' => true,
+			'laravellocalization.useAcceptLanguageHeader' => true,
 
-				'laravellocalization.hideDefaultLocaleInURL' => true
-			]);
-		}
-
+			'laravellocalization.hideDefaultLocaleInURL' => true
+		]);
 	}
+
+}
 ```
 
 This config would add Catalan and Achinese as languages and override any other previous supported locales and all the other options in the package.

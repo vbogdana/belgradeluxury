@@ -1,9 +1,11 @@
 notes
-1. srediti ring rotaciju paketa sa imenima
-2. srediti tekstove na home pageu (sa prevodom)
-3. srediti belgrade i blog sekciju home pagea
-4. dodati efekte na home page
-5. srediti linkove na home pageu
-6. srediti slike na home pageu
-7. dodati ukrase na home page
-8. zasto na accommodation strani hero-holder uzima 60% od cele sirine ekrana
+
+CHECK GITHUB COMMITS WITH COMPOSER UPDATES
+WATCH OUT FOR COMPOSER.LOCK LINE ENDINGS (LINUX/WINDOWS)
+
+1. srediti testemonials u testimonials
+2. srediti kompresiju slika
+3. proveriti mailgun
+4. proveriti curl sertifikat
+5. proveriti symlink za storage
+6. proveriti php post max upload size
