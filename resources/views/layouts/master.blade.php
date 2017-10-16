@@ -48,7 +48,32 @@ $locale = LaravelLocalization::getCurrentLocale();
         <link href="{{ url("") }}/css/animsition.min.css" rel="stylesheet" type="text/css">
         <link href="{{ url("") }}/css/contact.css" rel="stylesheet" type="text/css">  
         <link href="{{ url("") }}/css/animate.min.css" rel="stylesheet" type="text/css">
-        @yield('stylesheets')        
+        @yield('stylesheets')
+
+
+
+
+
+<!-- iSTATISTIKA -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.belgradeluxury.rs"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//statistika.iridium-as.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '17']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//statistika.iridium-as.net/piwik.php?idsite=17&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- iSTATISTIKA -->
+
+<!-- mibew button --><a id="mibew-agent-button" href="https://user.iridium-as.net/chat?locale=en&amp;group=3" target="_blank" onclick="Mibew.Objects.ChatPopups['59e3ca8fec0191d6'].open();return false;"><img src="https://iridiumintel.com/wp-content/uploads/2017/10/1-pixel.png" border="0" alt="" /></a><script type="text/javascript" src="https://user.iridium-as.net/js/compiled/chat_popup.js"></script><script type="text/javascript">Mibew.ChatPopup.init({"id":"59e3ca8fec0191d6","url":"https:\/\/user.iridium-as.net\/chat?locale=en&group=3","preferIFrame":true,"modSecurity":false,"width":640,"height":480,"resizable":true,"styleLoader":"https:\/\/user.iridium-as.net\/chat\/style\/popup"});</script><div id="mibew-invitation"></div><script type="text/javascript" src="https://user.iridium-as.net/js/compiled/widget.js"></script><script type="text/javascript">Mibew.Widget.init({"inviteStyle":"https:\/\/user.iridium-as.net\/styles\/invitations\/default\/invite.css","requestTimeout":10000,"requestURL":"https:\/\/user.iridium-as.net\/widget","locale":"en","visitorCookieName":"MIBEW_VisitorID"})</script><!-- / mibew button -->        
     </head>
     
     <body>

@@ -317,6 +317,7 @@ class ArticlesController extends Controller
         $article = new Article($data);
         $article->userID = $user->userID;
         $article->ctgID = $data['category'];
+        $article->updated_at = Carbon::now();
         $article->save();
 
         if (array_key_exists('image', $data)) {
