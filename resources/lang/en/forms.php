@@ -38,7 +38,7 @@ return [
 		'inquiry' => 'Your inquiry was sent successfully! We will contact You shortly to confirm.'
 	],
 	'errors' => [
-		'message' => 'Sorry, an error occurred, please try again!',
+		'message' => 'Something went wrong! Please try again later, or contact us directly.',
 	],
 	
 

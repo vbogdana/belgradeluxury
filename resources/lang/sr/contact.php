@@ -30,6 +30,7 @@ return [
 	'youtube' => 'zapratite na Youtube-u!',
 	'phone' => 'Uvek možete i da nas pozovete!',
 	'success' => 'Vaša poruka je uspešno poslata!',
+	'error' => 'Došlo je do greške! Molimo Vas pokušajte ponovo kasnije ili nas kontaktirajte direktno.',
 	'other' => 'druga',
 
 ];

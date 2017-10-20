@@ -59,6 +59,9 @@ class AppController extends Controller {
      */
     public function loadPromotion($promotion) {    
         AppController::loadServices($services, $packages);
+        if ($promotion != "exit") {
+            return view('errors.404', ['services' => $services, 'packages' => $packages]);       
+        }
         return view('promotions.'.$promotion, ['services' => $services, 'packages' => $packages]);
     }
     
@@ -103,6 +106,9 @@ class AppController extends Controller {
             case 'careers': Mail::to('careers@belgradeluxury.com')->send(new Contact($data)); break;
         }
         
+        if(count(Mail::failures()) > 0) {
+            return response()->json(['error' => Lang::get('contact.error')], 401);
+        }
         return response()->json(Lang::get('contact.success'), 200);
         
     }

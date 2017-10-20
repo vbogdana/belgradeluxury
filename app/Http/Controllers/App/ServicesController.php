@@ -20,6 +20,7 @@ use Response;
 use View;
 use Illuminate\Support\Facades\DB;
 use App\Mail\Inquiry;
+use App\Mail\Reservation;
 use Illuminate\Support\Facades\Mail;
 use Lang;
 use App;
@@ -321,7 +322,7 @@ class ServicesController extends Controller {
             ]
             );
             $reservation->time = $data['time'];
-            $data['time'] = "u " + $data['time'] + "h";
+            $data['time'] = "u ".$data['time']."h";
         }
         
         // check seating validity
@@ -337,6 +338,10 @@ class ServicesController extends Controller {
         
         $reservation->save();
         Mail::to('inquiry@belgradeluxury.com')->send(new Reservation($data));
+
+        if(count(Mail::failures()) > 0) {
+    		return response()->json(['error' => Lang::get('forms.errors.message')], 401);
+		}
         return response()->json(Lang::get('forms.success.reservation'), 200);
         //return Lang::get('forms.success.reservation');
     }
@@ -468,8 +473,13 @@ class ServicesController extends Controller {
         
         $inquiry->save();
         $data['date_start'] = date("d/M/y", strtotime($data['date_start'])); 
-        $data['date_end'] = date("d/M/y", strtotime($data['date_end']));         
+        $data['date_end'] = date("d/M/y", strtotime($data['date_end']));
+
         Mail::to('inquiry@belgradeluxury.com')->send(new Inquiry($data));
+
+        if(count(Mail::failures()) > 0) {
+    		return response()->json(['error' => Lang::get('forms.errors.message')], 401);
+		}
         return response()->json(Lang::get('forms.success.inquiry'), 200);
         //return Lang::get('forms.success.inquiry');
     }
