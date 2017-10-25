@@ -64,6 +64,7 @@ return [
 	'current' => '{0}trenutni|{1}trenutna|{2}trenutno',
 	'events' => 'događaji',
 	'other packages' => '{0}Ovo su naši posebni paketi koje smo pripremili specijalno za Vas. Svaki od njih je pažljivo odabran od strane |{1}Belgrade Luxury|{2} tima da zadovolji sve Vaše potrebe. Izaberite svoj paket, ili |{3}napravite novi |{4}po Vašem ukusu.',
+	'custom-package' => 'custom paket',
 	'custom package' => '{0}Ako želite nešto malo drugačije od usluga uključenih u naše pakete, uvek možete kreirati Vaš lični ‘custom made’ paket. Takođe, na naše postojeće pakete možete dodavati usluge koje nisu njima obuhvaćene, i tako kreirati jedinstveni paket. Sastavite paket prilagođen da odgovara Vašim potrebama, jer - |{1}Najluksuznije stvari su napravljene po meri, a ne po šablonu.',
 	'custom step' => '{1}skrojite paket|{2}odaberite datum posete|{3}pošaljite upit',
 	'corporate' => '{0}korporativni|{1}korporativne',

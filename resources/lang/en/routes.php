@@ -34,5 +34,6 @@ return [
 	'accommodation.inquiry' => 'services/accommodation/inquiry/{accID}-{title}',
 	'vehicles.inquiry' => 'services/vehicles/inquiry/{vehID}-{title}',
 	'packages.inquiry' => 'packages/inquiry/{title}-package',
+	'services.inquiry' => 'services/inquiry/{service}',
 	'inquiry' => 'services/inquiry',
 ];

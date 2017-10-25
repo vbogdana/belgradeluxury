@@ -34,5 +34,6 @@ return [
 	'accommodation.inquiry' => 'usluge/smestaj/upit/{accID}-{title}',
 	'vehicles.inquiry' => 'usluge/vozila/upit/{vehID}-{title}',
 	'packages.inquiry' => 'paketi/upit/{title}-paket',
+	'services.inquiry' => 'usluge/upit/{service}',
 	'inquiry' => 'usluge/upit',
 ];

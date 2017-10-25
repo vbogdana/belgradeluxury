@@ -50,11 +50,11 @@
             <h1 class='text-uppercase'>@lang('common.personel')</h1>
         </div>
 
-        @include('services.list-service-texts', ['texts' => $texts])
+        @include('services.list-service-texts', ['texts' => $texts, 'service' => 'personel'])
     </div> 
 </section>
 
-@include('inquiry-section')
+@include('inquiry-section', ['service' => 'personel'])
 
 @include('packages-sections', ['packages' => $packages])
 

@@ -251,10 +251,20 @@ Route::group([
             ]
         );
         //Online inquiry
+        Route::get(LaravelLocalization::transRoute('routes.services.inquiry'), 
+            [
+              'as' => 'services.inquiry', 
+              'uses' => 'App\ServicesController@loadInquiry'
+            ]
+        );
+        // Get inquiry
         Route::get(LaravelLocalization::transRoute('routes.inquiry'), 
             [
               'as' => 'inquiry', 
-              'uses' => 'App\ServicesController@loadInquiry'
+              'uses' => function() {
+                    AppController::loadServices($services, $packages);
+                    return view('errors.404', ['services' => $services, 'packages' => $packages]);
+                }
             ]
         );
         // Post inquiry

@@ -19,15 +19,33 @@
 <!-- Facebook share meta tags -->
 <meta property="og:title" content="Online {{ Lang::get('titles.inquiry') }} - Belgrade Luxury" />
 <meta property="og:description" content="{{ Lang::get('common.meta.contact') }}" />
-<meta property="og:image" content='{{ url("/") }}/images/backgrounds/contact.jpg' />   
+<meta property="og:image" content='{{ url("/") }}/images/services/{{ strtolower($object->name_en) }}.jpg' />   
 @stop
 
 @section('stylesheets')
 @stop
 
+@section('language-toolbar')
+@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+<li>
+    <a rel="alternate" hreflang="{{ $localeCode }}" 
+       href="
+        <?php 
+            $url = LaravelLocalization::getLocalizedURL($localeCode);
+            $nameStart = strrpos($url, "/");
+            $url = substr($url, 0, $nameStart + 1).str_replace(' ', '-', strtolower($object['name_'.$localeCode]));
+            echo $url;
+        ?>
+       ">
+        {{ $properties['native'] }}
+    </a>
+</li>
+@endforeach
+@stop
+
 @section('content')
 <!--    START FORM SECTION      -->
-<section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ url("/") }}/images/backgrounds/contact.jpg)">
+<section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ url("/") }}/images/services/{{ strtolower($object->name_en) }}-big.jpg)">
     <div class="overlay"></div>
     <div class="hero-holder">
         <div class="hero-inner text-center">
@@ -37,6 +55,7 @@
                 {{ Form::open(['route' => 'inquiry', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
                 
                 <input type='hidden' id='service' name='service' value='{{ $type }}' />
+                <input type='hidden' id='object' name='object' value='{{ $object->name_en }}' />
                 
                 <div class="description">                                      
                     <div class="text-uppercase">

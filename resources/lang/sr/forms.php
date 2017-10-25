@@ -38,7 +38,7 @@ return [
 		'inquiry' => 'Vaš upit je uspešno poslat! Uskoro ćete primiti email/SMS poruku o potvrdi.',
 	],
 	'errors' => [
-		'message' => 'Došlo je do greške, molimo Vas pokušajte ponovo!',	
+		'message' => 'Došlo je do greške! Molimo Vas pokušajte ponovo kasnije ili nas kontaktirajte direktno.',	
 	],
 
 ];

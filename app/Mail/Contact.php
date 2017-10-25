@@ -31,13 +31,13 @@ class Contact extends Mailable
         $this->email = $data['email'];
         $this->country = $data['country'];
         switch ($data['subject']) {
-            case 'client': $this->subject = "Client support"; break;
+            case 'client': $this->subject = "ONLINE KONTAKT --- Korisnička podrška"; break;
             case 'business': 
-                $this->subject = "Business inquiry";
+                $this->subject = "ONLINE KONTAKT --- Poslovna saradnja";
                 $this->company = $data['company'];
                 $this->website = $data['website'];
                 break;
-            case 'careers': $this->subject = "Career opportunities"; break;
+            case 'careers': $this->subject = "ONLINE KONTAKT --- Karijera u BELUXu"; break;
         }        
         $this->content = $data['message'];
     }

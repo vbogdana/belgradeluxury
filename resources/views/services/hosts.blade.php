@@ -105,7 +105,7 @@
 </section>
 <!--   END HOSTS SECTION      -->
 
-@include('inquiry-section')
+@include('inquiry-section', ['service' => 'host'])
 
 @include('packages-sections', ['packages' => $packages])
 

@@ -9,3 +9,6 @@ WATCH OUT FOR COMPOSER.LOCK LINE ENDINGS (LINUX/WINDOWS)
 4. proveriti curl sertifikat
 5. proveriti symlink za storage
 6. proveriti php post max upload size
+7. srediti logger na laravelu
+8. srediti debug/production
+9. proveriti fajlove van foldera (da li moze i bez njih)

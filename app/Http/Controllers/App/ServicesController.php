@@ -157,11 +157,25 @@ class ServicesController extends Controller {
             unset($types[$key]);
         }
         // STAVI DA SPLAVOVI BUDU PRVI
+        /*
         if(($key = array_search('splav', $types)) !== false) {
             $value = $types[$key];
             $types[$key] = $types[0];
             $types[0] = $value;
         }
+        */
+        // STAVI DA IDU REDOM KLUBOVI - KAFANE - BAROVI - SPLAVOVI
+        if(($key = array_search('kafana', $types)) !== false) {
+            $value = $types[$key];
+            $types[$key] = $types[1];
+            $types[1] = $value;
+        }
+        if(($key = array_search('splav', $types)) !== false) {
+            $value = $types[$key];
+            $types[$key] = $types[3];
+            $types[3] = $value;
+        }
+
         foreach ($types as $type) {
             $places[$type] = Place::where('type', $type)->orderBy('priority', 'desc')->paginate(10);
         }
@@ -401,14 +415,16 @@ class ServicesController extends Controller {
     }
     
     /**
-     * Loads a form for inquiry.
+     * Loads a form for inquiry for a service.
      *
      * @return view
      */
-    function loadInquiry() {
+    function loadInquiry($name) {
         AppController::loadServices($services, $packages);
+        $name = str_replace("-", " ", $name);
+        $service = Service::where('name_'.App::getLocale(), $name)->first();
 
-        return view('forms.inquiry', ['type' => 'inquiry', 'services' => $services, 'packages' => $packages]);
+        return view('forms.inquiry', ['type' => 'services', 'object' => $service, 'services' => $services, 'packages' => $packages]);
     }
     
     /**
@@ -444,11 +460,8 @@ class ServicesController extends Controller {
             $o = Vehicle::find($data['object']);
         } else if ($data['service'] === 'packages') {
             $o = Package::find($data['object']);
-        } else if ($data['service'] === 'inquiry') {
-            $inquiry->object = "Service Inquiry"; 
-            $data['object'] = "Service Inquiry";
-            $data['route'] = "#";  
-            $o = true;
+        } else if ($data['service'] === 'services') {
+        	$o = Service::where('name_en', $data['object'])->first();
         } else {
            return response()->json(['error' => Lang::get('forms.errors.message')], 401);
         }
@@ -468,7 +481,11 @@ class ServicesController extends Controller {
                 $inquiry->object = $o->title_en.' package'; 
                 $data['object'] = $o->title_sr.' paket';
                 $data['route'] = route('package', [ 'title' => str_replace(" ", "-", $o['title_'.$locale]) ]);
-            }
+            } else if ($data['service'] === 'services') {
+	            $inquiry->object = $o->name_en;	                         
+	            $data['object'] = $o->name_sr; 
+	            $data['route'] = route(str_replace(" ", "-", strtolower($o->name_en)));
+	        }
         }
         
         $inquiry->save();

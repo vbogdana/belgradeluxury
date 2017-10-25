@@ -197,7 +197,7 @@
                 {{ trans_choice('common.other packages', 0) }}
                 <a href="{{ route("/") }}" class="">{{ trans_choice('common.other packages', 1) }}</a> 
                 {{ trans_choice('common.other packages', 2) }}
-                <a class="" href="{{ route("inquiry") }}">{{ trans_choice('common.other packages', 3) }}</a>
+                <a class="" href="{{ route("contact") }}">{{ trans_choice('common.other packages', 3) }}</a>
                 {{ trans_choice('common.other packages', 4) }}
             </p>
         </div>    

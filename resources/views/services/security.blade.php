@@ -62,7 +62,7 @@
 </section>
 <!--   END SECURITY SERVICES DESCRIPTION SECTION      -->
 
-@include('inquiry-section')
+@include('inquiry-section', ['service' => 'security'])
 
 @include('packages-sections', ['packages' => $packages])
 
