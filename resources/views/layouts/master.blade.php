@@ -184,6 +184,18 @@ $locale = LaravelLocalization::getCurrentLocale();
                                         </li>
                                     </ul>
                                 </li>
+                                <li class='dropdown'>
+                                    <a href='#' class="dropdown-toggle animated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> @lang('common.promotions') <span class="caret"></span></a>
+                                    <ul class='dropdown-menu'>
+                                        @foreach ($promotions as $promotion)
+                                        <li>
+                                            <a href='{{ route("promotion", [ 'url' => str_replace(" ", "-", $promotion['url_'.$locale]) ]) }}'>
+                                                {{ $promotion['title_'.$locale] }}
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                                 <!--
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle animated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blog<span class="caret"></span></a>

@@ -8,6 +8,7 @@ use App\Accommodation;
 use App\Service;
 use App\Testemonial;
 use App\Package;
+use App\Promotion;
 use App\Partner;
 use Illuminate\Http\Request;
 use App\Mail\Contact;
@@ -26,8 +27,8 @@ class AppController extends Controller {
         $events = Event::getTopPicks();
         $apartments = Accommodation::where('apartment', '1')->orderBy('priority', 'desc')->take(10)->get();
         $testemonials = Testemonial::all();
-        self::loadServices($services, $packages);        
-        return view('index', ["events" => $events, 'apartments' => $apartments,'services' => $services, 'testemonials' => $testemonials, 'packages' => $packages]);
+        self::loadServices($services, $packages, $promotions);        
+        return view('index', ["events" => $events, 'apartments' => $apartments, 'testemonials' => $testemonials, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -36,9 +37,9 @@ class AppController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function loadPartners() {    
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $partners = Partner::where('visible', 1)->get();
-        return view('partners', ['services' => $services, 'packages' => $packages, 'partners' => $partners]);
+        return view('partners', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'partners' => $partners]);
     }
     
     /**
@@ -47,8 +48,8 @@ class AppController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function loadContact() {    
-        AppController::loadServices($services, $packages);
-        return view('contact', ['services' => $services, 'packages' => $packages]);
+        AppController::loadServices($services, $packages, $promotions);
+        return view('contact', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
 	
 	/**
@@ -57,12 +58,14 @@ class AppController extends Controller {
 	 * @param  $promotion promotion name string
      * @return \Illuminate\Http\Response
      */
-    public function loadPromotion($promotion) {    
-        AppController::loadServices($services, $packages);
-        if ($promotion != "exit") {
-            return view('errors.404', ['services' => $services, 'packages' => $packages]);       
+    public function loadPromotion($url) {    
+        AppController::loadServices($services, $packages, $promotions);
+        $url = str_replace("-", " ", $url);
+        $promotion = Promotion::where('url_'.App::getLocale(), $url)->first();
+        if ($promotion === null || !$promotion->visible) {
+            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
         }
-        return view('promotions.'.$promotion, ['services' => $services, 'packages' => $packages]);
+        return view('promotions.promotion', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'promotion' => $promotion]);
     }
     
     /**
@@ -71,13 +74,13 @@ class AppController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function loadPackage($title) {    
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $title = str_replace("-", " ", $title);
         $package = Package::where('title_'.App::getLocale(), $title)->first();
         if ($package === null) {
-            return view('errors.404', ['services' => $services, 'packages' => $packages]);       
+            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
         }
-        return view('packages.package', ['services' => $services, 'packages' => $packages, 'package' => $package]);
+        return view('packages.package', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'package' => $package]);
     }
     
     /**
@@ -116,9 +119,10 @@ class AppController extends Controller {
     /*
      * Loads from database information relevant for every page.
      */
-    public static function loadServices(&$services, &$packages) {
+    public static function loadServices(&$services, &$packages, &$promotions) {
         $services = Service::all();
         $packages = Package::where('visible', 1)->orderBy('position', 'asc')->get();
+        $promotions = Promotion::where('visible', 1)->get();
     }
   
 }

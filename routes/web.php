@@ -45,13 +45,13 @@ Route::group([
             ]
         );
 		
-		// Promotions
-		Route::get(LaravelLocalization::transRoute('routes.promotion'),
-			[
-				'as' => 'promotion',
-				'uses' => 'App\AppController@loadPromotion'
-			]
-		);
+    		// Promotions
+    		Route::get(LaravelLocalization::transRoute('routes.promotion'),
+    			[
+    				'as' => 'promotion',
+    				'uses' => 'App\AppController@loadPromotion'
+    			]
+    		);
         
         // Template for a single package
         Route::get(LaravelLocalization::transRoute('routes.package'), 
@@ -130,8 +130,8 @@ Route::group([
             [
               'as' => 'security', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
-                    return view('/services/security', ['services' => $services, 'packages' => $packages]);
+                    AppController::loadServices($services, $packages, $promotions);
+                    return view('/services/security', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
                 }
             ]
         );
@@ -141,9 +141,9 @@ Route::group([
             [
               'as' => 'sightseeing', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
+                    AppController::loadServices($services, $packages, $promotions);
                     $texts = ServicesController::loadServiceTexts('Sightseeing');
-                    return view('/services/sightseeing', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
+                    return view('/services/sightseeing', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'texts' => $texts]);
                 }
             ]
         );
@@ -153,9 +153,9 @@ Route::group([
             [
               'as' => 'wellness-&-spa', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
+                    AppController::loadServices($services, $packages, $promotions);
                     $texts = ServicesController::loadServiceTexts('Wellness & Spa');
-                    return view('/services/wellness-&-spa', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
+                    return view('/services/wellness-&-spa', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'texts' => $texts]);
                 }
             ]
         );
@@ -165,9 +165,9 @@ Route::group([
             [
               'as' => 'tickets', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
+                    AppController::loadServices($services, $packages, $promotions);
                     $texts = ServicesController::loadServiceTexts('Tickets');
-                    return view('/services/tickets', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
+                    return view('/services/tickets', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'texts' => $texts]);
                 }
             ]
         );
@@ -177,9 +177,9 @@ Route::group([
             [
               'as' => 'business', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
+                    AppController::loadServices($services, $packages, $promotions);
                     $texts = ServicesController::loadServiceTexts('Business');
-                    return view('/services/business', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
+                    return view('/services/business', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'texts' => $texts]);
                 }
             ]
         );
@@ -189,9 +189,9 @@ Route::group([
             [
               'as' => 'personel', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
+                    AppController::loadServices($services, $packages, $promotions);
                     $texts = ServicesController::loadServiceTexts('Personel');
-                    return view('/services/personel', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
+                    return view('/services/personel', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'texts' => $texts]);
                 }
             ]
         );
@@ -201,9 +201,9 @@ Route::group([
             [
               'as' => 'diamond', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
+                    AppController::loadServices($services, $packages, $promotions);
                     $texts = ServicesController::loadServiceTexts('Diamond');
-                    return view('/services/diamond', ['services' => $services, 'packages' => $packages, 'texts' => $texts]);
+                    return view('/services/diamond', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'texts' => $texts]);
                 }
             ]
         );
@@ -250,7 +250,14 @@ Route::group([
               'uses' => 'App\ServicesController@loadPackageInquiry'
             ]
         );
-        //Online inquiry
+        //Online promotions inquiry
+        Route::get(LaravelLocalization::transRoute('routes.promotions.inquiry'), 
+            [
+              'as' => 'promotions.inquiry', 
+              'uses' => 'App\ServicesController@loadPromotionInquiry'
+            ]
+        );
+        //Online service inquiry
         Route::get(LaravelLocalization::transRoute('routes.services.inquiry'), 
             [
               'as' => 'services.inquiry', 
@@ -262,8 +269,8 @@ Route::group([
             [
               'as' => 'inquiry', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages);
-                    return view('errors.404', ['services' => $services, 'packages' => $packages]);
+                    AppController::loadServices($services, $packages, $promotions);
+                    return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
                 }
             ]
         );
@@ -409,6 +416,28 @@ Route::get('cms/packages/{packID}/delete/services', ['as' => 'cms.packages.delet
 Route::delete('cms/packages/delete/service/{pcksID}', ['as' => 'cms.packages.delete.service', 'uses' => 'CMS\PackagesController@deleteService']);
 
 /***
+ * Promotions
+ */
+Route::get('cms/promotions', ['as' => 'cms.promotions', 'uses' => 'CMS\PromotionsController@loadPromotions']);
+Route::get('cms/promotions/create', ['as' => 'cms.promotions.create', 'uses' => 'CMS\PromotionsController@loadCreatePromotion']);
+Route::post('cms/promotions/create', ['as' => 'cms.promotions.create', 'uses' => 'CMS\PromotionsController@createPromotion']);
+Route::get('cms/promotions/{promID}/edit', ['as' => 'cms.promotions.edit', 'uses' => 'CMS\PromotionsController@loadEditPromotion']);
+Route::post('cms/promotions/{promID}/edit', ['as' => 'cms.promotions.edit', 'uses' => 'CMS\PromotionsController@editPromotion']);
+Route::get('cms/promotions/{promID}/edit/photo/{imgType}', ['as' => 'cms.promotions.edit.image', 'uses' => 'CMS\PromotionsController@loadEditImage']);
+Route::post('cms/promotions/{promID}/edit/photo/{imgType}', ['as' => 'cms.promotions.edit.image', 'uses' => 'CMS\PromotionsController@editImage']);
+Route::delete('cms/promotions/{promID}/delete/photo/{imgType}', ['as' => 'cms.promotions.delete.image', 'uses' => 'CMS\PromotionsController@deleteImage']);
+Route::delete('cms/promotions/{promID}/delete', ['as' => 'cms.promotions.delete', 'uses' => 'CMS\PromotionsController@delete']);
+Route::post('cms/promotions/{promID}/show', ['as' => 'cms.promotions.show', 'uses' => 'CMS\PromotionsController@show']);
+Route::post('cms/promotions/{promID}/hide', ['as' => 'cms.promotions.hide', 'uses' => 'CMS\PromotionsController@hide']);
+/***
+ * Promotion services
+ */
+Route::get('cms/promotions/{promID}/create/service', ['as' => 'cms.promotions.create.service', 'uses' => 'CMS\PromotionsController@loadCreateService']);
+Route::post('cms/promotions/{promID}/create/service', ['as' => 'cms.promotions.create.service', 'uses' => 'CMS\PromotionsController@createService']);
+Route::get('cms/promotions/{promID}/delete/services', ['as' => 'cms.promotions.delete.services', 'uses' => 'CMS\PromotionsController@loadDeleteServices']);
+Route::delete('cms/promotions/delete/service/{prmsID}', ['as' => 'cms.promotions.delete.service', 'uses' => 'CMS\PromotionsController@deleteService']);
+
+/***
  * Hosts
  */
 Route::get('cms/host', ['as' => 'cms.host', 'uses' => 'CMS\HostsController@loadHosts']);
@@ -425,6 +454,8 @@ Route::delete('cms/host/{hostID}/delete', ['as' => 'cms.host.delete', 'uses' => 
  * Places
  */
 Route::get('cms/places', ['as' => 'cms.places', 'uses' => 'CMS\PlacesController@loadPlaces']);
+Route::get('cms/places/gastronomy', ['as' => 'cms.places.gastronomy', 'uses' => 'CMS\PlacesController@loadPlacesGastronomy']);
+Route::get('cms/places/nightlife', ['as' => 'cms.places.nightlife', 'uses' => 'CMS\PlacesController@loadPlacesNightlife']);
 Route::get('cms/places/create', ['as' => 'cms.places.create', 'uses' => 'CMS\PlacesController@loadCreatePlace']);
 Route::post('cms/places/create', ['as' => 'cms.places.create', 'uses' => 'CMS\PlacesController@createPlace']);
 Route::get('cms/places/{placeID}/edit', ['as' => 'cms.places.edit', 'uses' => 'CMS\PlacesController@loadEditPlace']);
@@ -480,4 +511,3 @@ Route::get('cms/{service}/edit/{textID}/main-photo', ['as' => 'cms.services.text
 Route::post('cms/{service}/edit/{textID}/main-photo', ['as' => 'cms.services.texts.edit.main-image', 'uses' => 'CMS\ServiceTextsController@editMainImage']);
 Route::delete('cms/{service}/delete/{textID}/main-photo', ['as' => 'cms.services.texts.delete.main-image', 'uses' => 'CMS\ServiceTextsController@deleteMainImage']);
 Route::delete('cms/{service}/delete/{textID}', ['as' => 'cms.services.texts.delete', 'uses' => 'CMS\ServiceTextsController@delete']);
-

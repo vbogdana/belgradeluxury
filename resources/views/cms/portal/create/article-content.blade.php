@@ -9,6 +9,19 @@
 @extends('layouts.cms')
 
 @section('content')
+
+@include('cms.instructions.links-paragraphs')
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning" style="border: 1px solid orange">
+                LINKS AND PARAGRAPHS CAN ONLY BE USED IN THE <b>CONTENT FIELDS OF PARAGRAPH SECTIONS</b>!!!
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>    
     .overlay {
         height: 100%;

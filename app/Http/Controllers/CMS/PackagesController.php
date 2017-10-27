@@ -260,6 +260,8 @@ class PackagesController extends Controller {
             'price' => 'required|numeric',
             'description_en' => 'max:1020',
             'description_sr' => 'max:1020',
+            'long_description_en' => 'max:3060',
+            'long_description_sr' => 'max:3060',
             'symbol' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             'cardFront' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
             'cardBack' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
@@ -312,6 +314,8 @@ class PackagesController extends Controller {
         $package->price = $data['price'];
         $package->description_en = $data['description_en'];
         $package->description_sr = $data['description_sr'];
+        $package->long_description_en = $data['long_description_en'];
+        $package->long_description_sr = $data['long_description_sr'];
         $package->save();
         
         return $package;

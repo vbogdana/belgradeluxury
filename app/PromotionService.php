@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PackageService extends Model
+class PromotionService extends Model
 {
     //
     //
-    protected $table = 'package_services';
+    protected $table = 'promotion_services';
     public $timestamps = false;
-    public $primaryKey = 'pcksID';
+    public $primaryKey = 'prmsID';
     
     /**
      * The attributes that are mass assignable.
@@ -21,8 +21,8 @@ class PackageService extends Model
         'title_en', 'title_sr', 'optional'
     ];
     
-    public function package() {
-        return $this->belongsTo('App\Package', 'packID', 'packID');
+    public function promotion() {
+        return $this->belongsTo('App\Promotion', 'promID', 'promID');
     }
     
     public function service() {

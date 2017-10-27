@@ -9,6 +9,7 @@ use App\Host;
 use App\Place;
 use App\Event;
 use App\Package;
+use App\Promotion;
 use App\Service;
 use App\ServiceText;
 use App\PlaceSeating;
@@ -58,11 +59,11 @@ class ServicesController extends Controller {
             $type = str_replace("_", " ", $type);
             return Response::json(View::make('services.list-accommodation', array('accommodation' => $accommodation[$type]))->render());                
         } else {
-            AppController::loadServices($services, $packages);
+            AppController::loadServices($services, $packages, $promotions);
             $toppicks = Accommodation::where('apartment', '1')->orderBy('priority', 'desc')->take(10)->get();
         }
 
-        return view('services.accommodation', ['list' => $accommodation, 'types' => $types, 'services' => $services, 'packages' => $packages, 'toppicks' => $toppicks]);
+        return view('services.accommodation', ['list' => $accommodation, 'types' => $types, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'toppicks' => $toppicks]);
     }
      /**
      * Loads a view for an apartment page.
@@ -70,13 +71,13 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadSingleAccommodation($accID) { 
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $accommodation = Accommodation::find($accID);
         if ($accommodation == null) {
-            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
         
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         if ($accommodation->spa) {
             $similar = Accommodation::where('spa', '1');                    
         } elseif ($accommodation->hotel) {
@@ -88,7 +89,7 @@ class ServicesController extends Controller {
                            ->orderBy('priority', 'desc')
                            ->take(4)
                            ->get();
-        return view('services.single-element', ['object' => $accommodation, 'similar' => $similar, 'type' => 'accommodation', 'services' => $services, 'packages' => $packages]);
+        return view('services.single-element', ['object' => $accommodation, 'similar' => $similar, 'type' => 'accommodation', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -108,10 +109,10 @@ class ServicesController extends Controller {
             $type = str_replace("_", " ", $type);
             return Response::json(View::make('services.list-vehicles', array('vehicles' => $vehicles[$type]))->render());                
         } else {
-            AppController::loadServices($services, $packages);
+            AppController::loadServices($services, $packages, $promotions);
         }
 
-        return view('services.vehicles', ['list' => $vehicles, 'types' => $types, 'services' => $services, 'packages' => $packages]);
+        return view('services.vehicles', ['list' => $vehicles, 'types' => $types, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
      /**
@@ -120,17 +121,17 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadVehicle($vehID) {  
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $vehicle = Vehicle::find($vehID);
         if ($vehicle == null) {
-            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
                
         $similar = Vehicle::where('type', $vehicle->type)
                            ->where('vehID', '!=', $vehicle->vehID)
                            ->take(4)
                            ->get();
-        return view('services.single-element', ['object' => $vehicle, 'type' => 'vehicles', 'similar' => $similar, 'services' => $services, 'packages' => $packages]);
+        return view('services.single-element', ['object' => $vehicle, 'type' => 'vehicles', 'similar' => $similar, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -140,8 +141,8 @@ class ServicesController extends Controller {
      */
     public function loadHosts() { 
         $hosts = Host::all();
-        AppController::loadServices($services, $packages);
-        return view('services.hosts', ['hosts' => $hosts, 'services' => $services, 'packages' => $packages]);
+        AppController::loadServices($services, $packages, $promotions);
+        return view('services.hosts', ['hosts' => $hosts, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -185,11 +186,11 @@ class ServicesController extends Controller {
             $type = str_replace("_", " ", $type);
             return Response::json(View::make('services.list-places', array('places' => $places[$type]))->render());                
         } else {
-            AppController::loadServices($services, $packages);
+            AppController::loadServices($services, $packages, $promotions);
             $events = Event::getTopPicks();
         }
 
-        return view('services.nightlife', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages, 'events' => $events]);
+        return view('services.nightlife', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'events' => $events]);
     }
     
     /**
@@ -209,10 +210,10 @@ class ServicesController extends Controller {
             $type = str_replace("_", " ", $type);
             return Response::json(View::make('services.list-places', array('places' => $places[$type]))->render());                
         } else {
-            AppController::loadServices($services, $packages);
+            AppController::loadServices($services, $packages, $promotions);
         }
 
-        return view('services.gastronomy', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages]);
+        return view('services.gastronomy', ['list' => $places, 'types' => $types, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -221,10 +222,10 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadPlace($placeID) {  
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $place = Place::find($placeID);
         if ($place == null) {
-            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
             
         $similar = Place::where('type', $place->type)
@@ -232,7 +233,7 @@ class ServicesController extends Controller {
                            ->orderBy('priority', 'desc')
                            ->take(4)
                            ->get();
-        return view('services.single-element', ['object' => $place, 'type' => 'places', 'similar' => $similar, 'services' => $services, 'packages' => $packages]);
+        return view('services.single-element', ['object' => $place, 'type' => 'places', 'similar' => $similar, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -241,8 +242,8 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadPlaceReservation($placeID) {
-        AppController::loadServices($services, $packages);
-        return $this->loadReservation($services, $packages, $placeID);
+        AppController::loadServices($services, $packages, $promotions);
+        return $this->loadReservation($services, $packages, $promotions, $placeID);
     }
     
     /**
@@ -251,13 +252,13 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadEventReservation($placeID, $title, $evID) {
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $event = Event::find($evID);
         if ($event == null || ($event->placeID != $placeID)) {
-            return view('errors.notfound', ['var' => 'event', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'event', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }       
         
-        return $this->loadReservation($services, $packages, $event->placeID, $event->evID);
+        return $this->loadReservation($services, $packages, $promotions, $event->placeID, $event->evID);
     }
     
     /**
@@ -265,18 +266,18 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadReservation($services, $packages, $placeID, $evID = null) {
+    function loadReservation($services, $packages, $promotions, $placeID, $evID = null) {
         $place = Place::find($placeID);
         if ($place == null) {
-            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
         
         $events = Event::select('placeID')->whereBetween('date', [ date("Y-m-d"), date("Y-m-d", (time()+15*24*60*60)) ])->get();
         $places = Place::whereIn('placeID', $events)->orderBy('title_'.App::getLocale())->get();
         if ($evID !== null) {
-            return view('forms.event-reservation', ['places' => $places, 'place' => $place, 'evID' => $evID, 'services' => $services, 'packages' => $packages]);
+            return view('forms.event-reservation', ['places' => $places, 'place' => $place, 'evID' => $evID, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         } else {
-            return view('forms.event-reservation', ['places' => $places, 'place' => $place, 'services' => $services, 'packages' => $packages]);
+            return view('forms.event-reservation', ['places' => $places, 'place' => $place, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
     }
     
@@ -366,11 +367,11 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadAccommodationInquiry($accID) {
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         
         $object = Accommodation::find($accID);
         if ($object == null) {
-            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
         
         if ($object->apartment) {
@@ -378,7 +379,7 @@ class ServicesController extends Controller {
         } elseif ($object->hotel) {
             $objects = Accommodation::where('hotel', '1')->get();
         }
-        return view('forms.service-inquiry', ['type' => 'accommodation', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages]);
+        return view('forms.service-inquiry', ['type' => 'accommodation', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -387,14 +388,14 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadVehicleInquiry($vehID) {
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $object = Vehicle::find($vehID);
         if ($object == null) {
-            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages]);
+            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
         }
         
         $objects = Vehicle::all();
-        return view('forms.service-inquiry', ['type' => 'vehicles', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages]);
+        return view('forms.service-inquiry', ['type' => 'vehicles', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -403,15 +404,32 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadPackageInquiry($title) {
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $title = str_replace("-", " ", $title);
         $object = Package::where('title_'.App::getLocale(), $title)->first();
         if ($object === null) {
-            return view('errors.404', ['services' => $services, 'packages' => $packages]);       
+            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
         }
         
         //$objects = Package::all();
-        return view('forms.package-inquiry', ['type' => 'packages', 'object' => $object, 'objects' => $packages, 'services' => $services, 'packages' => $packages]);
+        return view('forms.package-inquiry', ['type' => 'packages', 'object' => $object, 'objects' => $packages, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+    }
+
+    /**
+     * Loads a form for inquiry for a promotion.
+     *
+     * @return view
+     */
+    function loadPromotionInquiry($url) {
+        AppController::loadServices($services, $packages, $promotions);
+        $url = str_replace("-", " ", $url);
+        $object = Promotion::where('url_'.App::getLocale(), $url)->first();
+        if ($object === null || !$object->visible) {
+            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
+        }
+        
+        $objects = Promotion::where('visible', '1')->get();
+        return view('forms.promotion-inquiry', ['type' => 'promotions', 'object' => $object, 'objects' => $objects, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -420,11 +438,11 @@ class ServicesController extends Controller {
      * @return view
      */
     function loadInquiry($name) {
-        AppController::loadServices($services, $packages);
+        AppController::loadServices($services, $packages, $promotions);
         $name = str_replace("-", " ", $name);
         $service = Service::where('name_'.App::getLocale(), $name)->first();
 
-        return view('forms.inquiry', ['type' => 'services', 'object' => $service, 'services' => $services, 'packages' => $packages]);
+        return view('forms.inquiry', ['type' => 'services', 'object' => $service, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
     
     /**
@@ -460,6 +478,8 @@ class ServicesController extends Controller {
             $o = Vehicle::find($data['object']);
         } else if ($data['service'] === 'packages') {
             $o = Package::find($data['object']);
+        } else if ($data['service'] === 'promotions') {
+            $o = Promotion::find($data['object']);
         } else if ($data['service'] === 'services') {
         	$o = Service::where('name_en', $data['object'])->first();
         } else {
@@ -481,6 +501,10 @@ class ServicesController extends Controller {
                 $inquiry->object = $o->title_en.' package'; 
                 $data['object'] = $o->title_sr.' paket';
                 $data['route'] = route('package', [ 'title' => str_replace(" ", "-", $o['title_'.$locale]) ]);
+            } else if ($data['service'] === 'promotions') {
+                $inquiry->object = $o->title_en; 
+                $data['object'] = $o->title_sr;
+                $data['route'] = route('promotion', [ 'url' => str_replace(" ", "-", $o['url_'.$locale]) ]);
             } else if ($data['service'] === 'services') {
 	            $inquiry->object = $o->name_en;	                         
 	            $data['object'] = $o->name_sr; 

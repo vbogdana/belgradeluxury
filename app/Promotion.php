@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Package extends Model
+class Promotion extends Model
 {
     //
     //
     public $timestamps = false;
-    public $primaryKey = 'packID';
+    public $primaryKey = 'promID';
     
     /**
      * The attributes that are mass assignable.
@@ -17,27 +17,28 @@ class Package extends Model
      * @var array
      */
     protected $fillable = [
-        'title_en', 'title_sr', 'price', 
+        'meta_en', 'meta_sr',
+        'title_en', 'title_sr', 
+        'url_en', 'url_sr',
         'description_en', 'description_sr',
         'long_description_en', 'long_description_sr',
-        'position',
-        'cardFront', 'cardBack', 'symbol'
+        'image', 'background_image'
     ];
     
     /**
-     * Returns all services included in the package.
+     * Returns all services included in the promotion.
      *
      */
     public function services() {
-        return $this->hasMany('App\PackageService', 'packID', 'packID');
+        return $this->hasMany('App\PromotionService', 'promID', 'promID');
     }
 
     /**
-     * Returns mandatory services included in the package.
+     * Returns mandatory services included in the promotion.
      *
      */
     public function included_services() {
-        return $this->hasMany('App\PackageService', 'packID', 'packID')->where('optional', '0');
+        return $this->hasMany('App\PromotionService', 'promID', 'promID')->where('optional', '0');
     }
 
     /**
@@ -45,6 +46,6 @@ class Package extends Model
      *
      */
     public function optional_services() {
-        return $this->hasMany('App\PackageService', 'packID', 'packID')->where('optional', '1');
+        return $this->hasMany('App\PromotionService', 'promID', 'promID')->where('optional', '1');
     }
 }

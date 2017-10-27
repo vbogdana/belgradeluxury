@@ -23,13 +23,16 @@ All rights reserved
  * 10. BELGRADE
  *      10.1. EVENTS 
  *      10.2. PLACES 
- * 11. TESTEMONIALS SECTION
- * 12. CONTACT PAGE
- *
- * PACKAGE TEMPLATE PAGE
- * PAGINATION GRID
- * SIDE LIST
- * FOOTER
+ * 11. PROMOTIONS
+ * 12. TESTEMONIALS SECTION
+ * 13. CONTACT PAGE
+ * 14. PARTNERS PAGE
+ * 15. PACKAGE TEMPLATE PAGE
+ * 16. PAGINATION GRID
+ * 17. VERTICAL TABS
+ * 18. SIDE LIST
+ * 19. ROW LIST
+ * 20. FOOTER
  *
  ******************************************************************************/
 
@@ -2074,6 +2077,34 @@ a.btn.small, .btn.small {
         top: calc(50vh - 25vw);
         left: 25%;
     }
+}
+
+/*******************************************************************************
+ * 
+ *                  PROMOTIONS
+ *  
+ ******************************************************************************/
+ .promotions-section .partner .img-holder {
+    height: 200px;
+}
+
+ .promotions-section .partner .img-holder img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+ .promotions-section .partner a {
+    margin: 10px;
+    height: calc(100% - 20px);
+    width: calc(100% - 20px);
+    border: 0.5px solid;
+}
+
+ .promotions-section .partner a:hover {
+    color: #C5B358;
 }
 
 /*******************************************************************************

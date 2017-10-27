@@ -55,15 +55,15 @@
                             <div class='row'>
                             @endif
                             <div class='col-sm-4'>
-                                <div id="content{{ $k }}" 
+                                <div id="content{{ $k+1 }}" 
                                      class='panel-group' 
                                      draggable="true"
-                                     ondragstart="dragStart(event,{{ $k }})"
+                                     ondragstart="dragStart(event,{{ $k+1 }})"
                                      ondragover="allowDrop(event)"
-                                     ondrop="drop(event,{{ $k }})">
-                                    <h4 class='text-center'>SECTION {{ $k }}</h4>
+                                     ondrop="drop(event,{{ $k+1 }})">
+                                    <h4 class='text-center'>SECTION {{ $k+1 }}</h4>
                                     
-                                    <div id="{{ $k }}" class='content'>
+                                    <div id="{{ $k+1 }}" class='content'>
                                         @if($j >= $m)
                                         <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive'/>
                                         <br/>
@@ -176,24 +176,24 @@
         ev.preventDefault();
     }
     
-    // Submit na CREATE article    
+    // Submit na SAVE article    
     $('#submit').on('click', function(ev) {
         ev.preventDefault();
         $('body').append("<div class='overlay'></div>");
 
         var array = [];
         var _token = $('input[name=_token]').val();
-        var j = 0;
+        var j = 1;
         while (1) {           
             var section = $('#content' + j);
             if (section.length === 0) {
                  break;
             }
-            var oldId = section.find('.content').attr("id");
-            array[oldId + ""] = j;
+            var oldPos = section.find('.content').attr("id");
+            array[oldPos + ""] = j;
             j++;
         }
-        if (j === 0) {
+        if (j === 0 || j === 1) {
             $('.overlay').remove();
             window.location = $('#back').attr('href');
             return;

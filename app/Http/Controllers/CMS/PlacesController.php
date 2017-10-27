@@ -33,6 +33,26 @@ class PlacesController extends Controller {
         $places = Place::orderBy('priority', 'desc')->paginate(10);       
         return view('cms.places', ['places' => $places]);
     }
+
+    /**
+     * Loads a view with all restaurants.
+     *
+     * @return view
+     */
+    function loadPlacesGastronomy() {
+        $places = Place::where('type', 'restaurant')->orderBy('priority', 'desc')->paginate(10);       
+        return view('cms.places', ['places' => $places]);
+    }
+
+    /**
+     * Loads a view with all nighlife places.
+     *
+     * @return view
+     */
+    function loadPlacesNightlife() {
+        $places = Place::where('type', '!=', 'restaurant')->orderBy('priority', 'desc')->paginate(10);       
+        return view('cms.places', ['places' => $places]);
+    }
     
     /**
      * Loads a view with a form to create a new place.
@@ -70,8 +90,10 @@ class PlacesController extends Controller {
         $this->validator($request->all())->validate();
 
         $place = $this->create($request->all());
+
+        $route = $place->type == 'restaurant' ? '.gastronomy' : '.nightlife';
         
-        return view('cms.single', [ 'object' => $place, 'route' => 'cms.places', 'method' => 'CREATED' ]);
+        return view('cms.single', [ 'object' => $place, 'route' => 'cms.places'.$route, 'method' => 'CREATED' ]);
     }
     
     /**
@@ -91,8 +113,10 @@ class PlacesController extends Controller {
         }
 
         $place = $this->edit($request->all(), $place);
+
+        $route = $place->type == 'restaurant' ? '.gastronomy' : '.nightlife';
         
-        return view('cms.single', [ 'object' => $place, 'route' => 'cms.places', 'method' => 'EDITED' ]);
+        return view('cms.single', [ 'object' => $place, 'route' => 'cms.places'.$route, 'method' => 'EDITED' ]);
     }
     
     /**
@@ -232,9 +256,11 @@ class PlacesController extends Controller {
         // delete directory
         Storage::deleteDirectory('public/images/services/places/'.$placeID);
         
+        $route = $place->type == 'restaurant' ? '/gastronomy' : '/nightlife';
+
         // delete entry in places table
         Place::destroy($placeID);
-        return redirect('/cms/places');
+        return redirect('/cms/places'.$route);
     }
    
 }

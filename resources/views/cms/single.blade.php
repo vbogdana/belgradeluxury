@@ -35,7 +35,7 @@
                         </div>
                         
                         <div class="col-xs-6">
-                            @if ($key === 'image' || $key === 'cardFront' || $key === 'cardBack' || $key === 'symbol')
+                            @if ($key === 'image' || $key === 'background_image' || $key === 'cardFront' || $key === 'cardBack' || $key === 'symbol')
                             @if($value !== null)
                             <img class="img-responsive" src="{{ asset('storage/images/'.$value) }}">
                             @else

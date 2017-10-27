@@ -9,6 +9,9 @@
 @extends('layouts.cms')
 
 @section('content')
+
+@include('cms.instructions.links-paragraphs')
+
 <style>    
     .overlay {
         height: 100%;

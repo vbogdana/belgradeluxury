@@ -14,11 +14,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="{{ route('cms.packages') }}">Packages ></a>&nbsp;{{ $package->title_en }} package >&nbsp;
+                    <a href="{{ route('cms.promotions') }}">Promotions ></a>&nbsp;{{ $promotion->title_en }} promotion >&nbsp;
                     Add service
                 </div>
                 <div class="panel-body">
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.packages.create.service', ['packID' => $package->packID]) }}">
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" method="POST" action="{{ route('cms.promotions.create.service', ['promID' => $promotion->promID]) }}">
                         {{ csrf_field() }}
                         
                         <div class="form-group">
@@ -61,7 +61,7 @@
                                 @endif
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="optional" class="col-md-4 control-label">Is it an OPTIONAL service?</label>
 
@@ -71,12 +71,14 @@
                             </div>
                         </div>
                         
+                        
+                        
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Create
                                 </button>
-                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.packages') }}">Cancel</a>                                                
+                                <a class="btn btn-default" style="margin-left: 15px" href="{{ route('cms.promotions') }}">Cancel</a>                                                
                             </div>
                         </div>
                         

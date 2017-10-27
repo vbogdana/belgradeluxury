@@ -9,6 +9,19 @@
 @extends('layouts.cms')
 
 @section('content')
+
+@include('cms.instructions.links-paragraphs')
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning" style="border: 1px solid orange">
+                LINKS AND PARAGRAPHS CAN ONLY BE USED IN THE <b>DESCRIPTION AND LONG DESCRIPTION FIELDS</b>!!!
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -98,6 +111,38 @@
                                 @if ($errors->has('description_sr'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('description_sr') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('long_description_en') ? ' has-error' : '' }}">
+                            <label for="long_description_en" class="col-md-4 control-label">Long Description (eng)</label>
+
+                            <div class="col-md-6">
+                                <textarea id="long_description_en" maxlength="3060" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="long_description_en">{{ isset($package) ? $package->long_description_en : old('long_description_en') }}</textarea>
+                                
+                                @if ($errors->has('long_description_en'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('long_description_en') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('long_description_sr') ? ' has-error' : '' }}">
+                            <label for="long_description_sr" class="col-md-4 control-label">Long Description (ser)</label>
+
+                            <div class="col-md-6">
+                                <textarea id="long_description_sr" maxlength="3060" 
+                                          rows="5" cols="70" class="form-control" 
+                                          name="long_description_sr">{{ isset($package) ? $package->long_description_sr : old('long_description_sr') }}</textarea>
+                                
+                                @if ($errors->has('long_description_sr'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('long_description_sr') }}</strong>
                                     </span>
                                 @endif
                             </div>

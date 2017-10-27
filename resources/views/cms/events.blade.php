@@ -15,7 +15,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     @if(isset($place))
-                    <a href="{{ route("cms.places") }}">Places ></a>&nbsp
+                    <?php $route = $place->type == 'restaurant' ? '.gastronomy' : '.nightlife'; ?>
+                    <a href="{{ route("cms.places".$route) }}">Places ></a>&nbsp
                     {{ $place->title_en }} >&nbsp
                     @endif
                     All events
@@ -46,7 +47,7 @@
                         <div class="col-xs-12 col-sm-3">
                             <h4>{{ $event->article->title_en }}</h4>
                             @if ($event->place !== null)
-                            <strong>Place: <a href="{{ route('cms.places.events', ['placeID' => $event->place->placeID]) }}">{{ $event->place->title_en }}</a></strong>
+                            <strong>See all events at: <a href="{{ route('cms.places.events', ['placeID' => $event->place->placeID]) }}">{{ $event->place->title_en }}</a></strong>
                             <br/>
                             @endif
                             @if ($event->article->category !== null)

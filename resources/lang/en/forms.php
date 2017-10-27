@@ -17,6 +17,7 @@ return [
 	'accommodation' => 'Accommodation',
 	'vehicles' => 'Vehicle',
 	'package' => 'Package',
+	'promotion' => 'Special offer',
 	'date' => 'Date',
 	'date.start' => 'Date of arrival',
 	'date.end' => 'Date of departure',

@@ -17,6 +17,7 @@ return [
 	'accommodation' => 'Smeštaj',
 	'vehicles' => 'Vozilo',
 	'package' => 'Paket',
+	'promotion' => 'Specijalna ponuda',
 	'date' => 'Datum',
 	'date.start' => 'Datum dolaska',
 	'date.end' => 'Datum odlaska',

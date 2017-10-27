@@ -9,6 +9,7 @@
 @extends('layouts.cms')
 
 @section('content')
+
 <style>    
     .overlay {
         height: 100%;
@@ -55,11 +56,12 @@
                             <div class='row'>
                             @endif
                             <div class='col-sm-4'>
-                                <div id="content{{ $k }}" 
-                                     class='panel-group'>
-                                    <h4 class='text-center'>SECTION {{ $k }}</h4>
+                                <div id="content{{ $k+1 }}" 
+                                     class='panel-group'
+                                     style="cursor: default;">
+                                    <h4 class='text-center'>SECTION {{ $k+1 }}</h4>
                                     
-                                    <div id="{{ $k }}" class='content'>
+                                    <div id="{{ $k+1 }}" class='content'>
                                         @if($j >= $m)
                                         <img src='{{ asset('storage/images/'.$images[$i]['image']) }}' class='img-responsive' />
                                         <br/>

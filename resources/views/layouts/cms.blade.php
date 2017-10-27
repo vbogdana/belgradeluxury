@@ -95,6 +95,15 @@
                                     <li><a href='{{ route('cms.packages.create') }}'>New package</a></li>
                                 </ul>
                             </li>
+                            <li class='dropdown'>
+                                <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Promotions<span class="caret"></span>
+                                </a>
+                                <ul class='dropdown-menu'>
+                                    <li><a href='{{ route('cms.promotions') }}'>All promotions</a></li>
+                                    <li><a href='{{ route('cms.promotions.create') }}'>New promotion</a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href='{{ route('cms.testemonials') }}' role="button">
                                     Testemonials
@@ -113,8 +122,8 @@
                                     <li><a href='{{ route('cms.accommodation') }}'>accommodation</a></li>
                                     <li><a href='{{ route('cms.vehicles') }}'>vehicles</a></li>
                                     <li><a href='{{ route('cms.host') }}'>host</a></li>
-                                    <li><a href='{{ route('cms.places') }}'>gastronomy</a></li>
-                                    <li><a href='{{ route('cms.places') }}'>nightlife</a></li>
+                                    <li><a href='{{ route('cms.places.gastronomy') }}'>gastronomy</a></li>
+                                    <li><a href='{{ route('cms.places.nightlife') }}'>nightlife</a></li>
                                     <li><a href='{{ route('cms.services.texts', ['service' => 'Wellness & Spa']) }}'>wellness & spa</a></li>
                                     <li><a href='{{ route('cms.services.texts', ['service' => 'Sightseeing']) }}'>sightseeing</a></li>
                                     <li><a href='{{ route('cms.services.texts', ['service' => 'Personel']) }}'>personel</a></li>
@@ -161,15 +170,7 @@
             </div>
         </nav>
         
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="alert alert-danger" style="border: 1px solid red">
-                        ALL IMAGES MUST BE COMPRESSED BEFORE UPLOADING!!!
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('cms.instructions.compress-images')
 
         @yield('content')
     </div>
