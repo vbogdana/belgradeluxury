@@ -63,7 +63,7 @@ class AppController extends Controller {
         $url = str_replace("-", " ", $url);
         $promotion = Promotion::where('url_'.App::getLocale(), $url)->first();
         if ($promotion === null || !$promotion->visible) {
-            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
+            return redirect()->route('404');      
         }
         return view('promotions.promotion', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'promotion' => $promotion]);
     }
@@ -78,7 +78,7 @@ class AppController extends Controller {
         $title = str_replace("-", " ", $title);
         $package = Package::where('title_'.App::getLocale(), $title)->first();
         if ($package === null) {
-            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
+            return redirect()->route('404');       
         }
         return view('packages.package', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions, 'package' => $package]);
     }

@@ -8,6 +8,7 @@
   - */
 
 return [
+	'404' => 'stranica-nije-pronadjena',
 	'partners' => 'partneri',
 	'contact' => 'kontakt',
 	'promotion' => 'specijalne-ponude/{promotion}',

@@ -70,14 +70,13 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadSingleAccommodation($accID) { 
+    function loadSingleAccommodation($accID, $title) { 
         AppController::loadServices($services, $packages, $promotions);
         $accommodation = Accommodation::find($accID);
-        if ($accommodation == null) {
-            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($accommodation == null || $accommodation['title_'.App::getLocale()] != str_replace("-", " ", $title)) {
+            return redirect()->route('404');
         }
         
-        AppController::loadServices($services, $packages, $promotions);
         if ($accommodation->spa) {
             $similar = Accommodation::where('spa', '1');                    
         } elseif ($accommodation->hotel) {
@@ -120,11 +119,11 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadVehicle($vehID) {  
+    function loadVehicle($vehID, $model) {  
         AppController::loadServices($services, $packages, $promotions);
         $vehicle = Vehicle::find($vehID);
-        if ($vehicle == null) {
-            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($vehicle == null || $vehicle->model != str_replace("-", " ", $model)) {
+            return redirect()->route('404'); 
         }
                
         $similar = Vehicle::where('type', $vehicle->type)
@@ -221,11 +220,11 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadPlace($placeID) {  
+    function loadPlace($placeID, $title) {  
         AppController::loadServices($services, $packages, $promotions);
         $place = Place::find($placeID);
-        if ($place == null) {
-            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($place == null || $place['title_'.App::getLocale()] != str_replace("-", " ", $title)) {
+            return redirect()->route('404');
         }
             
         $similar = Place::where('type', $place->type)
@@ -241,9 +240,9 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadPlaceReservation($placeID) {
+    function loadPlaceReservation($placeID, $title) {
         AppController::loadServices($services, $packages, $promotions);
-        return $this->loadReservation($services, $packages, $promotions, $placeID);
+        return $this->loadReservation($services, $packages, $promotions, $placeID, $title);
     }
     
     /**
@@ -254,11 +253,11 @@ class ServicesController extends Controller {
     function loadEventReservation($placeID, $title, $evID) {
         AppController::loadServices($services, $packages, $promotions);
         $event = Event::find($evID);
-        if ($event == null || ($event->placeID != $placeID)) {
-            return view('errors.notfound', ['var' => 'event', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($event == null || $event->placeID != $placeID) {
+            return redirect()->route('404');
         }       
         
-        return $this->loadReservation($services, $packages, $promotions, $event->placeID, $event->evID);
+        return $this->loadReservation($services, $packages, $promotions, $event->placeID, $title, $event->evID);
     }
     
     /**
@@ -266,10 +265,11 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadReservation($services, $packages, $promotions, $placeID, $evID = null) {
+    function loadReservation($services, $packages, $promotions, $placeID, $title, $evID = null) {
         $place = Place::find($placeID);
-        if ($place == null) {
-            return view('errors.notfound', ['var' => 'place', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($place == null ||
+            $place['title_'.App::getLocale()] != str_replace("-", " ", $title)) {
+            return redirect()->route('404'); 
         }
         
         $events = Event::select('placeID')->whereBetween('date', [ date("Y-m-d"), date("Y-m-d", (time()+15*24*60*60)) ])->get();
@@ -366,12 +366,12 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadAccommodationInquiry($accID) {
+    function loadAccommodationInquiry($accID, $title) {
         AppController::loadServices($services, $packages, $promotions);
         
         $object = Accommodation::find($accID);
-        if ($object == null) {
-            return view('errors.notfound', ['var' => 'accommodation', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($object == null || $object['title_'.App::getLocale()] != str_replace("-", " ", $title)) {
+            return redirect()->route('404'); 
         }
         
         if ($object->apartment) {
@@ -387,11 +387,11 @@ class ServicesController extends Controller {
      *
      * @return view
      */
-    function loadVehicleInquiry($vehID) {
+    function loadVehicleInquiry($vehID, $model) {
         AppController::loadServices($services, $packages, $promotions);
         $object = Vehicle::find($vehID);
-        if ($object == null) {
-            return view('errors.notfound', ['var' => 'vehicle', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+        if ($object == null || $object->model != str_replace("-", " ", $model)) {
+            return redirect()->route('404'); 
         }
         
         $objects = Vehicle::all();
@@ -408,7 +408,7 @@ class ServicesController extends Controller {
         $title = str_replace("-", " ", $title);
         $object = Package::where('title_'.App::getLocale(), $title)->first();
         if ($object === null) {
-            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
+            return redirect()->route('404');       
         }
         
         //$objects = Package::all();
@@ -425,7 +425,7 @@ class ServicesController extends Controller {
         $url = str_replace("-", " ", $url);
         $object = Promotion::where('url_'.App::getLocale(), $url)->first();
         if ($object === null || !$object->visible) {
-            return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);       
+            return redirect()->route('404');       
         }
         
         $objects = Promotion::where('visible', '1')->get();

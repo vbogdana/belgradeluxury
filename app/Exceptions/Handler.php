@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Service;
 use App\Package;
+use App\Promotion;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
@@ -50,9 +51,7 @@ class Handler extends ExceptionHandler
     {
         if($exception instanceof NotFoundHttpException)
         {
-            $services = Service::all();
-            $packages = Package::all();
-            return response()->view('errors.404', ['services' => $services, 'packages' => $packages], 404);
+            return redirect()->route('404');
         }
         return parent::render($request, $exception);
     }

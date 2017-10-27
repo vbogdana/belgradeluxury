@@ -22,8 +22,19 @@ Route::group([
     
         // Index page
         Route::get('/', ['as' => '/', 'uses' => 'App\AppController@loadIndex']);
+
+        //404 page
+        Route::get(LaravelLocalization::transRoute('routes.404'), 
+            [
+                'as' => '404', 
+                'uses' => function() {
+                  AppController::loadServices($services, $packages, $promotions);
+                  return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+                }
+            ]
+        );
         
-        //Contact page
+        //Partners page
         Route::get(LaravelLocalization::transRoute('routes.partners'), 
             [
                 'as' => 'partners', 
@@ -269,8 +280,7 @@ Route::group([
             [
               'as' => 'inquiry', 
               'uses' => function() {
-                    AppController::loadServices($services, $packages, $promotions);
-                    return view('errors.404', ['services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+                    return redirect()->route('404');
                 }
             ]
         );

@@ -8,6 +8,7 @@
   - */
 
 return [
+	'404' => 'page-not-found',
 	'partners' => 'partners',
 	'contact' => 'contact',
 	'promotion' => 'special-offers/{promotion}',

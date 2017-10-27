@@ -2097,13 +2097,23 @@ a.btn.small, .btn.small {
 }
 
  .promotions-section .partner a {
+    background: rgba(0,0,0,0.5);
     margin: 10px;
     height: calc(100% - 20px);
     width: calc(100% - 20px);
     border: 0.5px solid;
 }
 
+.promotions-section .partner a h4 {
+    opacity: 1;
+    color: #E5E4E2;
+}
+
  .promotions-section .partner a:hover {
+    color: #C5B358;
+}
+
+ .promotions-section .partner a:hover h4 {
     color: #C5B358;
 }
 
