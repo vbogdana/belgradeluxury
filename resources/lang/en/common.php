@@ -41,6 +41,7 @@ return [
 	'personel' => 'personel',
 	'nightlife' => 'nightlife',
 	'sightseeing' => 'sightseeing',
+	'diamond' => 'diamond',
 	'packages' => 'packages',
 	'promotions' => 'special offers',
 	'package' => 'package',

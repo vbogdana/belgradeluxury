@@ -41,6 +41,7 @@ return [
 	'personel' => 'osoblje',
 	'nightlife' => 'noćni život',
 	'sightseeing' => 'razgledanje',
+	'diamond' => 'diamond',
 	'packages' => 'paketi',
 	'promotions' => 'specijalne ponude',
 	'package' => 'paket',

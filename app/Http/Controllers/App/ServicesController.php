@@ -441,6 +441,9 @@ class ServicesController extends Controller {
         AppController::loadServices($services, $packages, $promotions);
         $name = str_replace("-", " ", $name);
         $service = Service::where('name_'.App::getLocale(), $name)->first();
+        if ($service === null) {
+            return redirect()->route('404');       
+        }
 
         return view('forms.inquiry', ['type' => 'services', 'object' => $service, 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
     }
