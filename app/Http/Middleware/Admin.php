@@ -22,6 +22,6 @@ class Admin
             return $next($request);
         }
         Auth::logout();
-        return redirect('/cms')->with('message', 'Administrator priviliges required!');
+        return redirect('/cms')->with('message', 'Administrator privileges required!');
     }
 }
