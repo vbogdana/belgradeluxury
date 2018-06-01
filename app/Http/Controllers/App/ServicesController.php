@@ -157,14 +157,15 @@ class ServicesController extends Controller {
             unset($types[$key]);
         }
         // STAVI DA SPLAVOVI BUDU PRVI
-        /*
+        
         if(($key = array_search('splav', $types)) !== false) {
             $value = $types[$key];
             $types[$key] = $types[0];
             $types[0] = $value;
         }
-        */
+        
         // STAVI DA IDU REDOM KLUBOVI - KAFANE - BAROVI - SPLAVOVI
+        /*
         if(($key = array_search('kafana', $types)) !== false) {
             $value = $types[$key];
             $types[$key] = $types[1];
@@ -175,7 +176,7 @@ class ServicesController extends Controller {
             $types[$key] = $types[3];
             $types[3] = $value;
         }
-
+        */
         foreach ($types as $type) {
             $places[$type] = Place::where('type', $type)->orderBy('priority', 'desc')->paginate(10);
         }

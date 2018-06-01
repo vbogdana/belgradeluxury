@@ -17,6 +17,7 @@ return [
 		'contact' => 'Belgrade Luxury Contact Information. Client Support, Business Inquiries and Career Opportunities. Phone number: (+381) 060 0154 431; Email: inquiry@belgradeluxury.com, office@belgradeluxury.com, careers@belgradeluxury.com.',
 		'partners' => 'We have dedicated relationships with our partners. One of our guiding principles is to collaborate with others in pursuit of common goals. Here is a list of our current partners. ',
 	],
+	'menu' => 'menu',
 	'error' => 'error',
 	'notfound' => ':Var not found!',
 	'belgrade' => 'Belgrade',

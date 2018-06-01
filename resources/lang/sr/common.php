@@ -17,6 +17,7 @@ return [
 		'contact' => 'Belgrade Luxury Kontakt Informacije. Korisnička Podrška, Poslovni Upiti, Karijera u BeLux-u. Telefon: (+381) 060 0154 431; Email: inquiry@belgradeluxury.com, office@belgradeluxury.com, careers@belgradeluxury.com.',	
 		'partners' => 'Mi smo se posvetili održavanju odnosa sa našim partnerima. Jedan od naših vodećih principa je da sarađujemo sa drugima u potrazi za zajedničkim ciljevima. Ovo je lista naših partnera. ',
 	],
+	'menu' => 'meni',
 	'error' => 'greška',
 	'notfound' => '{0}:Var nije pronađen!|{1}:Var nije pronađena!|{2}:Var nije pronađeno!',
 	'belgrade' => 'Beograd',

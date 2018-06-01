@@ -90,134 +90,6 @@
 </section>
 <!--    END TOP PICKS SECTION      -->
 
-<!--    START ABOUT US SERVICES SECTION      -->
-<section id="services" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services-panel">            
-    <div class="container">
-        <div class="description text-center" style='margin-bottom: 40px'>
-            <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
-            <div class='row'>
-                <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament.svg'>
-                </div>
-                <div class='col-sm-4'>
-                    <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
-                </div>
-                <div class='col-sm-4'>
-                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament.svg'>
-                </div>
-            </div>
-            <p class="">
-                @lang('index.short about us')
-            </p>
-        </div>       
-    </div>    
-    
-    <div class="text-center text-uppercase">
-        @foreach($services as $service)
-        <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
-            <a href="{{ route(str_replace(" ", "-", strtolower($service->name_en))) }}">
-                <h3>
-                {{ $service['name_'.$locale] }}
-                </h3>
-            </a>
-        </div>
-        @endforeach        
-    </div>
-</section>
-<!--    END ABOUT US SERVICES SECTION      -->
-
-<!--    ABOUT US PANEL 1 SECTION      -->
-<section id="about-us" class="aboutus-section box panel widescreen background-properties" data-section-name="about-us-panel">
-    <div class="overlay"></div>
-    <div class="box-right">
-        <div class="hero-holder" style="float:right">
-            <div class="hero-inner text-right">
-                <div class="description">
-                    <h2 class="text-uppercase">@lang('common.about us')</h2>
-                    <p>
-                       {{ trans_choice('index.long about us', 0) }} 
-                    </p>
-                    <p>
-                       {{ trans_choice('index.long about us', 1) }} 
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--    END ABOUT US PANEL 1 SECTION      -->
-
-<!--    START BUSINESS SECTION      -->
-<section id="business-services" class="business-section interstitial fullwidth space-y" data-section-name="business-services-panel">
-    <div class="container-fluid text-center">
-        <div class="description" style="padding: 0 10%; margin-bottom: 25px">
-            <h2>@lang('index.business1')</h2>
-        </div>
-        <div class='row'>
-            <div class="col-sm-4">
-                <a class="btn" href="{{ route("package", [ 'title' => ucfirst(Lang::get('common.business')) ]) }}">
-                    @lang('common.business') @lang('common.package')
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>
-                <a class="btn" href="{{ route("contact") }}">
-                    @lang('common.contact us')
-                </a>
-                <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>
-            </div>
-            <div class="col-sm-4">
-                <a class="btn" href="{{ route("business") }}">
-                    {{ trans_choice('common.corporate',1) }} @lang('common.services')
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-<!--    END BUSINESS SECTION        -->
-
-<!--    ABOUT US PANEL 2 SECTION      -->
-<section id="business" class="aboutus-section box panel widescreen background-properties" data-section-name="business-panel">
-    <div class="overlay"></div>
-    <div class="box-left">
-        <div class="hero-holder">
-            <div class="hero-inner">
-                <div class="description">
-                    <h2 class="text-uppercase">{{ trans_choice('common.corporate',1) }} @lang('common.services')</h2>
-                    <p>
-                        @lang('index.business2')
-                    </p>                   
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--    END ABOUT US PANEL 2 SECTION      -->
-
-<!--    ABOUT US PANEL 3 SECTION      -->
-<section id="packages" class="aboutus-section box panel widescreen background-properties" data-section-name="packages-panel">
-    <div class="overlay"></div>
-    <div class="box-right">
-        <div class="hero-holder" style="float:right">
-            <div class="hero-inner text-right">
-                <div class="description">
-                    <h2 class="text-uppercase">@lang('common.packages')</h2>
-                    <p>
-                        {{ trans_choice('index.packages', 0) }}
-                    </p>
-                    <p>
-                        {{ trans_choice('index.packages', 1) }}
-                    </p>
-                    <p>
-                        {{ trans_choice('index.packages', 2) }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--    END ABOUT US PANEL 3 SECTION      -->
-
 <!--    START PACKAGES SECTION      -->
 <section id="select-package" class="packages-section widescreen panel space-y" data-section-name="select-package-panel">
     <div class="container">
@@ -311,6 +183,134 @@
     </div>
 </section>
 <!--    END PACKAGES SECTION      -->
+
+<!--    ABOUT US PANEL 1 SECTION      -->
+<section id="about-us" class="aboutus-section box panel widescreen background-properties" data-section-name="about-us-panel">
+    <div class="overlay"></div>
+    <div class="box-right">
+        <div class="hero-holder" style="float:right">
+            <div class="hero-inner text-right">
+                <div class="description">
+                    <h2 class="text-uppercase">@lang('common.about us')</h2>
+                    <p>
+                       {{ trans_choice('index.long about us', 0) }} 
+                    </p>
+                    <p>
+                       {{ trans_choice('index.long about us', 1) }} 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--    END ABOUT US PANEL 1 SECTION      -->
+
+<!--    START BUSINESS SECTION      -->
+<section id="business-services" class="business-section interstitial fullwidth space-y" data-section-name="business-services-panel">
+    <div class="container-fluid text-center">
+        <div class="description" style="padding: 0 10%; margin-bottom: 25px">
+            <h2>@lang('index.business1')</h2>
+        </div>
+        <div class='row'>
+            <div class="col-sm-4">
+                <a class="btn" href="{{ route("package", [ 'title' => ucfirst(Lang::get('common.business')) ]) }}">
+                    @lang('common.business') @lang('common.package')
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <img class="img-responsive gold-ornament" style='position: absolute; left:-17px' src='<?php echo url("/")?>\images\ornament.svg'>
+                <a class="btn" href="{{ route("contact") }}">
+                    @lang('common.contact us')
+                </a>
+                <img class="img-responsive gold-ornament" style='position: absolute; right:-17px' src='<?php echo url("/")?>\images\ornament.svg'>
+            </div>
+            <div class="col-sm-4">
+                <a class="btn" href="{{ route("business") }}">
+                    {{ trans_choice('common.corporate',1) }} @lang('common.services')
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--    END BUSINESS SECTION        -->
+
+<!--    ABOUT US PANEL 2 SECTION      -->
+<section id="business" class="aboutus-section box panel widescreen background-properties" data-section-name="business-panel">
+    <div class="overlay"></div>
+    <div class="box-left">
+        <div class="hero-holder">
+            <div class="hero-inner">
+                <div class="description">
+                    <h2 class="text-uppercase">{{ trans_choice('common.corporate',1) }} @lang('common.services')</h2>
+                    <p>
+                        @lang('index.business2')
+                    </p>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--    END ABOUT US PANEL 2 SECTION      -->
+
+<!--    ABOUT US PANEL 3 SECTION      -->
+<section id="packages" class="aboutus-section box panel widescreen background-properties" data-section-name="packages-panel">
+    <div class="overlay"></div>
+    <div class="box-right">
+        <div class="hero-holder" style="float:right">
+            <div class="hero-inner text-right">
+                <div class="description">
+                    <h2 class="text-uppercase">@lang('common.packages')</h2>
+                    <p>
+                        {{ trans_choice('index.packages', 0) }}
+                    </p>
+                    <p>
+                        {{ trans_choice('index.packages', 1) }}
+                    </p>
+                    <p>
+                        {{ trans_choice('index.packages', 2) }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--    END ABOUT US PANEL 3 SECTION      -->
+
+<!--    START ABOUT US SERVICES SECTION      -->
+<section id="services" class="aboutus-section interstitial ribbon fullwidth space-y" data-section-name="services-panel">            
+    <div class="container">
+        <div class="description text-center" style='margin-bottom: 40px'>
+            <h2 class="text-uppercase"> @lang('common.luxury vip services') </h2>
+            <div class='row'>
+                <div class='col-sm-4'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament.svg'>
+                </div>
+                <div class='col-sm-4'>
+                    <a id="contact" class="btn" href='{{ route("contact") }}'> @lang('common.contact us') </a>
+                </div>
+                <div class='col-sm-4'>
+                    <img class="img-responsive gold-ornament" src='<?php echo url("/")?>\images\ornament.svg'>
+                </div>
+            </div>
+            <p class="">
+                @lang('index.short about us')
+            </p>
+        </div>       
+    </div>    
+    
+    <div class="text-center text-uppercase">
+        @foreach($services as $service)
+        <div class="block" style="background-image: url('{{ url("") }}/images/services/{{ strtolower($service->name_en) }}.jpg')">
+            <a href="{{ route(str_replace(" ", "-", strtolower($service->name_en))) }}">
+                <h3>
+                {{ $service['name_'.$locale] }}
+                </h3>
+            </a>
+        </div>
+        @endforeach        
+    </div>
+</section>
+<!--    END ABOUT US SERVICES SECTION      -->
 
 <!--    START BELGRADE SECTION      -->
 <!--

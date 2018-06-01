@@ -50,30 +50,7 @@ $locale = LaravelLocalization::getCurrentLocale();
         <link href="{{ url("") }}/css/animate.min.css" rel="stylesheet" type="text/css">
         @yield('stylesheets')
 
-
-
-
-
-<!-- iSTATISTIKA 
-<script type="text/javascript">
-  var _paq = _paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.belgradeluxury.rs"]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//statistika.iridium-as.net/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '17']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//statistika.iridium-as.net/piwik.php?idsite=17&rec=1" style="border:0;" alt="" /></p></noscript>
-iSTATISTIKA -->
-
-<!-- mibew button --><a id="mibew-agent-button" href="https://user.iridium-as.net/chat?locale=en&amp;group=3" target="_blank" onclick="Mibew.Objects.ChatPopups['59e3ca8fec0191d6'].open();return false;"><img src="https://iridiumintel.com/wp-content/uploads/2017/10/1-pixel.png" border="0" alt="" /></a><script type="text/javascript" src="https://user.iridium-as.net/js/compiled/chat_popup.js"></script><script type="text/javascript">Mibew.ChatPopup.init({"id":"59e3ca8fec0191d6","url":"https:\/\/user.iridium-as.net\/chat?locale=en&group=3","preferIFrame":true,"modSecurity":false,"width":640,"height":480,"resizable":true,"styleLoader":"https:\/\/user.iridium-as.net\/chat\/style\/popup"});</script><div id="mibew-invitation"></div><script type="text/javascript" src="https://user.iridium-as.net/js/compiled/widget.js"></script><script type="text/javascript">Mibew.Widget.init({"inviteStyle":"https:\/\/user.iridium-as.net\/styles\/invitations\/default\/invite.css","requestTimeout":10000,"requestURL":"https:\/\/user.iridium-as.net\/widget","locale":"en","visitorCookieName":"MIBEW_VisitorID"})</script><!-- / mibew button -->        
+        
     </head>
     
     <body>
@@ -133,6 +110,28 @@ iSTATISTIKA -->
                         </div>
                     </div>
                 </div>
+                
+                <div class="contact-toolbar">
+                    <div class="container-fluid">
+                        <div class="col-sm-6">
+                            <div class="hi-icon-wrap hi-icon-effect">                   
+                                <a href="http://www.facebook.com/belgradeluxury" target="blank" class="hi-icon fa-facebook animated"></a>
+                                <a href="http://www.instagram.com/belgradeluxury" target="blank" class="hi-icon fa-instagram animated"></a>  
+                                <a href="https://www.youtube.com/channel/UCpIeICs4R7XgqNzQ8fecWHQ" class="hi-icon fa-youtube-play animated"></a>
+                                <a href="https://www.linkedin.com/company/belgradeuxury/" class="hi-icon fa-linkedin animated"></a>                                   
+                                <a href="" class="hi-icon fa-whatsapp whatsapp animated"></a>
+                                <a href="" class="hi-icon contact-viber viber animated"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 phone">
+                            <a class="link" href="tel:+381600154431">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                (+381) 060 0154 431
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
             <!-- menu se definise ovde jer ce biti isti za sve stranice -->
             @section('sidebar')
                 <nav class='navbar navbar-fixed-top'>
@@ -146,7 +145,7 @@ iSTATISTIKA -->
                             </button>
                             <a class="navbar-brand" href="{{ route("/") }}">
                                 <img src="{{ url("") }}/images/logo/logo-letters.svg" alt="Belgrade Luxury Logo"/>
-                                <span class='text-uppercase'>@lang('common.home')</span>
+                                <span class='text-uppercase'>@lang('common.menu')</span>
                             </a>
                         </div>
 
@@ -275,7 +274,8 @@ iSTATISTIKA -->
                                 <div class="hi-icon-wrap hi-icon-effect">					
                                     <a href="http://www.facebook.com/belgradeluxury" target="blank" class="hi-icon fa-facebook"></a>
                                     <a href="http://www.instagram.com/belgradeluxury" target="blank" class="hi-icon fa-instagram"></a>  
-                                    <a href="https://www.youtube.com/channel/UCpIeICs4R7XgqNzQ8fecWHQ" class="hi-icon fa-youtube-play"></a>                                   
+                                    <a href="https://www.youtube.com/channel/UCpIeICs4R7XgqNzQ8fecWHQ" class="hi-icon fa-youtube-play"></a>
+                                    <a href="https://www.linkedin.com/company/belgradeuxury/" class="hi-icon fa-linkedin"></a>                                   
                                     <a href="" class="hi-icon fa-whatsapp whatsapp"></a>
                                     <a href="" class="hi-icon contact-viber viber"></a>
                                 </div>
@@ -309,16 +309,16 @@ iSTATISTIKA -->
             var android = /Android/.test(navigator.userAgent) && !window.MSStream;
             var url_wa, url_vib;
             if (android) {
-                url_wa = "intent://send/+381600154431#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
+                //url_wa = "intent://send/+381600154431#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"; 
                 url_vib = "intent://send/+381600154431#Intent;scheme=smsto;package=com.viber;action=android.intent.action.SENDTO;end"; 
             } else if (iOS) {
-                url_wa = "whatsapp://send";
+                //url_wa = "whatsapp://send";
                 url_vib = "viber://send";
             } else {
-                url_wa = url_vib = "tel:+381600154431";
+                //url_wa = url_vib = "tel:+381600154431";
             }
             $('.whatsapp').attr({
-                href: url_wa
+                href: "https://api.whatsapp.com/send?phone=381600154431&text=I'm%20inquiring%20about..."
             });
             $('.viber').attr({
                 href: url_vib

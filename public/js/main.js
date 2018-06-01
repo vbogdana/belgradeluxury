@@ -216,6 +216,11 @@ $(document).ready(function () {
         $(window).on("load", function () { 
             // add animations to opening elements
             var i = 700;
+            $('div.contact-toolbar > div > div:nth-child(1) > div > a.hi-icon.animated').each(function () {
+                $(this).addClass('fadeInDown');
+                $(this).css("animation-delay", i + "ms");
+                i += 200;               
+            });
             $('#navbar ul.nav li a.animated').each(function () {
                 $(this).addClass('fadeInDown');
                 $(this).css("animation-delay", i + "ms");
