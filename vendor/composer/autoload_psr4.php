@@ -47,4 +47,5 @@ return array(
     'ClassPreloader\\' => array($vendorDir . '/classpreloader/classpreloader/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'App\\' => array($baseDir . '/app'),
+    'AlbertCht\\InvisibleReCaptcha\\' => array($vendorDir . '/albertcht/invisible-recaptcha/src'),
 );

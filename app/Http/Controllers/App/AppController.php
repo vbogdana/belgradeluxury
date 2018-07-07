@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Mail;
 use Lang;
 use App;
 
+use GuzzleHttp\Client;
+
 class AppController extends Controller {
     
     /**
@@ -91,12 +93,14 @@ class AppController extends Controller {
      */
     public function contact(Request $request) {
         $this->validate($request, [
+            'recaptcha' => 'required|recaptcha',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
+            'subject' => 'required|string',
             'message' => 'max:800'
         ]);
+        $data = $request->all();     
         
-        $data = $request->all();
         switch ($data['subject']) {
             case 'client': Mail::to('inquiry@belgradeluxury.com')->send(new Contact($data)); break;
             case 'business': 

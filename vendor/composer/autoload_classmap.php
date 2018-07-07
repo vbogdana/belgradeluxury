@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlbertCht\\InvisibleReCaptcha\\Facades\\InvisibleReCaptcha' => $vendorDir . '/albertcht/invisible-recaptcha/src/Facades/InvisibleReCaptcha.php',
+    'AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptcha' => $vendorDir . '/albertcht/invisible-recaptcha/src/InvisibleReCaptcha.php',
+    'AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptchaServiceProvider' => $vendorDir . '/albertcht/invisible-recaptcha/src/InvisibleReCaptchaServiceProvider.php',
     'App\\Accommodation' => $baseDir . '/app/Accommodation.php',
     'App\\AccommodationImage' => $baseDir . '/app/AccommodationImage.php',
     'App\\Apartment' => $baseDir . '/app/Apartment.php',
@@ -36,6 +39,7 @@ return array(
     'App\\Http\\Controllers\\CMS\\PartnersController' => $baseDir . '/app/Http/Controllers/CMS/PartnersController.php',
     'App\\Http\\Controllers\\CMS\\PlaceImagesController' => $baseDir . '/app/Http/Controllers/CMS/PlaceImagesController.php',
     'App\\Http\\Controllers\\CMS\\PlacesController' => $baseDir . '/app/Http/Controllers/CMS/PlacesController.php',
+    'App\\Http\\Controllers\\CMS\\PromotionsController' => $baseDir . '/app/Http/Controllers/CMS/PromotionsController.php',
     'App\\Http\\Controllers\\CMS\\RegisterController' => $baseDir . '/app/Http/Controllers/CMS/RegisterController.php',
     'App\\Http\\Controllers\\CMS\\ServiceTextsController' => $baseDir . '/app/Http/Controllers/CMS/ServiceTextsController.php',
     'App\\Http\\Controllers\\CMS\\TestemonialsController' => $baseDir . '/app/Http/Controllers/CMS/TestemonialsController.php',
@@ -57,6 +61,8 @@ return array(
     'App\\PlaceImage' => $baseDir . '/app/PlaceImage.php',
     'App\\PlaceReservation' => $baseDir . '/app/PlaceReservation.php',
     'App\\PlaceSeating' => $baseDir . '/app/PlaceSeating.php',
+    'App\\Promotion' => $baseDir . '/app/Promotion.php',
+    'App\\PromotionService' => $baseDir . '/app/PromotionService.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
@@ -68,6 +74,7 @@ return array(
     'App\\ServiceText' => $baseDir . '/app/ServiceText.php',
     'App\\Testemonial' => $baseDir . '/app/Testemonial.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\Validators\\ReCaptcha' => $baseDir . '/app/Validators/ReCaptcha.php',
     'App\\Vehicle' => $baseDir . '/app/Vehicle.php',
     'App\\VehicleImage' => $baseDir . '/app/VehicleImage.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

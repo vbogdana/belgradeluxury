@@ -193,7 +193,7 @@ class PackagesController extends Controller {
      */
     public function createPackage(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validator($request->all(), false)->validate();
 
         $package = $this->create($request->all());
         
@@ -209,7 +209,7 @@ class PackagesController extends Controller {
      */
     public function editPackage(Request $request, $packID)
     {
-        $this->validator($request->all())->validate();
+        $this->validator($request->all(), true)->validate();
         
         $package = Package::find($packID);
         if ($package == null) {
@@ -252,20 +252,35 @@ class PackagesController extends Controller {
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data, $edit)
     {
-        return Validator::make($data, [ 
-            'title_en' => 'required|max:255',
-            'title_sr' => 'required|max:255',
-            'price' => 'required|numeric',
-            'description_en' => 'max:1020',
-            'description_sr' => 'max:1020',
-            'long_description_en' => 'max:3060',
-            'long_description_sr' => 'max:3060',
-            'symbol' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
-            'cardFront' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
-            'cardBack' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
-        ]);
+        if ($edit) {
+            return Validator::make($data, [ 
+                'title_en' => 'required|max:255',
+                'title_sr' => 'required|max:255',
+                'price' => 'required|numeric',
+                'description_en' => 'max:1020',
+                'description_sr' => 'max:1020',
+                'long_description_en' => 'max:3060',
+                'long_description_sr' => 'max:3060',
+                'symbol' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+                'cardFront' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+                'cardBack' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+            ]);
+        } else {
+            return Validator::make($data, [ 
+                'title_en' => 'required|unique:packages|max:255',
+                'title_sr' => 'required|unique:packages|max:255',
+                'price' => 'required|numeric',
+                'description_en' => 'max:1020',
+                'description_sr' => 'max:1020',
+                'long_description_en' => 'max:3060',
+                'long_description_sr' => 'max:3060',
+                'symbol' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+                'cardFront' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+                'cardBack' => 'max:15000|mimetypes:image/jpeg,image/png,image/jpg,image/gif,image/svg',
+            ]);
+        }
     }
 
     /**

@@ -4,8 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a021bc26a994ef3c346644c10b7016b",
+    "content-hash": "06dc519e531462923a1d8c240f457c54",
     "packages": [
+        {
+            "name": "albertcht/invisible-recaptcha",
+            "version": "v1.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/albertcht/invisible-recaptcha.git",
+                "reference": "6a34a1ce6cd4ae8216d07ee5ef8fb2a201774de6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/albertcht/invisible-recaptcha/zipball/6a34a1ce6cd4ae8216d07ee5ef8fb2a201774de6",
+                "reference": "6a34a1ce6cd4ae8216d07ee5ef8fb2a201774de6",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
+                "php": "^5.6.4 || ^7.0"
+            },
+            "require-dev": {
+                "illuminate/view": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
+                "phpunit/phpunit": "^6.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptchaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AlbertCht\\InvisibleReCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Albert Chen",
+                    "homepage": "https://www.albert-chen.com"
+                }
+            ],
+            "description": "Invisible reCAPTCHA For Laravel.",
+            "keywords": [
+                "captcha",
+                "invisible",
+                "invisible-recaptcha",
+                "laravel",
+                "laravel5",
+                "no-captcha",
+                "php",
+                "recaptcha"
+            ],
+            "time": "2018-05-15T01:31:25+00:00"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.1.0",

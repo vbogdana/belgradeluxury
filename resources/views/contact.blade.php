@@ -19,6 +19,7 @@
 @stop
 
 @section('stylesheets')
+<script src='https://www.google.com/recaptcha/api.js'></script>
 @stop
 
 @section('content')
@@ -213,9 +214,8 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        {{ Form::submit(Lang::get('contact.send').' '.trans_choice('contact.message', 1), ['class' => 'btn', 'style' => 'display: inline-block']) }}
+                        {{ Form::submit(Lang::get('contact.send').' '.trans_choice('contact.message', 1), ['class' => 'btn g-recaptcha', 'style' => 'display: inline-block', 'data-sitekey' => env('GOOGLE_RECAPTCHA_KEY', 'Did not work'), 'data-callback' => 'sendMessage']) }}
                     </div>
                 </div>
                 
@@ -234,12 +234,12 @@
 <script>   
     var validation = true;
     
-    $(window).on('load', function() {
+    /*$(window).on('load', function() {
         $('input[type=submit]').on('click', function(ev) {
             ev.preventDefault();
             sendMessage();
         });
-    });
+    });*/
     
     function enableBusiness() {
         val = $('#subject').val();
@@ -282,6 +282,7 @@
         var company = $('#company').val();
         var website = $('#website').val();
         var message = $('#message').val();
+        var recaptcha = $('#g-recaptcha-response').val();
         
         
         $('#status').css('background', 'transparent');
@@ -298,7 +299,7 @@
         $.ajax({
             //url: window.location,
             type: 'POST',
-            data: {_token:_token, name:name, email:email, subject:subject, country:country, company:company, website:website, message:message}
+            data: {_token:_token, name:name, email:email, subject:subject, country:country, company:company, website:website, message:message, recaptcha:recaptcha}
             
         }).done(function(data) {          
             //$('#status').css('background', 'rgba(0,0,0,0.7)');        

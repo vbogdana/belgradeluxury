@@ -13,13 +13,13 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
-        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -105,6 +105,7 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
         'A' => 
         array (
             'App\\' => 4,
+            'AlbertCht\\InvisibleReCaptcha\\' => 29,
         ),
     );
 
@@ -275,6 +276,10 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'AlbertCht\\InvisibleReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/albertcht/invisible-recaptcha/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -310,6 +315,9 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
     );
 
     public static $classMap = array (
+        'AlbertCht\\InvisibleReCaptcha\\Facades\\InvisibleReCaptcha' => __DIR__ . '/..' . '/albertcht/invisible-recaptcha/src/Facades/InvisibleReCaptcha.php',
+        'AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptcha' => __DIR__ . '/..' . '/albertcht/invisible-recaptcha/src/InvisibleReCaptcha.php',
+        'AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptchaServiceProvider' => __DIR__ . '/..' . '/albertcht/invisible-recaptcha/src/InvisibleReCaptchaServiceProvider.php',
         'App\\Accommodation' => __DIR__ . '/../..' . '/app/Accommodation.php',
         'App\\AccommodationImage' => __DIR__ . '/../..' . '/app/AccommodationImage.php',
         'App\\Apartment' => __DIR__ . '/../..' . '/app/Apartment.php',
@@ -340,6 +348,7 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
         'App\\Http\\Controllers\\CMS\\PartnersController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/PartnersController.php',
         'App\\Http\\Controllers\\CMS\\PlaceImagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/PlaceImagesController.php',
         'App\\Http\\Controllers\\CMS\\PlacesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/PlacesController.php',
+        'App\\Http\\Controllers\\CMS\\PromotionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/PromotionsController.php',
         'App\\Http\\Controllers\\CMS\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/RegisterController.php',
         'App\\Http\\Controllers\\CMS\\ServiceTextsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/ServiceTextsController.php',
         'App\\Http\\Controllers\\CMS\\TestemonialsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CMS/TestemonialsController.php',
@@ -361,6 +370,8 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
         'App\\PlaceImage' => __DIR__ . '/../..' . '/app/PlaceImage.php',
         'App\\PlaceReservation' => __DIR__ . '/../..' . '/app/PlaceReservation.php',
         'App\\PlaceSeating' => __DIR__ . '/../..' . '/app/PlaceSeating.php',
+        'App\\Promotion' => __DIR__ . '/../..' . '/app/Promotion.php',
+        'App\\PromotionService' => __DIR__ . '/../..' . '/app/PromotionService.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -372,6 +383,7 @@ class ComposerStaticInit85fe62faee3d6291d04978e6def5e401
         'App\\ServiceText' => __DIR__ . '/../..' . '/app/ServiceText.php',
         'App\\Testemonial' => __DIR__ . '/../..' . '/app/Testemonial.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Validators\\ReCaptcha' => __DIR__ . '/../..' . '/app/Validators/ReCaptcha.php',
         'App\\Vehicle' => __DIR__ . '/../..' . '/app/Vehicle.php',
         'App\\VehicleImage' => __DIR__ . '/../..' . '/app/VehicleImage.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',

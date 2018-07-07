@@ -63,6 +63,7 @@ return [
     'not_in'               => 'Odabrani :attribute nije validan.',
     'numeric'              => ':Attribute mora biti broj.',
     'present'              => 'Polje :attribute mora biti prisutno.',
+    'recaptcha'            => 'Recaptcha validacija nije prošla.',
     'regex'                => ':Attribute nije validnog formata.',
     'required'             => 'Polje :attribute je obavezno.',
     'required_if'          => 'Polje :attribute je obavezno kada :other ima sledeću vrednost: :value.',
