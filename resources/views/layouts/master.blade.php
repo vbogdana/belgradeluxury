@@ -318,7 +318,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                 //url_wa = url_vib = "tel:+381613180874";
             }
             $('.whatsapp').attr({
-                href: "https://api.whatsapp.com/send?phone=381600154431&text=I'm%20inquiring%20about..."
+                href: "https://api.whatsapp.com/send?phone=381613180874&text=I'm%20inquiring%20about..."
             });
             $('.viber').attr({
                 href: url_vib
