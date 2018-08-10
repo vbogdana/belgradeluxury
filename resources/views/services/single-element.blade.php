@@ -279,9 +279,9 @@
                                 program
                             </h2>
                             <p>
-                                <a class="link" href="tel:+381600154431" style="margin: 20px 0 0;">
+                                <a class="link" href="tel:+381613180874" style="margin: 20px 0 0;">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    (+381) 060 0154 431
+                                    (+381) 061 3180 874
                                 </a>
                                 <br/>
                                 SMS, WhatsApp & Viber
@@ -445,9 +445,9 @@
                                 @lang('services.reservation')
                             </h2>
                             <p>
-                                <a class="link" href="tel:+381600154431" style="margin: 20px 0 0;">
+                                <a class="link" href="tel:+381613180874" style="margin: 20px 0 0;">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    (+381) 060 0154 431
+                                    (+381) 061 3180 874
                                 </a>
                                 <br/>
                                 SMS, WhatsApp & Viber
@@ -482,9 +482,9 @@
                                {{ trans_choice('common.booking', 2) }} 
                             </p>
                             <p>
-                                <a class="link" href="tel:+381600154431" style="margin: 20px 0 0;">
+                                <a class="link" href="tel:+381613180874" style="margin: 20px 0 0;">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    (+381) 060 0154 431
+                                    (+381) 061 3180 874
                                 </a>
                                 <br/>
                                 SMS, WhatsApp & Viber
@@ -616,9 +616,9 @@
                                 </a>
                                 @endif
                             </div>
-                            <a class="link" href="tel:+381600154431" style="margin: 20px 0 0;">
+                            <a class="link" href="tel:+381613180874" style="margin: 20px 0 0;">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                                (+381) 060 0154 431
+                                (+381) 061 3180 874
                             </a>
                         </figcaption>
                     </figure>    

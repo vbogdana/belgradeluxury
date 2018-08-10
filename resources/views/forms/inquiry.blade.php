@@ -63,9 +63,9 @@
                     </div>
                     
                     <div class="tags" style="margin-bottom: 0">
-                        <a class="link" href="tel:+381600154431">
+                        <a class="link" href="tel:+381613180874">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            (+381) 060 0154 431
+                            (+381) 061 3180 874
                         </a>
                         <br/>
                         SMS, WhatsApp & Viber  
