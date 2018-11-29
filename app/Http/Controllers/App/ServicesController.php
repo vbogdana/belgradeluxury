@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Mail;
 use Lang;
 use App;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class ServicesController extends Controller {
     
@@ -157,15 +158,15 @@ class ServicesController extends Controller {
             unset($types[$key]);
         }
         // STAVI DA SPLAVOVI BUDU PRVI
-        
+        /*
         if(($key = array_search('splav', $types)) !== false) {
             $value = $types[$key];
             $types[$key] = $types[0];
             $types[0] = $value;
         }
-        
+        */
         // STAVI DA IDU REDOM KLUBOVI - KAFANE - BAROVI - SPLAVOVI
-        /*
+        
         if(($key = array_search('kafana', $types)) !== false) {
             $value = $types[$key];
             $types[$key] = $types[1];
@@ -176,7 +177,7 @@ class ServicesController extends Controller {
             $types[$key] = $types[3];
             $types[3] = $value;
         }
-        */
+        
         foreach ($types as $type) {
             $places[$type] = Place::where('type', $type)->orderBy('priority', 'desc')->paginate(10);
         }
@@ -434,6 +435,17 @@ class ServicesController extends Controller {
     }
     
     /**
+     * Loads a quick form for inquiry.
+     *
+     * @return view
+     */
+    function loadQuickInquiry() {
+        AppController::loadServices($services, $packages, $promotions);
+
+        return view('forms.inquiry', ['type' => 'quick', 'services' => $services, 'packages' => $packages, 'promotions' => $promotions]);
+    }
+
+    /**
      * Loads a form for inquiry for a service.
      *
      * @return view
@@ -458,19 +470,34 @@ class ServicesController extends Controller {
      * @return string
      */
     function createInquiry(\Illuminate\Http\Request $request) {
-        // validate
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|max:255|email',
-            'phone' => 'required|numeric',
-            'people' => 'required|integer|min:1|max:50',
-            'message' => 'max:800',
-            'date_start' => 'required|date_format:Y-m-d',
-            'date_end' => 'required|date_format:Y-m-d'
-        ]);
-        
         // mass assign to inquiry (name, phone, email, service, people, message)
-        $data = $request->all(); 
+        $data = $request->all();
+
+        // validate
+        if ($data['service'] === 'quick' || $data['service'] === 'services') {
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'email' => 'required|max:255|email',
+                'people' => 'required|integer|min:1|max:50',
+                'reason' => 'required',
+                'reason.*' => [Rule::in(['party', 'business', 'sightseeing'])],
+                'price' => ['required', Rule::in(['$$$', '$$$$'])],
+                'message' => 'max:800',
+                'date_start' => 'required|date_format:Y-m-d',
+                'date_end' => 'required|date_format:Y-m-d'
+            ]);
+        } else {
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'email' => 'required|max:255|email',
+                'people' => 'required|integer|min:1|max:50',
+                'phone' => 'required|numeric',
+                'message' => 'max:800',
+                'date_start' => 'required|date_format:Y-m-d',
+                'date_end' => 'required|date_format:Y-m-d'
+            ]);
+        }
+         
         $locale = App::getLocale();
         $data['route'] = 'undefined';
         $inquiry = new ServiceInquiry($data);
@@ -485,7 +512,9 @@ class ServicesController extends Controller {
         } else if ($data['service'] === 'promotions') {
             $o = Promotion::find($data['object']);
         } else if ($data['service'] === 'services') {
-        	$o = Service::where('name_en', $data['object'])->first();
+            $o = Service::where('name_en', $data['object'])->first();
+        } else if ($data['service'] === 'quick') {
+            $o = "quick";
         } else {
            return response()->json(['error' => Lang::get('forms.errors.message')], 401);
         }
@@ -510,12 +539,20 @@ class ServicesController extends Controller {
                 $data['object'] = $o->title_sr;
                 $data['route'] = route('promotion', [ 'url' => str_replace(" ", "-", $o['url_'.$locale]) ]);
             } else if ($data['service'] === 'services') {
-	            $inquiry->object = $o->name_en;	                         
-	            $data['object'] = $o->name_sr; 
-	            $data['route'] = route(str_replace(" ", "-", strtolower($o->name_en)));
-	        }
+                $inquiry->object = $o->name_en;                          
+                $data['object'] = $o->name_sr; 
+                $data['route'] = route(str_replace(" ", "-", strtolower($o->name_en)));
+            } else if ($data['service'] === 'quick') {
+                $inquiry->object = $o;                          
+                $data['object'] = "brzi upit"; 
+                $data['route'] = route('quick.inquiry');
+            }
         }
         
+        if (array_key_exists('reason', $data)) {
+            $data['reason'] = join(', ', $data['reason']);
+            $inquiry->reason = $data['reason']; 
+        }
         $inquiry->save();
         $data['date_start'] = date("d/M/y", strtotime($data['date_start'])); 
         $data['date_end'] = date("d/M/y", strtotime($data['date_end']));

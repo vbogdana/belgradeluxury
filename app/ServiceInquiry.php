@@ -18,7 +18,7 @@ class ServiceInquiry extends Model
      */
     
     protected $fillable = [
-        'name', 'phone', 'email', 'date_start', 'date_end', 'service', 'people', 'message'
+        'name', 'phone', 'email', 'date_start', 'date_end', 'service', 'people', 'message', 'price'
     ];
     
 }

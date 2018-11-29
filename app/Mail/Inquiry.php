@@ -20,6 +20,8 @@ class Inquiry extends Mailable
     public $date_start;
     public $date_end;
     public $people;
+    public $reason;
+    public $price;
     public $content;
     public $route;
 
@@ -32,7 +34,11 @@ class Inquiry extends Mailable
     {
         //
         $this->name = $data['name'];
-        $this->phone = $data['phone'];        
+        if (array_key_exists ('phone' , $data)) {
+            $this->phone = $data['phone'];  
+        } else {
+            $this->phone = "/";
+        }  
         $this->email = $data['email'];                
         $this->date_start = $data['date_start'];
         $this->date_end = $data['date_end'];
@@ -40,6 +46,16 @@ class Inquiry extends Mailable
         $this->service = $data['service'];
         $this->object = $data['object'];
         $this->content = $data['message'];
+        if (array_key_exists ('reason' , $data)) {
+            $this->reason = $data['reason'];  
+        } else {
+            $this->reason = "/";
+        } 
+        if (array_key_exists ('price' , $data)) {
+            $this->price = $data['price'];  
+        } else {
+            $this->price = "/";
+        } 
         $this->route = $data['route'];
     }
 

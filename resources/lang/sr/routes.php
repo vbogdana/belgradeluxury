@@ -37,5 +37,6 @@ return [
 	'packages.inquiry' => 'paketi/upit/{title}-paket',
 	'promotions.inquiry' => 'specijalne-ponude/upit/{url}',
 	'services.inquiry' => 'usluge/upit/{service}',
+	'quick.inquiry' => 'usluge/upit/brzi-upit',
 	'inquiry' => 'usluge/upit',
 ];

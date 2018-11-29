@@ -17,6 +17,8 @@
             <p> Email: {{ $email }} </p>
             <p> Upit za: {{ $object }} </p>
             <p> URL: <a href='{{ $route }}' target='_blank'>{{ $route }}</a> </p>
+            <p> Razlog dolaska: {{ $reason }} </p>
+            <p> Budzet: {{ $price }} </p>
             <p> Datum dolaska: {{ $date_start }} </p>
             <p> Datum odlaska: {{ $date_end }} </p>
             <p> Broj ljudi: {{ $people }} </p>

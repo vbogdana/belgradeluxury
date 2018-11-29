@@ -239,7 +239,14 @@ Route::group([
               'uses' => 'App\ServicesController@createReservation'
             ]
         );
-        
+
+        //Online quick inquiry
+        Route::get(LaravelLocalization::transRoute('routes.quick.inquiry'), 
+            [
+              'as' => 'quick.inquiry', 
+              'uses' => 'App\ServicesController@loadQuickInquiry'
+            ]
+        );
         //Online accommodation inquiry
         Route::get(LaravelLocalization::transRoute('routes.accommodation.inquiry'), 
             [

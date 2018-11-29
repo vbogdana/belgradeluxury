@@ -60,6 +60,7 @@ return [
 	'send an email' => 'pošaljite email',
 	'send an inquiry' => 'pošaljite upit',
 	'inquiry' => 'upit',
+	'quick' => 'brzi',
 	'quick inquiry' => 'brzi upit',
 	'details' => 'detalji',
 	'more' => 'još',

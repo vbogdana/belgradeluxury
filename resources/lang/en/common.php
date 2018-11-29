@@ -60,6 +60,7 @@ return [
 	'send an email' => 'send an email',
 	'send an inquiry' => 'send an inquiry',
 	'inquiry' => 'inquiry',
+	'quick' => 'quick',
 	'quick inquiry' => 'quick inquiry',
 	'details' => 'details',
 	'more' => 'more',

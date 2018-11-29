@@ -37,5 +37,6 @@ return [
 	'packages.inquiry' => 'packages/inquiry/{title}-package',
 	'promotions.inquiry' => 'special-offers/inquiry/{url}',
 	'services.inquiry' => 'services/inquiry/{service}',
+	'quick.inquiry' => 'services/inquiry/quick-inquiry',
 	'inquiry' => 'services/inquiry',
 ];

@@ -19,12 +19,17 @@
 <!-- Facebook share meta tags -->
 <meta property="og:title" content="Online {{ Lang::get('titles.inquiry') }} - Belgrade Luxury" />
 <meta property="og:description" content="{{ Lang::get('common.meta.contact') }}" />
+@if (isset($object))
 <meta property="og:image" content='{{ url("/") }}/images/services/{{ strtolower($object->name_en) }}.jpg' />   
+@else
+<meta property="og:image" content='{{ url("/") }}/images/backgrounds/belgradeluxury.jpg' /> 
+@endif
 @stop
 
 @section('stylesheets')
 @stop
 
+@if (isset($object))
 @section('language-toolbar')
 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 <li>
@@ -42,10 +47,15 @@
 </li>
 @endforeach
 @stop
+@endif
 
 @section('content')
 <!--    START FORM SECTION      -->
+@if (isset($object))
 <section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ url("/") }}/images/services/{{ strtolower($object->name_en) }}-big.jpg)">
+@else
+<section id="form" class="contact-section panel fullwidth background-properties space-y" data-section-name="form-panel" style="background-image: url({{ url("/") }}/images/backgrounds/belgradeluxury.jpg)">
+@endif
     <div class="overlay"></div>
     <div class="hero-holder">
         <div class="hero-inner text-center">
@@ -55,7 +65,9 @@
                 {{ Form::open(['route' => 'inquiry', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-horizontal', 'autocomplete' => 'off']) }}
                 
                 <input type='hidden' id='service' name='service' value='{{ $type }}' />
+                @if (isset($object))
                 <input type='hidden' id='object' name='object' value='{{ $object->name_en }}' />
+                @endif
                 
                 <div class="description">                                      
                     <div class="text-uppercase">
@@ -89,19 +101,17 @@
                 
                 <div class="container-fluid">
                     
-                    <div class="row">                       
-                        <div class="form-group">
-                            <label for="name" class="col-xs-4 col-sm-offset-0 col-sm-3 control-label">@lang('forms.name'): *</label>
+                    <div class="row">  
+                        <div class="form-group col-sm-6">
+                            <label for="phone" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.name'): *</label>
 
-                            <div class="col-xs-8 col-sm-9" style="padding-right: 30px">
+                            <div class="col-xs-8 col-sm-6">
                                 <input id="name" type="text" maxlength="255" class="form-control" name="name" required>
 
                                 <span class="help-block" style="display: none"></span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="row">                       
+
                         <div class="form-group col-sm-6">
                             <label for="email" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.email'): *</label>
 
@@ -110,17 +120,7 @@
 
                                 <span class="help-block" style="display: none"></span>
                             </div>
-                        </div>
-
-                        <div class="form-group col-sm-6">
-                            <label for="phone" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.phone'): *</label>
-
-                            <div class="col-xs-8 col-sm-6">
-                                <input id="phone" type="text" maxlength="255" class="form-control" name="phone" required>
-
-                                <span class="help-block" style="display: none"></span>
-                            </div>
-                        </div>
+                        </div>                       
                     </div>
                     
                     <div class="row">
@@ -157,6 +157,46 @@
                                 <span class="help-block" style="display: none"></span>
                             </div>
                         </div>   
+                    </div>
+
+                    <div class="row">                       
+                        <div class="form-group col-sm-6">
+                            <label for="reason" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.reason'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                                <div class="checkbox-group">
+                                    <input id="reason[0]" type="checkbox" maxlength="255" class="form-control" name="reason[0]" value="party">
+                                    <label for="reason[0]">@lang('forms.party')</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input id="reason[1]" type="checkbox" maxlength="255" class="form-control" name="reason[1]" value="business">
+                                    <label for="reason[1]">@lang('forms.business')</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input id="reason[2]" type="checkbox" maxlength="255" class="form-control" name="reason[2]" value="sightseeing">
+                                    <label for="reason[2]">@lang('forms.sightseeing')</label>
+                                </div>
+
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="price" class="col-xs-4 col-sm-offset-0 col-sm-6 control-label">@lang('forms.price'): *</label>
+
+                            <div class="col-xs-8 col-sm-6">
+                                <div class="checkbox-group">
+                                    <input id="price[0]" type="radio" maxlength="255" class="form-control" name="price" value="$$$" checked>
+                                    <label for="price[0]">$$$</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input id="price[1]" type="radio" maxlength="255" class="form-control" name="price" value="$$$$">
+                                    <label for="price[1]">$$$$</label>
+                                </div>
+
+                                <span class="help-block" style="display: none"></span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -257,6 +297,7 @@
             
             // RESET FORM
             $('form').find("input[type=text], input[type=number], input[type=date], textarea").val("");
+            $('form').find("input[type=checkbox]").removeAttr('checked');
             //$('option').removeAttr('selected');
             //$('option:first-child').attr('selected', '');
 
@@ -266,8 +307,12 @@
             
             if (msg.responseText.search("\"name\"") !== -1)
                 checkError(msg, "name", 9); 
-            if (msg.responseText.search("\"phone\"") !== -1)
-                checkError(msg, "phone", 10);
+            // if (msg.responseText.search("\"phone\"") !== -1)
+            //     checkError(msg, "phone", 10);
+            if (msg.responseText.search("\"reason\"") !== -1)
+                checkError(msg, "reason", 11);
+            if (msg.responseText.search("\"price\"") !== -1)
+                checkError(msg, "reason", 10);
             if (msg.responseText.search("\"email\"") !== -1)
                 checkError(msg, "email", 10);
             if (msg.responseText.search("\"date_start\"") !== -1)

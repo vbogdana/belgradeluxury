@@ -419,6 +419,17 @@ i {
  *                 CUSTOM
  *  
  ******************************************************************************/
+.inquiry-widget {
+    padding: 12px;
+    position: fixed;
+    bottom: 32px;
+    z-index: 15;
+    background: rgba(14, 14, 14, 0.6);
+    display: block;
+    left: 24px;
+    border-radius: 1px;
+    border: 5px solid rgba(0, 0, 0, 0.6);
+ }
 .fullwidth {
     width: 100% !important;
     margin: 0;
@@ -440,7 +451,7 @@ i {
 }
 .space-y-t,
 .space-y {
-    padding-top: 70px;
+    padding-top: 120px;
 }
 .space-y-b,
 .space-y {
@@ -874,6 +885,83 @@ a.btn.small, .btn.small {
 }
 .form-group select:focus > option:checked { 
     background: #c5b358 !important;
+}
+.form-group .checkbox-group {
+    background-color: rgba(255, 255, 255, 0.09);
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    border-radius: 2px;
+}
+.form-group .checkbox-group label {
+    padding: 8px 15px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 200ms ease-in;
+    overflow: hidden;
+}
+.form-group .checkbox-group label:before {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: '';
+    background-color: #0a0a0ae6;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: -1;
+}
+.form-group .checkbox-group label:after {
+    width: 22px;
+    height: 22px;
+    content: '';
+    border: 1.5px solid #5a5330;
+    background-color: #0a0a0ae6;
+    background-repeat: no-repeat;
+    background-position: -2px 0px;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+.form-group .checkbox-group input:checked ~ label {
+    color: #fff;
+}
+.form-group .checkbox-group input:checked ~ label:before {
+    -webkit-transform: translate(-50%, -50%) scale3d(56, 56, 1);
+            transform: translate(-50%, -50%) scale3d(56, 56, 1);
+    opacity: 1;
+}
+.form-group .checkbox-group input:checked ~ label:after {
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23000' fill-rule='nonzero'/%3E%3C/svg%3E ");
+    background-color: #C5B358;
+    border-color: #C5B358;
+}
+.form-group .checkbox-group input {
+    width: 22px;
+    height: 22px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden;
 }
 .card img {
     width: 363.5px;
