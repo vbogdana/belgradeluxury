@@ -64,9 +64,7 @@
                 </a>
             </div>
         </div>
-    </div>
-    
-    
+    </div> 
 </section>
 <!--    END SPECIAL OFFERS SECTION      -->
 @endif

@@ -85,14 +85,16 @@ $locale = LaravelLocalization::getCurrentLocale();
 
         <!-- page content -->
         <div class='animsition'>
+            <!-- menu is defined here -->
+            @section('sidebar')
             <div class="menu wrapper text-lowercase" expanded="false">
                 <div class='toolbar'>
                     <div class="container-fluid">
                         <div class="col-xs-12 col-sm-7 col-md-6">
                             <div class="col-xs-12 col-sm-6">
-                                <a href="mailto:inquiry@belgradeluxury.com">
+                                <a href="mailto:inquiry@belgradeluxury.rs">
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    inquiry@belgradeluxury.com
+                                    inquiry@belgradeluxury.rs
                                 </a>                               
                             </div>
                             <div class="col-xs-12 col-sm-6">
@@ -148,9 +150,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                         </div>
                     </div>
                 </div>
-            
-            <!-- menu se definise ovde jer ce biti isti za sve stranice -->
-            @section('sidebar')
+                      
                 <nav class='navbar navbar-fixed-top'>
                     <div class='container-fluid'>
                         <div class="navbar-header">
@@ -282,13 +282,13 @@ $locale = LaravelLocalization::getCurrentLocale();
                                         <i class="fa fa-phone" aria-hidden="true"></i>
                                         (+381) 061 3180 874
                                     </a>
-                                    <a class="link" href="mailto:office@belgradeluxury.com">
+                                    <a class="link" href="mailto:office@belgradeluxury.rs">
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                        office@belgradeluxury.com
+                                        office@belgradeluxury.rs
                                     </a>
-                                    <a class="link" href="mailto:inquiry@belgradeluxury.com">
+                                    <a class="link" href="mailto:inquiry@belgradeluxury.rs">
                                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                        inquiry@belgradeluxury.com
+                                        inquiry@belgradeluxury.rs
                                     </a>
                                 </p>
                             </div>

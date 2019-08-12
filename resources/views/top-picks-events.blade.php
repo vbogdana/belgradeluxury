@@ -34,6 +34,7 @@ $locale = LaravelLocalization::getCurrentLocale();
                     <div class="hover text-uppercase"> 
                         <div class="events">
                             <div class="title">
+                                @if (!is_null($event->place))
                                 <a href="{{ route("events.reservation", ['placeID' => $event->placeID, 'title' => str_replace(" ", "-", $event->place['title_'.$locale]), 'evID' => $event->evID]) }}">
                                     <h5>{{ $event->article['title_'.$locale] }}</h5>
                                 </a>
@@ -41,6 +42,9 @@ $locale = LaravelLocalization::getCurrentLocale();
                                 <a href="{{ route("places.place", [ 'placeID' => $event->place->placeID, 'title' => str_replace(" ", "-", $event->place['title_'.$locale]) ]) }}" >
                                     <h5>{{ $event->place['title_'.$locale] }}</h5>
                                 </a>
+                                @else
+                                @endif
+                                <h5>{{ $event->article['title_'.$locale] }}</h5>
                                 <br/>
                                 <a class="link" href="tel:+381613180874" style="margin: 20px 0 0;">
                                     <h6><i class="fa fa-phone" aria-hidden="true"></i>
@@ -51,9 +55,11 @@ $locale = LaravelLocalization::getCurrentLocale();
                         </div>
                     </div>
                     <div class="hover" style="height: 50px">
+                        @if (!is_null($event->place))
                         <a class="btn small" href='{{ route("events.reservation", ['placeID' => $event->placeID, 'title' => str_replace(" ", "-", $event->place['title_'.$locale]), 'evID' => $event->evID]) }}'>
                             @lang('services.reserve') online
                         </a>
+                        @endif
                     </div> 
                 </div>
             </div>

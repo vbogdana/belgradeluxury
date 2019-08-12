@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class EventsController extends Controller {
     
@@ -178,6 +179,7 @@ class EventsController extends Controller {
             'date' => 'required|max:255',
             'title_en' => 'required|max:255',
             'title_sr' => 'required|max:255',
+            'place' => ['required', Rule::notIn(['none']),],
             'description_en' => 'required|max:255',
             'description_sr' => 'required|max:255',
             'reservations' => 'max:255',
@@ -207,7 +209,7 @@ class EventsController extends Controller {
         }
         
         $event = new Event($data);
-        if ($data['place'] !== 'null') {
+        if ($data['place'] !== 'none') {
             $event->placeID = $data['place'];
         }
         $event->artID = $article->artID;

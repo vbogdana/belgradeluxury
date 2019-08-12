@@ -354,7 +354,7 @@ class ServicesController extends Controller {
         }
         
         $reservation->save();
-        Mail::to('inquiry@belgradeluxury.com')->send(new Reservation($data));
+        Mail::to('inquiry@belgradeluxury.rs')->send(new Reservation($data));
 
         if(count(Mail::failures()) > 0) {
     		return response()->json(['error' => Lang::get('forms.errors.message')], 401);
@@ -557,7 +557,7 @@ class ServicesController extends Controller {
         $data['date_start'] = date("d/M/y", strtotime($data['date_start'])); 
         $data['date_end'] = date("d/M/y", strtotime($data['date_end']));
 
-        Mail::to('inquiry@belgradeluxury.com')->send(new Inquiry($data));
+        Mail::to('inquiry@belgradeluxury.rs')->send(new Inquiry($data));
 
         if(count(Mail::failures()) > 0) {
     		return response()->json(['error' => Lang::get('forms.errors.message')], 401);

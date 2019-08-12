@@ -102,22 +102,21 @@ class AppController extends Controller {
         $data = $request->all();     
         
         switch ($data['subject']) {
-            case 'client': Mail::to('inquiry@belgradeluxury.com')->send(new Contact($data)); break;
+            case 'client': Mail::to('inquiry@belgradeluxury.rs')->send(new Contact($data)); break;
             case 'business': 
                 $this->validate($request, [                   
                     'company' => 'required|max:255',
                     //'website' => 'url',
                 ]);
-                Mail::to('office@belgradeluxury.com')->send(new Contact($data)); 
+                Mail::to('office@belgradeluxury.rs')->send(new Contact($data)); 
                 break;
-            case 'careers': Mail::to('careers@belgradeluxury.com')->send(new Contact($data)); break;
+            case 'careers': Mail::to('careers@belgradeluxury.rs')->send(new Contact($data)); break;
         }
         
         if(count(Mail::failures()) > 0) {
             return response()->json(['error' => Lang::get('contact.error')], 401);
         }
-        return response()->json(Lang::get('contact.success'), 200);
-        
+        return response()->json(Lang::get('contact.success'), 200);    
     }
     
     /*

@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('place') ? ' has-error' : '' }}">
                             <label for="place" class="col-md-4 control-label">Place</label>
 
                             <div class="col-md-6">
@@ -144,7 +144,7 @@
                                             $selected = "";
                                         }
                                     ?>
-                                    <option value="null" {{ $selected }}>none</option>
+                                    <option value="none" {{ $selected }}>none</option>
                                     @foreach($places as $place)
                                         <?php 
                                         if (isset($event) && ($event->placeID !== null) && ($event->placeID == $place->placeID)) {
@@ -160,6 +160,12 @@
                                     <option value="{{ $place->placeID }}" {{ $selected }}>{{ $place->title_en }}</option>
                                     @endforeach
                                 </select>
+
+                                @if ($errors->has('place'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('place') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         
