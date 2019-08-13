@@ -6,31 +6,6 @@ window.google = window.google || {};
 
 google.maps = google.maps || {};
 
-(function() {
-
-	function getScript(src) {
-
-		document.write('<' + 'script src="' + src + '"' + ' type="text/javascript"><' + '/script>');
-
-	}
-		
-	var modules = google.maps.modules = {};
-
-	google.maps.__gjsload__ = function(name, text) {
-		modules[name] = text;
-	};
-	
-	google.maps.Load = function(apiLoad) {
-		delete google.maps.Load;
-		getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDBLrAJAME-lRX8eCBCncsxPjAdyaZeji4");
-	};
-
-	var loadScriptTime = (new Date).getTime();
-
-	getScript("https://maps.gstatic.com/maps-api-v3/api/js/18/15a/main.js");
-
-})();
-
 /* ================================================== */
 /* =============== END GOOGLE MAP PLUGIN ================ */
 /* ================================================== */
@@ -49,7 +24,7 @@ jQuery(document).ready(function(){
 	
 	var lat = jQuery('#map-canvas').data('lat');
 	var long = jQuery('#map-canvas').data('long');
-	var myLatLng = new google.maps.LatLng(lat,long);
+	var myLatLng = {lat: lat, lng: long};
 
 	function initialize() {
             if (!first) return;

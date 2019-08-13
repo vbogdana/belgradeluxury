@@ -685,6 +685,8 @@
 </script>
 
 @if($type !== 'vehicles')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxAHBuLOHtqOzZxc_xwdeKq0SAbzEaEVw" type="text/javascript"></script>
+<script src="https://maps.gstatic.com/maps-api-v3/api/js/18/15a/main.js" type="text/javascript"></script>
 <script src="{{ url("/") }}/js/map.js"></script>
 @endif
 
