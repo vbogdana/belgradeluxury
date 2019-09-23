@@ -84,9 +84,9 @@
                         
                         <br/>
                       
-                        <a class="link" href="mailto:inquiry@belgradeluxury.com" style="text-transform: lowercase">
+                        <a class="link" href="mailto:inquiry@belgradeluxury.rs" style="text-transform: lowercase">
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                            inquiry@belgradeluxury.com
+                            inquiry@belgradeluxury.rs
                         </a>
                         
                     </div>
@@ -284,31 +284,21 @@
         $.ajax({
             url: url,
             type: 'POST',
-            //dataType: 'json',
             contentType: false,
             processData: false,
             data: data
-            //data: {_token:_token, name:name, phone:phone, place:place, date:date, time:time, people:people, seating:seating, message:message}
-            
         }).done(function(data) {          
-            //$('#status').css('background', 'rgba(0,0,0,0.7)');        
             $('#status').css('color', '#C5B358');
-            $('#status').html(data);
-            
+            $('#status').html(data);            
             // RESET FORM
             $('form').find("input[type=text], input[type=number], input[type=date], textarea").val("");
             $('form').find("input[type=checkbox]").removeAttr('checked');
-            //$('option').removeAttr('selected');
-            //$('option:first-child').attr('selected', '');
-
             $('.request.overlay').remove();
             $('.animsition-loading').remove();
         }).fail(function(msg) {
             
             if (msg.responseText.search("\"name\"") !== -1)
                 checkError(msg, "name", 9); 
-            // if (msg.responseText.search("\"phone\"") !== -1)
-            //     checkError(msg, "phone", 10);
             if (msg.responseText.search("\"reason\"") !== -1)
                 checkError(msg, "reason", 11);
             if (msg.responseText.search("\"price\"") !== -1)
@@ -340,10 +330,8 @@
             
             if (validation) {
                 $('#status').css('color', 'red');
-                //$('#status').css('background', 'rgba(0,0,0,0.7)');
                 $('#status').html(msg.responseText);
-            }
-            
+            }           
             $('.request.overlay').remove();
             $('.animsition-loading').remove();
         });

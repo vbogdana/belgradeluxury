@@ -2435,9 +2435,12 @@ a.btn.small, .btn.small {
 .package-details-section .container-fluid {
     padding: 0;
 }
-.package-details,
-.offer-details {
+.package-details {
     z-index: 3;
+    font-family: Quicksand, Raleway, sans-serif;
+}
+.offer-details {
+    z-index: 1;
     font-family: Quicksand, Raleway, sans-serif;
 }
 @media screen and (min-width: 768px) {

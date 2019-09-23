@@ -149,7 +149,7 @@
 </section>
 <!--    END OPTIONAL SERVICES SECTION      -->
 
-<!--    START BLOG SECTION      -->
+<!--    START ABOUT SECTION      -->
 <section id="about" class="about-section fullwidth background-properties" data-section-name="about-panel" style="background-image: url('{{ asset('storage/images/'.$package->symbol) }}')">
     <div class="overlay"></div>
     <div class="hero-holder space-y" style="background: rgba(0,0,0,0.5);">
@@ -170,7 +170,7 @@
         </div>
     </div>
 </section>
-<!--    END BLOG SECTION      -->
+<!--    END ABOUT SECTION      -->
 
 @include('packages-sections', ['packages' => $packages])
 
