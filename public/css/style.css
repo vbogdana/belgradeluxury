@@ -419,14 +419,25 @@ i {
  *                 CUSTOM
  *  
  ******************************************************************************/
-.inquiry-widget {
+.inquiry-widget-button {
+    padding: 12px 5px;
+    position: fixed;
+    bottom: 32px;
+    z-index: 15;
+    background: rgba(14, 14, 14, 0.6);
+    display: block;
+    left: -4px;
+    border-radius: 1px;
+    border: 5px solid rgba(0, 0, 0, 0.6);
+ }
+ .inquiry-widget {
     padding: 12px;
     position: fixed;
     bottom: 32px;
     z-index: 15;
     background: rgba(14, 14, 14, 0.6);
     display: block;
-    left: 24px;
+    left: -224px;
     border-radius: 1px;
     border: 5px solid rgba(0, 0, 0, 0.6);
  }
@@ -2473,6 +2484,10 @@ a.btn.small, .btn.small {
     margin-bottom: 5px;
 }
 @media screen and (max-width: 767px) {
+    .offer-details-section
+    {
+        z-index:1
+    }
     .package-details .col-sm-4,
     .offer-details .col-sm-4 {
         margin-bottom: 20px;

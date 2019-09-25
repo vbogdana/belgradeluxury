@@ -235,11 +235,19 @@ $locale = LaravelLocalization::getCurrentLocale();
             @show
             </div>
 
+            <div class="inquiry-widget-button text-uppercase text-center">
+                <a href="{{ route('quick.inquiry') }}" class="link">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <!--
             <div class="inquiry-widget text-uppercase text-center">
                 <a href="{{ route('quick.inquiry') }}" class="link">
                     <i class="fa fa-envelope-o" aria-hidden="true"></i><h4>@lang('common.quick') @lang('common.inquiry')</h4>
                 </a>
             </div>
+            -->
             
             @yield('content')
                    
